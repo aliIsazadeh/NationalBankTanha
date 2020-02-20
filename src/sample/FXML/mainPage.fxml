@@ -69,7 +69,7 @@
                     <graphic>
                         <ImageView fitHeight="32.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../bankPics/cash-stack-512.png" />
+                                <Image url="@../bankPics/minMoney.png" />
                             </image>
                         </ImageView>
                     </graphic>
