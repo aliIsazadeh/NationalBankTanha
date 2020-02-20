@@ -12,19 +12,25 @@ public class SendSMS {
     String message = "";
 
 
-    SendSMS(String phoneNumber) {
+    public SendSMS(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
     public void setMessage(String message) {
-        this.message = message;
+        String[] temp = message.split(" ");
+        String mes="";
+        for (String str :
+                temp) {
+            mes += (str+"%20");
+        }
+        this.message = mes;
     }
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
-    String send() throws Exception {
+    public String send() {
         try {
             String url = "https://raygansms.com/SendMessageWithCode.ashx?Username=a0forghani&Password=1346794613&Mobile=" + phoneNumber + "&Message=" + message;
 
@@ -56,6 +62,8 @@ public class SendSMS {
                 return response.toString();
         } catch (UnknownHostException e) {
             return "خطای اتصال به اینترنت";
+        }catch (Exception e){
+            return "حظا";
         }
 
 
