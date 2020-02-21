@@ -18,7 +18,6 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
@@ -64,6 +63,7 @@ public class loginPageController implements Initializable {
         translateTransition.setToX(450);
 
        // movablePane.setTranslateX(-279);
+        //hi
 
 
         registerAnchorPane.setVisible(false);
@@ -168,15 +168,7 @@ public class loginPageController implements Initializable {
 
 
 
-
-
-
-
-
-
-
     public void initialize(URL location, ResourceBundle resources) {
-
 
     }
 
