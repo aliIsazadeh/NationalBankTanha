@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.FXML.PersonalInfos">
+   <children>
+      <JFXTextField fx:id="txtShowName" alignment="CENTER_RIGHT" labelFloat="true" layoutX="444.0" layoutY="41.0" promptText="نام" text=" " />
+      <JFXTextField fx:id="txtShowFamily" alignment="CENTER_RIGHT" labelFloat="true" layoutX="258.0" layoutY="41.0" promptText="نام خانوادگی" text=" " />
+      <JFXTextField fx:id="txtShowNationalCode" alignment="CENTER_RIGHT" labelFloat="true" layoutX="45.0" layoutY="41.0" promptText="کدملی" text=" " />
+      <JFXTextField fx:id="txtShowFatherName" alignment="CENTER_RIGHT" labelFloat="true" layoutX="45.0" layoutY="139.0" promptText="نام پدر" text=" " />
+      <JFXTextField fx:id="txtShowAccountType" alignment="CENTER_RIGHT" labelFloat="true" layoutX="444.0" layoutY="139.0" promptText="نوع حساب" text=" " />
+      <JFXTextField fx:id="txtShowGender" alignment="CENTER_RIGHT" labelFloat="true" layoutX="258.0" layoutY="139.0" promptText="جنسیت" text=" " />
+      <JFXTextField fx:id="txtShowAddress" alignment="CENTER_RIGHT" labelFloat="true" layoutX="26.0" layoutY="232.0" prefHeight="25.0" prefWidth="549.0" promptText="آدرس" text=" " />
+      <JFXTextField fx:id="txtShowPhoneNumber" alignment="CENTER_RIGHT" labelFloat="true" layoutX="179.0" layoutY="320.0" prefHeight="25.0" prefWidth="243.0" promptText="شماره تلفن" text=" " />
+   </children>
+</AnchorPane>
