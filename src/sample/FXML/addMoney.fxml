@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.FXML.AddMoney">
+   <children>
+      <Label alignment="CENTER_RIGHT" layoutX="440.0" layoutY="95.0" prefHeight="44.0" prefWidth="138.0" text="مبلغ مورد نظر(به تومان) : " />
+      <TextField layoutX="193.0" layoutY="105.0" prefHeight="25.0" prefWidth="228.0" />
+      <Label alignment="CENTER" layoutX="245.0" layoutY="28.0" prefHeight="44.0" prefWidth="122.0" text="افزایش موجودی">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <JFXButton layoutX="266.0" layoutY="200.0" prefHeight="65.0" prefWidth="104.0" style="-fx-background-color: #000000; -fx-background-radius: 20;" text="تایید" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>
