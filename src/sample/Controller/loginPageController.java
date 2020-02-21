@@ -48,8 +48,9 @@ public class loginPageController implements Initializable {
     FadeTransition fadeTransition(Node node, Duration duration, double fromValue, double toValue) {
         FadeTransition fadeTransition = new FadeTransition();
         fadeTransition.setNode(node);
-        fadeTransition.setDuration(duration);
+        fadeTransition.setDuration(new Duration(1500));
         fadeTransition.setFromValue(fromValue);
+        fadeTransition.setRate(1.7);
         fadeTransition.setToValue(toValue);
         return fadeTransition;
     }
@@ -70,8 +71,8 @@ public class loginPageController implements Initializable {
         signInTrans.setVisible(false);
 
 
-        FadeTransition fadeRegisterAnchorPane = fadeTransition(registerAnchorPane,Duration.seconds(0.7),1,0);
-        FadeTransition fadeSignInTransAnchorPane = fadeTransition(signInTrans,Duration.seconds(0.7),1,0);
+        FadeTransition fadeRegisterAnchorPane = fadeTransition(registerAnchorPane,Duration.seconds(1),1,0);
+        FadeTransition fadeSignInTransAnchorPane = fadeTransition(signInTrans,Duration.seconds(1),1,0);
 
 
 
@@ -80,8 +81,8 @@ public class loginPageController implements Initializable {
 
 
 
-        FadeTransition fadeLoginAnchorPane = fadeTransition(loginAnchorPane, Duration.seconds(0.7), 0, 1);
-        FadeTransition fadeSignUpTransAnchorPane = fadeTransition(signUpTrans, Duration.seconds(0.7), 0, 1);
+        FadeTransition fadeLoginAnchorPane = fadeTransition(loginAnchorPane, Duration.seconds(1), 0, 1);
+        FadeTransition fadeSignUpTransAnchorPane = fadeTransition(signUpTrans, Duration.seconds(1), 0, 1);
 
 
         //sorry mr.Ghader  :)
@@ -109,20 +110,18 @@ public class loginPageController implements Initializable {
         //movablePane.setTranslateX(-279);
 
 
-        registerAnchorPane.setVisible(true);
-        signInTrans.setVisible(true);
 
 
-        FadeTransition fadeRigisterAnchorPane = fadeTransition(registerAnchorPane,Duration.seconds(0.7),0,1);
-        FadeTransition fadeSignInTransAnchorPane = fadeTransition(signInTrans,Duration.seconds(0.7),0,1);
+
+        FadeTransition fadeRigisterAnchorPane = fadeTransition(registerAnchorPane,Duration.seconds(1),0,1);
+        FadeTransition fadeSignInTransAnchorPane = fadeTransition(signInTrans,Duration.seconds(1),0,1);
 
 
-        loginAnchorPane.setVisible(false);
-        signUpTrans.setVisible(false);
 
 
-        FadeTransition fadeLoginAnchorPane = fadeTransition(loginAnchorPane, Duration.seconds(0.7), 1, 0);
-        FadeTransition fadeSignUpTransAnchorPane = fadeTransition(signUpTrans, Duration.seconds(0.7), 1, 0);
+
+        FadeTransition fadeLoginAnchorPane = fadeTransition(loginAnchorPane, Duration.seconds(1), 1, 0);
+        FadeTransition fadeSignUpTransAnchorPane = fadeTransition(signUpTrans, Duration.seconds(1), 1, 0);
 
         //sorry mr.Ghader  :)
 
@@ -132,6 +131,11 @@ public class loginPageController implements Initializable {
         fadeSignInTransAnchorPane.play();
         fadeLoginAnchorPane.play();
         fadeSignUpTransAnchorPane.play();
+
+        registerAnchorPane.setVisible(true);
+        signInTrans.setVisible(true);
+        loginAnchorPane.setVisible(false);
+        signUpTrans.setVisible(false);
 
     }
     public void loadMainPage(){
@@ -169,6 +173,7 @@ public class loginPageController implements Initializable {
 
 
     public void initialize(URL location, ResourceBundle resources) {
+
 
     }
 
