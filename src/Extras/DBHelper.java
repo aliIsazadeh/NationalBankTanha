@@ -6,22 +6,23 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class DBHelper {
-    Connection connection;
-    Statement statement;
+    private Connection connection;
+    private Statement statement;
 
     public DBHelper() {
         connect();
 
         creatTable();
-        ObjToDB account =new ObjToDB();
-        account.lastName="skdvjcvj";
-        account.name="owk";
+        ObjToDB account = new ObjToDB();
+        account.lastName = "hossein";
+        account.name = "Shakeri";
         insertPerson(account);
-        ArrayList<ObjToDB> list = getAllPerson();
-        for (ObjToDB o :list
-             ) {
-            System.out.println(o.name +""+ o.lastName);
+        ArrayList<ObjToDB> list =getAllPerson();
+        for (ObjToDB o : list
+        ) {
+            System.out.println(o.name.toString() );
         }
+        close();
     }
 
     public void connect() {
@@ -34,6 +35,7 @@ public class DBHelper {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+        //  close();
     }
 
     public void creatTable() {
@@ -44,49 +46,56 @@ public class DBHelper {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        //  close();
     }
 
-    public void insertPerson(ObjToDB account) {
+    public void insertPerson(ObjToDB objToDB) {
 
-        String insertSQL = "INSERT INTO person (name) VALUES ('" + account + "');";
+        String insertSQL = "INSERT INTO person (name ) VALUES ('" +objToDB + "');";
         try {
             statement.executeUpdate(insertSQL);
             System.out.println("inserted");
         } catch (SQLException e) {
             // TODO Auto-generated catch block
-
+            System.out.println(e.getMessage());
             e.printStackTrace();
         }
+        // close();
     }
-    public ArrayList<ObjToDB> getAllPerson(){
+
+    public ArrayList<ObjToDB> getAllPerson() {
         String getSql = "SELECT name , lastname FROM person;";
         ArrayList<ObjToDB> list = new ArrayList<DBHelper.ObjToDB>();
-        try{
+        try {
             ResultSet resultSet = statement.executeQuery(getSql);
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 ObjToDB objToDB = new ObjToDB();
-                objToDB.name=resultSet.getString(1);
-                objToDB.lastName=resultSet.getString(2);
+                objToDB.name = resultSet.getString(1);
+                objToDB.lastName = resultSet.getString(2);
                 list.add(objToDB);
             }
-        }catch (SQLException e ){
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-
+        //  close();
         return list;
+
     }
+
     class ObjToDB {
         String name;
         String lastName;
-        public String toString(){
-            return "[" +name +"  "+ lastName + "]";
+
+        public String toString() {
+            return "[" + name + "  " + lastName + "]";
         }
     }
-    public void close(){
-        try{
+
+    public void close() {
+        try {
             connection.close();
             statement.close();
-        }catch (SQLException e){
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
     }
