@@ -1,11 +1,40 @@
 package DataStructure;
 
+import java.util.ArrayList;
+
 public class Account {
     private long accountNumber;//شماره حساب
     private String accountType;//نوع حساب
     private String accountBank;//بانکی که در ان حساب را باز کردیم
-    private String passwordForATM;
-    private long uniquePassword;
+    private String passwordForATM;//رمز عادی
+    private String secondPassword;//رمز دوم
+    private long uniquePassword;//رمز پویا
+    private String inventory;
+    private ArrayList<Transaction> transactions;
+
+    public ArrayList<Transaction> getTransactions() {
+        return transactions;
+    }
+
+    public void setTransactions(ArrayList<Transaction> transactions) {
+        this.transactions = transactions;
+    }
+
+    public String getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(String inventory) {
+        this.inventory = inventory;
+    }
+
+    public String getSecondPassword() {
+        return secondPassword;
+    }
+
+    public void setSecondPassword(String secondPassword) {
+        this.secondPassword = secondPassword;
+    }
 
     public long getAccountNumber() {
         return accountNumber;

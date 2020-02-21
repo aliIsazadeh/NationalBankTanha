@@ -10,6 +10,9 @@ public class Transaction {
     private Account from;
     private Account to;
     private boolean finished;
+    private String serialOfTransaction;
+    private String DateOfTransaction;
+    private String inventoryOfTransaction;
 
 
 
@@ -63,6 +66,30 @@ public class Transaction {
 
 
 
+
+    public String getSerialOfTransaction() {
+        return serialOfTransaction;
+    }
+
+    public void setSerialOfTransaction(String serialOfTransaction) {
+        this.serialOfTransaction = serialOfTransaction;
+    }
+
+    public String getDateOfTransaction() {
+        return DateOfTransaction;
+    }
+
+    public void setDateOfTransaction(String dateOfTransaction) {
+        DateOfTransaction = dateOfTransaction;
+    }
+
+    public String getInventoryOfTransaction() {
+        return inventoryOfTransaction;
+    }
+
+    public void setInventoryOfTransaction(String inventoryOfTransaction) {
+        this.inventoryOfTransaction = inventoryOfTransaction;
+    }
 
     public String getTypeOfTransaction() {
         return typeOfTransaction;
