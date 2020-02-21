@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="330.0" prefWidth="723.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" >
+   <children>
+      <JFXTextField fx:id="txtNationalCode" alignment="CENTER_RIGHT" labelFloat="true" layoutX="552.0" layoutY="32.0" promptText="کدملی" />
+      <JFXTextField fx:id="txtFatherName" alignment="CENTER_RIGHT" labelFloat="true" layoutX="552.0" layoutY="105.0" promptText="نام پدر" />
+      <DatePicker fx:id="timePickerBornTime" layoutX="533.0" layoutY="258.0" nodeOrientation="RIGHT_TO_LEFT" promptText="تاریخ تولد" />
+      <JFXTextField fx:id="txtBornPlace" alignment="CENTER_RIGHT" labelFloat="true" layoutX="558.0" layoutY="182.0" promptText="محل تولد" />
+      <JFXTextField fx:id="txtJob" alignment="CENTER_RIGHT" labelFloat="true" layoutX="341.0" layoutY="32.0" promptText="شغل" />
+      <JFXComboBox fx:id="comboMarriage" labelFloat="true" layoutX="341.0" layoutY="106.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="25.0" prefWidth="135.0" promptText="وضعیت تاهل" />
+      <JFXTextField fx:id="txtAddress" alignment="CENTER_RIGHT" labelFloat="true" layoutX="31.0" layoutY="182.0" prefHeight="25.0" prefWidth="451.0" promptText="آدرس" />
+      <JFXComboBox fx:id="txtAccount" labelFloat="true" layoutX="116.0" layoutY="32.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="25.0" prefWidth="135.0" promptText="نوع حساب درخواستی" />
+      <JFXComboBox fx:id="txtGender" labelFloat="true" layoutX="116.0" layoutY="106.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="25.0" prefWidth="135.0" promptText="جنسیت" />
+      <CheckBox fx:id="checkSendMessage" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="246.0" layoutY="262.0" mnemonicParsing="false" text="درخواست دریافت پیامک به ازای هر تراکنش" />
+      <JFXTextField fx:id="txtPhoneNumber" alignment="CENTER_RIGHT" editable="false" focusColor="BLACK" layoutX="25.0" layoutY="258.0" prefHeight="25.0" prefWidth="201.0" promptText="شماره تلفن" />
+   </children>
+</AnchorPane>

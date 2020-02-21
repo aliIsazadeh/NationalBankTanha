@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="626.0" prefWidth="913.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <HBox nodeOrientation="RIGHT_TO_LEFT" prefHeight="24.0" prefWidth="888.0" style="-fx-background-color: #707070; -fx-background-radius: 5;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <children>
+                <JFXButton contentDisplay="CENTER" prefHeight="29.0" prefWidth="35.0" text=" ">
+                    <graphic>
+                        <ImageView fitHeight="31.0" fitWidth="26.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../bankPics/Power.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </JFXButton>
+                <JFXButton contentDisplay="CENTER" prefHeight="29.0" prefWidth="35.0" text=" ">
+                    <graphic>
+                        <ImageView fitHeight="21.0" fitWidth="32.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../bankPics/back.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </JFXButton>
+            </children></HBox>
+        <VBox layoutX="-8.0" layoutY="47.0" prefHeight="454.0" prefWidth="156.0" style="-fx-background-color: #363338; -fx-background-radius: 10;" stylesheets="" AnchorPane.bottomAnchor="-8.0" AnchorPane.topAnchor="47.0">
+            <children>
+                <JFXButton contentDisplay="BOTTOM" prefHeight="55.0" prefWidth="156.0" text="اطلاعات شخصی" textFill="#fffefe">
+                    <VBox.margin>
+                        <Insets top="20.0" />
+                    </VBox.margin>
+                    <graphic>
+                        <ImageView fitHeight="27.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../bankPics/profile.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </JFXButton>
+                <JFXButton contentDisplay="BOTTOM" prefHeight="54.0" prefWidth="156.0" ripplerFill="#4d05ff" text="افزایش موجودی" textFill="#fffefe">
+                    <graphic>
+                        <ImageView fitHeight="37.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../bankPics/addMoney.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <VBox.margin>
+                        <Insets top="10.0" />
+                    </VBox.margin>
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font></JFXButton>
+                <JFXButton contentDisplay="BOTTOM" prefHeight="50.0" prefWidth="156.0" ripplerFill="#ff0505" text="برداشت وجه" textFill="#fffefe">
+                    <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../bankPics/minMoney.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <VBox.margin>
+                        <Insets top="10.0" />
+                    </VBox.margin>
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font></JFXButton>
+                <JFXButton contentDisplay="BOTTOM" prefHeight="50.0" prefWidth="156.0" ripplerFill="#eaff05" text="کارت به کارت" textFill="#fffefe">
+                    <graphic>
+                        <ImageView fitHeight="28.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../bankPics/card to card.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <VBox.margin>
+                        <Insets top="10.0" />
+                    </VBox.margin>
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font></JFXButton>
+                <JFXButton contentDisplay="BOTTOM" prefHeight="50.0" prefWidth="156.0" ripplerFill="#00ff1f" text="موجودی حساب" textFill="#fffefe">
+                    <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../bankPics/cash-stack-512.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <VBox.margin>
+                        <Insets top="10.0" />
+                    </VBox.margin>
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font></JFXButton>
+                <JFXButton contentDisplay="BOTTOM" prefHeight="50.0" prefWidth="156.0" ripplerFill="#ff7700" text="تغییر رمز" textFill="#fffefe">
+                    <graphic>
+                        <ImageView fitHeight="39.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../bankPics/passWord.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <VBox.margin>
+                        <Insets top="10.0" />
+                    </VBox.margin>
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </JFXButton>
+                <JFXButton contentDisplay="BOTTOM" prefHeight="50.0" prefWidth="156.0" ripplerFill="#a513bf" text="تاریخچه ترانکش های شما" textFill="#fffefe">
+                    <graphic>
+                        <ImageView fitHeight="39.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../bankPics/history.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <VBox.margin>
+                        <Insets top="10.0" />
+                    </VBox.margin>
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </JFXButton>
+                <JFXButton contentDisplay="BOTTOM" prefHeight="50.0" prefWidth="156.0" ripplerFill="#0004ff" text="سایر موارد" textFill="#fffefe">
+                    <graphic>
+                        <ImageView fitHeight="39.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../bankPics/other.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </JFXButton>
+            </children></VBox>
+        <HBox layoutX="151.0" layoutY="76.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="62.0" prefWidth="556.0" style="-fx-background-color: #707070; -fx-background-radius: 20;" AnchorPane.leftAnchor="151.0" AnchorPane.rightAnchor="0.0">
+            <children>
+                <Label prefHeight="62.0" prefWidth="112.0" text="شماره کارت :" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="20.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets left="10.0" />
+                    </HBox.margin>
+                </Label>
+                <JFXTextField alignment="CENTER" editable="false" prefHeight="42.0" prefWidth="229.0" text="5892 - 1010 - 5796 - 1837" unFocusColor="#6b5a5a">
+                    <HBox.margin>
+                        <Insets top="10.0" />
+                    </HBox.margin>
+                    <font>
+                        <Font name="System Bold" size="19.0" />
+                    </font>
+                </JFXTextField>
+                <Label prefHeight="62.0" prefWidth="97.0" text="نوع حساب :" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="20.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets left="10.0" />
+                    </HBox.margin>
+                </Label>
+                <JFXTextField alignment="CENTER" editable="false" prefHeight="42.0" prefWidth="112.0" text="قرض الحسنه" unFocusColor="#6b5a5a">
+                    <font>
+                        <Font name="System Bold" size="19.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets top="10.0" />
+                    </HBox.margin>
+                </JFXTextField>
+            </children>
+        </HBox>
+        <AnchorPane layoutX="158.0" layoutY="197.0" prefHeight="330.0" prefWidth="723.0" style="-fx-background-color: #707070; -fx-background-radius: 20;" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="158.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="197.0">
+            <children>
+                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="17.0" layoutY="14.0" prefHeight="91.0" prefWidth="714.0" text="حساب شما با موفقیت ایجاد شد و برای شما شماره کارت صادر گردید... از منوی سمت چپ می توانید از از امکانات بیشتری بهره مند شوید...." textFill="#00ff44">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </Label>
+            </children></AnchorPane>
+        <ImageView fitHeight="101.0" fitWidth="105.0" layoutX="187.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../bankPics/1.png" />
+            </image>
+        </ImageView>
+    </children>
+
+
+</AnchorPane>

@@ -20,7 +20,7 @@
                     <graphic>
                         <ImageView fitHeight="30.0" fitWidth="24.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../sample/bankPics/38-512.png" />
+                                <Image url="@../bankPics/Power.png" />
                             </image>
 
                         </ImageView>
@@ -98,14 +98,14 @@
                 </Label>
                 <ImageView fitHeight="29.0" fitWidth="34.0" layoutX="269.0" layoutY="256.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../sample/bankPics/user.png" />
+                        <Image url="@../bankPics/user.png" />
 
 
                     </image>
                 </ImageView>
                 <ImageView fitHeight="32.0" fitWidth="40.0" layoutX="266.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../sample/bankPics/pass.png" />
+                        <Image url="@../bankPics/pass.png" />
                     </image>
                 </ImageView>
             </children>
