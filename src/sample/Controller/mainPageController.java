@@ -6,11 +6,14 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -60,11 +63,121 @@ public class mainPageController implements Initializable {
         btnOther.setDisable(false);
         faceImage.setVisible(true);
         btnConfirmInfos.setVisible(false);
-      //  infoAnchorPane.setVisible(false);
-
         lblSuccess.setVisible(true);
 
+    }
 
+
+    public void profileLoad() throws IOException {
+
+
+        mainAnchorPane.getChildren().removeAll(lblSuccess);
+
+
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("../FXML/personalInfos.fxml"));
+            mainAnchorPane.getChildren().addAll(root);
+        }
+        catch (IOException ex){
+            System.out.println("oh crap!!!");
+        }
+
+    }
+
+
+    public void addMoneyLoad(){
+
+        try {
+            AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("../FXML/addMoney.fxml"));
+            mainAnchorPane.getChildren().addAll(anchorPane);
+        }
+        catch (IOException ex){
+            System.out.println("oh crap!!!");
+        }
+
+
+    }
+
+
+    public  void minMoneyLoad(){
+
+        try {
+            AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("../FXML/minMoney.fxml"));
+            mainAnchorPane.getChildren().addAll(anchorPane);
+        }
+        catch (IOException ex){
+            System.out.println("oh crap!!!");
+        }
+
+
+
+    }
+
+    public  void remainLoad(){
+
+        try {
+            AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("../FXML/reamainMoney.fxml"));
+            mainAnchorPane.getChildren().addAll(anchorPane);
+        }
+        catch (IOException ex){
+            System.out.println("oh crap!!!");
+        }
+
+
+
+    }
+
+    public  void cardToCardLoad(){
+
+        try {
+            AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("../FXML/cardToCard.fxml"));
+            mainAnchorPane.getChildren().addAll(anchorPane);
+        }
+        catch (IOException ex){
+            System.out.println("oh crap!!!");
+        }
+
+
+
+    }
+
+    public  void HistoryLoad(){
+        try {
+            AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("../FXML/history.fxml"));
+            mainAnchorPane.getChildren().addAll(anchorPane);
+        }
+        catch (IOException ex){
+            System.out.println("oh crap!!!");
+        }
+
+
+
+
+    }
+
+    public  void ChangePassLoad(){
+
+        try {
+            AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("../FXML/changePassWord.fxml"));
+            mainAnchorPane.getChildren().addAll(anchorPane);
+        }
+        catch (IOException ex){
+            System.out.println("oh crap!!!");
+        }
+
+
+
+    }
+
+    public void anotherOptions(){
+
+        try {
+            AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("../FXML/anotherOptions.fxml"));
+            mainAnchorPane.getChildren().addAll(anchorPane);
+        }
+        catch (IOException ex){
+            System.out.println("oh crap!!!");
+        }
 
 
 
