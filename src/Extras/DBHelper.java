@@ -41,7 +41,7 @@ public class DBHelper {
     }
 
     public void creatTable() {
-        String tableSQL = "CREATE TABLE IF NOT EXISTS person (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL ,accountType TEXT,name TEXT , lastName TEXT,nationalCode TEXT,phoneNumber TEXT,address TEXT ,passwordForATM TEXT ,secondPassword TEXT, transaction TEXT ,inventory TEXT );";
+        String tableSQL = "CREATE TABLE IF NOT EXISTS person (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL ,accountType TEXT,name TEXT , lastName TEXT,nationalCode TEXT,phoneNumber TEXT,address TEXT ,passwordForATM TEXT ,secondPassword TEXT,Tr TEXT ,inventory TEXT );";
         try {
             statement.executeUpdate(tableSQL);
             System.out.println("Person table is created");
@@ -89,7 +89,7 @@ public class DBHelper {
     public ArrayList<Transaction> readAllTransaction(long id) {
         //End
         ArrayList<Transaction> list = new ArrayList<>();
-        String getTransactionSQL = "SELECT transaction FROM person where id = '" + id + "'";
+        String getTransactionSQL = "SELECT tr FROM person where id = '" + id + "'";
         try {
             ResultSet resultSet = statement.executeQuery(getTransactionSQL);
             while (resultSet.next()) {
@@ -118,7 +118,7 @@ public class DBHelper {
         for (int i = 0; i < list.size(); i++) {
             tarakonesh = list.get(i).getTypeOfTransaction() + "," + list.get(i).getInventoryOfTransaction() + "," + list.get(i).getSerialOfTransaction() + "," + list.get(i).getDateOfTransaction() + "@";
         }
-        String upTransactionSQL = "UPDATE person set transaction ='" + tarakonesh + "' where id ='" + id + "'";
+        String upTransactionSQL = "UPDATE person set tr ='" + tarakonesh + "' where id ='" + id + "'";
         try {
             statement.executeUpdate(upTransactionSQL);
             System.out.println("transactions is updated");
@@ -155,7 +155,7 @@ public class DBHelper {
 
     public ArrayList<Person> getAllPerson() {
         //End
-        String getSql = "SELECT id,accountType,name , lastname, nationalcode,phonNumber,address,passwordForATM,secondPassword,transaction,inventory FROM person;";
+        String getSql = "SELECT id,accountType,name , lastname, nationalcode,phonNumber,address,passwordForATM,secondPassword,tr,inventory FROM person;";
         ArrayList<Person> list = new ArrayList<Person>();
         try {
             ResultSet resultSet = statement.executeQuery(getSql);
