@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="626.0" prefWidth="913.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="626.0" prefWidth="913.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.mainPageController">
     <children>
         <HBox nodeOrientation="RIGHT_TO_LEFT" prefHeight="24.0" prefWidth="888.0" style="-fx-background-color: #707070; -fx-background-radius: 5;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
             <children>
@@ -24,7 +24,7 @@
                         </ImageView>
                     </graphic>
                 </JFXButton>
-                <JFXButton contentDisplay="CENTER" prefHeight="29.0" prefWidth="35.0" text=" ">
+                <JFXButton contentDisplay="CENTER" prefHeight="38.0" prefWidth="50.0" text=" ">
                     <graphic>
                         <ImageView fitHeight="21.0" fitWidth="32.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -36,7 +36,7 @@
             </children></HBox>
         <VBox layoutX="-8.0" layoutY="47.0" prefHeight="454.0" prefWidth="156.0" style="-fx-background-color: #363338; -fx-background-radius: 10;" stylesheets="" AnchorPane.bottomAnchor="-8.0" AnchorPane.topAnchor="47.0">
             <children>
-                <JFXButton contentDisplay="BOTTOM" prefHeight="55.0" prefWidth="156.0" text="اطلاعات شخصی" textFill="#fffefe">
+                <JFXButton fx:id="btnPersonalInfo" contentDisplay="BOTTOM" disable="true" prefHeight="55.0" prefWidth="156.0" text="اطلاعات شخصی" textFill="#fffefe">
                     <VBox.margin>
                         <Insets top="20.0" />
                     </VBox.margin>
@@ -51,7 +51,7 @@
                         <Font name="System Bold" size="12.0" />
                     </font>
                 </JFXButton>
-                <JFXButton contentDisplay="BOTTOM" prefHeight="54.0" prefWidth="156.0" ripplerFill="#4d05ff" text="افزایش موجودی" textFill="#fffefe">
+                <JFXButton fx:id="btnAddMoney" contentDisplay="BOTTOM" disable="true" prefHeight="54.0" prefWidth="156.0" ripplerFill="#4d05ff" text="افزایش موجودی" textFill="#fffefe">
                     <graphic>
                         <ImageView fitHeight="37.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -65,7 +65,7 @@
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font></JFXButton>
-                <JFXButton contentDisplay="BOTTOM" prefHeight="50.0" prefWidth="156.0" ripplerFill="#ff0505" text="برداشت وجه" textFill="#fffefe">
+                <JFXButton fx:id="btnMinMoney" contentDisplay="BOTTOM" disable="true" prefHeight="50.0" prefWidth="156.0" ripplerFill="#ff0505" text="برداشت وجه" textFill="#fffefe">
                     <graphic>
                         <ImageView fitHeight="32.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -79,7 +79,7 @@
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font></JFXButton>
-                <JFXButton contentDisplay="BOTTOM" prefHeight="50.0" prefWidth="156.0" ripplerFill="#eaff05" text="کارت به کارت" textFill="#fffefe">
+                <JFXButton fx:id="btnCardToCard" contentDisplay="BOTTOM" disable="true" prefHeight="50.0" prefWidth="156.0" ripplerFill="#eaff05" text="کارت به کارت" textFill="#fffefe">
                     <graphic>
                         <ImageView fitHeight="28.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -93,7 +93,7 @@
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font></JFXButton>
-                <JFXButton contentDisplay="BOTTOM" prefHeight="50.0" prefWidth="156.0" ripplerFill="#00ff1f" text="موجودی حساب" textFill="#fffefe">
+                <JFXButton fx:id="btnCash" contentDisplay="BOTTOM" disable="true" prefHeight="50.0" prefWidth="156.0" ripplerFill="#00ff1f" text="موجودی حساب" textFill="#fffefe">
                     <graphic>
                         <ImageView fitHeight="35.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -107,7 +107,7 @@
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font></JFXButton>
-                <JFXButton contentDisplay="BOTTOM" prefHeight="50.0" prefWidth="156.0" ripplerFill="#ff7700" text="تغییر رمز" textFill="#fffefe">
+                <JFXButton fx:id="btnPassWord" contentDisplay="BOTTOM" disable="true" prefHeight="50.0" prefWidth="156.0" ripplerFill="#ff7700" text="تغییر رمز" textFill="#fffefe">
                     <graphic>
                         <ImageView fitHeight="39.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -122,7 +122,7 @@
                         <Font name="System Bold" size="12.0" />
                     </font>
                 </JFXButton>
-                <JFXButton contentDisplay="BOTTOM" prefHeight="50.0" prefWidth="156.0" ripplerFill="#a513bf" text="تاریخچه ترانکش های شما" textFill="#fffefe">
+                <JFXButton fx:id="btnHistory" contentDisplay="BOTTOM" disable="true" prefHeight="50.0" prefWidth="156.0" ripplerFill="#a513bf" text="تاریخچه ترانکش های شما" textFill="#fffefe">
                     <graphic>
                         <ImageView fitHeight="39.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -137,7 +137,7 @@
                         <Font name="System Bold" size="12.0" />
                     </font>
                 </JFXButton>
-                <JFXButton contentDisplay="BOTTOM" prefHeight="50.0" prefWidth="156.0" ripplerFill="#0004ff" text="سایر موارد" textFill="#fffefe">
+                <JFXButton fx:id="btnOther" contentDisplay="BOTTOM" disable="true" prefHeight="50.0" prefWidth="156.0" ripplerFill="#0004ff" text="سایر موارد" textFill="#fffefe">
                     <graphic>
                         <ImageView fitHeight="39.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -160,7 +160,7 @@
                         <Insets left="10.0" />
                     </HBox.margin>
                 </Label>
-                <JFXTextField alignment="CENTER" editable="false" prefHeight="42.0" prefWidth="229.0" text="5892 - 1010 - 5796 - 1837" unFocusColor="#6b5a5a">
+                <JFXTextField alignment="CENTER" editable="false" prefHeight="42.0" prefWidth="229.0" text=" " unFocusColor="#6b5a5a">
                     <HBox.margin>
                         <Insets top="10.0" />
                     </HBox.margin>
@@ -176,7 +176,7 @@
                         <Insets left="10.0" />
                     </HBox.margin>
                 </Label>
-                <JFXTextField alignment="CENTER" editable="false" prefHeight="42.0" prefWidth="112.0" text="قرض الحسنه" unFocusColor="#6b5a5a">
+                <JFXTextField alignment="CENTER" editable="false" prefHeight="42.0" prefWidth="112.0" text=" " unFocusColor="#6b5a5a">
                     <font>
                         <Font name="System Bold" size="19.0" />
                     </font>
@@ -186,15 +186,20 @@
                 </JFXTextField>
             </children>
         </HBox>
-        <AnchorPane layoutX="158.0" layoutY="197.0" prefHeight="330.0" prefWidth="723.0" style="-fx-background-color: #707070; -fx-background-radius: 20;" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="158.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="197.0">
+        <AnchorPane fx:id="mainAnchorPane" layoutX="158.0" layoutY="197.0" prefHeight="330.0" prefWidth="723.0" style="-fx-background-color: #707070; -fx-background-radius: 20;" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="158.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="197.0">
             <children>
-                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="17.0" layoutY="14.0" prefHeight="91.0" prefWidth="714.0" text="حساب شما با موفقیت ایجاد شد و برای شما شماره کارت صادر گردید... از منوی سمت چپ می توانید از از امکانات بیشتری بهره مند شوید...." textFill="#00ff44">
+                <Label fx:id="lblSuccess" alignment="CENTER" contentDisplay="CENTER" layoutX="17.0" layoutY="312.0" prefHeight="91.0" prefWidth="714.0" text="حساب شما با موفقیت ایجاد شد و برای شما شماره کارت صادر گردید... از منوی سمت چپ می توانید از از امکانات بیشتری بهره مند شوید...." textFill="#00ff44" visible="false">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
                 </Label>
+            <JFXButton fx:id="btnConfirmInfos" layoutX="270.0" layoutY="325.0" onMouseClicked="#recordInfos" prefHeight="64.0" prefWidth="147.0" style="-fx-background-color: #000000;" text="تایید " textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXButton>
             </children></AnchorPane>
-        <ImageView fitHeight="101.0" fitWidth="105.0" layoutX="187.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="faceImage" fitHeight="101.0" fitWidth="105.0" layoutX="187.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true" visible="false">
             <image>
                 <Image url="@../bankPics/1.png" />
             </image>
