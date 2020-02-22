@@ -210,8 +210,9 @@ public class DBHelper {
 
     public void close() {
         try {
-            connection.close();
             statement.close();
+
+            connection.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
