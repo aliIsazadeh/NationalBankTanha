@@ -1,5 +1,6 @@
 package sample.Controller;
 
+import DataStructure.Person;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
@@ -9,6 +10,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class infoCompletionController implements Initializable {
@@ -30,8 +32,39 @@ public class infoCompletionController implements Initializable {
     public AnchorPane infoAnchorPane;
 
 
+    private Person person = new Person();
 
+    private void addVariable(){
+        person.setNationalNumber(Integer.parseInt(txtNationalCode.getText()));
+        person.setFatherName(txtFatherName.getText());
+        LocalDate localData = timePickerBornTime.getValue();
+        person.setBornTime(localData.getYear()+","+localData.getMonth()+","+localData.getDayOfMonth());
+        person.setBornPlace(txtBornPlace.getText());
+        person.setJob(txtJob.getText());
+        person.setAddress(txtAddress.getText());
 
+        if (findComboIndex(comboMarriage)==0){
+            person.setGender("مجرد"); }
+        if (findComboIndex(comboMarriage)==1){
+            person.setGender("متاهل"); }
+
+        if (findComboIndex(comboAccount)==0){
+            person.setGender("جاری"); }
+        if (findComboIndex(comboAccount)==1){
+            person.setGender("قرض الحسنه"); }
+        if (findComboIndex(comboAccount)==2){
+            person.setGender("پسنداز"); }
+
+        if (findComboIndex(comboMarriage)==0){
+            person.setGender("مرد"); }
+        if (findComboIndex(comboMarriage)==1){
+            person.setGender("زن"); }
+
+    }
+
+    private int findComboIndex(JFXComboBox Box) {
+        return Box.getSelectionModel().getSelectedIndex();
+    }
 
 
 
