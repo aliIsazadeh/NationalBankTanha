@@ -4,15 +4,14 @@ import java.util.Date;
 
 public class Transaction {
     private String typeOfTransaction;
-    private long IDnumber;
-    private Date date;
-    private long cost;
-    private Account from;
-    private Account to;
-    private boolean finished;
-    private String serialOfTransaction;
-    private String DateOfTransaction;
-    private String inventoryOfTransaction;
+    private long IDnumber;//شماره حساب
+    private Account from;//میدا
+    private Account to;//مقصد
+    private boolean finished;//نتیجه
+    private String serialOfTransaction;//شماره
+    private String DateOfTransaction;//تاریخ
+    private String costOfTransaction;//میلغ تراکنش
+
 
 
 
@@ -22,22 +21,6 @@ public class Transaction {
 
     public void setIDnumber(long IDnumber) {
         this.IDnumber = IDnumber;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public long getCost() {
-        return cost;
-    }
-
-    public void setCost(long cost) {
-        this.cost = cost;
     }
 
     public Account getFrom() {
@@ -84,11 +67,11 @@ public class Transaction {
     }
 
     public String getInventoryOfTransaction() {
-        return inventoryOfTransaction;
+        return costOfTransaction;
     }
 
     public void setInventoryOfTransaction(String inventoryOfTransaction) {
-        this.inventoryOfTransaction = inventoryOfTransaction;
+        this.costOfTransaction = inventoryOfTransaction;
     }
 
     public String getTypeOfTransaction() {
