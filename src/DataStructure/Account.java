@@ -6,11 +6,22 @@ public class Account {
     private long accountNumber;//شماره حساب
     private String accountType;//نوع حساب
     private String accountBank;//بانکی که در ان حساب را باز کردیم
-    private String passwordForATM;//رمز عادی
+    private String passwordForATM;
+    private long uniquePassword;//پسورد یکبار مصرف
     private String secondPassword;//رمز دوم
-    private long uniquePassword;//رمز پویا
-    private String inventory;
+    private String inventory;//مجودی
     private ArrayList<Transaction> transactions;
+    private String accountPassword ;
+
+    public String getAccountPassword() {
+        return accountPassword;
+    }
+
+    public void setAccountPassword(String accountPassword) {
+        this.accountPassword = accountPassword;
+    }
+
+
 
     public ArrayList<Transaction> getTransactions() {
         return transactions;

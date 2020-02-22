@@ -1,9 +1,9 @@
 package DataStructure;
 
 public class Bill {
-    private long billingId;
-    private long paymentCode;
-    private String condition;
+    private long billingId;//شناسه قبض
+    private long paymentCode;// شناسه پرداخت
+    private String condition;//وضعیت
 
     public long getBillingId() {
         return billingId;

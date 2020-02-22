@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.CheckBox?>
@@ -12,11 +13,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="809.0" style="-fx-background-color: #560027;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.loginPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="809.0" xmlns="http://javafx.com/javafx/8.0.221" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.loginPageController">
     <children>
-        <HBox alignment="CENTER_RIGHT" layoutX="-5.0" prefHeight="29.0" prefWidth="815.0" style="-fx-background-color: #263238; -fx-background-radius: 10;" AnchorPane.leftAnchor="-5.0" AnchorPane.rightAnchor="-1.0">
+        <HBox alignment="CENTER_RIGHT" layoutX="-5.0" prefHeight="29.0" prefWidth="815.0" style="-fx-background-color: #004BA0; -fx-background-radius: 0;" AnchorPane.leftAnchor="-5.0" AnchorPane.rightAnchor="-1.0">
             <children>
-                <JFXButton fx:id="btnExit" buttonType="RAISED" contentDisplay="CENTER" prefHeight="29.0" prefWidth="29.0" ripplerFill="#ddff04" text=" " onMouseClicked="#exit">
+                <JFXButton fx:id="btnExit" buttonType="RAISED" contentDisplay="CENTER" onMouseClicked="#exit" prefHeight="29.0" prefWidth="29.0" ripplerFill="#ddff04" text=" ">
                     <graphic>
                         <ImageView fitHeight="30.0" fitWidth="24.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -29,69 +30,74 @@
                 </JFXButton>
             </children>
         </HBox>
-        <AnchorPane fx:id="registerAnchorPane" layoutX="437.0" layoutY="57.0" prefHeight="506.0" prefWidth="351.0" AnchorPane.rightAnchor="21.0">
+        <AnchorPane fx:id="registerAnchorPane" layoutX="417.0" layoutY="61.0" prefHeight="506.0" prefWidth="330.0" AnchorPane.rightAnchor="62.0">
             <children>
-                <JFXTextField fx:id="txtRegisterFirstName" alignment="CENTER_RIGHT" focusColor="#f20808" labelFloat="true" layoutX="70.0" layoutY="116.0" prefHeight="43.0" prefWidth="240.0" promptText="نام">
+                <JFXTextField fx:id="txtRegisterFirstName" alignment="CENTER_RIGHT" focusColor="#00a8cc" labelFloat="true" layoutX="70.0" layoutY="116.0" prefHeight="43.0" prefWidth="240.0" promptText="نام">
                     <font>
                         <Font name="System Bold" size="14.0" />
                     </font>
                 </JFXTextField>
-                <JFXTextField fx:id="txtRegisterPassRepeat" alignment="CENTER_RIGHT" focusColor="#f20808" labelFloat="true" layoutX="70.0" layoutY="376.0" prefHeight="43.0" prefWidth="240.0" promptText="تکرار رمز عبور">
-                    <font>
-                        <Font name="System Bold" size="14.0" />
-                    </font>
-                </JFXTextField>
-                <JFXButton fx:id="btnRegister" layoutX="78.0" layoutY="439.0" prefHeight="47.0" prefWidth="232.0" style="-fx-background-color: #546E7A; -fx-background-radius: 20;" text="ثبت نام" textFill="#fcf9f9">
+                <JFXButton fx:id="btnRegister" layoutX="78.0" layoutY="439.0" prefHeight="47.0" prefWidth="232.0" style="-fx-background-color: #27496d; -fx-background-radius: 10;" text="ثبت نام" textFill="#fcf9f9">
                     <font>
                         <Font name="Bodoni MT Bold" size="17.0" />
                     </font>
                 </JFXButton>
-                <JFXTextField fx:id="txtRegisterLastName" alignment="CENTER_RIGHT" focusColor="#f20808" labelFloat="true" layoutX="74.0" layoutY="196.0" prefHeight="43.0" prefWidth="240.0" promptText="نام خانوادگی">
+                <JFXTextField fx:id="txtRegisterLastName" alignment="CENTER_RIGHT" focusColor="#00a8cc" labelFloat="true" layoutX="74.0" layoutY="196.0" prefHeight="43.0" prefWidth="240.0" promptText="نام خانوادگی">
                     <font>
                         <Font name="System Bold" size="14.0" />
                     </font>
                 </JFXTextField>
-                <Label alignment="CENTER" layoutX="74.0" layoutY="22.0" prefHeight="73.0" prefWidth="232.0" style="-fx-background-color: #263238; -fx-background-radius: 20;" text="ایجاد حساب بانکی" textFill="#eeeeee">
+                <Label alignment="CENTER" layoutX="74.0" layoutY="22.0" prefHeight="73.0" prefWidth="232.0" style="-fx-background-color: #27496d; -fx-background-radius: 5;" text="ایجاد حساب بانکی" textFill="#eeeeee">
                     <font>
                         <Font name="Elephant Italic" size="24.0" />
                     </font>
                 </Label>
-                <JFXTextField fx:id="txtRegisterPass" alignment="CENTER_RIGHT" focusColor="#f20808" labelFloat="true" layoutX="70.0" layoutY="272.0" prefHeight="43.0" prefWidth="240.0" promptText="رمز عبور">
-                    <font>
-                        <Font name="System Bold" size="14.0" />
-                    </font>
-                </JFXTextField>
-                <CheckBox fx:id="checkRegisterPass" alignment="CENTER" contentDisplay="CENTER" layoutX="194.0" layoutY="338.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="20.0" prefWidth="114.0" text="نشان دادن رمز" textFill="WHITE">
+                <CheckBox fx:id="checkRegisterPass" alignment="CENTER" contentDisplay="CENTER" layoutX="194.0" layoutY="338.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onMouseClicked="#showPasswordRegister" prefHeight="20.0" prefWidth="114.0" text="نشان دادن رمز" textFill="#00a8cc">
                     <font>
                         <Font name="System Bold" size="14.0" />
                     </font>
                 </CheckBox>
                 <Label fx:id="lblFailAllert" alignment="CENTER_RIGHT" layoutX="99.0" layoutY="404.0" prefHeight="29.0" prefWidth="200.0" text="خطا" textFill="#e1ff00" visible="false" />
+            <JFXPasswordField fx:id="txtRegisterPass" alignment="CENTER_RIGHT" labelFloat="true" layoutX="79.0" layoutY="288.0" prefHeight="25.0" prefWidth="240.0" promptText="رمز عبور">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </JFXPasswordField>
+            <JFXPasswordField fx:id="txtRegisterPassRepeat" alignment="CENTER_RIGHT" labelFloat="true" layoutX="79.0" layoutY="392.0" prefHeight="25.0" prefWidth="240.0" promptText="تکرار رمز عبور">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </JFXPasswordField>
+            <JFXTextField fx:id="txtRegisterPass2" alignment="CENTER_RIGHT" labelFloat="true" layoutX="79.0" layoutY="288.0" prefHeight="25.0" prefWidth="240.0" promptText="رمز عبور" visible="false">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </JFXTextField>
             </children>
         </AnchorPane>
-        <AnchorPane fx:id="loginAnchorPane" layoutX="47.0" layoutY="74.0" prefHeight="459.0" prefWidth="330.0" visible="false">
+        <AnchorPane fx:id="loginAnchorPane" layoutX="60.0" layoutY="61.0" prefHeight="459.0" prefWidth="330.0" visible="false">
             <children>
-                <JFXTextField fx:id="txtUserLogin" alignment="CENTER_RIGHT" focusColor="#ff2b00" layoutX="32.0" layoutY="173.0" prefHeight="25.0" prefWidth="218.0" promptText="نام کاربری" unFocusColor="#5e5454">
+                <JFXTextField fx:id="txtUserLogin" alignment="CENTER_RIGHT" focusColor="#ff2b00" labelFloat="true" layoutX="32.0" layoutY="173.0" prefHeight="25.0" prefWidth="218.0" promptText="نام کاربری" unFocusColor="#5e5454">
                     <font>
                         <Font name="System Bold" size="13.0" />
                     </font>
                 </JFXTextField>
-                <JFXTextField fx:id="txtPassLogin" alignment="CENTER_RIGHT" focusColor="#ff001e" layoutX="32.0" layoutY="249.0" prefHeight="29.0" prefWidth="224.0" promptText="رمز عبور">
+                <JFXTextField fx:id="txtPassLogin2" alignment="CENTER_RIGHT" focusColor="#ff001e" layoutX="32.0" layoutY="249.0" prefHeight="29.0" prefWidth="224.0" promptText="رمز عبور" visible="false">
                     <font>
                         <Font name="System Bold" size="13.0" />
                     </font>
                 </JFXTextField>
-                <JFXButton fx:id="btnLogin" layoutX="49.0" layoutY="381.0" onMouseClicked="#loadMainPage" prefHeight="47.0" prefWidth="232.0" style="-fx-background-color: #546E7A; -fx-background-radius: 20;" text="ورود" textFill="#f8f7f7">
+                <JFXButton fx:id="btnLogin" layoutX="49.0" layoutY="381.0" onMouseClicked="#loadMainPage" prefHeight="47.0" prefWidth="232.0" style="-fx-background-color: #27496d; -fx-background-radius: 20;" text="ورود" textFill="#f8f7f7">
                     <font>
                         <Font name="System Bold" size="17.0" />
                     </font>
                 </JFXButton>
-                <CheckBox fx:id="checkLoginPass" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="165.0" layoutY="326.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="133.0" text="نشان دادن رمز عبور" textFill="#4400ff">
+                <CheckBox fx:id="checkLoginPass" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="165.0" layoutY="326.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onMouseClicked="#showPassLogin" prefHeight="17.0" prefWidth="133.0" text="نشان دادن رمز عبور" textFill="#4400ff">
                     <font>
                         <Font name="System Bold" size="13.0" />
                     </font>
                 </CheckBox>
-                <Label alignment="CENTER" layoutX="56.0" layoutY="26.0" opacity="0.71" prefHeight="73.0" prefWidth="218.0" style="-fx-background-color: #263238; -fx-background-radius: 10;" text="وارد حساب شوید..." textFill="WHITE">
+                <Label alignment="CENTER" layoutX="56.0" layoutY="23.0" opacity="0.71" prefHeight="73.0" prefWidth="218.0" style="-fx-background-color: #27496d; -fx-background-radius: 10;" text="وارد حساب شوید..." textFill="WHITE">
                     <font>
                         <Font name="Elephant Italic" size="24.0" />
                     </font>
@@ -100,34 +106,39 @@
                     <image>
                         <Image url="@../bankPics/user.png" />
 
-
-                    </image>
+      
+                          </image>
                 </ImageView>
                 <ImageView fitHeight="32.0" fitWidth="40.0" layoutX="266.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../bankPics/pass.png" />
                     </image>
                 </ImageView>
+            <JFXPasswordField fx:id="txtPassLogin" alignment="CENTER_RIGHT" labelFloat="true" layoutX="32.0" layoutY="249.0" prefHeight="25.0" prefWidth="224.0" promptText="رمز عبور">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </JFXPasswordField>
             </children>
         </AnchorPane>
-        <Pane fx:id="movablePane" layoutX="22.0" layoutY="45.0" prefHeight="522.0" prefWidth="330.0" style="-fx-background-color: #263238; -fx-background-radius: 10;" AnchorPane.bottomAnchor="13.0" AnchorPane.topAnchor="45.0">
+        <Pane fx:id="movablePane" layoutX="-1.0" layoutY="28.0" prefHeight="552.0" prefWidth="452.0" style="-fx-background-color: #263238; -fx-background-radius: 0;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="28.0">
             <children>
-                <JFXButton fx:id="signInTrans" buttonType="RAISED" layoutX="48.0" layoutY="344.0" onMouseClicked="#signIntransPort" prefHeight="53.0" prefWidth="218.0" ripplerFill="#fcfbfa" style="-fx-background-color: #ea1313; -fx-background-radius: 20;" text="وارد شوید..." textFill="#f8f8f8">
+                <JFXButton fx:id="signInTrans" buttonType="RAISED" layoutX="124.0" layoutY="397.0" onMouseClicked="#signIntransPort" prefHeight="53.0" prefWidth="218.0" ripplerFill="#fcfbfa" style="-fx-background-color: #63A4FF; -fx-background-radius: 10;" text="وارد شوید..." textFill="#f8f8f8">
                     <font>
                         <Font name="System Bold" size="18.0" />
                     </font>
                 </JFXButton>
-                <Label alignment="CENTER" layoutX="72.0" layoutY="33.0" prefHeight="73.0" prefWidth="185.0" style="-fx-background-color: #263238;" text="خوش آمدید!!!" textFill="#fcf5f5">
+                <Label alignment="CENTER" layoutX="134.0" layoutY="31.0" prefHeight="73.0" prefWidth="185.0" style="-fx-background-color: #263238;" text="خوش آمدید!!!" textFill="#00a8cc">
                     <font>
                         <Font name="Elephant" size="23.0" />
                     </font>
                 </Label>
-                <JFXButton fx:id="signUpTrans" buttonType="RAISED" layoutX="48.0" layoutY="344.0" onMouseClicked="#signUpTransPort" prefHeight="53.0" prefWidth="218.0" ripplerFill="#fcfbfa" style="-fx-background-color: #ea1313; -fx-background-radius: 20;" text="ثبت نام کنید..." textFill="#f8f8f8" visible="false">
+                <JFXButton fx:id="signUpTrans" buttonType="RAISED" layoutX="124.0" layoutY="397.0" onMouseClicked="#signUpTransPort" prefHeight="53.0" prefWidth="218.0" ripplerFill="#fcfbfa" style="-fx-background-color: #63A4FF; -fx-background-radius: 10;" text="ثبت نام کنید..." textFill="#f8f8f8" visible="false">
                     <font>
                         <Font name="System Bold" size="18.0" />
                     </font>
                 </JFXButton>
-                <JFXTextArea editable="false" focusColor="#3b5090" layoutX="49.0" layoutY="162.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="60.0" prefWidth="232.0" style="-fx-background-color: #4D9DF8; -fx-background-radius: 20;" text="اگر از قبل حسابی ایجاد نکرده اید لطفا ابتدا ثبت نام کنید..." unFocusColor="#322b2b">
+                <JFXTextArea editable="false" focusColor="#222225" layoutX="102.0" layoutY="175.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="73.0" prefWidth="262.0" style="-fx-background-color: #00a8cc; -fx-background-radius: 5;" text="اگر از قبل حسابی ایجاد نکرده اید لطفا ابتدا ثبت نام کنید..." unFocusColor="#1e1d1d">
                     <font>
                         <Font name="System Bold" size="14.0" />
                     </font>
@@ -135,7 +146,7 @@
                 <Label fx:id="lblSuccsesAllert" alignment="CENTER" layoutX="27.0" layoutY="287.0" prefHeight="43.0" prefWidth="276.0" text="کاربر با موفقیت ثبت شد اکنون وارد سیستم شوید!!" textFill="#00ff33" visible="false" />
             </children>
 
-        </Pane>
+                                                  </Pane>
 
 
     </children>
