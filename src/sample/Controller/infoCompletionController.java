@@ -45,9 +45,9 @@ public class infoCompletionController implements Initializable {
         person.setAddress(txtAddress.getText());
 
         if (findComboIndex(comboMarriage)==0){
-            person.setGender("مجرد"); }
+            person.setMarriage(false); }
         if (findComboIndex(comboMarriage)==1){
-            person.setGender("متاهل"); }
+            person.setMarriage(true); }
 
         if (findComboIndex(comboAccount)==0){
             person.setGender("جاری"); }
