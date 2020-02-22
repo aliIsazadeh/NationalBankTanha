@@ -11,6 +11,17 @@ public class Account {
     private String secondPassword;//رمز دوم
     private String inventory;//مجودی
     private ArrayList<Transaction> transactions;
+    private String accountPassword ;
+
+    public String getAccountPassword() {
+        return accountPassword;
+    }
+
+    public void setAccountPassword(String accountPassword) {
+        this.accountPassword = accountPassword;
+    }
+
+
 
     public ArrayList<Transaction> getTransactions() {
         return transactions;

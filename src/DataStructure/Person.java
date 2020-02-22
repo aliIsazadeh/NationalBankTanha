@@ -17,6 +17,7 @@ public class Person {
     private boolean marriage ;
     private String gender ;
 
+
     public String getBornTime() {
         return bornTime;
     }
