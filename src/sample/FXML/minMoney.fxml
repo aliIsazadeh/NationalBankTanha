@@ -6,26 +6,25 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.FXML.MinMoney">
+<AnchorPane prefHeight="400.0" prefWidth="752.0" style="-fx-background-color: #5b8c85;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label alignment="CENTER" layoutX="223.0" layoutY="43.0" prefHeight="47.0" prefWidth="154.0" text="برداشت وجه">
+      <Label alignment="CENTER" layoutX="306.0" layoutY="36.0" prefHeight="47.0" prefWidth="154.0" text="برداشت وجه">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="398.0" layoutY="117.0" prefHeight="47.0" prefWidth="188.0" text="مبلغ مورد (نظر به تومان)">
+      <Label alignment="CENTER" layoutX="481.0" layoutY="110.0" prefHeight="47.0" prefWidth="188.0" text="مبلغ مورد (نظر به تومان)">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <JFXComboBox layoutX="142.0" layoutY="128.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="25.0" prefWidth="217.0" promptText="مبلغ مورد نظر خود را انتخاب کنید" />
-      <Label alignment="CENTER" layoutX="69.0" layoutY="324.0" prefHeight="47.0" prefWidth="463.0" text="توجه : سقف وجه برداشتی تا 200هزار تومان در یک روز می باشد." textFill="RED">
+      <JFXComboBox layoutX="225.0" layoutY="121.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="25.0" prefWidth="217.0" promptText="مبلغ مورد نظر خود را انتخاب کنید" />
+      <Label alignment="CENTER" layoutX="152.0" layoutY="317.0" prefHeight="47.0" prefWidth="463.0" text="توجه : سقف وجه برداشتی تا 200هزار تومان در یک روز می باشد." textFill="RED">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <JFXButton layoutX="240.0" layoutY="209.0" prefHeight="62.0" prefWidth="137.0" style="-fx-background-color: #000000;" text="برداشت" textFill="WHITE">
+      <JFXButton layoutX="323.0" layoutY="202.0" prefHeight="62.0" prefWidth="137.0" style="-fx-background-color: #000000;" text="برداشت" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>

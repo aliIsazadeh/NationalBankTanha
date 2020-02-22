@@ -1,5 +1,6 @@
 package sample.Controller;
 
+import DataStructure.Person;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
@@ -11,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -51,6 +53,8 @@ public class mainPageController implements Initializable {
 
     public JFXButton btnConfirmInfos;
 
+
+    private Person person = new Person();
     public  void recordInfos(){
 
         btnPersonalInfo.setDisable(false);
@@ -61,9 +65,26 @@ public class mainPageController implements Initializable {
         btnPassWord.setDisable(false);
         btnHistory.setDisable(false);
         btnOther.setDisable(false);
-        faceImage.setVisible(true);
+
         btnConfirmInfos.setVisible(false);
         lblSuccess.setVisible(true);
+
+        if(person.getGender().equals("ممرد")){
+
+            Image imageMale = new Image("../src/sample/bankPics/1.png");
+            faceImage.setImage(imageMale);
+
+        }
+        else if (person.getGender().equals("زن")){
+
+            Image imageFemale = new Image("../src/sample/bankPics/MasterFM.png");
+            faceImage.setImage(imageFemale);
+
+        }
+
+
+
+
 
     }
 

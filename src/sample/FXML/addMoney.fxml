@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="330.0" prefWidth="749.0" style="-fx-background-color: #72b5b7;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="360.0" prefWidth="752.0" style="-fx-background-color: #5b8c85;" xmlns="http://javafx.com/javafx/8.0.221" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label alignment="CENTER_RIGHT" layoutX="511.0" layoutY="96.0" prefHeight="44.0" prefWidth="149.0" text="مبلغ مورد نظر(به تومان) : ">
+      <Label alignment="CENTER_RIGHT" layoutX="543.0" layoutY="96.0" prefHeight="44.0" prefWidth="149.0" text="مبلغ مورد نظر(به تومان) : ">
          <font>
             <Font name="System Bold" size="13.0" />
          </font></Label>
@@ -18,7 +18,7 @@
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <JFXButton layoutX="310.0" layoutY="202.0" prefHeight="65.0" prefWidth="104.0" style="-fx-background-color: #000000; -fx-background-radius: 20;" text="تایید" textFill="WHITE">
+      <JFXButton layoutX="310.0" layoutY="202.0" prefHeight="65.0" prefWidth="104.0" style="-fx-background-color: #000000; -fx-background-radius: 10;" text="تایید" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>

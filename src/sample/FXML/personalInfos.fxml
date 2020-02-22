@@ -3,15 +3,15 @@
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="330.0" prefWidth="749.0" style="-fx-background-color: #94d3ac;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="375.0" prefWidth="749.0" style="-fx-background-color: #5b8c85;" xmlns="http://javafx.com/javafx/8.0.221" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <JFXTextField fx:id="txtShowName" alignment="CENTER_RIGHT" labelFloat="true" layoutX="508.0" layoutY="41.0" promptText="نام" text=" " unFocusColor="WHITE" />
-      <JFXTextField fx:id="txtShowFamily" alignment="CENTER_RIGHT" labelFloat="true" layoutX="280.0" layoutY="41.0" promptText="نام خانوادگی" text=" " unFocusColor="WHITE" />
-      <JFXTextField fx:id="txtShowNationalCode" alignment="CENTER_RIGHT" labelFloat="true" layoutX="45.0" layoutY="41.0" promptText="کدملی" text=" " unFocusColor="WHITE" />
-      <JFXTextField fx:id="txtShowFatherName" alignment="CENTER_RIGHT" labelFloat="true" layoutX="45.0" layoutY="139.0" promptText="نام پدر" text=" " unFocusColor="#fffbfb" />
-      <JFXTextField fx:id="txtShowAccountType" alignment="CENTER_RIGHT" labelFloat="true" layoutX="512.0" layoutY="139.0" promptText="نوع حساب" text=" " unFocusColor="WHITE" />
-      <JFXTextField fx:id="txtShowGender" alignment="CENTER_RIGHT" labelFloat="true" layoutX="280.0" layoutY="139.0" promptText="جنسیت" text=" " unFocusColor="#fff7f7" />
-      <JFXTextField fx:id="txtShowAddress" alignment="CENTER_RIGHT" labelFloat="true" layoutX="86.0" layoutY="213.0" prefHeight="25.0" prefWidth="549.0" promptText="آدرس" text=" " unFocusColor="WHITE" />
-      <JFXTextField fx:id="txtShowPhoneNumber" alignment="CENTER_RIGHT" labelFloat="true" layoutX="253.0" layoutY="280.0" prefHeight="25.0" prefWidth="243.0" promptText="شماره تلفن" text=" " unFocusColor="#fff9f9" />
+      <JFXTextField fx:id="txtShowName" alignment="CENTER_RIGHT" editable="false" labelFloat="true" layoutX="508.0" layoutY="41.0" promptText="نام" text=" " unFocusColor="WHITE" />
+      <JFXTextField fx:id="txtShowFamily" alignment="CENTER_RIGHT" editable="false" labelFloat="true" layoutX="280.0" layoutY="41.0" promptText="نام خانوادگی" text=" " unFocusColor="WHITE" />
+      <JFXTextField fx:id="txtShowNationalCode" alignment="CENTER_RIGHT" editable="false" labelFloat="true" layoutX="45.0" layoutY="41.0" promptText="کدملی" text=" " unFocusColor="WHITE" />
+      <JFXTextField fx:id="txtShowFatherName" alignment="CENTER_RIGHT" editable="false" labelFloat="true" layoutX="45.0" layoutY="139.0" promptText="نام پدر" text=" " unFocusColor="#fffbfb" />
+      <JFXTextField fx:id="txtShowAccountType" alignment="CENTER_RIGHT" editable="false" labelFloat="true" layoutX="512.0" layoutY="139.0" promptText="نوع حساب" text=" " unFocusColor="WHITE" />
+      <JFXTextField fx:id="txtShowGender" alignment="CENTER_RIGHT" editable="false" labelFloat="true" layoutX="280.0" layoutY="139.0" promptText="جنسیت" text=" " unFocusColor="#fff7f7" />
+      <JFXTextField fx:id="txtShowAddress" alignment="CENTER_RIGHT" editable="false" labelFloat="true" layoutX="86.0" layoutY="213.0" prefHeight="25.0" prefWidth="549.0" promptText="آدرس" text=" " unFocusColor="WHITE" />
+      <JFXTextField fx:id="txtShowPhoneNumber" alignment="CENTER_RIGHT" editable="false" labelFloat="true" layoutX="253.0" layoutY="280.0" prefHeight="25.0" prefWidth="243.0" promptText="شماره تلفن" text=" " unFocusColor="#fff9f9" />
    </children>
 </AnchorPane>

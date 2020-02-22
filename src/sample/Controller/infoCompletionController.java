@@ -7,6 +7,7 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
@@ -67,22 +68,33 @@ public class infoCompletionController implements Initializable {
     }
 
 
+//    public  void recordInfos(){
+//
+//        private boolean StringFinder(JFXTextField txtField) {
+//            boolean exit = true;
+//
+//            for (int i = 0; i < txtField.getText().length(); i++) {
+//                int c = txtField.getText().charAt(i);
+//                if (!(c >= 48 && c <= 57)) {
+//                    exit = false;
+//                }
+//            }
+//            return exit;
+//        }
+//
+//
+//
+//
+//
+//
+//
+//    }
 
 
-    public  void recordInfos(){
-
-        //mainPageController.btnPersonalInfo.setDisable(true);
-      //  mainPageController.btnAddMoney.setDisable(true);
-//        mainPageController.btnMinMoney.setDisable(false);
-//        mainPageController.btnCardToCard.setDisable(false);
-//        mainPageController.btnCash.setDisable(false);
-//        mainPageController.btnPassWord.setDisable(false);
-//        mainPageController.btnHistory.setDisable(false);
-//        mainPageController.btnOther.setDisable(false);
-//        mainPageController.faceImage.setDisable(false);
 
 
-    }
+
+
 
 
 
