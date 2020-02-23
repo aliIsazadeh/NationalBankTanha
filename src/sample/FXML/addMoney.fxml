@@ -6,22 +6,27 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="360.0" prefWidth="752.0" style="-fx-background-color: #5b8c85;" xmlns="http://javafx.com/javafx/8.0.221" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="360.0" prefWidth="723.0" style="-fx-background-color: #707070; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/8.0.221" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.addMoneyController">
    <children>
       <Label alignment="CENTER_RIGHT" layoutX="543.0" layoutY="96.0" prefHeight="44.0" prefWidth="149.0" text="مبلغ مورد نظر(به تومان) : ">
          <font>
             <Font name="System Bold" size="13.0" />
          </font></Label>
-      <TextField layoutX="193.0" layoutY="105.0" prefHeight="25.0" prefWidth="291.0" />
+      <TextField fx:id="txtAddMoney" alignment="CENTER_RIGHT" layoutX="208.0" layoutY="106.0" prefHeight="25.0" prefWidth="291.0" />
       <Label alignment="CENTER" layoutX="284.0" layoutY="29.0" prefHeight="44.0" prefWidth="138.0" text="افزایش موجودی">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <JFXButton layoutX="310.0" layoutY="202.0" prefHeight="65.0" prefWidth="104.0" style="-fx-background-color: #000000; -fx-background-radius: 10;" text="تایید" textFill="WHITE">
+      <JFXButton fx:id="confirmAddMoney" buttonType="RAISED" layoutX="310.0" layoutY="202.0" prefHeight="65.0" prefWidth="104.0" style="-fx-background-color: #000000; -fx-background-radius: 10;" text="تایید" textFill="WHITE" onMouseClicked="#confirmAddingMoney">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </JFXButton>
+      <Label fx:id="lblAlertAddMoney" alignment="CENTER" layoutX="236.0" layoutY="140.0" prefHeight="44.0" prefWidth="234.0" text="لطفا مبلغ را وارد نمایید..." visible="false">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

@@ -32,40 +32,122 @@ public class infoCompletionController implements Initializable {
     public JFXButton confirmButton;
     public AnchorPane infoAnchorPane;
 
-
-    private Person person = new Person();
-
-    private void addVariable(){
-        person.setNationalNumber(Integer.parseInt(txtNationalCode.getText()));
-        person.setFatherName(txtFatherName.getText());
-        LocalDate localData = timePickerBornTime.getValue();
-        person.setBornTime(localData.getYear()+","+localData.getMonth()+","+localData.getDayOfMonth());
-        person.setBornPlace(txtBornPlace.getText());
-        person.setJob(txtJob.getText());
-        person.setAddress(txtAddress.getText());
-
-        if (findComboIndex(comboMarriage)==0){
-            person.setMarriage(false); }
-        if (findComboIndex(comboMarriage)==1){
-            person.setMarriage(true); }
-
-        if (findComboIndex(comboAccount)==0){
-            person.setGender("جاری"); }
-        if (findComboIndex(comboAccount)==1){
-            person.setGender("قرض الحسنه"); }
-        if (findComboIndex(comboAccount)==2){
-            person.setGender("پسنداز"); }
-
-        if (findComboIndex(comboMarriage)==0){
-            person.setGender("مرد"); }
-        if (findComboIndex(comboMarriage)==1){
-            person.setGender("زن"); }
-
+    public JFXTextField getTxtNationalCode() {
+        return txtNationalCode;
     }
 
-    private int findComboIndex(JFXComboBox Box) {
-        return Box.getSelectionModel().getSelectedIndex();
+    public void setTxtNationalCode(JFXTextField txtNationalCode) {
+        this.txtNationalCode = txtNationalCode;
     }
+
+    public JFXTextField getTxtFatherName() {
+        return txtFatherName;
+    }
+
+    public void setTxtFatherName(JFXTextField txtFatherName) {
+        this.txtFatherName = txtFatherName;
+    }
+
+    public DatePicker getTimePickerBornTime() {
+        return timePickerBornTime;
+    }
+
+    public void setTimePickerBornTime(DatePicker timePickerBornTime) {
+        this.timePickerBornTime = timePickerBornTime;
+    }
+
+    public JFXTextField getTxtBornPlace() {
+        return txtBornPlace;
+    }
+
+    public void setTxtBornPlace(JFXTextField txtBornPlace) {
+        this.txtBornPlace = txtBornPlace;
+    }
+
+    public JFXTextField getTxtJob() {
+        return txtJob;
+    }
+
+    public void setTxtJob(JFXTextField txtJob) {
+        this.txtJob = txtJob;
+    }
+
+    public JFXTextField getTxtAddress() {
+        return txtAddress;
+    }
+
+    public void setTxtAddress(JFXTextField txtAddress) {
+        this.txtAddress = txtAddress;
+    }
+
+    public JFXTextField getTxtPhoneNumber() {
+        return txtPhoneNumber;
+    }
+
+    public void setTxtPhoneNumber(JFXTextField txtPhoneNumber) {
+        this.txtPhoneNumber = txtPhoneNumber;
+    }
+
+    public CheckBox getCheckSendMessage() {
+        return checkSendMessage;
+    }
+
+    public void setCheckSendMessage(CheckBox checkSendMessage) {
+        this.checkSendMessage = checkSendMessage;
+    }
+
+    public JFXComboBox getComboMarriage() {
+        return comboMarriage;
+    }
+
+    public void setComboMarriage(JFXComboBox comboMarriage) {
+        this.comboMarriage = comboMarriage;
+    }
+
+    public JFXComboBox getComboAccount() {
+        return comboAccount;
+    }
+
+    public void setComboAccount(JFXComboBox comboAccount) {
+        this.comboAccount = comboAccount;
+    }
+
+    public JFXComboBox getComboGender() {
+        return comboGender;
+    }
+
+    public void setComboGender(JFXComboBox comboGender) {
+        this.comboGender = comboGender;
+    }
+
+    public JFXButton getConfirmButton() {
+        return confirmButton;
+    }
+
+    public void setConfirmButton(JFXButton confirmButton) {
+        this.confirmButton = confirmButton;
+    }
+
+    public AnchorPane getInfoAnchorPane() {
+        return infoAnchorPane;
+    }
+
+    public void setInfoAnchorPane(AnchorPane infoAnchorPane) {
+        this.infoAnchorPane = infoAnchorPane;
+    }
+
+//    public Person getPerson() {
+//        return person;
+//    }
+//
+//    public void setPerson(Person person) {
+//        this.person = person;
+//    }
+
+
+
+
+
 
 
 //    public  void recordInfos(){
@@ -102,14 +184,6 @@ public class infoCompletionController implements Initializable {
 
     public void initialize(URL location, ResourceBundle resources) {
 
-        String[] items1 = {"مجرد","متاهل"};
-        comboMarriage.getItems().addAll(items1);
-
-        String[] items2 = {"جاری","قرض احسنه","پسنداز"};
-        comboAccount.getItems().addAll(items2);
-
-        String[] items3 = {"مرد","زن"};
-        comboGender.getItems().addAll(items3);
 
 
 

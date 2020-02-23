@@ -1,5 +1,6 @@
 package sample.Controller;
 
+import DataStructure.Person;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import javafx.animation.FadeTransition;
@@ -34,8 +35,8 @@ public class loginPageController implements Initializable {
     public JFXButton signUpTrans;
     public AnchorPane loginAnchorPane;
     public JFXButton signInTrans;
-    
-    public Label lblSuccsesAllert;
+
+    public Label lblSuccessAlert;
     public CheckBox checkLoginPass;
     public JFXButton btnLogin;
     public JFXPasswordField txtPassLogin;
@@ -51,6 +52,7 @@ public class loginPageController implements Initializable {
     public JFXTextField txtRegisterPass2;
     public JFXTextField txtPassLogin2;
     public Label lblFailAlertRegister;
+    public Label lblFailLogin;
 
     private FadeTransition fadeTransition(Node node, Duration duration, double fromValue, double toValue) {
         FadeTransition fadeTransition = new FadeTransition();
@@ -78,6 +80,7 @@ public class loginPageController implements Initializable {
 
 
         signInTrans.setVisible(false);
+        alert("",lblSuccessAlert , "green");
 
 
         FadeTransition fadeRegisterAnchorPane = fadeTransition(registerAnchorPane, Duration.seconds(1), 1, 0);
@@ -142,21 +145,47 @@ public class loginPageController implements Initializable {
 
     public void loadMainPage() {
 
-        Parent root;
-        try {
-            Stage stage = (Stage) btnLogin.getScene().getWindow();
-            stage.close();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/sample/FXML/mainPage.fxml"));
-            root = loader.load();
-            stage = new Stage();
-            Stage finalStage = stage;
-            finalStage.setResizable(false);
-            finalStage.initStyle(StageStyle.TRANSPARENT);
-            stage.setScene(new Scene(root));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+            if (txtUserLogin.getText().equals("") && txtPassLogin.getText().equals("")) {
+
+                alert("لطفا نام کاربری و رمز عبور را وارد کنید.", lblFailLogin, "red");
+
+
+            }
+            else if(!txtUserLogin.getText().equals("") && txtPassLogin.getText().equals("")){
+                alert("لطفا رمز عبور را وارد کنید" , lblFailLogin , "red");
+
+            }
+            else if(txtUserLogin.getText().equals("") && !txtPassLogin.getText().equals("")){
+                alert("لطفا نام کاربری را وارد کنید" , lblFailLogin , "red");
+            }
+
+            else if(!txtUserLogin.getText().equals("") && !txtPassLogin.getText().equals(txtRegisterPass.getText())){
+                alert("رمز وارده با رمز عبور انتخابی مطابقت ندارد." , lblFailLogin , "red");
+            }
+
+
+
+
+
+            else if(!txtUserLogin.getText().equals("")&&txtPassLogin.getText().equals(txtRegisterPass.getText())){
+
+                Parent root;
+                try {
+                    Stage stage = (Stage) btnLogin.getScene().getWindow();
+                    stage.close();
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/sample/FXML/mainPage.fxml"));
+                    root = loader.load();
+                    stage = new Stage();
+                    Stage finalStage = stage;
+                    finalStage.setResizable(false);
+                    finalStage.initStyle(StageStyle.TRANSPARENT);
+                    stage.setScene(new Scene(root));
+                    stage.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }
     }
 
 
@@ -170,7 +199,7 @@ public class loginPageController implements Initializable {
             if (result.get() == ButtonType.YES)
                 System.exit(0);
     }
- 
+
 
     public void showPasswordRegister() {
 
@@ -220,6 +249,59 @@ public class loginPageController implements Initializable {
 
 
     }
+
+    private void alert(String message, Label lbl, String color) {
+        lbl.setText(message);
+        lbl.setStyle("-fx-text-fill: " + color + ";");
+    }
+
+    public void considerTextsRegister() {
+
+
+        if (txtRegisterFirstName.getText().equals("") || txtRegisterLastName.getText().equals("") || txtRegisterPass.getText().equals("") || txtRegisterPassRepeat.getText().equals("")) {
+            alert("لطفا فیلد هارا پر کنید", lblFailAlertRegister, "red");
+        }
+
+
+       else  if(!txtRegisterPass.getText().equals(txtRegisterPassRepeat.getText()) && !txtRegisterFirstName.getText().equals("") && !txtRegisterLastName.getText().equals("") ){
+
+            alert("تکرار رمز باید با خود رمز عبور مطابقت داشته باشد...",lblFailAlertRegister,"red");
+
+        }
+
+       else {
+           alert("ثبت نام شما با موفقیت انجام شد.اکنون میتوانید با انتخاب یک نام کاربری وارد سیستم شوید" , lblSuccessAlert,"green");
+
+        }
+
+        Person person = new Person();
+       person.setName(txtRegisterFirstName.getText());
+       person.setLastName(txtRegisterLastName.getText());
+
+
+
+    }
+
+    public void considerLogin(){
+
+        if(txtUserLogin.getText().equals("")&& txtPassLogin.getText().equals("")){
+            alert( "لطفا نام کاربری و رمز عبور را وارد کنید." , lblFailLogin , "red");
+        }
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
 
 
     public void initialize(URL location, ResourceBundle resources) {

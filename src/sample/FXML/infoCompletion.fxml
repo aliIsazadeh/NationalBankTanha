@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="infoAnchorPane" opacity="0.87" prefHeight="297.0" prefWidth="752.0" style="-fx-background-color: #5b8c85; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/8.0.221" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.infoCompletionController">
+<AnchorPane fx:id="infoAnchorPane" opacity="0.87" prefHeight="297.0" prefWidth="723.0" style="-fx-background-color: #707070; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/8.0.221" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.infoCompletionController">
    <children>
       <JFXTextField fx:id="txtNationalCode" alignment="CENTER_RIGHT" labelFloat="true" layoutX="558.0" layoutY="32.0" promptText="کدملی" unFocusColor="BLACK">
          <font>

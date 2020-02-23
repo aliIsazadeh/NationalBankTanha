@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -12,10 +15,13 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="626.0" prefWidth="913.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/8.0.221" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.mainPageController">
+
+
     <children>
-        <HBox nodeOrientation="RIGHT_TO_LEFT" prefHeight="24.0" prefWidth="888.0" style="-fx-background-color: #707070; -fx-background-radius: 5;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+
+        <HBox nodeOrientation="RIGHT_TO_LEFT" prefHeight="24.0" prefWidth="888.0" style="-fx-background-color: #707070;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
             <children>
-                <JFXButton fx:id="btnexit" contentDisplay="CENTER" prefHeight="29.0" prefWidth="35.0" text=" ">
+                <JFXButton fx:id="btnExit" contentDisplay="CENTER" prefHeight="29.0" prefWidth="35.0" text=" ">
                     <graphic>
                         <ImageView fitHeight="31.0" fitWidth="26.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -186,24 +192,51 @@
                 </JFXTextField>
             </children>
         </HBox>
-        <AnchorPane fx:id="mainAnchorPane" layoutX="158.0" layoutY="197.0" prefHeight="330.0" prefWidth="723.0" style="-fx-background-color: #707070; -fx-background-radius: 20;" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="158.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="197.0">
+        <AnchorPane fx:id="mainAnchorPane" layoutX="158.0" layoutY="197.0" prefHeight="330.0" prefWidth="723.0" style="-fx-background-color: #707070; -fx-background-radius: 10;" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="158.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="197.0">
             <children>
-                <Label fx:id="lblSuccess" alignment="CENTER" contentDisplay="CENTER" layoutX="17.0" layoutY="312.0" prefHeight="91.0" prefWidth="714.0" text="حساب شما با موفقیت ایجاد شد و برای شما شماره کارت صادر گردید... از منوی سمت چپ می توانید از از امکانات بیشتری بهره مند شوید...." textFill="#00ff44" visible="false">
+
+                      <Label fx:id="lblSuccess" alignment="CENTER" contentDisplay="CENTER" layoutX="22.0" layoutY="7.0" prefHeight="91.0" prefWidth="714.0" text="حساب شما با موفقیت ایجاد شد و برای شما شماره کارت صادر گردید... از منوی سمت چپ می توانید از از امکانات بیشتری بهره مند شوید...." textFill="#00ff44" visible="false">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
                 </Label>
+                <AnchorPane fx:id="infoAnchorPane" layoutY="14.0" opacity="0.87" prefHeight="297.0" prefWidth="723.0" style="-fx-background-color: #707070; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/8.0.221" xmlns:fx="http://javafx.com/fxml/1">
+                    <children>
+                        <JFXTextField fx:id="txtNationalCode" alignment="CENTER_RIGHT" labelFloat="true" layoutX="558.0" layoutY="32.0" promptText="کدملی" unFocusColor="BLACK">
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font></JFXTextField>
+                        <JFXTextField fx:id="txtFatherName" alignment="CENTER_RIGHT" labelFloat="true" layoutX="563.0" layoutY="106.0" promptText="نام پدر" unFocusColor="BLACK" />
+                        <DatePicker fx:id="timePickerBornTime" layoutX="533.0" layoutY="258.0" nodeOrientation="RIGHT_TO_LEFT" promptText="تاریخ تولد" />
+                        <JFXTextField fx:id="txtBornPlace" alignment="CENTER_RIGHT" labelFloat="true" layoutX="558.0" layoutY="182.0" promptText="محل تولد" unFocusColor="BLACK">
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font></JFXTextField>
+                        <JFXTextField fx:id="txtJob" alignment="CENTER_RIGHT" labelFloat="true" layoutX="341.0" layoutY="32.0" promptText="شغل" unFocusColor="BLACK">
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font></JFXTextField>
+                        <JFXComboBox fx:id="comboMarriage" labelFloat="true" layoutX="341.0" layoutY="106.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="25.0" prefWidth="135.0" promptText="وضعیت تاهل" unFocusColor="BLACK" />
+                        <JFXTextField fx:id="txtAddress" alignment="CENTER_RIGHT" labelFloat="true" layoutX="31.0" layoutY="182.0" prefHeight="25.0" prefWidth="451.0" promptText="آدرس" unFocusColor="BLACK">
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font></JFXTextField>
+                        <JFXComboBox fx:id="comboAccount" labelFloat="true" layoutX="116.0" layoutY="32.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="25.0" prefWidth="135.0" promptText="نوع حساب درخواستی" unFocusColor="BLACK" />
+                        <JFXComboBox fx:id="comboGender" labelFloat="true" layoutX="116.0" layoutY="106.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="25.0" prefWidth="135.0" promptText="جنسیت" unFocusColor="BLACK" />
+                        <CheckBox fx:id="checkSendMessage" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="260.0" layoutY="262.0" mnemonicParsing="false" onMouseClicked="#activePhoneText" text="درخواست دریافت پیامک به ازای هر تراکنش">
+                            <font>
+                                <Font name="System Bold" size="13.0" />
+                            </font></CheckBox>
+                        <JFXTextField fx:id="txtPhoneNumber" alignment="CENTER_RIGHT" focusColor="BLACK" layoutX="31.0" layoutY="259.0" prefHeight="25.0" prefWidth="201.0" promptText="شماره تلفن" unFocusColor="BLACK" visible="false" />
+                    </children>
+                </AnchorPane>
             <JFXButton fx:id="btnConfirmInfos" layoutX="301.0" layoutY="326.0" onMouseClicked="#recordInfos" prefHeight="64.0" prefWidth="147.0" style="-fx-background-color: #000000; -fx-background-radius: 20;" text="تایید " textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </JFXButton>
             </children></AnchorPane>
-        <ImageView fx:id="faceImage" fitHeight="101.0" fitWidth="105.0" layoutX="187.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true" visible="false">
-            <image>
-                <Image url="@../bankPics/1.png" />
-            </image>
-        </ImageView>
+        <ImageView fx:id="faceImage" fitHeight="101.0" fitWidth="105.0" layoutX="187.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true" />
     </children>
 
 
