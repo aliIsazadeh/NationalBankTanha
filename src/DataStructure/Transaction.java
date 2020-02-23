@@ -66,11 +66,11 @@ public class Transaction {
         DateOfTransaction = dateOfTransaction;
     }
 
-    public String getInventoryOfTransaction() {
+    public String getCostOfTransaction() {
         return costOfTransaction;
     }
 
-    public void setInventoryOfTransaction(String inventoryOfTransaction) {
+    public void setCostOfTransaction(String inventoryOfTransaction) {
         this.costOfTransaction = inventoryOfTransaction;
     }
 

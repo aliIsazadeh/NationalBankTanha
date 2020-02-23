@@ -4,6 +4,15 @@ public class Bill {
     private long billingId;//شناسه قبض
     private long paymentCode;// شناسه پرداخت
     private String condition;//وضعیت
+    private long costOfBill;
+
+    public long getCostOfBill() {
+        return costOfBill;
+    }
+
+    public void setCostOfBill(long costOfBill) {
+        this.costOfBill = costOfBill;
+    }
 
     public long getBillingId() {
         return billingId;
