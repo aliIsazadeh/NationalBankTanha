@@ -4,7 +4,6 @@ import DataStructure.Account;
 import DataStructure.Bill;
 import DataStructure.Person;
 import DataStructure.Transaction;
-
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -20,7 +19,7 @@ public class DBHelper {
     private Statement statementForTransaction;
 
 
-    public DBHelper() {
+    private DBHelper() {
         connectionForPerson();
         creatTableForPerson();
         closePerson();
@@ -39,7 +38,7 @@ public class DBHelper {
 
     }
 
-    public void connectionForPerson() {
+    private void connectionForPerson() {
         try {
             Class.forName("org.sqlite.JDBC");
             connectionForPerson = DriverManager.getConnection("jdbc:sqlite:DBPerson.db");
@@ -51,7 +50,7 @@ public class DBHelper {
 
     }
 
-    public void connectionForBill() {
+    private void connectionForBill() {
         try {
             Class.forName("org.sqlite.JDBC");
             connectionForBill = DriverManager.getConnection("jdbc:sqlite:DBForBill.db");
@@ -61,7 +60,7 @@ public class DBHelper {
         }
     }
 
-    public void connectionForTransaction() {
+    private void connectionForTransaction() {
         try {
             Class.forName("org.sqlite.JDBC");
             connectionForTransaction = DriverManager.getConnection("jdbc:sqlite:DBForTransaction.db");
@@ -71,7 +70,7 @@ public class DBHelper {
         }
     }
 
-    public void connectionForAccount() {
+    private void connectionForAccount() {
         try {
             Class.forName("org.sqlite.JDBC");
             connectionForAccount = DriverManager.getConnection("jdbc:sqlite:DBForAccount.db");
@@ -81,7 +80,7 @@ public class DBHelper {
         }
     }
 
-    public void creatTableForPerson() {
+    private void creatTableForPerson() {
         String tableSQL = "CREATE TABLE IF NOT EXISTS person (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL ,accountNumber TEXT,name TEXT , lastName TEXT,nationalCode TEXT,phoneNumber TEXT,address TEXT,fatherName TEXT ,dataOFBorn TEXT,placeOfBorn TEXT , job TEXT,gender TEXT ,marriage TEXT );";
         try {
             statementForPerson.executeUpdate(tableSQL);
@@ -91,7 +90,7 @@ public class DBHelper {
         }
     }
 
-    public void createTableForBill() {
+    private void createTableForBill() {
         String tableSQL = "CREATE TABLE IF NOT EXISTS bill (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,billingID TEXT , paymentCode TEXT , condition TEXT, cost TEXT );";
         try {
             statementForBill.executeUpdate(tableSQL);
@@ -101,7 +100,7 @@ public class DBHelper {
     }
 
 
-    public void createTableForAccount() {
+    private void createTableForAccount() {
         String tableSQL = "CREATE TABLE IF NOT EXISTS account (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,accountNumber TEXT , typeOfAccount TEXT , passForATM TEXT , secondPass TEXT , inventory TEXT);";
         try {
             statementForAccount.executeUpdate(tableSQL);
@@ -112,7 +111,7 @@ public class DBHelper {
 
     }
 
-    public void createTableForTransaction() {
+    private void createTableForTransaction() {
 
         String tableSQL = "CREATE TABLE IF NOT EXISTS transactions (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,typeOfTransaction TEXT , fromAccount TEXT , ToAccount TEXT , finished TEXT , serial TEXT , dat TEXT , cost TEXT);";
         try {
@@ -123,7 +122,6 @@ public class DBHelper {
 
     }
 
-    // TODO write conection method
     public void insertPerson(Person person) {
         connectionForPerson();
 
@@ -328,22 +326,7 @@ public class DBHelper {
         closeAccount();
         return list;
     }
-//    public void addTransaction(Transaction transaction, long id) {
-//
-//        ArrayList<Transaction> list = readAllTransaction(id);
-//        list.add(transaction);
-//        String tarakonesh = "";
-//        for (int i = 0; i < list.size(); i++) {
-//            tarakonesh = list.get(i).getTypeOfTransaction() + "," + list.get(i).getCostOfTransaction() + "," + list.get(i).getSerialOfTransaction() + "," + list.get(i).getDateOfTransaction() + "@";
-//        }
-//        String upTransactionSQL = "UPDATE person set tr ='" + tarakonesh + "' where id ='" + id + "'";
-//        try {
-//            statementForPerson.executeUpdate(upTransactionSQL);
-//            System.out.println("transactions is updated");
-//        } catch (SQLException e) {
-//            System.out.println(e.getMessage());
-//        }
-//    }
+
 
     public Person readPerson(long accountNumber) {
         connectionForPerson();
@@ -373,78 +356,49 @@ public class DBHelper {
         return person;
     }
 
-//    public ArrayList<Person> getAllPerson() {
-//        //End
-//        String getSql = "SELECT id,accountType,name , lastname, nationalcode,phonNumber,address,passwordForATM,secondPassword,tr,inventory FROM person;";
-//        ArrayList<Person> list = new ArrayList<Person>();
-//        try {
-//            ResultSet resultSet = statementForPerson.executeQuery(getSql);
-//            while (resultSet.next()) {
-//                Person person = new Person();
-//                Account account = new Account();
-////id  ,accountType ,name , lastName,nationalCode TEXT,phoneNumber TEXT,address TEXT ,passwordForATM TEXT ,secondPassword TEXT, transaction TEXT ,inventory TEXT );";
-//                account.setAccountNumber(resultSet.getLong(0));
-//                account.setAccountType(resultSet.getString(1));
-//                account.setPasswordForATM(resultSet.getString(7));
-//                account.setSecondPassword(resultSet.getString(8));
-//                account.setInventory(resultSet.getString(10));
-//                account.setTransactions(readAllTransaction(account.getAccountNumber()));
-//
-//
-//                person.setAccount(account);
-//                person.setName(resultSet.getString(2));
-//                person.setLastName(resultSet.getString(3));
-//                person.setNationalNumber(resultSet.getLong(4));
-//                person.setPhoneNumber((resultSet.getLong(5)));
-//                person.setAddress(resultSet.getString(6));
-//                ;
-//
-//                list.add(person);
-//            }
-//        } catch (SQLException e) {
-//            System.out.println(e.getMessage());
-//        }
-//        //  close();
-//        return list;
-//
-//    }
 
-    public void upDateInventory(long ID, String inventory) {
-        //TODO
-    }
 
-    public void updatePasswordForATM(long id, String password) {
-//TODO
-
-    }
-
-    public void updateSecondPassword(String newPassword, long ID) {
-        //TODO
-    }
-
-    public void updatePassword(String pass) {
-
-        String updatePassSQL = "UPDATE person set passwordForATM = '" + pass + "'";
+    public void updateAccount(Account account) {
+        connectionForAccount();
+        String update = " UPDATE account  set accountNumber ='" + account.getAccountNumber() + "' set typeOfAccount = '" + account.getAccountType() + "' set passForATM '" + account.getPasswordForATM() + "' set secondPass = '" + account.getSecondPassword() + "'  set inventory = '" + account.getInventory() + "';";
         try {
-            statementForPerson.executeUpdate(updatePassSQL);
-            System.out.println("update password");
+            statementForAccount.executeUpdate(update);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        closeAccount();
+    }//accountNumber  , typeOfAccount,passForATM  , secondPass  , inventory
+
+
+    public void updatePerson(Person person) {
+        connectionForPerson();
+
+        String update = "UPDATE person  set accountNumber = '" + person.getAccount().getAccountNumber() + "'  set name = '" + person.getName() + "'   set lastName = '" + person.getLastName() + "' set nationalCode = '" + person.getNationalNumber() + "'  set phoneNumber = '" + person.getPhoneNumber() + "' set address = '" + person.getAddress() + "' set fatherName = '" + person.getFatherName() + "'  set dataOFBorn ='" + person.getBornTime() + "' set placeOfBorn ='" + person.getBornPlace() + "' set job = '" + person.getJob() + "' set gender ='" + person.getGender() + "'  set marriage = '" + person.isMarriage() + "' ";
+        try {
+            statementForPerson.executeUpdate(update);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
 
+        closePerson();
+    }
+
+    public void updateBill(Bill bill) {
+        connectionForBill();
+        String updateSQL = "UPDATE bill set billingID = '" + bill.getBillingId() + "'  set paymentCode = '" + bill.getPaymentCode() + "'  set condition = '" + bill.getCondition() + "' set cost = '" + bill.getCostOfBill() + "' ";
+        try {
+            statementForBill.executeUpdate(updateSQL);
+            System.out.println("update password");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        closeBill();
     }
 
 
-//    class ObjToDB {
-//        String name;
-//        String lastName;
-//
-//        public String toString() {
-//            return "[" + name + "  " + lastName + "]";
-//        }
-//    }
 
-    public void closePerson() {
+
+    private void closePerson() {
         try {
             statementForPerson.close();
 
@@ -454,7 +408,7 @@ public class DBHelper {
         }
     }
 
-    public void closeBill() {
+    private void closeBill() {
         try {
             statementForBill.close();
 
@@ -464,7 +418,7 @@ public class DBHelper {
         }
     }
 
-    public void closeAccount() {
+    private void closeAccount() {
         try {
             statementForAccount.close();
 
@@ -474,7 +428,7 @@ public class DBHelper {
         }
     }
 
-    public void closeTransaction() {
+    private void closeTransaction() {
         try {
             statementForTransaction.close();
 
