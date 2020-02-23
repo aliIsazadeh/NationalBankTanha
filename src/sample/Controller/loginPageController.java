@@ -34,8 +34,7 @@ public class loginPageController implements Initializable {
     public JFXButton signUpTrans;
     public AnchorPane loginAnchorPane;
     public JFXButton signInTrans;
-    public Label lblFailAlert;
-    public Label lblFailAllert;
+    
     public Label lblSuccsesAllert;
     public CheckBox checkLoginPass;
     public JFXButton btnLogin;
@@ -51,6 +50,7 @@ public class loginPageController implements Initializable {
     public JFXPasswordField txtRegisterPassRepeat;
     public JFXTextField txtRegisterPass2;
     public JFXTextField txtPassLogin2;
+    public Label lblFailAlertRegister;
 
     private FadeTransition fadeTransition(Node node, Duration duration, double fromValue, double toValue) {
         FadeTransition fadeTransition = new FadeTransition();
@@ -170,19 +170,7 @@ public class loginPageController implements Initializable {
             if (result.get() == ButtonType.YES)
                 System.exit(0);
     }
-
-
-    //for registering
-    public void considerTXT() {
-
-
-    }
-
-    //for login
-    public void considerRight() {
-
-
-    }
+ 
 
     public void showPasswordRegister() {
 
