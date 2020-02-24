@@ -1,13 +1,11 @@
 package DataStructure;
 
-import java.util.ArrayList;
-
 public class Person {
     private String name;
     private String lastName;
     private long nationalNumber;
     private Account account;
-    private long phoneNumber;
+    private String phoneNumber;
     private String address;//آدرس
 
     private String fatherName ;
@@ -80,11 +78,11 @@ public class Person {
     public void setAddress(String address) {
         this.address = address;
     }
-    public long getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(Long phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 

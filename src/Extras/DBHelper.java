@@ -341,8 +341,8 @@ public class DBHelper {
             person.setName(resultSet.getString("name"));
             person.setLastName(resultSet.getString("lastName"));
             person.setAddress(resultSet.getString("address"));
-            person.setNationalNumber(resultSet.getLong("nationalCode"));
-            person.setPhoneNumber(resultSet.getLong("phoneNumber"));
+        //    person.setNationalNumber(("nationalCode"));
+            person.setPhoneNumber(("phoneNumber"));
             person.setFatherName(resultSet.getString("fatherName"));
             person.setBornTime(resultSet.getString("dataOFBorn"));
             person.setBornPlace(resultSet.getString("placeOfBorn"));
