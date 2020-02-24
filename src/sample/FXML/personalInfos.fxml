@@ -3,10 +3,10 @@
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="375.0" prefWidth="723.0" style="-fx-background-color: #707070; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/8.0.221" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.personalInfoController">
+<AnchorPane prefHeight="375.0" prefWidth="723.0" style="-fx-background-color: #AAB6FE; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/8.0.221" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.personalInfoController">
    <children>
-      <JFXTextField fx:id="txtShowName" alignment="CENTER_RIGHT" editable="false" labelFloat="true" layoutX="508.0" layoutY="41.0" onAction="#test" unFocusColor="WHITE" />
-      <JFXTextField fx:id="txtShowFamily" alignment="CENTER_RIGHT" editable="false" labelFloat="true" layoutX="280.0" layoutY="41.0" unFocusColor="WHITE" />
+      <JFXTextField fx:id="txtShowName" alignment="CENTER_RIGHT" editable="false" labelFloat="true" layoutX="508.0" layoutY="41.0" onAction="#test" promptText="نام" unFocusColor="WHITE" />
+      <JFXTextField fx:id="txtShowFamily" alignment="CENTER_RIGHT" editable="false" labelFloat="true" layoutX="280.0" layoutY="41.0" promptText="نام خانوداگی" unFocusColor="WHITE" />
       <JFXTextField fx:id="txtShowNationalCode" alignment="CENTER_RIGHT" editable="false" labelFloat="true" layoutX="45.0" layoutY="41.0" promptText="کدملی" unFocusColor="WHITE" />
       <JFXTextField fx:id="txtShowFatherName" alignment="CENTER_RIGHT" editable="false" labelFloat="true" layoutX="45.0" layoutY="139.0" promptText="نام پدر" unFocusColor="#fffbfb" />
       <JFXTextField fx:id="txtShowAccountType" alignment="CENTER_RIGHT" editable="false" labelFloat="true" layoutX="512.0" layoutY="139.0" promptText="نوع حساب" unFocusColor="WHITE" />

@@ -6,15 +6,16 @@ import com.jfoenix.controls.JFXPasswordField;
 import javafx.animation.FadeTransition;
 import com.jfoenix.controls.JFXTextField;
 import javafx.animation.TranslateTransition;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
@@ -53,6 +54,7 @@ public class loginPageController implements Initializable {
     public JFXTextField txtPassLogin2;
     public Label lblFailAlertRegister;
     public Label lblFailLogin;
+    public JFXTextField txtRegisterUserName;
 
     private FadeTransition fadeTransition(Node node, Duration duration, double fromValue, double toValue) {
         FadeTransition fadeTransition = new FadeTransition();
@@ -159,15 +161,15 @@ public class loginPageController implements Initializable {
                 alert("لطفا نام کاربری را وارد کنید" , lblFailLogin , "red");
             }
 
-            else if(!txtUserLogin.getText().equals("") && !txtPassLogin.getText().equals(txtRegisterPass.getText())){
-                alert("رمز وارده با رمز عبور انتخابی مطابقت ندارد." , lblFailLogin , "red");
+            else if(!txtUserLogin.getText().equals(txtRegisterUserName.getText()) || !txtPassLogin.getText().equals(txtRegisterPass.getText())  ){
+                alert("رمز عبور یا نام کاربری اشتباه است" , lblFailLogin , "red");
             }
 
 
 
 
 
-            else if(!txtUserLogin.getText().equals("")&&txtPassLogin.getText().equals(txtRegisterPass.getText())){
+            else if(txtUserLogin.getText().equals(txtRegisterUserName.getText())&&(    txtPassLogin.getText().equals(txtRegisterPass.getText()) ||txtPassLogin.getText().equals(txtRegisterPass2.getText())   )){
 
                 Parent root;
                 try {
@@ -217,6 +219,8 @@ public class loginPageController implements Initializable {
 
         if (flag == false) {
 
+
+            txtRegisterPass.setText(txtRegisterPass2.getText());
             txtRegisterPass2.setVisible(false);
             txtRegisterPass.setVisible(true);
 
@@ -241,6 +245,7 @@ public class loginPageController implements Initializable {
         if (flag1 == false) {
 
 
+            txtPassLogin.setText(txtPassLogin2.getText());
             txtPassLogin2.setVisible(false);
             txtPassLogin.setVisible(true);
 
@@ -270,7 +275,7 @@ public class loginPageController implements Initializable {
         }
 
        else {
-           alert("ثبت نام شما با موفقیت انجام شد.اکنون میتوانید با انتخاب یک نام کاربری وارد سیستم شوید" , lblSuccessAlert,"green");
+           alert("ثبت نام شما با موفقیت انجام شد.اکنون میتوانید وارد سیستم شوید" , lblSuccessAlert,"green");
 
         }
 
@@ -288,23 +293,197 @@ public class loginPageController implements Initializable {
             alert( "لطفا نام کاربری و رمز عبور را وارد کنید." , lblFailLogin , "red");
         }
 
+    }
+
+    public void testFirstName(){
+        txtRegisterFirstName.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+
+             if(txtRegisterFirstName.getText().contains("s"))
+
+
+
+             if(!txtRegisterLastName.getText().equals("") &&!txtRegisterPass.getText().equals("")&&!txtRegisterPassRepeat.getText().equals("")&&!txtRegisterUserName.getText().equals("") ){
+
+                 btnRegister.setDisable(false);
+             }
+
+
+            }
+        });
 
 
 
     }
 
+    public void testLastName(){
+        txtRegisterLastName.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+
+                if(!txtRegisterFirstName.getText().equals("") &&!txtRegisterPass.getText().equals("")&&!txtRegisterPassRepeat.getText().equals("")&&!txtRegisterUserName.getText().equals("") ){
+
+                    btnRegister.setDisable(false);
+                }
 
 
+            }
+        });
+    }
+
+    public void testUserName(){
+        txtRegisterUserName.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+
+                if(!txtRegisterFirstName.getText().equals("") &&!txtRegisterPass.getText().equals("")&&!txtRegisterPassRepeat.getText().equals("")&&!txtRegisterLastName.getText().equals("") ){
+
+                    btnRegister.setDisable(false);
+                }
 
 
+            }
+        });
+
+    }
+    public void testPass(){
+        txtRegisterPass.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+
+                if(!txtRegisterFirstName.getText().equals("") &&!txtRegisterUserName.getText().equals("")&&!txtRegisterPassRepeat.getText().equals("")&&!txtRegisterLastName.getText().equals("") ){
+
+                    btnRegister.setDisable(false);
+                }
 
 
+            }
+        });
+
+    }
+
+    public void testPassRepeat(){
+        txtRegisterPassRepeat.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+
+                if(!txtRegisterFirstName.getText().equals("") &&!txtRegisterUserName.getText().equals("")&&!txtRegisterPass.getText().equals("")&&!txtRegisterLastName.getText().equals("") ){
+
+                    btnRegister.setDisable(false);
+
+                }
 
 
+            }
+        });
+
+    }
+
+    public void testUserLogin(){
+        txtUserLogin.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+
+                if(!txtPassLogin.getText().equals("") ){
+
+                    btnLogin.setDisable(false);
+
+                }
 
 
+            }
+        });
+
+    }
+
+    public void testPassLogin(){
+        txtPassLogin.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+
+                if(!txtUserLogin.getText().equals("") ){
+
+                    btnLogin.setDisable(false);
+
+                }
+
+
+            }
+        });
+
+    }
+
+
+    public EventHandler<KeyEvent> letter_ValidationForUserName(final Integer max_Lengh) {
+        return new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent e) {
+                TextField txt_TextField = (TextField) e.getSource();
+                if (txt_TextField.getText().length() >= max_Lengh) {
+                    e.consume();
+                }
+                if(e.getCharacter().matches( "[ا-ی-ن]" ) || e.getCharacter().matches( "[A-Za-z]" )){
+                }else{
+                    e.consume();
+                }
+            }
+        };
+    }
+
+    public EventHandler<KeyEvent> letter_Validation(final Integer max_Lengh) {
+        return new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent e) {
+                TextField txt_TextField = (TextField) e.getSource();
+                if (txt_TextField.getText().length() >= max_Lengh) {
+                    e.consume();
+                }
+                if(e.getCharacter().matches("[ا-ی-ن]")){
+                }else{
+                    e.consume();
+                }
+            }
+        };
+    }
+
+    public EventHandler<KeyEvent> numeric_Validation(final Integer max_Lengh) {
+        return new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent e) {
+                TextField txt_TextField = (TextField) e.getSource();
+                if (txt_TextField.getText().length() >= max_Lengh) {
+                    e.consume();
+                }
+                if(e.getCharacter().matches("[0-9.]")){
+                    if(txt_TextField.getText().contains(".") && e.getCharacter().matches("[.]")){
+                        e.consume();
+                    }else if(txt_TextField.getText().length() == 0 && e.getCharacter().matches("[.]")){
+                        e.consume();
+                    }
+                }else{
+                    e.consume();
+                }
+            }
+        };
+    }
 
     public void initialize(URL location, ResourceBundle resources) {
+
+        txtRegisterFirstName.addEventFilter(KeyEvent.KEY_TYPED , letter_Validation(12));
+        txtRegisterLastName.addEventFilter(KeyEvent.KEY_TYPED , letter_Validation(15));
+
+        txtRegisterUserName.addEventFilter(KeyEvent.KEY_TYPED , letter_ValidationForUserName(10));
+        //
+        txtUserLogin.addEventFilter(KeyEvent.KEY_TYPED , letter_ValidationForUserName(10));
+
+        txtRegisterPass.addEventFilter(KeyEvent.KEY_TYPED , numeric_Validation(10));
+        txtRegisterPassRepeat.addEventFilter(KeyEvent.KEY_TYPED , numeric_Validation(10));
+        txtRegisterPass2.addEventFilter(KeyEvent.KEY_TYPED , numeric_Validation(10));
+        //
+        txtPassLogin.addEventFilter(KeyEvent.KEY_TYPED , numeric_Validation(10));
+        txtPassLogin2.addEventFilter(KeyEvent.KEY_TYPED , numeric_Validation(10));
+
 
 
     }

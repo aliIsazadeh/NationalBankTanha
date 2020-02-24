@@ -25,7 +25,9 @@ public class personalInfoController implements Initializable {
             Person person =new Person();
             Account account = new Account();
 
-          //  txtShowNationalCode.setText(String.valueOf(person.getNationalNumber()));
+            txtShowNationalCode.setText(String.valueOf(person.getNationalNumber()));
+          //  txtShowName.setText(person.getName());
+          //  txtShowName.setText(person.getLastName());
             txtShowFatherName.setText(person.getFatherName());
             txtShowAccountType.setText(account.getAccountType());
             txtShowGender.setText(person.getGender());
@@ -41,7 +43,11 @@ public class personalInfoController implements Initializable {
 
 
 
-    public void initialize(URL location, ResourceBundle resources) {}
+    public void initialize(URL location, ResourceBundle resources) {
+
+        test();
+    }
+
 
 
 

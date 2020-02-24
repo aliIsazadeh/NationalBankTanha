@@ -1,8 +1,8 @@
 package Extras;
 
-public class createCardNumber {
+public class CreateCardNumber {
 
-    public  String  createCardNumber(){
+    public static String  createCardNumber(){
 
       long randomNumber  =  (long) ((Math.random())* Long.parseLong(("9999999999")) );
 
@@ -30,6 +30,9 @@ public class createCardNumber {
         return s;
     }
 
+    public static void main(String[] args) {
+        createCardNumber();
+    }
 
 
 }

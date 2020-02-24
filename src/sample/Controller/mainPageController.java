@@ -2,9 +2,11 @@ package sample.Controller;
 
 import DataStructure.Account;
 import DataStructure.Person;
+import Extras.CreateCardNumber;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -13,6 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -25,6 +28,10 @@ import java.util.ResourceBundle;
 public class mainPageController implements Initializable {
 
     public JFXTextField txtAccountType;
+    public JFXTextField txtCardNumber;
+    public JFXTextField txtSecendPassWord;
+    public JFXTextField txtSecendPassWordRepeat;
+    public Label lblNotice;
     private Person person = new Person();
 
 
@@ -276,7 +283,7 @@ public class mainPageController implements Initializable {
 
 
     private void addVariable(){
-        person.setNationalNumber(Long.parseLong(txtNationalCode.getText()));
+      //  person.setNationalNumber(Long.parseLong(txtNationalCode.getText()));
         person.setFatherName(txtFatherName.getText());
         LocalDate localData = timePickerBornTime.getValue();
         person.setBornTime(localData.getYear()+","+localData.getMonth()+","+localData.getDayOfMonth());
@@ -318,6 +325,17 @@ public class mainPageController implements Initializable {
     }
 
 
+    private boolean emptyFinder(TextField txtField) {
+        boolean empty = true;
+        if (txtField.getText().equals("")) {
+            empty = false;
+
+        }
+        return empty;
+    }
+
+
+
     public  void recordInfos(){
 
         addVariable();
@@ -347,6 +365,13 @@ public class mainPageController implements Initializable {
         }
 
 
+        CreateCardNumber createCardNumber = new CreateCardNumber();
+        txtCardNumber.setText(createCardNumber.createCardNumber());
+
+
+        lblNotice.setVisible(false);
+
+
 
         if(findComboIndex(comboAccount)==0){
             txtAccountType.setText("جاری");
@@ -366,6 +391,20 @@ public class mainPageController implements Initializable {
         }
 
         infoAnchorPane.setVisible(false);
+
+//       flag1 = emptyFinder(txtNationalCode);
+//       flag2 = emptyFinder(txtFatherName);
+//       flag3 = emptyFinder(txtJob);
+//      if(findComboIndex(comboAccount)==-1){ flag4 = false;}
+//      if(findComboIndex(comboGender)==-1){ flag5 = false;}
+//      if(findComboIndex(comboMarriage)==-1){ flag6 = false;}
+//      if(checkSendMessage.isSelected()){
+//         flag7 = emptyFinder(txtPhoneNumber);
+//      }
+//
+
+
+
 
 
     }
@@ -502,7 +541,72 @@ public class mainPageController implements Initializable {
 
 
 
+    public EventHandler<KeyEvent> letter_Validation(final Integer max_Lengh) {
+        return new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent e) {
+                TextField txt_TextField = (TextField) e.getSource();
+                if (txt_TextField.getText().length() >= max_Lengh) {
+                    e.consume();
+                }
+                if(e.getCharacter().matches("[ا-ی-ن]") || e.getCharacter().matches("[ ]")){
+                }else{
+                    e.consume();
+                }
+            }
+        };
+    }
+
+
+
+
+
+    public EventHandler<KeyEvent> numeric_Validation(final Integer max_Lengh) {
+        return new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent e) {
+                TextField txt_TextField = (TextField) e.getSource();
+                if (txt_TextField.getText().length() >= max_Lengh) {
+                    e.consume();
+                }
+                if(e.getCharacter().matches("[0-9.]")){
+                    if(txt_TextField.getText().contains(".") && e.getCharacter().matches("[.]")){
+                        e.consume();
+                    }else if(txt_TextField.getText().length() == 0 && e.getCharacter().matches("[.]")){
+                        e.consume();
+                    }
+                }else{
+                    e.consume();
+                }
+            }
+        };
+    }
+
+
+
+
     public void initialize(URL location, ResourceBundle resources) {
+
+
+
+
+
+
+
+
+
+        txtNationalCode.addEventFilter(KeyEvent.KEY_TYPED , numeric_Validation(10));
+        txtFatherName.addEventFilter(KeyEvent.KEY_TYPED , letter_Validation(15));
+        txtJob.addEventFilter(KeyEvent.KEY_TYPED , letter_Validation(20));
+        txtPhoneNumber.addEventFilter(KeyEvent.KEY_TYPED , numeric_Validation(11));
+    //    txtAddress.addEventFilter(KeyEvent.KEY_TYPED , letter_Validation(50));
+        txtBornPlace.addEventFilter(KeyEvent.KEY_TYPED , letter_Validation(10));
+        txtSecendPassWord.addEventFilter(KeyEvent.KEY_TYPED , numeric_Validation(4));
+        txtSecendPassWordRepeat.addEventFilter(KeyEvent.KEY_TYPED , numeric_Validation(4));
+
+
+
+
 
 
         String[] items1 = {"مجرد","متاهل"};
@@ -515,24 +619,9 @@ public class mainPageController implements Initializable {
         comboGender.getItems().addAll(items3);
 
 
-//        try {
+
 //        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("../FXML/infoCompletion.fxml"));
 //        mainAnchorPane.getChildren().addAll(anchorPane);
-//    }
-//        catch (IOException ex){
-//        System.out.println("oh crap!!!");
-//    }
-
-
-
-
-      //  comboMarriage.getItems().addAll("مجرد","متاهل");
-//        comboMarriage.getItems().addAll();
-//
-//        txtAccount.getItems().addAll("جاری");
-//        txtAccount.getItems().addAll("قرض الحسنه");
-//        txtAccount.getItems().addAll("پسنداز");
-
 
 
     }

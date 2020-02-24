@@ -23,7 +23,7 @@
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <JFXButton fx:id="confirmMinMoney" layoutX="308.0" layoutY="200.0" prefHeight="62.0" prefWidth="137.0" style="-fx-background-color: #000000;" text="برداشت" textFill="WHITE" onMouseClicked="#confirmMinMoney">
+      <JFXButton fx:id="confirmMinMoney" layoutX="315.0" layoutY="200.0" onMouseClicked="#confirmMinMoney" prefHeight="62.0" prefWidth="137.0" style="-fx-background-color: #000000;" text="برداشت" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
