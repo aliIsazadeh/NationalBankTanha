@@ -2,21 +2,34 @@ package Extras;
 
 public class createCardNumber {
 
-    public static String  createCardNumber(){
+    public  String  createCardNumber(){
 
-      int randomNumber  =  (int) (Math.random()*999999);
+      long randomNumber  =  (long) ((Math.random())* Long.parseLong(("9999999999")) );
+
         String a = randomNumber+"";
 
-        //603799 is out CTE amount
+        //603799 is card CTE amount
 
         String CardID = "603799" +  a;
 
-        return CardID;
+
+
+
+        String s = "";
+        for (int i = 0; i <16 ; i++) {
+            s += CardID.charAt(i)+"";
+            if(i==3 || i== 7 || i==11 ||i==15 )
+            {
+                s += " ";
+
+            }
+        }
+
+        System.out.println(s);
+
+        return s;
     }
 
-    public static void main(String[] args) {
-        createCardNumber();
-    }
 
 
 }
