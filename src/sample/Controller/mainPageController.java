@@ -276,7 +276,7 @@ public class mainPageController implements Initializable {
 
 
     private void addVariable(){
-        person.setNationalNumber((txtNationalCode.getText()));
+        person.setNationalNumber(Integer.parseInt(txtNationalCode.getText()));
         person.setFatherName(txtFatherName.getText());
         LocalDate localData = timePickerBornTime.getValue();
         person.setBornTime(localData.getYear()+","+localData.getMonth()+","+localData.getDayOfMonth());

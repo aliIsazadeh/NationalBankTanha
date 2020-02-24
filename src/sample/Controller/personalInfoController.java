@@ -25,12 +25,12 @@ public class personalInfoController implements Initializable {
             Person person =new Person();
             Account account = new Account();
 
-            txtShowNationalCode.setText(person.getNationalNumber());
+            txtShowNationalCode.setText(String.valueOf(person.getNationalNumber()));
             txtShowFatherName.setText(person.getFatherName());
             txtShowAccountType.setText(account.getAccountType());
             txtShowGender.setText(person.getGender());
             txtShowAddress.setText(person.getAddress());
-            txtShowPhoneNumber.setText(person.getPhoneNumber());
+            txtShowPhoneNumber.setText(String.valueOf(person.getPhoneNumber()));
 
         }
 
