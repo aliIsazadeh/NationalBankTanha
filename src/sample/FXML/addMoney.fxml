@@ -7,13 +7,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="360.0" prefWidth="723.0" style="-fx-background-color: #AAB6FE; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.addMoneyController">
+<AnchorPane prefHeight="360.0" prefWidth="723.0" style="-fx-background-color: #AAB6FE; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/8.0.221" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.addMoneyController">
    <children>
       <Label alignment="CENTER_RIGHT" layoutX="405.0" layoutY="90.0" prefHeight="44.0" prefWidth="149.0" text="مبلغ مورد نظر(به تومان) : ">
          <font>
             <Font name="System Bold" size="13.0" />
          </font></Label>
-      <TextField fx:id="txtAddMoney" alignment="CENTER_RIGHT" layoutX="223.0" layoutY="99.0" prefHeight="25.0" prefWidth="156.0" />
+      <TextField fx:id="txtAddMoney" alignment="CENTER_RIGHT" layoutX="223.0" layoutY="99.0" prefHeight="25.0" prefWidth="157.0" />
       <Label alignment="CENTER" layoutX="293.0" layoutY="27.0" prefHeight="44.0" prefWidth="138.0" text="افزایش موجودی">
          <font>
             <Font name="System Bold" size="16.0" />
@@ -35,8 +35,8 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <TextField fx:id="txtAddMoneyUniquePass" alignment="CENTER_RIGHT" layoutX="263.0" layoutY="223.0" prefHeight="37.0" prefWidth="165.0" promptText="رمز پویا را وارد کنید..." visible="false" />
-      <Button layoutX="455.0" layoutY="234.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="89.0" text="ارسال رمز پویا" />
+      <TextField fx:id="txtAddMoneyUniquePass" alignment="CENTER_RIGHT" layoutX="228.0" layoutY="234.0" prefHeight="37.0" prefWidth="149.0" promptText="رمز پویا را وارد کنید..." visible="false" />
+      <Button fx:id="sendUniquePass" layoutX="455.0" layoutY="234.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="89.0" text="ارسال رمز پویا" onMouseClicked="#sendingUniqueCode" />
       <Label alignment="CENTER_RIGHT" layoutX="41.0" layoutY="134.0" prefHeight="44.0" prefWidth="157.0" text=" ">
          <font>
             <Font name="System Bold" size="13.0" />

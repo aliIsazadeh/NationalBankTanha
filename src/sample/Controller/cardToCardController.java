@@ -2,6 +2,8 @@ package sample.Controller;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -37,7 +39,22 @@ public class cardToCardController implements Initializable {
 }
 
 
+    public void testSearchDestination(){
+        DestinationCardNumber.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 
+                if(!DestinationCardNumber.getText().equals("") ){
+
+                    btnSearchDestinationCard.setDisable(false);
+
+                }
+
+
+            }
+        });
+
+    }
 
 
     public void initialize(URL location, ResourceBundle resources) {

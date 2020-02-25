@@ -18,6 +18,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
@@ -32,6 +33,8 @@ public class mainPageController implements Initializable {
     public JFXTextField txtSecendPassWord;
     public JFXTextField txtSecendPassWordRepeat;
     public Label lblNotice;
+    public Label lblFailNotice;
+    public JFXButton btnBack;
     private Person person = new Person();
 
 
@@ -64,6 +67,7 @@ public class mainPageController implements Initializable {
 
     public Label lblSuccess;
     public JFXButton btnConfirmInfos;
+    boolean flagPH= true;
 
 
     public AnchorPane getMainAnchorPane() {
@@ -283,6 +287,8 @@ public class mainPageController implements Initializable {
 
 
     private void addVariable(){
+
+        System.out.println(txtFatherName.getText());
       //  person.setNationalNumber(Long.parseLong(txtNationalCode.getText()));
         person.setFatherName(txtFatherName.getText());
         LocalDate localData = timePickerBornTime.getValue();
@@ -334,78 +340,80 @@ public class mainPageController implements Initializable {
         return empty;
     }
 
+    private void alert(String message, Label lbl, String color) {
+        lbl.setText(message);
+        lbl.setStyle("-fx-text-fill: " + color + ";");
+    }
 
 
     public  void recordInfos(){
 
-        addVariable();
-
-        Account account =new Account();
-        btnPersonalInfo.setDisable(false);
-        btnAddMoney.setDisable(false);
-        btnMinMoney.setDisable(false);
-        btnCardToCard.setDisable(false);
-        btnCash.setDisable(false);
-        btnPassWord.setDisable(false);
-        btnHistory.setDisable(false);
-        btnOther.setDisable(false);
-
-        btnConfirmInfos.setVisible(false);
-        lblSuccess.setVisible(true);
-
-        if(findComboIndex(comboGender)==0) {
-            Image imageMale = new Image("./sample/bankPics/1.png");
-            faceImage.setImage(imageMale);
-        }
-
-        else if(findComboIndex(comboGender)==1){
-            Image imageFemale = new Image("./sample/bankPics/MasterFM.png");
-            faceImage.setImage(imageFemale);
+        LocalDate localData = timePickerBornTime.getValue();
+        if(checkSendMessage.isSelected()){
+       //      if(txtPhoneNumber.getText().equals(""))
+               //  flagPH = false;
 
         }
 
 
-        CreateCardNumber createCardNumber = new CreateCardNumber();
-        txtCardNumber.setText(createCardNumber.createCardNumber());
+        if(txtNationalCode.getText().equals("")||txtFatherName.getText().equals("")||txtJob.getText().equals("")||findComboIndex(comboAccount)==-1||findComboIndex(comboMarriage)==-1 || findComboIndex(comboGender)==-1 || txtAddress.getText().equals("")||txtBornPlace.getText().equals("")||txtSecendPassWord.getText().equals("")||txtSecendPassWordRepeat.getText().equals(""))     {
+
+            alert("لطفا تمام فیلد هارا پر کنید" , lblFailNotice , "red");
 
 
-        lblNotice.setVisible(false);
-
-
-
-        if(findComboIndex(comboAccount)==0){
-            txtAccountType.setText("جاری");
-            account.setAccountType("جاری");
         }
 
+    else {
 
-       else if(findComboIndex(comboAccount)==1){
-            txtAccountType.setText("قرضا لحسنه");
-            account.setAccountType("قرضا لحسنه");
+
+            addVariable();
+
+            Account account = new Account();
+            btnPersonalInfo.setDisable(false);
+            btnAddMoney.setDisable(false);
+            btnMinMoney.setDisable(false);
+            btnCardToCard.setDisable(false);
+            btnCash.setDisable(false);
+            btnPassWord.setDisable(false);
+            btnHistory.setDisable(false);
+            btnOther.setDisable(false);
+
+            btnConfirmInfos.setVisible(false);
+            lblSuccess.setVisible(true);
+
+            if (findComboIndex(comboGender) == 0) {
+                Image imageMale = new Image("./sample/bankPics/1.png");
+                faceImage.setImage(imageMale);
+            } else if (findComboIndex(comboGender) == 1) {
+                Image imageFemale = new Image("./sample/bankPics/MasterFM.png");
+                faceImage.setImage(imageFemale);
+
+            }
+
+
+            CreateCardNumber createCardNumber = new CreateCardNumber();
+            txtCardNumber.setText(createCardNumber.createCardNumber());
+
+
+            lblNotice.setVisible(false);
+            lblFailNotice.setVisible(false);
+
+
+            if (findComboIndex(comboAccount) == 0) {
+                txtAccountType.setText("جاری");
+                account.setAccountType("جاری");
+            } else if (findComboIndex(comboAccount) == 1) {
+                txtAccountType.setText("قرضا لحسنه");
+                account.setAccountType("قرضا لحسنه");
+            } else if (findComboIndex(comboAccount) == 2) {
+                txtAccountType.setText("پسنداز");
+                account.setAccountType("پسنداز");
+            }
+
+            infoAnchorPane.setVisible(false);
+
+
         }
-
-
-       else if(findComboIndex(comboAccount)==2){
-            txtAccountType.setText("پسنداز");
-            account.setAccountType("پسنداز");
-        }
-
-        infoAnchorPane.setVisible(false);
-
-//       flag1 = emptyFinder(txtNationalCode);
-//       flag2 = emptyFinder(txtFatherName);
-//       flag3 = emptyFinder(txtJob);
-//      if(findComboIndex(comboAccount)==-1){ flag4 = false;}
-//      if(findComboIndex(comboGender)==-1){ flag5 = false;}
-//      if(findComboIndex(comboMarriage)==-1){ flag6 = false;}
-//      if(checkSendMessage.isSelected()){
-//         flag7 = emptyFinder(txtPhoneNumber);
-//      }
-//
-
-
-
-
 
     }
 
@@ -538,7 +546,34 @@ public class mainPageController implements Initializable {
                 System.exit(0);
     }
 
+        public void back(){
+            Alert alert = new Alert(Alert.AlertType.WARNING, "آیا می خواهید به صفحه اصلی برگردید؟ ", ButtonType.YES, ButtonType.NO);
 
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.isPresent()) {
+                if (result.get() == ButtonType.YES) {
+
+                    Parent root;
+                    try {
+                        Stage stage = (Stage) btnBack.getScene().getWindow();
+                        stage.close();
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/sample/FXML/loginPage.fxml"));
+                        root = loader.load();
+                        stage = new Stage();
+                        Stage finalStage = stage;
+                        finalStage.setResizable(false);
+                        finalStage.initStyle(StageStyle.TRANSPARENT);
+                        stage.setScene(new Scene(root));
+                        stage.show();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+
+                }
+            }
+
+        }
 
 
     public EventHandler<KeyEvent> letter_Validation(final Integer max_Lengh) {

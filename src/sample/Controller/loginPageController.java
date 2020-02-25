@@ -354,6 +354,7 @@ public class loginPageController implements Initializable {
 
                 if(!txtRegisterFirstName.getText().equals("") &&!txtRegisterUserName.getText().equals("")&&!txtRegisterPassRepeat.getText().equals("")&&!txtRegisterLastName.getText().equals("") ){
 
+                    txtRegisterPass2.setText(txtRegisterPass.getText());
                     btnRegister.setDisable(false);
                 }
 
@@ -363,12 +364,27 @@ public class loginPageController implements Initializable {
 
     }
 
+
+    public void testPass2(){
+        txtRegisterPass2.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+
+               txtRegisterPass.setText(txtRegisterPass2.getText());
+
+            }
+        });
+
+    }
+
+
     public void testPassRepeat(){
         txtRegisterPassRepeat.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 
                 if(!txtRegisterFirstName.getText().equals("") &&!txtRegisterUserName.getText().equals("")&&!txtRegisterPass.getText().equals("")&&!txtRegisterLastName.getText().equals("") ){
+
 
                     btnRegister.setDisable(false);
 
@@ -402,9 +418,11 @@ public class loginPageController implements Initializable {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 
+
                 if(!txtUserLogin.getText().equals("") ){
 
                     btnLogin.setDisable(false);
+                    txtPassLogin2.setText(txtPassLogin.getText());
 
                 }
 
@@ -413,6 +431,25 @@ public class loginPageController implements Initializable {
         });
 
     }
+
+
+    public void testPassLogin2(){
+        txtPassLogin2.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+
+
+
+                    txtPassLogin.setText(txtPassLogin2.getText());
+
+
+
+
+            }
+        });
+
+    }
+
 
 
     public EventHandler<KeyEvent> letter_ValidationForUserName(final Integer max_Lengh) {

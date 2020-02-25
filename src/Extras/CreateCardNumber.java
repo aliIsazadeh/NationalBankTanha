@@ -4,8 +4,10 @@ public class CreateCardNumber {
 
     public static String  createCardNumber(){
 
-      long randomNumber  =  (long) ((Math.random())* Long.parseLong(("9999999999")) );
+        Double x =Math.random();
 
+      long randomNumber  =  (long) ((x)* Long.parseLong(("10000000000")) );
+     //   System.out.println(x);
         String a = randomNumber+"";
 
         //603799 is card CTE amount
@@ -14,7 +16,7 @@ public class CreateCardNumber {
 
 
 
-
+     //   System.out.println(CardID);
         String s = "";
         for (int i = 0; i <16 ; i++) {
             s += CardID.charAt(i)+"";

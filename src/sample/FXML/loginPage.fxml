@@ -148,7 +148,7 @@
                   </LinearGradient>
                </textFill>
                 </CheckBox>
-            <JFXTextField fx:id="txtRegisterPass2" alignment="CENTER_RIGHT" labelFloat="true" layoutX="79.0" layoutY="267.0" prefHeight="25.0" prefWidth="240.0" promptText="رمز عبور انتخاب کنید" visible="false">
+            <JFXTextField fx:id="txtRegisterPass2" alignment="CENTER_RIGHT" labelFloat="true" layoutX="79.0" layoutY="267.0" prefHeight="25.0" prefWidth="240.0" promptText="رمز عبور انتخاب کنید" visible="false" onKeyTyped="#testPass2">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
@@ -172,7 +172,7 @@
                   </LinearGradient>
                </unFocusColor>
                 </JFXTextField>
-                <JFXTextField fx:id="txtPassLogin2" alignment="CENTER_RIGHT" focusColor="#ff001e" layoutX="32.0" layoutY="249.0" prefHeight="29.0" prefWidth="224.0" promptText="رمز عبور" visible="false">
+                <JFXTextField fx:id="txtPassLogin2" alignment="CENTER_RIGHT" focusColor="#ff001e" layoutX="32.0" layoutY="249.0" prefHeight="29.0" prefWidth="224.0" promptText="رمز عبور" visible="false" onKeyTyped="#testPassLogin2">
                     <font>
                         <Font name="System Bold" size="13.0" />
                     </font>
