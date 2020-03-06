@@ -12,6 +12,15 @@ public class Account {
     private String inventory;//مجودی
     private ArrayList<Transaction> transactions;
     private String accountPassword ;
+    private Person person;
+
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
+    }
 
     public String getAccountPassword() {
         return accountPassword;
