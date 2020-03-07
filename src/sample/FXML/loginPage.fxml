@@ -35,7 +35,7 @@
         </HBox>
         <AnchorPane fx:id="registerAnchorPane" layoutX="417.0" layoutY="61.0" prefHeight="506.0" prefWidth="330.0" AnchorPane.rightAnchor="62.0">
             <children>
-                <JFXTextField fx:id="txtRegisterFirstName" alignment="CENTER_RIGHT" focusColor="#3900ff" labelFloat="true" layoutX="221.0" layoutY="115.0" onKeyTyped="#testFirstName" prefHeight="43.0" prefWidth="99.0" promptText="نام">
+                <JFXTextField fx:id="txtRegisterFirstName" alignment="CENTER_RIGHT" focusColor="#3900ff" labelFloat="true" layoutX="206.0" layoutY="115.0" onKeyTyped="#testFirstName" prefHeight="43.0" prefWidth="98.0" promptText="نام">
                     <font>
                         <Font name="System Bold" size="14.0" />
                     </font>
@@ -43,7 +43,7 @@
                   <Tooltip text="فقط حروف فارسی" />
                </tooltip>
                <unFocusColor>
-                  <LinearGradient endX="0.03809523809523803" endY="1.0" startX="0.6476190476190475" startY="1.0">
+                  <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="1.0">
                      <stops>
                         <Stop color="BLACK" />
                         <Stop color="BLACK" offset="0.13793103448275862" />
@@ -53,12 +53,12 @@
                   </LinearGradient>
                </unFocusColor>
                 </JFXTextField>
-                <JFXButton fx:id="btnRegister" disable="true" layoutX="78.0" layoutY="439.0" onMouseClicked="#considerTextsRegister" prefHeight="47.0" prefWidth="232.0" style="-fx-background-color: #27496d; -fx-background-radius: 10;" text="ثبت نام" textFill="#fcf9f9">
+                <JFXButton fx:id="btnRegister" disable="true" layoutX="74.0" layoutY="403.0" onMouseClicked="#considerTextsRegister" prefHeight="47.0" prefWidth="232.0" style="-fx-background-color: #27496d; -fx-background-radius: 10;" text="ثبت نام" textFill="#fcf9f9">
                     <font>
                         <Font name="Bodoni MT Bold" size="17.0" />
                     </font>
                 </JFXButton>
-                <JFXTextField fx:id="txtRegisterLastName" alignment="CENTER_RIGHT" focusColor="#1505ff" labelFloat="true" layoutX="78.0" layoutY="115.0" onKeyTyped="#testLastName" prefHeight="43.0" prefWidth="121.0" promptText="نام خانوادگی">
+                <JFXTextField fx:id="txtRegisterLastName" alignment="CENTER_RIGHT" focusColor="#1505ff" labelFloat="true" layoutX="80.0" layoutY="115.0" onKeyTyped="#testLastName" prefHeight="43.0" prefWidth="105.0" promptText="نام خانوادگی">
                     <font>
                         <Font name="System Bold" size="14.0" />
                     </font>
@@ -66,7 +66,7 @@
                   <Tooltip text="فقط حروف فارسی" />
                </tooltip>
                <unFocusColor>
-                  <LinearGradient endX="0.1047619047619047" endY="1.0" startX="0.4904761904761905" startY="1.0">
+                  <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="1.0">
                      <stops>
                         <Stop color="BLACK" />
                         <Stop color="BLACK" offset="0.13793103448275862" />
@@ -76,12 +76,12 @@
                   </LinearGradient>
                </unFocusColor>
                 </JFXTextField>
-            <JFXTextField fx:id="txtRegisterUserName" alignment="CENTER_RIGHT" focusColor="#00a8cc" labelFloat="true" layoutX="79.0" layoutY="191.0" onKeyTyped="#testUserName" prefHeight="43.0" prefWidth="240.0" promptText="نام کاربری انتخاب کنید">
+            <JFXTextField fx:id="txtRegisterUserName" alignment="CENTER_RIGHT" focusColor="#00a8cc" labelFloat="true" layoutX="74.0" layoutY="185.0" onKeyTyped="#testUserName" prefHeight="43.0" prefWidth="232.0" promptText="نام کاربری انتخاب کنید">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
                <unFocusColor>
-                  <LinearGradient endX="0.0047619047619046895" endY="1.0" startX="0.30000000000000004" startY="1.0">
+                  <LinearGradient endX="0.0047619047619046895" endY="1.0" startX="0.009523809523809545" startY="1.0">
                      <stops>
                         <Stop color="BLACK" />
                         <Stop color="BLACK" offset="0.13793103448275862" />
@@ -96,11 +96,11 @@
                         <Font name="Elephant Italic" size="24.0" />
                     </font>
                 </Label>
-                <Label fx:id="lblFailAlertRegister" alignment="CENTER_RIGHT" layoutX="40.0" layoutY="403.0" prefHeight="29.0" prefWidth="276.0" textFill="RED">
+                <Label fx:id="lblFailAlertRegister" alignment="CENTER_RIGHT" layoutX="54.0" layoutY="364.0" prefHeight="29.0" prefWidth="262.0" textFill="RED">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Label>
-            <JFXPasswordField fx:id="txtRegisterPass" alignment="CENTER_RIGHT" labelFloat="true" layoutX="79.0" layoutY="267.0" onKeyTyped="#testPass" prefHeight="25.0" prefWidth="240.0" promptText="رمز عبور انتخاب کنید">
+            <JFXPasswordField fx:id="txtRegisterPass" alignment="CENTER_RIGHT" labelFloat="true" layoutX="190.0" layoutY="268.0" onKeyTyped="#testPass" prefHeight="29.0" prefWidth="114.0" promptText="رمز عبور انتخاب کنید">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
@@ -108,7 +108,7 @@
                   <Tooltip text="فقط عدد " />
                </tooltip>
                <unFocusColor>
-                  <LinearGradient endX="0.009523809523809462" endY="1.0" startX="0.21904761904761905" startY="1.0">
+                  <LinearGradient endX="0.009523809523809462" endY="1.0" startX="0.019047619047619035" startY="1.0">
                      <stops>
                         <Stop color="BLACK" />
                         <Stop color="BLACK" offset="0.13793103448275862" />
@@ -118,12 +118,12 @@
                   </LinearGradient>
                </unFocusColor>
             </JFXPasswordField>
-            <JFXPasswordField fx:id="txtRegisterPassRepeat" alignment="CENTER_RIGHT" labelFloat="true" layoutX="74.0" layoutY="361.0" onKeyTyped="#testPassRepeat" prefHeight="25.0" prefWidth="240.0" promptText="تکرار رمز عبور">
+            <JFXPasswordField fx:id="txtRegisterPassRepeat" alignment="CENTER_RIGHT" labelFloat="true" layoutX="73.0" layoutY="268.0" onKeyTyped="#testPassRepeat" prefHeight="29.0" prefWidth="114.0" promptText="تکرار رمز عبور">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
                <unFocusColor>
-                  <LinearGradient endX="0.009523809523809462" endY="1.0" startX="0.24761904761904763" startY="1.0">
+                  <LinearGradient endX="0.009523809523809462" endY="1.0" startX="0.019047619047619063" startY="1.0">
                      <stops>
                         <Stop color="BLACK" />
                         <Stop color="BLACK" offset="0.13793103448275862" />
@@ -133,7 +133,7 @@
                   </LinearGradient>
                </unFocusColor>
             </JFXPasswordField>
-                <CheckBox fx:id="checkRegisterPass" alignment="CENTER" contentDisplay="CENTER" layoutX="206.0" layoutY="327.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onMouseClicked="#showPasswordRegister" prefHeight="20.0" prefWidth="114.0" text="نشان دادن رمز">
+                <CheckBox fx:id="checkRegisterPass" alignment="CENTER" contentDisplay="CENTER" layoutX="190.0" layoutY="330.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onMouseClicked="#showPasswordRegister" prefHeight="27.0" prefWidth="114.0" text="نشان دادن رمز">
                     <font>
                         <Font name="System Bold" size="14.0" />
                     </font>
@@ -148,10 +148,18 @@
                   </LinearGradient>
                </textFill>
                 </CheckBox>
-            <JFXTextField fx:id="txtRegisterPass2" alignment="CENTER_RIGHT" labelFloat="true" layoutX="79.0" layoutY="267.0" prefHeight="25.0" prefWidth="240.0" promptText="رمز عبور انتخاب کنید" visible="false" onKeyTyped="#testPass2">
+            <JFXTextField fx:id="txtRegisterPass2" alignment="CENTER_RIGHT" labelFloat="true" layoutX="190.0" layoutY="268.0" onKeyTyped="#testPass2" prefHeight="29.0" prefWidth="114.0" promptText="رمز عبور انتخاب کنید" visible="false">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
+               <unFocusColor>
+                  <LinearGradient startX="0.7333333333333334">
+                     <stops>
+                        <Stop color="BLACK" />
+                        <Stop color="#4d4d4d00" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </unFocusColor>
             </JFXTextField>
             </children>
         </AnchorPane>
@@ -172,7 +180,7 @@
                   </LinearGradient>
                </unFocusColor>
                 </JFXTextField>
-                <JFXTextField fx:id="txtPassLogin2" alignment="CENTER_RIGHT" focusColor="#ff001e" layoutX="32.0" layoutY="249.0" prefHeight="29.0" prefWidth="224.0" promptText="رمز عبور" visible="false" onKeyTyped="#testPassLogin2">
+                <JFXTextField fx:id="txtPassLogin2" alignment="CENTER_RIGHT" focusColor="#ff001e" layoutX="32.0" layoutY="249.0" onKeyTyped="#testPassLogin2" prefHeight="29.0" prefWidth="224.0" promptText="رمز عبور" visible="false">
                     <font>
                         <Font name="System Bold" size="13.0" />
                     </font>
