@@ -121,8 +121,8 @@ public class DBHelper {
         }
 
     }
-
-    public void insertPerson(Person person) {
+////// zaxire objecti az person dar dataBase
+    private void insertPerson(Person person) {
         connectionForPerson();
 
         String name = person.getName();
@@ -149,6 +149,7 @@ public class DBHelper {
         }
         closePerson();
     }
+////// zaxire objecti az Bill dar dataBase
 
     public void insertBill(Bill bill) {
         connectionForBill();
@@ -165,8 +166,9 @@ public class DBHelper {
         }
         closeBill();
     }
-
+////// zaxire objecti az Account dar dataBase
     private void insertAccount(Account account) {
+        insertPerson(account.getPerson());
         connectionForAccount();
         String accountID = account.getAccountNumber() + "";
         String accountType = account.getAccountType();
@@ -183,9 +185,11 @@ public class DBHelper {
         closeAccount();
 
     }
+////// zaxire objecti az Transaction dar dataBase
 
     public void insertTransaction(Transaction transaction) {
         connectionForTransaction();
+
         String type = transaction.getTypeOfTransaction();
         String from = transaction.getFrom().getAccountNumber() + "";
         String To = transaction.getTo().getAccountNumber() + "";
@@ -202,8 +206,8 @@ public class DBHelper {
         closeTransaction();
     }
 
-
-    public ArrayList<Transaction> readAllTransactionForPerson(long id) {
+////xandane tamam tarakonesh haye 1 hesab
+    private ArrayList<Transaction> readAllTransactionForPerson(long id) {
 
 //        ArrayList<Transaction> list = new ArrayList<>();
 //        try {
@@ -230,8 +234,8 @@ public class DBHelper {
 
         return getTransactionsFromDB(getTransactionSQL);
     }
-
-    public ArrayList<Transaction> getTransactionsFromDB(String read) {
+//bonan ishiz olmasin
+    private ArrayList<Transaction> getTransactionsFromDB(String read) {
         connectionForTransaction();
         ArrayList<Transaction> list = new ArrayList<>();
 
@@ -259,6 +263,7 @@ public class DBHelper {
         return list;
     }
 
+    ///xandan tamam tarakonesh haye anjam shode bank
     public ArrayList<Transaction> readAllTransactionForPeople() {
 
         String getTransactionSQL = "SELECT typeOfTransaction  , fromAccount  , ToAccount  , finished  , serial  , dat  , cost FROM transactions ;";
@@ -266,6 +271,7 @@ public class DBHelper {
         return getTransactionsFromDB(getTransactionSQL);
     }
 
+    //xandane gabz
     public Bill readBill(long billingID, long paymentCode) {
         connectionForBill();
         Bill bill = new Bill();
@@ -283,10 +289,11 @@ public class DBHelper {
         closeBill();
         return bill;
     }
-
+///xandane hesab ba estefade az shomare hesab
     public Account readAccount(long accountNumber) {
         connectionForAccount();
         Account account = new Account();
+        account.setPerson(readPerson(accountNumber));
         account.setTransactions(readAllTransactionForPerson(accountNumber));
         String readSQL = "SELECT accountNumber  , typeOfAccount,passForATM  , secondPass  , inventory FROM account where accountNumber = '" + accountNumber + "';";
         try {
@@ -303,7 +310,7 @@ public class DBHelper {
         closeAccount();
         return account;
     }
-
+//xandan tamam hesab haye bnk
     public ArrayList<Account> readAllAccountForPeople() {
         connectionForAccount();
         ArrayList<Account> list = new ArrayList<>();
@@ -327,12 +334,12 @@ public class DBHelper {
         return list;
     }
 
-
-    public Person readPerson(long accountNumber) {
+//bonan da ishiz olmasin
+    private Person readPerson(long accountNumber) {
         connectionForPerson();
         Person person = new Person();
         Account account = new Account();
-        account = readAccount(accountNumber);
+        account.setAccountNumber(accountNumber);
         person.setAccount(account);
 
         String readSQL = "SELECT accountNumber  ,name  , lastName,nationalCode ,phoneNumber ,address ,fatherName  ,dataOFBorn ,placeOfBorn  , job ,gender  ,marriage from person where accountNumber = '" + accountNumber + "';";
@@ -341,7 +348,7 @@ public class DBHelper {
             person.setName(resultSet.getString("name"));
             person.setLastName(resultSet.getString("lastName"));
             person.setAddress(resultSet.getString("address"));
-        //    person.setNationalNumber(("nationalCode"));
+            person.setNationalNumber(resultSet.getLong("nationalCode"));
             person.setPhoneNumber(("phoneNumber"));
             person.setFatherName(resultSet.getString("fatherName"));
             person.setBornTime(resultSet.getString("dataOFBorn"));
@@ -357,9 +364,10 @@ public class DBHelper {
     }
 
 
-
+/// beroz kardan hesab masalan afzayesh mojodi v taghyir ramz v ..
     public void updateAccount(Account account) {
         connectionForAccount();
+        updatePerson(account.getPerson());
         String update = " UPDATE account  set accountNumber ='" + account.getAccountNumber() + "' set typeOfAccount = '" + account.getAccountType() + "' set passForATM '" + account.getPasswordForATM() + "' set secondPass = '" + account.getSecondPassword() + "'  set inventory = '" + account.getInventory() + "';";
         try {
             statementForAccount.executeUpdate(update);
@@ -369,7 +377,7 @@ public class DBHelper {
         closeAccount();
     }//accountNumber  , typeOfAccount,passForATM  , secondPass  , inventory
 
-
+// /// beroz kardan etelaat fard  masalan tagiir telephone v ..
     public void updatePerson(Person person) {
         connectionForPerson();
 
@@ -382,6 +390,7 @@ public class DBHelper {
 
         closePerson();
     }
+// /// beroz kardan gabz   masalan tagiir condition v ..
 
     public void updateBill(Bill bill) {
         connectionForBill();
@@ -438,8 +447,8 @@ public class DBHelper {
         }
     }
 
-    public static void main(String[] args) {
-        new DBHelper();
-    }
+//    public static void main(String[] args) {
+//        new DBHelper();
+//    }
 }
 
