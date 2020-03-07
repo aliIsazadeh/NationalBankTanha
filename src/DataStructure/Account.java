@@ -13,6 +13,9 @@ public class Account {
     private ArrayList<Transaction> transactions;
     private String accountPassword ;
 
+
+
+
     public String getAccountPassword() {
         return accountPassword;
     }

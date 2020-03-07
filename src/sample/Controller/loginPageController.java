@@ -1,5 +1,6 @@
 package sample.Controller;
 
+import DataStructure.Account;
 import DataStructure.Person;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
@@ -77,8 +78,7 @@ public class loginPageController implements Initializable {
 
         translateTransition.setToX(445);
 
-        // movablePane.setTranslateX(-279);
-        //hi
+
 
 
         signInTrans.setVisible(false);
@@ -97,12 +97,12 @@ public class loginPageController implements Initializable {
         FadeTransition fadeSignUpTransAnchorPane = fadeTransition(signUpTrans, Duration.seconds(1), 0, 1);
 
 
-        //sorry mr.Ghader  :)
+
 
         translateTransition.play();
 
         fadeRegisterAnchorPane.play();
-        //registerAnchorPane.setVisible(false);
+
         fadeSignInTransAnchorPane.play();
 
         fadeLoginAnchorPane.play();
@@ -119,7 +119,7 @@ public class loginPageController implements Initializable {
 
         translateTransition.setToX(0);
 
-        //movablePane.setTranslateX(-279);
+
 
 
         FadeTransition fadeRigisterAnchorPane = fadeTransition(registerAnchorPane, Duration.seconds(1), 0, 1);
@@ -129,7 +129,7 @@ public class loginPageController implements Initializable {
         FadeTransition fadeLoginAnchorPane = fadeTransition(loginAnchorPane, Duration.seconds(1), 1, 0);
         FadeTransition fadeSignUpTransAnchorPane = fadeTransition(signUpTrans, Duration.seconds(1), 1, 0);
 
-        //sorry mr.Ghader  :)
+
 
         translateTransition.play();
 
@@ -140,7 +140,7 @@ public class loginPageController implements Initializable {
 
         registerAnchorPane.setVisible(true);
         signInTrans.setVisible(true);
-        // loginAnchorPane.setVisible(false);
+
         signUpTrans.setVisible(false);
 
     }
@@ -285,7 +285,32 @@ public class loginPageController implements Initializable {
 
 
 
+
+
+
+
+
+
     }
+
+    public void createAccount(){
+
+
+        Account account = new Account();
+
+        Person person = new Person();
+        person.setName(txtRegisterFirstName.getText());
+        person.setLastName(txtRegisterLastName.getText());
+
+
+
+
+
+
+    }
+
+
+
 
     public void considerLogin(){
 

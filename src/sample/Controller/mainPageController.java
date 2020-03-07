@@ -563,7 +563,7 @@ public class mainPageController implements Initializable {
                         Stage finalStage = stage;
                         finalStage.setResizable(false);
                         finalStage.initStyle(StageStyle.TRANSPARENT);
-                        stage.setScene(new Scene(root));
+                        stage.setScene(new Scene(root,870,580));
                         stage.show();
                     } catch (IOException e) {
                         e.printStackTrace();
