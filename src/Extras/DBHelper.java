@@ -440,9 +440,9 @@ public class DBHelper {
         }
     }
 
-    public static void main(String[] args) {
-        new DBHelper();
-    }
+//    public static void main(String[] args) {
+//        new DBHelper();
+//    }
 
 
 
