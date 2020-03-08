@@ -368,7 +368,7 @@ public class mainPageController implements Initializable {
 
             addVariable();
 
-            Account account = new Account();
+        //    Account account = new Account();
             btnPersonalInfo.setDisable(false);
             btnAddMoney.setDisable(false);
             btnMinMoney.setDisable(false);
@@ -401,13 +401,13 @@ public class mainPageController implements Initializable {
 
             if (findComboIndex(comboAccount) == 0) {
                 txtAccountType.setText("جاری");
-                account.setAccountType("جاری");
+             //   account.setAccountType("جاری");
             } else if (findComboIndex(comboAccount) == 1) {
                 txtAccountType.setText("قرضا لحسنه");
-                account.setAccountType("قرضا لحسنه");
+              //  account.setAccountType("قرضا لحسنه");
             } else if (findComboIndex(comboAccount) == 2) {
                 txtAccountType.setText("پسنداز");
-                account.setAccountType("پسنداز");
+              //  account.setAccountType("پسنداز");
             }
 
             infoAnchorPane.setVisible(false);
@@ -618,6 +618,15 @@ public class mainPageController implements Initializable {
     }
 
 
+    public void test(Account account){
+
+        account.setAccountType("fffff");
+
+        System.out.println(account.getAccountType());
+        System.out.println(account.getPerson().getName());
+
+
+    }
 
 
     public void initialize(URL location, ResourceBundle resources) {
