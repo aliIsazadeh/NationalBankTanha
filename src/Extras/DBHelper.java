@@ -268,16 +268,15 @@ public class DBHelper {
     }
 
     ///xandane hesab ba estefade az shomare hesab
-    public Account readAccount(long accountNumber) {
+    public Account readAccount(String userName) {
         connectionForBank();
         Account account = new Account();
-        account.setPerson(readPerson(accountNumber));
-        account.setTransactions(readAllTransactionForPerson(accountNumber));
-        String readSQL = "SELECT accountNumber  , typeOfAccount,passForATM  , secondPass  , inventory ,userName FROM account where accountNumber = '" + accountNumber + "';";
-        try {
-            ResultSet resultSet = statementForBank.executeQuery(readSQL);
-            account.setAccountNumber(resultSet.getLong("accountNumber"));
-            account.setPasswordForATM(resultSet.getString("passForATM"));
+
+            String readSQL = "SELECT accountNumber  , typeOfAccount,passForATM  , secondPass  , inventory ,userName FROM account where userName = '" + userName + "';";
+            try {
+                ResultSet resultSet = statementForBank.executeQuery(readSQL);
+                account.setAccountNumber(resultSet.getLong("accountNumber"));
+                account.setPasswordForATM(resultSet.getString("passForATM"));
             account.setAccountType(resultSet.getString("typeOfAccount"));
             account.setSecondPassword(resultSet.getString("secondPass"));
             account.setInventory(resultSet.getString("inventory"));
@@ -286,6 +285,8 @@ public class DBHelper {
             System.out.println(e.getMessage()+"4578/7");
         }
         closeBank();
+        account.setPerson(readPerson(account.getAccountNumber()));
+        account.setTransactions(readAllTransactionForPerson(account.getAccountNumber()));
         return account;
     }
 
