@@ -12,7 +12,16 @@ public class Account {
     private String inventory;//مجودی
     private ArrayList<Transaction> transactions;
     private String accountPassword ;
+    private String  userName;
     private Person person;
+
+    public void setUserName(String  userName) {
+        this.userName = userName;
+    }
+
+    public String  getUserName() {
+        return userName;
+    }
 
     public Person getPerson() {
         return person;
