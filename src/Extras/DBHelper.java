@@ -5,6 +5,7 @@ import DataStructure.Bill;
 import DataStructure.Person;
 import DataStructure.Transaction;
 
+import java.security.PublicKey;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -16,7 +17,7 @@ public class DBHelper {
 
 
 
-    private DBHelper() {
+    public DBHelper() {
         connectionForBank();
         creatTableForPerson();
 
@@ -161,7 +162,8 @@ public class DBHelper {
     }
 
     ////// zaxire objecti az Account dar dataBase
-    private void insertAccount(Account account) {
+
+    public void insertAccount(Account account) {
 
         insertPerson(account.getPerson(), account.getAccountNumber());
         connectionForBank();
