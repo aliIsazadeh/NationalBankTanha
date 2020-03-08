@@ -286,7 +286,7 @@ public class loginPageController implements Initializable {
 
 
 
-
+        createAccount();
 
 
 
@@ -297,10 +297,19 @@ public class loginPageController implements Initializable {
 
 
         Account account = new Account();
-
         Person person = new Person();
-        person.setName(txtRegisterFirstName.getText());
+
+
         person.setLastName(txtRegisterLastName.getText());
+        person.setName(txtRegisterFirstName.getText());
+
+        account.setPerson(person);
+
+
+
+
+        mainPageController mainPageController = new mainPageController();
+       // mainPageController.test(account);
 
 
 

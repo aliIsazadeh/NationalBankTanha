@@ -118,7 +118,7 @@
                   </LinearGradient>
                </unFocusColor>
             </JFXPasswordField>
-            <JFXPasswordField fx:id="txtRegisterPassRepeat" alignment="CENTER_RIGHT" labelFloat="true" layoutX="73.0" layoutY="268.0" onKeyTyped="#testPassRepeat" prefHeight="29.0" prefWidth="114.0" promptText="تکرار رمز عبور">
+            <JFXPasswordField fx:id="txtRegisterPassRepeat" alignment="CENTER_RIGHT" labelFloat="true" layoutX="73.0" layoutY="268.0" onKeyTyped="#testPassRepeat" prefHeight="29.0" prefWidth="105.0" promptText="تکرار رمز عبور">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>

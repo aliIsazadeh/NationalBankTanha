@@ -20,9 +20,9 @@ public class CreateCardNumber {
         String s = "";
         for (int i = 0; i <16 ; i++) {
             s += CardID.charAt(i)+"";
-            if(i==3 || i== 7 || i==11 ||i==15 )
+            if(i==3 || i== 7 || i==11 )
             {
-                s += " ";
+                s += "-";
 
             }
         }
