@@ -29,14 +29,14 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <TextField fx:id="txtAddMoneySecendPass" alignment="CENTER_RIGHT" layoutX="227.0" layoutY="172.0" prefHeight="25.0" prefWidth="149.0" />
+      <TextField fx:id="txtAddMoneySecendPass" alignment="CENTER_RIGHT" layoutX="223.0" layoutY="169.0" prefHeight="27.0" prefWidth="157.0" />
       <Label alignment="CENTER_RIGHT" layoutX="444.0" layoutY="162.0" prefHeight="44.0" prefWidth="110.0" text="رمز دوم کارت بانکی:">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
       <TextField fx:id="txtAddMoneyUniquePass" alignment="CENTER_RIGHT" layoutX="228.0" layoutY="234.0" prefHeight="37.0" prefWidth="149.0" promptText="رمز پویا را وارد کنید..." visible="false" />
-      <Button fx:id="sendUniquePass" layoutX="455.0" layoutY="234.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="89.0" text="ارسال رمز پویا" onMouseClicked="#sendingUniqueCode" />
+      <Button fx:id="sendUniquePass" layoutX="455.0" layoutY="234.0" mnemonicParsing="false" onMouseClicked="#sendingUniqueCode" prefHeight="37.0" prefWidth="89.0" text="ارسال رمز پویا" />
       <Label alignment="CENTER_RIGHT" layoutX="41.0" layoutY="134.0" prefHeight="44.0" prefWidth="157.0" text=" ">
          <font>
             <Font name="System Bold" size="13.0" />

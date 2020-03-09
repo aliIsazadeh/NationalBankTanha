@@ -62,7 +62,11 @@ public class billController implements Initializable {
 
     }
 
+    private void payBillValue(){
 
+
+
+}
 
 
 
