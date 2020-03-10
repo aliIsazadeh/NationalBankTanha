@@ -3,6 +3,7 @@ package sample.Controller;
 import DataStructure.Account;
 import DataStructure.Person;
 import Extras.CreateCardNumber;
+import Extras.DBHelper;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
@@ -36,6 +37,8 @@ public class mainPageController implements Initializable {
     public Label lblFailNotice;
     public JFXButton btnBack;
     private Person person = new Person();
+    private Account account = new Account();
+    DBHelper dbHelper = new DBHelper();
 
 
 
@@ -286,10 +289,12 @@ public class mainPageController implements Initializable {
 
 
 
+
     private void addVariable(){
 
+        dbHelper.readAccount(account.getUserName());
         System.out.println(txtFatherName.getText());
-      //  person.setNationalNumber(Long.parseLong(txtNationalCode.getText()));
+        person.setNationalNumber(Long.parseLong(txtNationalCode.getText()));
         person.setFatherName(txtFatherName.getText());
         LocalDate localData = timePickerBornTime.getValue();
         person.setBornTime(localData.getYear()+","+localData.getMonth()+","+localData.getDayOfMonth());
@@ -313,6 +318,10 @@ public class mainPageController implements Initializable {
             person.setGender("مرد"); }
         if (findComboIndex(comboMarriage)==1){
             person.setGender("زن"); }
+
+        account.setPerson(person);
+        dbHelper.updateAccount(account);
+
 
     }
 

@@ -5,6 +5,7 @@ import DataStructure.Bill;
 import DataStructure.Person;
 import DataStructure.Transaction;
 
+import java.security.PublicKey;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -16,7 +17,7 @@ public class DBHelper {
 
 
 
-    private DBHelper() {
+    public DBHelper() {
         connectionForBank();
         creatTableForPerson();
 
@@ -161,7 +162,8 @@ public class DBHelper {
     }
 
     ////// zaxire objecti az Account dar dataBase
-    private void insertAccount(Account account) {
+
+    public void insertAccount(Account account) {
 
         insertPerson(account.getPerson(), account.getAccountNumber());
         connectionForBank();
@@ -268,16 +270,15 @@ public class DBHelper {
     }
 
     ///xandane hesab ba estefade az shomare hesab
-    public Account readAccount(long accountNumber) {
+    public Account readAccount(String userName) {
         connectionForBank();
         Account account = new Account();
-        account.setPerson(readPerson(accountNumber));
-        account.setTransactions(readAllTransactionForPerson(accountNumber));
-        String readSQL = "SELECT accountNumber  , typeOfAccount,passForATM  , secondPass  , inventory ,userName FROM account where accountNumber = '" + accountNumber + "';";
-        try {
-            ResultSet resultSet = statementForBank.executeQuery(readSQL);
-            account.setAccountNumber(resultSet.getLong("accountNumber"));
-            account.setPasswordForATM(resultSet.getString("passForATM"));
+
+            String readSQL = "SELECT accountNumber  , typeOfAccount,passForATM  , secondPass  , inventory ,userName FROM account where userName = '" + userName + "';";
+            try {
+                ResultSet resultSet = statementForBank.executeQuery(readSQL);
+                account.setAccountNumber(resultSet.getLong("accountNumber"));
+                account.setPasswordForATM(resultSet.getString("passForATM"));
             account.setAccountType(resultSet.getString("typeOfAccount"));
             account.setSecondPassword(resultSet.getString("secondPass"));
             account.setInventory(resultSet.getString("inventory"));
@@ -286,6 +287,8 @@ public class DBHelper {
             System.out.println(e.getMessage()+"4578/7");
         }
         closeBank();
+        account.setPerson(readPerson(account.getAccountNumber()));
+        account.setTransactions(readAllTransactionForPerson(account.getAccountNumber()));
         return account;
     }
 
@@ -440,9 +443,9 @@ public class DBHelper {
         }
     }
 
-    public static void main(String[] args) {
-        new DBHelper();
-    }
+//    public static void main(String[] args) {
+//        new DBHelper();
+//    }
 
 
 

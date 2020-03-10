@@ -2,6 +2,7 @@ package sample.Controller;
 
 import DataStructure.Account;
 import DataStructure.Person;
+import Extras.DBHelper;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import javafx.animation.FadeTransition;
@@ -537,6 +538,23 @@ public class loginPageController implements Initializable {
                 }
             }
         };
+    }
+
+
+    private Person person = new Person();
+    private Account account = new Account();
+    private DBHelper dbHelper = new DBHelper();
+
+    private void addVariable(){
+     person.setName(txtRegisterFirstName.getText());
+     person.setLastName(txtRegisterLastName.getText());
+     account.setPerson(person);
+     account.setUserName(txtRegisterUserName.getText());
+    account.setAccountPassword(txtRegisterPass.getText());
+    dbHelper.insertAccount(account);
+
+
+
     }
 
     public void initialize(URL location, ResourceBundle resources) {
