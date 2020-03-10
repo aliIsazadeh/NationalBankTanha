@@ -9,8 +9,9 @@ public class Transaction {
     private Account to;//مقصد
     private boolean finished;//نتیجه
     private String serialOfTransaction;//شماره
-    private String DateOfTransaction;//تاریخ
+    private  String DateOfTransaction;//تاریخ
     private String costOfTransaction;//میلغ تراکنش
+
 
 
 
@@ -66,7 +67,7 @@ public class Transaction {
         DateOfTransaction = dateOfTransaction;
     }
 
-    public String getCostOfTransaction() {
+    public String getCostOfTransaction(String text) {
         return costOfTransaction;
     }
 

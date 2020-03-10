@@ -1,5 +1,8 @@
 package sample.Controller;
 
+import DataStructure.Account;
+import DataStructure.Transaction;
+import Extras.DBHelper;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
@@ -9,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class addMoneyController implements Initializable {
@@ -20,6 +24,7 @@ public class addMoneyController implements Initializable {
     public TextField txtAddMoneySecendPass;
     public TextField txtAddMoneyUniquePass;
     public Button sendUniquePass;
+
 
 
     private void alert(String message, Label lbl, String color) {
@@ -66,6 +71,23 @@ public class addMoneyController implements Initializable {
                 }
             }
         };
+    }
+
+    Account account = new Account();
+    DBHelper dbHelper = new DBHelper();
+    Transaction transaction = new Transaction();
+
+    boolean addMoney(){
+     dbHelper.insertTransaction(transaction);
+       transaction.getCostOfTransaction(txtAddMoney.getText());
+       transaction.getDateOfTransaction();
+
+
+
+
+
+
+      return transaction.isFinished();
     }
 
     public void initialize(URL location, ResourceBundle resources) {
