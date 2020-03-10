@@ -8,6 +8,7 @@ import DataStructure.Transaction;
 import java.security.PublicKey;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class DBHelper {
     private Connection connectionForBank;
@@ -190,7 +191,7 @@ public class DBHelper {
         String type = transaction.getTypeOfTransaction();
         String from = transaction.getFrom().getAccountNumber() + "";
         String To = transaction.getTo().getAccountNumber() + "";
-        String date = transaction.getDateOfTransaction();
+        Date date = transaction.getDateOfTransaction();
         String cost = transaction.getCostOfTransaction();
         String serial = transaction.getSerialOfTransaction();
         String finished = transaction.isFinished() + "";
@@ -230,7 +231,7 @@ public class DBHelper {
                 transaction.setTo(To);
                 transaction.setFinished(resultSet.getBoolean("finished"));
                 transaction.setSerialOfTransaction(resultSet.getString("serial"));
-                transaction.setDateOfTransaction(resultSet.getString("dat"));
+                transaction.setDateOfTransaction(resultSet.getDate("dat"));
                 transaction.setCostOfTransaction(resultSet.getString("cost"));
                 list.add(transaction);
             }
