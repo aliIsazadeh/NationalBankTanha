@@ -264,12 +264,12 @@ public class loginPageController implements Initializable {
     public void considerTextsRegister() {
 
 
-        if (txtRegisterFirstName.getText().equals("") || txtRegisterLastName.getText().equals("") || txtRegisterPass.getText().equals("") || txtRegisterPassRepeat.getText().equals("")) {
-            alert("لطفا فیلد هارا پر کنید", lblFailAlertRegister, "red");
-        }
+//        if (txtRegisterFirstName.getText().equals("") || txtRegisterLastName.getText().equals("") || txtRegisterPass.getText().equals("") || txtRegisterPassRepeat.getText().equals("")) {
+//            alert("لطفا فیلد هارا پر کنید", lblFailAlertRegister, "red");
+//        }
 
 
-       else  if(!txtRegisterPass.getText().equals(txtRegisterPassRepeat.getText()) && !txtRegisterFirstName.getText().equals("") && !txtRegisterLastName.getText().equals("") ){
+         if(!txtRegisterPass.getText().equals(txtRegisterPassRepeat.getText()) && !txtRegisterFirstName.getText().equals("") && !txtRegisterLastName.getText().equals("") ){
 
             alert("تکرار رمز باید با خود رمز عبور مطابقت داشته باشد...",lblFailAlertRegister,"red");
 
@@ -283,46 +283,20 @@ public class loginPageController implements Initializable {
 
              addVariable();
 
+
+
+
+           /// hi ali
+
         }
 
-        Person person = new Person();
-       person.setName(txtRegisterFirstName.getText());
-       person.setLastName(txtRegisterLastName.getText());
-
-
-
-
-        createAccount();
 
 
 
 
     }
 
-    public void createAccount(){
 
-
-        Account account = new Account();
-        Person person = new Person();
-
-
-        person.setLastName(txtRegisterLastName.getText());
-        person.setName(txtRegisterFirstName.getText());
-
-        account.setPerson(person);
-
-
-
-
-        mainPageController mainPageController = new mainPageController();
-       // mainPageController.test(account);
-
-
-
-
-
-
-    }
 
 
 
