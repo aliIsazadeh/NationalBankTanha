@@ -9,7 +9,7 @@ public class Transaction {
     private Account to;//مقصد
     private boolean finished;//نتیجه
     private String serialOfTransaction;//شماره
-    private  String DateOfTransaction;//تاریخ
+    private  Date DateOfTransaction;//تاریخ
     private String costOfTransaction;//میلغ تراکنش
 
 
@@ -59,15 +59,15 @@ public class Transaction {
         this.serialOfTransaction = serialOfTransaction;
     }
 
-    public String getDateOfTransaction() {
+    public Date getDateOfTransaction() {
         return DateOfTransaction;
     }
 
-    public void setDateOfTransaction(String dateOfTransaction) {
+    public void setDateOfTransaction(Date dateOfTransaction) {
         DateOfTransaction = dateOfTransaction;
     }
 
-    public String getCostOfTransaction(String text) {
+    public String getCostOfTransaction() {
         return costOfTransaction;
     }
 
