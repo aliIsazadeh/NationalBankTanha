@@ -79,8 +79,7 @@ public class addMoneyController implements Initializable {
 
     boolean addMoney(){
      dbHelper.insertTransaction(transaction);
-       transaction.getCostOfTransaction(txtAddMoney.getText());
-       transaction.getDateOfTransaction();
+       transaction.setCostOfTransaction(txtAddMoney.getText());
 
 
 
