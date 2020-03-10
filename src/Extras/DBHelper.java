@@ -16,7 +16,6 @@ public class DBHelper {
     private Statement statementForBank;
 
 
-
     public DBHelper() {
         connectionForBank();
         creatTableForPerson();
@@ -271,20 +270,32 @@ public class DBHelper {
 
     ///xandane hesab ba estefade az shomare hesab
     public Account readAccount(String userName) {
+
+
+        String readSQL = "SELECT accountNumber  , typeOfAccount,passForATM  , secondPass  , inventory ,userName FROM account where userName = '" + userName + "';";
+
+        return getAccount(readSQL);
+    }
+
+    public Account readAccount(long accountNumber) {
+
+        String readSQL = "SELECT accountNumber  , typeOfAccount,passForATM  , secondPass  , inventory ,userName FROM account where accountNumber = '" + accountNumber + "';";
+        return getAccount(readSQL);
+    }
+
+    private Account getAccount(String sql) {
         connectionForBank();
         Account account = new Account();
-
-            String readSQL = "SELECT accountNumber  , typeOfAccount,passForATM  , secondPass  , inventory ,userName FROM account where userName = '" + userName + "';";
-            try {
-                ResultSet resultSet = statementForBank.executeQuery(readSQL);
-                account.setAccountNumber(resultSet.getLong("accountNumber"));
-                account.setPasswordForATM(resultSet.getString("passForATM"));
+        try {
+            ResultSet resultSet = statementForBank.executeQuery(sql);
+            account.setAccountNumber(resultSet.getLong("accountNumber"));
+            account.setPasswordForATM(resultSet.getString("passForATM"));
             account.setAccountType(resultSet.getString("typeOfAccount"));
             account.setSecondPassword(resultSet.getString("secondPass"));
             account.setInventory(resultSet.getString("inventory"));
             account.setUserName(resultSet.getString("userName"));
         } catch (SQLException e) {
-            System.out.println(e.getMessage()+"4578/7");
+            System.out.println(e.getMessage());
         }
         closeBank();
         account.setPerson(readPerson(account.getAccountNumber()));
@@ -341,7 +352,7 @@ public class DBHelper {
             person.setGender(resultSet.getString("gender"));
             person.setMarriage(resultSet.getBoolean("marriage"));
         } catch (SQLException e) {
-            System.out.println(e.getMessage()+"xxx");
+            System.out.println(e.getMessage() + "xxx");
         }
         closeBank();
         return person;
@@ -352,12 +363,12 @@ public class DBHelper {
     public void updateAccount(Account account) {
         connectionForBank();
         updatePerson(account.getPerson());
-        String update = " UPDATE account set accountNumber ='" + account.getAccountNumber() +"' where accountNumber ='"+account.getAccountNumber()+"';";
-        String update1 = "UPDATE account set typeOfAccount = '"+account.getAccountType()+"' where accountNumber ='"+account.getAccountNumber()+"';";
-        String update2 = "UPDATE account set passForATM = '"+account.getPasswordForATM()+"' where accountNumber ='"+account.getAccountNumber()+"';";
-        String update3 = "UPDATE account set secondPass = '"+account.getSecondPassword()+"' where accountNumber ='"+account.getAccountNumber()+"';";
-        String update4 = "UPDATE account set inventory = '"+account.getInventory()+"' where accountNumber ='"+account.getAccountNumber()+"';";
-        String update5= "UPDATE account set userName = '"+account.getUserName()+"' where accountNumber ='"+account.getAccountNumber()+"';";
+        String update = " UPDATE account set accountNumber ='" + account.getAccountNumber() + "' where accountNumber ='" + account.getAccountNumber() + "';";
+        String update1 = "UPDATE account set typeOfAccount = '" + account.getAccountType() + "' where accountNumber ='" + account.getAccountNumber() + "';";
+        String update2 = "UPDATE account set passForATM = '" + account.getPasswordForATM() + "' where accountNumber ='" + account.getAccountNumber() + "';";
+        String update3 = "UPDATE account set secondPass = '" + account.getSecondPassword() + "' where accountNumber ='" + account.getAccountNumber() + "';";
+        String update4 = "UPDATE account set inventory = '" + account.getInventory() + "' where accountNumber ='" + account.getAccountNumber() + "';";
+        String update5 = "UPDATE account set userName = '" + account.getUserName() + "' where accountNumber ='" + account.getAccountNumber() + "';";
 
 
         //accountNumber  , typeOfAccount,passForATM  , secondPass  , inventory ,userName
@@ -380,18 +391,17 @@ public class DBHelper {
 
 
         String update = "UPDATE person  set accountNumber = '" + person.getAccount().getAccountNumber() + "' WHERE accountNumber = '" + person.getAccount().getAccountNumber() + "' ;";
-        String update1 = "UPDATE person  set firstName = '"+person.getName()+"'WHERE accountNumber = '" + person.getAccount().getAccountNumber() + "';";
-        String update2= "UPDATE person  set lastName ='"+person.getLastName()+"';";
-        String update3 = "UPDATE person  set nationalCode ='"+person.getNationalNumber()+"'WHERE accountNumber = '" + person.getAccount().getAccountNumber() + "';";
-        String update4= "UPDATE person  set phoneNumber ='"+person.getPhoneNumber()+"'WHERE accountNumber = '" + person.getAccount().getAccountNumber() + "';";
-        String update5= "UPDATE person  set address ='"+ person.getAddress()+"'WHERE accountNumber = '" + person.getAccount().getAccountNumber() + "';";
-        String update6= "UPDATE person  set fatherName ='"+person.getFatherName()+"'WHERE accountNumber = '" + person.getAccount().getAccountNumber() + "';";
-        String update7 = "UPDATE person  set dataOFBorn ='"+person.getBornTime()+"'WHERE accountNumber = '" + person.getAccount().getAccountNumber() + "';";
-        String update8 = "UPDATE person  set placeOfBorn ='"+person.getBornPlace()+"'WHERE accountNumber = '" + person.getAccount().getAccountNumber() + "';";
-        String update9 = "UPDATE person  set job ='"+person.getJob()+"'WHERE accountNumber = '" + person.getAccount().getAccountNumber() + "';";
-        String update10= "UPDATE person  set gender ='"+person.getGender()+"'WHERE accountNumber = '" + person.getAccount().getAccountNumber() + "'; ";
-        String update11 = "UPDATE person  set marriage = '"+person.isMarriage()+"'WHERE accountNumber = '" + person.getAccount().getAccountNumber() + "';";
-
+        String update1 = "UPDATE person  set firstName = '" + person.getName() + "'WHERE accountNumber = '" + person.getAccount().getAccountNumber() + "';";
+        String update2 = "UPDATE person  set lastName ='" + person.getLastName() + "';";
+        String update3 = "UPDATE person  set nationalCode ='" + person.getNationalNumber() + "'WHERE accountNumber = '" + person.getAccount().getAccountNumber() + "';";
+        String update4 = "UPDATE person  set phoneNumber ='" + person.getPhoneNumber() + "'WHERE accountNumber = '" + person.getAccount().getAccountNumber() + "';";
+        String update5 = "UPDATE person  set address ='" + person.getAddress() + "'WHERE accountNumber = '" + person.getAccount().getAccountNumber() + "';";
+        String update6 = "UPDATE person  set fatherName ='" + person.getFatherName() + "'WHERE accountNumber = '" + person.getAccount().getAccountNumber() + "';";
+        String update7 = "UPDATE person  set dataOFBorn ='" + person.getBornTime() + "'WHERE accountNumber = '" + person.getAccount().getAccountNumber() + "';";
+        String update8 = "UPDATE person  set placeOfBorn ='" + person.getBornPlace() + "'WHERE accountNumber = '" + person.getAccount().getAccountNumber() + "';";
+        String update9 = "UPDATE person  set job ='" + person.getJob() + "'WHERE accountNumber = '" + person.getAccount().getAccountNumber() + "';";
+        String update10 = "UPDATE person  set gender ='" + person.getGender() + "'WHERE accountNumber = '" + person.getAccount().getAccountNumber() + "'; ";
+        String update11 = "UPDATE person  set marriage = '" + person.isMarriage() + "'WHERE accountNumber = '" + person.getAccount().getAccountNumber() + "';";
 
 
         //accountNumber  ,firstName  , lastName,nationalCode ,phoneNumber ,address ,fatherName  ,dataOFBorn ,placeOfBorn  , job ,gender  ,marriage
@@ -446,7 +456,6 @@ public class DBHelper {
 //    public static void main(String[] args) {
 //        new DBHelper();
 //    }
-
 
 
 }
