@@ -429,7 +429,7 @@ public class mainPageController implements Initializable {
             mainAnchorPane.getChildren().addAll(root);
         }
         catch (IOException ex){
-            System.out.println("oh crap!!!");
+            System.out.println("Problem in loading");
         }
 
     }
@@ -443,7 +443,7 @@ public class mainPageController implements Initializable {
             mainAnchorPane.getChildren().addAll(anchorPane);
         }
         catch (IOException ex){
-            System.out.println("oh crap!!!");
+            System.out.println("Problem in loading");
         }
 
 
@@ -457,7 +457,7 @@ public class mainPageController implements Initializable {
             mainAnchorPane.getChildren().addAll(anchorPane);
         }
         catch (IOException ex){
-            System.out.println("oh crap!!!");
+            System.out.println("Problem in loading");
         }
 
 
@@ -471,7 +471,7 @@ public class mainPageController implements Initializable {
             mainAnchorPane.getChildren().addAll(anchorPane);
         }
         catch (IOException ex){
-            System.out.println("oh crap!!!");
+            System.out.println("Problem in loading");
         }
 
 
@@ -485,7 +485,7 @@ public class mainPageController implements Initializable {
             mainAnchorPane.getChildren().addAll(anchorPane);
         }
         catch (IOException ex){
-            System.out.println("oh crap!!!");
+            System.out.println("Problem in loading");
         }
 
 
@@ -498,7 +498,7 @@ public class mainPageController implements Initializable {
             mainAnchorPane.getChildren().addAll(anchorPane);
         }
         catch (IOException ex){
-            System.out.println("oh crap!!!");
+            System.out.println("Problem in loading");
         }
 
 
@@ -513,7 +513,7 @@ public class mainPageController implements Initializable {
             mainAnchorPane.getChildren().addAll(anchorPane);
         }
         catch (IOException ex){
-            System.out.println("oh crap!!!");
+            System.out.println("Problem in loading");
         }
 
 
@@ -527,7 +527,7 @@ public class mainPageController implements Initializable {
             mainAnchorPane.getChildren().addAll(anchorPane);
         }
         catch (IOException ex){
-            System.out.println("oh crap!!!");
+            System.out.println("Problem in loading");
         }
 
 
