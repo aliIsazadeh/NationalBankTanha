@@ -277,6 +277,11 @@ public class loginPageController implements Initializable {
 
        else {
            alert("ثبت نام شما با موفقیت انجام شد.اکنون میتوانید وارد سیستم شوید" , lblSuccessAlert,"green");
+             Person person = new Person();
+             Account account = new Account();
+             DBHelper dbHelper = new DBHelper();
+
+             addVariable();
 
         }
 
@@ -556,6 +561,15 @@ public class loginPageController implements Initializable {
 
 
     }
+    public void addAccount(){
+        person.setName(txtRegisterFirstName.getText());
+        person.setLastName(txtRegisterLastName.getText());
+        account.setPerson(person);
+        account.setUserName(txtRegisterUserName.getText());
+        account.setAccountPassword(txtRegisterPass.getText());
+        dbHelper.insertAccount(account);
+    }
+
 
     public void initialize(URL location, ResourceBundle resources) {
 
