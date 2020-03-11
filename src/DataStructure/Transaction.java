@@ -9,7 +9,7 @@ public class Transaction {
     private Account to;//مقصد
     private boolean finished;//نتیجه
     private String serialOfTransaction;//شماره
-    private  Date DateOfTransaction;//تاریخ
+    private Date DateOfTransaction;//تاریخ
     private String costOfTransaction;//میلغ تراکنش
 
 
