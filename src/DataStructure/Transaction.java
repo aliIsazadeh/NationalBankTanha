@@ -1,6 +1,8 @@
 package DataStructure;
 
-import java.util.Date;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Transaction {
     private String typeOfTransaction;

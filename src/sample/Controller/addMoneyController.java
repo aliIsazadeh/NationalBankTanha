@@ -3,6 +3,7 @@ package sample.Controller;
 import DataStructure.Account;
 import DataStructure.Transaction;
 import Extras.DBHelper;
+import Extras.TransactionSerialProducer;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
@@ -13,6 +14,7 @@ import javafx.scene.input.KeyEvent;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class addMoneyController implements Initializable {
@@ -73,14 +75,22 @@ public class addMoneyController implements Initializable {
         };
     }
 
+    TransactionSerialProducer transactionSerialProducer = new TransactionSerialProducer();
     Account account = new Account();
     DBHelper dbHelper = new DBHelper();
     Transaction transaction = new Transaction();
-
+    Date today = new Date();
     boolean addMoney(){
-     dbHelper.insertTransaction(transaction);
-       transaction.setCostOfTransaction(txtAddMoney.getText());
 
+       transaction.setCostOfTransaction(txtAddMoney.getText());
+        if (account.getSecondPassword().equals(txtAddMoneySecendPass)){
+            transaction.setFinished(true);
+        }else {
+            transaction.setFinished(false);
+        }
+        transaction.setDateOfTransaction((java.sql.Date) today);
+        transaction.setSerialOfTransaction(transactionSerialProducer.serialProducer());
+        dbHelper.insertTransaction(transaction);
 
 
 
@@ -88,6 +98,7 @@ public class addMoneyController implements Initializable {
 
       return transaction.isFinished();
     }
+
 
     public void initialize(URL location, ResourceBundle resources) {
 
