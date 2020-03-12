@@ -42,6 +42,16 @@ public class addMoneyController implements Initializable {
 
         }
 
+        if(addMoney()){
+            alert("عملیات با موفقیت انجام شد",lblAlertAddMoney,"green");
+        }
+        else if(!addMoney()){
+            alert("تراکنش شما ناموفق بود!! ",lblAlertAddMoney,"red");
+
+        }
+
+
+
 
 
     }
