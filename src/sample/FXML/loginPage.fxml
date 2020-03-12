@@ -16,7 +16,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="809.0" xmlns="http://javafx.com/javafx/8.0.221" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.loginPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="809.0" xmlns="http://javafx.com/javafx/8.0.221" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.loginPageController" >
     <children>
         <HBox alignment="CENTER_RIGHT" layoutX="-5.0" prefHeight="29.0" prefWidth="815.0" style="-fx-background-color: #004BA0; -fx-background-radius: 0;" AnchorPane.leftAnchor="-5.0" AnchorPane.rightAnchor="-1.0">
             <children>

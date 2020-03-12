@@ -74,7 +74,7 @@ public class addMoneyController implements Initializable {
             }
         };
     }
-
+    loginPageController loginPage = new loginPageController();
     TransactionSerialProducer transactionSerialProducer = new TransactionSerialProducer();
     Account account = new Account();
     DBHelper dbHelper = new DBHelper();
@@ -85,12 +85,16 @@ public class addMoneyController implements Initializable {
        transaction.setCostOfTransaction(txtAddMoney.getText());
         if (account.getSecondPassword().equals(txtAddMoneySecendPass)){
             transaction.setFinished(true);
+            transaction.setDateOfTransaction((java.sql.Date) today);
+            transaction.setSerialOfTransaction(transactionSerialProducer.serialProducer());
+            dbHelper.insertTransaction(transaction);
+            dbHelper.readAccount(loginPage.txtUserLogin.getText());
+            account.setInventory(String.valueOf(Integer.valueOf(account.getInventory())+Integer.valueOf(txtAddMoney.getText())));
+
         }else {
             transaction.setFinished(false);
         }
-        transaction.setDateOfTransaction((java.sql.Date) today);
-        transaction.setSerialOfTransaction(transactionSerialProducer.serialProducer());
-        dbHelper.insertTransaction(transaction);
+
 
 
 
