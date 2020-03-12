@@ -264,12 +264,12 @@ public class loginPageController implements Initializable {
     public void considerTextsRegister() {
 
 
-//        if (txtRegisterFirstName.getText().equals("") || txtRegisterLastName.getText().equals("") || txtRegisterPass.getText().equals("") || txtRegisterPassRepeat.getText().equals("")) {
-//            alert("لطفا فیلد هارا پر کنید", lblFailAlertRegister, "red");
-//        }
+        if (txtRegisterFirstName.getText().equals("") || txtRegisterLastName.getText().equals("") || txtRegisterPass.getText().equals("") || txtRegisterPassRepeat.getText().equals("")) {
+            alert("لطفا فیلد هارا پر کنید", lblFailAlertRegister, "red");
+        }
 
 
-         if(!txtRegisterPass.getText().equals(txtRegisterPassRepeat.getText()) && !txtRegisterFirstName.getText().equals("") && !txtRegisterLastName.getText().equals("") ){
+        else if(!txtRegisterPass.getText().equals(txtRegisterPassRepeat.getText()) && !txtRegisterFirstName.getText().equals("") && !txtRegisterLastName.getText().equals("") ){
 
             alert("تکرار رمز باید با خود رمز عبور مطابقت داشته باشد...",lblFailAlertRegister,"red");
 
@@ -366,7 +366,7 @@ public class loginPageController implements Initializable {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 
-                if(!txtRegisterFirstName.getText().equals("") &&!txtRegisterUserName.getText().equals("")&&!txtRegisterPassRepeat.getText().equals("")&&!txtRegisterLastName.getText().equals("") ){
+                if(!txtRegisterFirstName.getText().equals("") &&!txtRegisterUserName.getText().equals("")&&!txtRegisterPassRepeat.getText().equals("")&&!txtRegisterLastName.getText().equals("")){
 
                     txtRegisterPass2.setText(txtRegisterPass.getText());
                     btnRegister.setDisable(false);
