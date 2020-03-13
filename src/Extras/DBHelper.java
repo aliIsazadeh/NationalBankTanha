@@ -26,7 +26,7 @@ public class DBHelper {
         createTableForTransaction();
 
         createTableForBill();
-
+        closeBank();
     }
 
     private void connectionForBank() {
@@ -454,9 +454,9 @@ public class DBHelper {
         }
     }
 
-//    public static void main(String[] args) {
-//        new DBHelper();
-//    }
+    public static void main(String[] args) {
+        new DBHelper();
+    }
 
 
 }
