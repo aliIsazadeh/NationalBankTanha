@@ -94,36 +94,37 @@ public class mainPageController implements Initializable {
 
     private void addVariable(){
 
-        dbHelper.readAccount(account.getUserName());
+        loginPageController loginPageController = new loginPageController();
+
         System.out.println(txtFatherName.getText());
-        person.setNationalNumber(Long.parseLong(txtNationalCode.getText()));
-        person.setFatherName(txtFatherName.getText());
+        loginPageController.person.setNationalNumber(Long.parseLong(txtNationalCode.getText()));
+        loginPageController.person.setFatherName(txtFatherName.getText());
         LocalDate localData = timePickerBornTime.getValue();
-        person.setBornTime(localData.getYear()+","+localData.getMonth()+","+localData.getDayOfMonth());
-        person.setBornPlace(txtBornPlace.getText());
-        person.setJob(txtJob.getText());
-        person.setAddress(txtAddress.getText());
+        loginPageController.person.setBornTime(localData.getYear()+","+localData.getMonth()+","+localData.getDayOfMonth());
+        loginPageController.person.setBornPlace(txtBornPlace.getText());
+        loginPageController.person.setJob(txtJob.getText());
+        loginPageController.person.setAddress(txtAddress.getText());
 
         if (findComboIndex(comboMarriage)==0){
-            person.setMarriage(false); }
+            loginPageController.person.setMarriage(false); }
         if (findComboIndex(comboMarriage)==1){
-            person.setMarriage(true); }
+            loginPageController.person.setMarriage(true); }
 
         if (findComboIndex(comboAccount)==0){
-            person.setGender("جاری"); }
+            loginPageController.account.setAccountType("جاری"); }
         if (findComboIndex(comboAccount)==1){
-            person.setGender("قرض الحسنه"); }
+            loginPageController.account.setAccountType("قرض الحسنه"); }
         if (findComboIndex(comboAccount)==2){
-            person.setGender("پسنداز"); }
+            loginPageController.account.setAccountType("پسنداز"); }
 
         if (findComboIndex(comboMarriage)==0){
-            person.setGender("مرد"); }
+            loginPageController.person.setGender("مرد"); }
         if (findComboIndex(comboMarriage)==1){
-            person.setGender("زن"); }
+            loginPageController.person.setGender("زن"); }
 
-        account.setPerson(person);
-        dbHelper.updateAccount(account);
 
+        loginPageController.account.setPerson(loginPageController.person);
+        dbHelper.insertAccount(account);
 
     }
 

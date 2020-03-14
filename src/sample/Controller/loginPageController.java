@@ -520,29 +520,21 @@ public class loginPageController implements Initializable {
     }
 
 
-    private Person person = new Person();
-    private Account account = new Account();
+     Person person = new Person();
+     Account account = new Account();
     private DBHelper dbHelper = new DBHelper();
 
     private void addVariable(){
      person.setName(txtRegisterFirstName.getText());
      person.setLastName(txtRegisterLastName.getText());
-     account.setPerson(person);
      account.setUserName(txtRegisterUserName.getText());
-    account.setAccountPassword(txtRegisterPass.getText());
-    dbHelper.insertAccount(account);
+     account.setAccountPassword(txtRegisterPass.getText());
+
 
 
 
     }
-    public void addAccount(){
-        person.setName(txtRegisterFirstName.getText());
-        person.setLastName(txtRegisterLastName.getText());
-        account.setPerson(person);
-        account.setUserName(txtRegisterUserName.getText());
-        account.setAccountPassword(txtRegisterPass.getText());
-        dbHelper.insertAccount(account);
-    }
+
 
 
     public void initialize(URL location, ResourceBundle resources) {
