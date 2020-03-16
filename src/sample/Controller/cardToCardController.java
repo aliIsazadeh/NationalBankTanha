@@ -33,6 +33,7 @@ public class cardToCardController implements Initializable {
     public JFXTextField txtCardToCardUniquePass;
     public Button btnSendUniqueCodeCardToCard;
     public JFXTextField txtMoneyCardToCard;
+    public JFXTextField txtSecondPass;
     private DBHelper dbHelper;
 
     private void alert(String message, Label lbl, String color) {
@@ -51,7 +52,7 @@ public class cardToCardController implements Initializable {
         } else if (account == null) {
             alert("حسابی با این مشحصات وجود ندارد", lblAlertCardToCard, "red");
         } else {
-            alert(account.getPerson().getName(), lblAlertCardToCard, "WHITE");
+            txtDescribeDestinationCard.setText(account.getPerson().getName());
         }
     }
 
@@ -60,7 +61,14 @@ public class cardToCardController implements Initializable {
         long accountNumber = Long.parseLong(DestinationCardNumber.getText());
         dbHelper = new DBHelper();
         Account to = dbHelper.readAccount(accountNumber);
+        //TODO بررسی رمز یکبار مصرف
+        if (from.getSecondPassword().equals(txtSecondPass.getText()))
         doTransaction(to, from);
+        else if (txtSecondPass.getText().equals("")){
+            alert("رمز دوم خود را وارد کنید" ,lblAlertCardToCard,"red");
+        } else if (!txtSecondPass.getText().equals(from.getSecondPassword())){
+            alert("رمز دوم اشتباه است" ,lblAlertCardToCard,"red");
+        }
 
     }
 
@@ -80,6 +88,8 @@ public class cardToCardController implements Initializable {
             dbHelper.updateAccount(from);
         } else {
             creatTransaction(to, from, transaction, money, false);
+            alert("موجودی کافی نمیباشد", lblAlertCardToCard, "WHITE");
+
         }
     }
 

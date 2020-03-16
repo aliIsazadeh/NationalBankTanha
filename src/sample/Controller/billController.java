@@ -1,5 +1,10 @@
 package sample.Controller;
 
+import DataStructure.Account;
+import DataStructure.Bill;
+import DataStructure.Transaction;
+import Extras.DBHelper;
+import Extras.TransactionSerialProducer;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
@@ -21,10 +26,9 @@ public class billController implements Initializable {
     public Label billAlertLabel;
     private TransactionSerialProducer transactionSerialProducer = new TransactionSerialProducer();
     private Transaction transaction = new Transaction();
-    DBHelper dbHelper = new DBHelper();
-    Account account = new Account();
-    Bill bill = dbHelper.readBill(Long.parseLong(txtBillNumber.getText()), Long.parseLong(txtBillCost.getText()));
-
+    private DBHelper dbHelper = new DBHelper();
+    private Account account = new Account();
+    private Bill bill = dbHelper.readBill(Long.parseLong(txtBillNumber.getText()), Long.parseLong(txtBillCost.getText()));
 
 
     public EventHandler<KeyEvent> numeric_Validation(final Integer max_Lengh) {
@@ -35,13 +39,13 @@ public class billController implements Initializable {
                 if (txt_TextField.getText().length() >= max_Lengh) {
                     e.consume();
                 }
-                if(e.getCharacter().matches("[0-9.]")){
-                    if(txt_TextField.getText().contains(".") && e.getCharacter().matches("[.]")){
+                if (e.getCharacter().matches("[0-9.]")) {
+                    if (txt_TextField.getText().contains(".") && e.getCharacter().matches("[.]")) {
                         e.consume();
-                    }else if(txt_TextField.getText().length() == 0 && e.getCharacter().matches("[.]")){
+                    } else if (txt_TextField.getText().length() == 0 && e.getCharacter().matches("[.]")) {
                         e.consume();
                     }
-                }else{
+                } else {
                     e.consume();
                 }
             }
@@ -55,33 +59,28 @@ public class billController implements Initializable {
     }
 
 
-    public void payBill(){
-        if(txtBillNumber.getText().equals("")||txtPayNumber.getText().equals("")||txtBillCost.getText().equals("")||txtSecendPassForBill.getText().equals("")||txtUniquePassForBill.getText().equals(""))
-        {
+    public void payBill() {
+        if (txtBillNumber.getText().equals("") || txtPayNumber.getText().equals("") ||  txtSecendPassForBill.getText().equals("") || txtUniquePassForBill.getText().equals("")) {
             alert("لطفا فیلد هارا پرکنید", billAlertLabel, "red");
         }
 
 
+    }
+
+    private void payBillValue() {
 
 
     }
-
-    private void payBillValue(){
-
-
-
-}
-
 
 
     public void initialize(URL location, ResourceBundle resources) {
 
 
-        txtBillNumber.addEventFilter(KeyEvent.KEY_TYPED , numeric_Validation(15));
-        txtPayNumber.addEventFilter(KeyEvent.KEY_TYPED , numeric_Validation(15));
-        txtBillCost.addEventFilter(KeyEvent.KEY_TYPED , numeric_Validation(15));
-        txtSecendPassForBill.addEventFilter(KeyEvent.KEY_TYPED , numeric_Validation(4));
-        txtUniquePassForBill.addEventFilter(KeyEvent.KEY_TYPED , numeric_Validation(4));
+        txtBillNumber.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(15));
+        txtPayNumber.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(15));
+        txtBillCost.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(15));
+        txtSecendPassForBill.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(4));
+        txtUniquePassForBill.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(4));
 
     }
 

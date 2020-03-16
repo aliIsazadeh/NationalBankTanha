@@ -13,7 +13,7 @@
       <AnchorPane fx:id="cardTocardAncorPane" layoutX="38.0" layoutY="43.0" prefHeight="309.0" prefWidth="324.0" visible="true">
          <children>
             <TextArea fx:id="txtCardToCardSubject" layoutX="68.0" layoutY="183.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="37.0" prefWidth="188.0" promptText="عنوان یا موضوع واریز وجه" />
-            <JFXTextField alignment="CENTER_RIGHT" labelFloat="true" layoutX="68.0" layoutY="84.0" prefHeight="25.0" prefWidth="188.0" promptText="رمز دوم خود را وارد کنید">
+            <JFXTextField fx:id="txtSecondPass" alignment="CENTER_RIGHT" labelFloat="true" layoutX="68.0" layoutY="84.0" prefHeight="25.0" prefWidth="188.0" promptText="رمز دوم خود را وارد کنید">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
