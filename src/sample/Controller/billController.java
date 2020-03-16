@@ -12,14 +12,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class billController implements Initializable {
-
-
-
 
 
     public Button considerBill;
@@ -36,8 +35,8 @@ public class billController implements Initializable {
     public Label lblBillCost;
 
     private TransactionSerialProducer transactionSerialProducer = new TransactionSerialProducer();
-    private Transaction transaction = new Transaction();
-    private DBHelper dbHelper = new DBHelper();
+    private Transaction transaction;
+    private DBHelper dbHelper;
     private Account account = new Account();
     private Bill bill = dbHelper.readBill(Long.parseLong(txtBillNumber.getText()), Long.parseLong(txtBillCost.getText()));
 
@@ -71,7 +70,7 @@ public class billController implements Initializable {
 
 
     public void payBill() {
-        if (txtBillNumber.getText().equals("") || txtPayNumber.getText().equals("") ||  txtSecendPassForBill.getText().equals("") || txtUniquePassForBill.getText().equals("")) {
+        if (txtBillNumber.getText().equals("") || txtPayNumber.getText().equals("") || txtSecendPassForBill.getText().equals("") || txtUniquePassForBill.getText().equals("")) {
             alert("لطفا فیلد هارا پرکنید", billAlertLabel, "red");
         }
 
@@ -83,11 +82,25 @@ public class billController implements Initializable {
 
     }
 
-    public void considerBill(){
-
-        if(txtBillNumber.getText().equals("")||txtPayNumber.getText().equals(""))
-        {
+    public void considerBill() {
+        dbHelper = new DBHelper();
+        if (txtBillNumber.getText().equals("") || txtPayNumber.getText().equals("")) {
             alert("لطفا فیلد هارا پرکنید", billAlertLabel, "red");
+        } else if (dbHelper.readBill(Long.parseLong(txtBillNumber.getText()), Long.parseLong(txtPayNumber.getText())) == null) {
+            alert("قبضی با این مشخصات وجود ند", billAlertLabel, "red");
+
+        } else {
+            Bill bill = dbHelper.readBill(Long.parseLong(txtBillNumber.getText()), Long.parseLong(txtPayNumber.getText()));
+            Account account = new loginPageController().account;
+            txtBillCost.setText(bill.getCostOfBill() + "");
+
+            sendUniquePass.setVisible(true);
+            PayBill.setVisible(true);
+            txtBillCost.setVisible(true);
+            txtSecendPassForBill.setVisible(true);
+            txtUniquePassForBill.setVisible(true);
+            lblBillCost.setVisible(true);
+
         }
 
         // hi hossein read my message :D
@@ -95,20 +108,36 @@ public class billController implements Initializable {
         // if bill in DB exist
         // textFields and buttons will be appear
 
-//        sendUniquePass.setVisible(true);
-//        PayBill.setVisible(true);
-//        txtBillCost.setVisible(true);
-//        txtSecendPassForBill.setVisible(true);
-//        txtUniquePassForBill.setVisible(true);
-//        lblBillCost.setVisible(true);
-
-
 
 
 
     }
 
+    public void doTransaction(Bill bill, Account account) {
+        dbHelper = new DBHelper();
+        if (bill.getCostOfBill()>Long.parseLong(account.getInventory())){
+            alert("موجودی کافی نیست!", billAlertLabel, "red");
+            creatTransaction(bill.getCostOfBill() , false);
 
+        }else {
+            bill.setCondition("پردخت شده");
+            long money = Long.parseLong(account.getInventory());
+            money -= bill.getCostOfBill();
+            account.setInventory(String.valueOf(money));
+            dbHelper.updateAccount(account);
+            creatTransaction(bill.getCostOfBill() , true);
+        }
+    }
+    public void creatTransaction(long money, boolean b){
+         transaction = new Transaction();
+         transaction.setDateOfTransaction(new Date());
+         transaction.setCostOfTransaction(String.valueOf(money));
+         transaction.setSerialOfTransaction(new TransactionSerialProducer().serialProducer());
+         transaction.setFinished(b);
+         transaction.setTypeOfTransaction("پرداخت قبض");
+         dbHelper = new DBHelper();
+         dbHelper.insertTransaction(transaction);
+    }
 
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -121,4 +150,26 @@ public class billController implements Initializable {
 
     }
 
+    public void doTransaction(MouseEvent mouseEvent) {
+        //        sendUniquePass.setVisible(true);
+//        PayBill.setVisible(true);
+//        txtBillCost.setVisible(true);
+//        txtSecendPassForBill.setVisible(true);
+//        txtUniquePassForBill.setVisible(true);
+//        lblBillCost.setVisible(true);
+
+        Account account = new loginPageController().account;
+        Bill bill = dbHelper.readBill(Long.parseLong(txtBillNumber.getText()), Long.parseLong(txtPayNumber.getText()));
+
+        if (txtSecendPassForBill.getText().equals("") || txtUniquePassForBill.getText().equals("")){
+            alert("رمز دوم با پویای خود را وارد کنید", billAlertLabel, "red");
+
+        }else if (!txtSecendPassForBill.getText().equals(account.getSecondPassword())){
+            alert("رمز دوم اشتباه است", billAlertLabel, "red");
+
+        }else{
+            doTransaction(bill,account);
+        }
+
+    }
 }
