@@ -10,25 +10,30 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="723.0" style="-fx-background-color: #AAB6FE; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.cardToCardController">
    <children>
-      <AnchorPane layoutX="38.0" layoutY="43.0" prefHeight="309.0" prefWidth="324.0" visible="false">
+      <AnchorPane fx:id="cardTocardAncorPane" layoutX="38.0" layoutY="43.0" prefHeight="309.0" prefWidth="324.0" visible="false">
          <children>
-            <TextArea fx:id="txtCardToCardSubject" layoutX="68.0" layoutY="153.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="67.0" prefWidth="188.0" promptText="عنوان یا موضوع واریز وجه" />
-            <JFXTextField alignment="CENTER_RIGHT" labelFloat="true" layoutX="80.0" layoutY="18.0" prefHeight="21.0" prefWidth="164.0" promptText="رمز دوم خود را وارد کنید">
+            <TextArea fx:id="txtCardToCardSubject" layoutX="68.0" layoutY="183.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="37.0" prefWidth="188.0" promptText="عنوان یا موضوع واریز وجه" />
+            <JFXTextField alignment="CENTER_RIGHT" labelFloat="true" layoutX="68.0" layoutY="84.0" prefHeight="25.0" prefWidth="188.0" promptText="رمز دوم خود را وارد کنید">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="txtCardToCardUniquePass" alignment="CENTER_RIGHT" labelFloat="true" layoutX="80.0" layoutY="84.0" prefHeight="21.0" prefWidth="164.0" promptText="رمز پویا">
+            <JFXTextField fx:id="txtCardToCardUniquePass" alignment="CENTER_RIGHT" labelFloat="true" layoutX="174.0" layoutY="142.0" prefHeight="25.0" prefWidth="82.0" promptText="رمز پویا">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </JFXTextField>
-            <Button fx:id="btnSendUniqueCodeCardToCard" layoutX="114.0" layoutY="66.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="96.0" text="ارسال رمز پویا" />
+            <Button fx:id="btnSendUniqueCodeCardToCard" layoutX="68.0" layoutY="136.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="96.0" text="ارسال رمز پویا" />
             <JFXButton fx:id="btnConfirmCardToCard" layoutX="109.0" layoutY="239.0" prefHeight="53.0" prefWidth="106.0" style="-fx-background-color: #000000;" text="تایید واریز" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </JFXButton>
+            <JFXTextField fx:id="txtMoneyCardToCard" alignment="CENTER_RIGHT" layoutX="70.0" layoutY="29.0" prefHeight="25.0" prefWidth="188.0" promptText="مبلغ مورد نظر را به تومان وارد کنید">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </JFXTextField>
          </children>
       </AnchorPane>
       <AnchorPane layoutX="395.0" layoutY="19.0" prefHeight="356.0" prefWidth="306.0" style="-fx-border-color: #ffffff; -fx-background-radius: 5;">

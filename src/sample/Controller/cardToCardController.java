@@ -5,8 +5,10 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -20,6 +22,10 @@ public class cardToCardController implements Initializable {
     public JFXButton btnSearchDestinationCard;
     public TextArea txtDescribeDestinationCard;
     public Label lblAlertCardToCard;
+    public AnchorPane cardTocardAncorPane;
+    public JFXTextField txtCardToCardUniquePass;
+    public Button btnSendUniqueCodeCardToCard;
+    public JFXTextField txtMoneyCardToCard;
 
 
     private void alert(String message, Label lbl, String color) {
