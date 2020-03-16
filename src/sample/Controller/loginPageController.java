@@ -80,10 +80,8 @@ public class loginPageController implements Initializable {
         translateTransition.setToX(445);
 
 
-
-
         signInTrans.setVisible(false);
-        alert("",lblSuccessAlert , "green");
+        alert("", lblSuccessAlert, "green");
 
 
         FadeTransition fadeRegisterAnchorPane = fadeTransition(registerAnchorPane, Duration.seconds(1), 1, 0);
@@ -96,8 +94,6 @@ public class loginPageController implements Initializable {
 
         FadeTransition fadeLoginAnchorPane = fadeTransition(loginAnchorPane, Duration.seconds(1), 0, 1);
         FadeTransition fadeSignUpTransAnchorPane = fadeTransition(signUpTrans, Duration.seconds(1), 0, 1);
-
-
 
 
         translateTransition.play();
@@ -121,15 +117,12 @@ public class loginPageController implements Initializable {
         translateTransition.setToX(0);
 
 
-
-
         FadeTransition fadeRigisterAnchorPane = fadeTransition(registerAnchorPane, Duration.seconds(1), 0, 1);
         FadeTransition fadeSignInTransAnchorPane = fadeTransition(signInTrans, Duration.seconds(1), 0, 1);
 
 
         FadeTransition fadeLoginAnchorPane = fadeTransition(loginAnchorPane, Duration.seconds(1), 1, 0);
         FadeTransition fadeSignUpTransAnchorPane = fadeTransition(signUpTrans, Duration.seconds(1), 1, 0);
-
 
 
         translateTransition.play();
@@ -148,47 +141,37 @@ public class loginPageController implements Initializable {
 
     public void loadMainPage() {
 
-            if (txtUserLogin.getText().equals("") && txtPassLogin.getText().equals("")) {
+        if (txtUserLogin.getText().equals("") && txtPassLogin.getText().equals("")) {
 
-                alert("لطفا نام کاربری و رمز عبور را وارد کنید.", lblFailLogin, "red");
+            alert("لطفا نام کاربری و رمز عبور را وارد کنید.", lblFailLogin, "red");
 
 
+        } else if (!txtUserLogin.getText().equals("") && txtPassLogin.getText().equals("")) {
+            alert("لطفا رمز عبور را وارد کنید", lblFailLogin, "red");
+
+        } else if (txtUserLogin.getText().equals("") && !txtPassLogin.getText().equals("")) {
+            alert("لطفا نام کاربری را وارد کنید", lblFailLogin, "red");
+        } else if (!txtUserLogin.getText().equals(txtRegisterUserName.getText()) || !txtPassLogin.getText().equals(txtRegisterPass.getText())) {
+            alert("رمز عبور یا نام کاربری اشتباه است", lblFailLogin, "red");
+        } else if (txtUserLogin.getText().equals(txtRegisterUserName.getText()) && (txtPassLogin.getText().equals(txtRegisterPass.getText()) || txtPassLogin.getText().equals(txtRegisterPass2.getText()))) {
+
+            Parent root;
+            try {
+                Stage stage = (Stage) btnLogin.getScene().getWindow();
+                stage.close();
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/sample/FXML/mainPage.fxml"));
+                root = loader.load();
+                stage = new Stage();
+                Stage finalStage = stage;
+                finalStage.setResizable(false);
+                finalStage.initStyle(StageStyle.TRANSPARENT);
+                stage.setScene(new Scene(root));
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-            else if(!txtUserLogin.getText().equals("") && txtPassLogin.getText().equals("")){
-                alert("لطفا رمز عبور را وارد کنید" , lblFailLogin , "red");
 
-            }
-            else if(txtUserLogin.getText().equals("") && !txtPassLogin.getText().equals("")){
-                alert("لطفا نام کاربری را وارد کنید" , lblFailLogin , "red");
-            }
-
-            else if(!txtUserLogin.getText().equals(txtRegisterUserName.getText()) || !txtPassLogin.getText().equals(txtRegisterPass.getText())  ){
-                alert("رمز عبور یا نام کاربری اشتباه است" , lblFailLogin , "red");
-            }
-
-
-
-
-
-            else if(txtUserLogin.getText().equals(txtRegisterUserName.getText())&&(    txtPassLogin.getText().equals(txtRegisterPass.getText()) ||txtPassLogin.getText().equals(txtRegisterPass2.getText())   )){
-
-                Parent root;
-                try {
-                    Stage stage = (Stage) btnLogin.getScene().getWindow();
-                    stage.close();
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/sample/FXML/mainPage.fxml"));
-                    root = loader.load();
-                    stage = new Stage();
-                    Stage finalStage = stage;
-                    finalStage.setResizable(false);
-                    finalStage.initStyle(StageStyle.TRANSPARENT);
-                    stage.setScene(new Scene(root));
-                    stage.show();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-            }
+        }
     }
 
 
@@ -266,77 +249,61 @@ public class loginPageController implements Initializable {
 
         if (txtRegisterFirstName.getText().equals("") || txtRegisterLastName.getText().equals("") || txtRegisterPass.getText().equals("") || txtRegisterPassRepeat.getText().equals("")) {
             alert("لطفا فیلد هارا پر کنید", lblFailAlertRegister, "red");
-        }
+        } else if (!txtRegisterPass.getText().equals(txtRegisterPassRepeat.getText()) && !txtRegisterFirstName.getText().equals("") && !txtRegisterLastName.getText().equals("")) {
+
+            alert("تکرار رمز باید با خود رمز عبور مطابقت داشته باشد...", lblFailAlertRegister, "red");
+
+        } else {
+            alert("ثبت نام شما با موفقیت انجام شد.اکنون میتوانید وارد سیستم شوید", lblSuccessAlert, "green");
+            Person person = new Person();
+            Account account = new Account();
+            DBHelper dbHelper = new DBHelper();
+
+            addVariable();
 
 
-        else if(!txtRegisterPass.getText().equals(txtRegisterPassRepeat.getText()) && !txtRegisterFirstName.getText().equals("") && !txtRegisterLastName.getText().equals("") ){
-
-            alert("تکرار رمز باید با خود رمز عبور مطابقت داشته باشد...",lblFailAlertRegister,"red");
-
-        }
-
-       else {
-           alert("ثبت نام شما با موفقیت انجام شد.اکنون میتوانید وارد سیستم شوید" , lblSuccessAlert,"green");
-             Person person = new Person();
-             Account account = new Account();
-             DBHelper dbHelper = new DBHelper();
-
-             addVariable();
-
-
-
-
-           /// hi ali
+            /// hi ali
 
         }
-
-
-
 
 
     }
 
 
+    public void considerLogin() {
 
-
-
-
-    public void considerLogin(){
-
-        if(txtUserLogin.getText().equals("")&& txtPassLogin.getText().equals("")){
-            alert( "لطفا نام کاربری و رمز عبور را وارد کنید." , lblFailLogin , "red");
+        if (txtUserLogin.getText().equals("") && txtPassLogin.getText().equals("")) {
+            alert("لطفا نام کاربری و رمز عبور را وارد کنید.", lblFailLogin, "red");
         }
 
     }
 
-    public void testFirstName(){
+    public void testFirstName() {
         txtRegisterFirstName.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 
-             if(txtRegisterFirstName.getText().contains("s"))
+                if (txtRegisterFirstName.getText().contains("s"))
 
 
+                    if (!txtRegisterLastName.getText().equals("") && !txtRegisterPass.getText().equals("") && !txtRegisterPassRepeat.getText().equals("") && !txtRegisterUserName.getText().equals("")) {
 
-             if(!txtRegisterLastName.getText().equals("") &&!txtRegisterPass.getText().equals("")&&!txtRegisterPassRepeat.getText().equals("")&&!txtRegisterUserName.getText().equals("") ){
-
-                 btnRegister.setDisable(false);
-             }
+                        btnRegister.setDisable(false);
+                    }
 
 
             }
         });
 
 
-
     }
 
-    public void testLastName(){
+    public void testLastName() {
         txtRegisterLastName.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 
-                if(!txtRegisterFirstName.getText().equals("") &&!txtRegisterPass.getText().equals("")&&!txtRegisterPassRepeat.getText().equals("")&&!txtRegisterUserName.getText().equals("") ){
+                if (!txtRegisterFirstName.getText().equals("") && !txtRegisterPass.getText().equals("") && !txtRegisterPassRepeat.getText().equals("") && !txtRegisterUserName.getText().equals("")) {
 
                     btnRegister.setDisable(false);
                 }
@@ -346,12 +313,12 @@ public class loginPageController implements Initializable {
         });
     }
 
-    public void testUserName(){
+    public void testUserName() {
         txtRegisterUserName.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 
-                if(!txtRegisterFirstName.getText().equals("") &&!txtRegisterPass.getText().equals("")&&!txtRegisterPassRepeat.getText().equals("")&&!txtRegisterLastName.getText().equals("") ){
+                if (!txtRegisterFirstName.getText().equals("") && !txtRegisterPass.getText().equals("") && !txtRegisterPassRepeat.getText().equals("") && !txtRegisterLastName.getText().equals("")) {
 
                     btnRegister.setDisable(false);
                 }
@@ -361,12 +328,13 @@ public class loginPageController implements Initializable {
         });
 
     }
-    public void testPass(){
+
+    public void testPass() {
         txtRegisterPass.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 
-                if(!txtRegisterFirstName.getText().equals("") &&!txtRegisterUserName.getText().equals("")&&!txtRegisterPassRepeat.getText().equals("")&&!txtRegisterLastName.getText().equals("")){
+                if (!txtRegisterFirstName.getText().equals("") && !txtRegisterUserName.getText().equals("") && !txtRegisterPassRepeat.getText().equals("") && !txtRegisterLastName.getText().equals("")) {
 
                     txtRegisterPass2.setText(txtRegisterPass.getText());
                     btnRegister.setDisable(false);
@@ -379,12 +347,12 @@ public class loginPageController implements Initializable {
     }
 
 
-    public void testPass2(){
+    public void testPass2() {
         txtRegisterPass2.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 
-               txtRegisterPass.setText(txtRegisterPass2.getText());
+                txtRegisterPass.setText(txtRegisterPass2.getText());
 
             }
         });
@@ -392,12 +360,12 @@ public class loginPageController implements Initializable {
     }
 
 
-    public void testPassRepeat(){
+    public void testPassRepeat() {
         txtRegisterPassRepeat.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 
-                if(!txtRegisterFirstName.getText().equals("") &&!txtRegisterUserName.getText().equals("")&&!txtRegisterPass.getText().equals("")&&!txtRegisterLastName.getText().equals("") ){
+                if (!txtRegisterFirstName.getText().equals("") && !txtRegisterUserName.getText().equals("") && !txtRegisterPass.getText().equals("") && !txtRegisterLastName.getText().equals("")) {
 
 
                     btnRegister.setDisable(false);
@@ -410,12 +378,12 @@ public class loginPageController implements Initializable {
 
     }
 
-    public void testUserLogin(){
+    public void testUserLogin() {
         txtUserLogin.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 
-                if(!txtPassLogin.getText().equals("") ){
+                if (!txtPassLogin.getText().equals("")) {
 
                     btnLogin.setDisable(false);
 
@@ -427,13 +395,13 @@ public class loginPageController implements Initializable {
 
     }
 
-    public void testPassLogin(){
+    public void testPassLogin() {
         txtPassLogin.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 
 
-                if(!txtUserLogin.getText().equals("") ){
+                if (!txtUserLogin.getText().equals("")) {
 
                     btnLogin.setDisable(false);
                     txtPassLogin2.setText(txtPassLogin.getText());
@@ -447,23 +415,19 @@ public class loginPageController implements Initializable {
     }
 
 
-    public void testPassLogin2(){
+    public void testPassLogin2() {
         txtPassLogin2.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 
 
-
-                    txtPassLogin.setText(txtPassLogin2.getText());
-
-
+                txtPassLogin.setText(txtPassLogin2.getText());
 
 
             }
         });
 
     }
-
 
 
     public EventHandler<KeyEvent> letter_ValidationForUserName(final Integer max_Lengh) {
@@ -474,8 +438,8 @@ public class loginPageController implements Initializable {
                 if (txt_TextField.getText().length() >= max_Lengh) {
                     e.consume();
                 }
-                if(e.getCharacter().matches( "[ا-ی-ن]" ) || e.getCharacter().matches( "[A-Za-z]" )){
-                }else{
+                if (e.getCharacter().matches("[ا-ی-ن]") || e.getCharacter().matches("[A-Za-z]")) {
+                } else {
                     e.consume();
                 }
             }
@@ -490,8 +454,8 @@ public class loginPageController implements Initializable {
                 if (txt_TextField.getText().length() >= max_Lengh) {
                     e.consume();
                 }
-                if(e.getCharacter().matches("[ا-ی-ن]")){
-                }else{
+                if (e.getCharacter().matches("[ا-ی-ن]")) {
+                } else {
                     e.consume();
                 }
             }
@@ -506,13 +470,13 @@ public class loginPageController implements Initializable {
                 if (txt_TextField.getText().length() >= max_Lengh) {
                     e.consume();
                 }
-                if(e.getCharacter().matches("[0-9.]")){
-                    if(txt_TextField.getText().contains(".") && e.getCharacter().matches("[.]")){
+                if (e.getCharacter().matches("[0-9.]")) {
+                    if (txt_TextField.getText().contains(".") && e.getCharacter().matches("[.]")) {
                         e.consume();
-                    }else if(txt_TextField.getText().length() == 0 && e.getCharacter().matches("[.]")){
+                    } else if (txt_TextField.getText().length() == 0 && e.getCharacter().matches("[.]")) {
                         e.consume();
                     }
-                }else{
+                } else {
                     e.consume();
                 }
             }
@@ -520,39 +484,35 @@ public class loginPageController implements Initializable {
     }
 
 
-     Person person = new Person();
-     Account account = new Account();
+    Person person = new Person();
+    Account account = new Account();
     private DBHelper dbHelper = new DBHelper();
 
-    private void addVariable(){
-     person.setName(txtRegisterFirstName.getText());
-     person.setLastName(txtRegisterLastName.getText());
-     account.setUserName(txtRegisterUserName.getText());
-     account.setAccountPassword(txtRegisterPass.getText());
-
-
+    private void addVariable() {
+        person.setName(txtRegisterFirstName.getText());
+        person.setLastName(txtRegisterLastName.getText());
+        account.setUserName(txtRegisterUserName.getText());
+        account.setAccountPassword(txtRegisterPass.getText());
 
 
     }
 
 
-
     public void initialize(URL location, ResourceBundle resources) {
 
-        txtRegisterFirstName.addEventFilter(KeyEvent.KEY_TYPED , letter_Validation(12));
-        txtRegisterLastName.addEventFilter(KeyEvent.KEY_TYPED , letter_Validation(15));
+        txtRegisterFirstName.addEventFilter(KeyEvent.KEY_TYPED, letter_Validation(12));
+        txtRegisterLastName.addEventFilter(KeyEvent.KEY_TYPED, letter_Validation(15));
 
-        txtRegisterUserName.addEventFilter(KeyEvent.KEY_TYPED , letter_ValidationForUserName(10));
+        txtRegisterUserName.addEventFilter(KeyEvent.KEY_TYPED, letter_ValidationForUserName(10));
         //
-        txtUserLogin.addEventFilter(KeyEvent.KEY_TYPED , letter_ValidationForUserName(10));
+        txtUserLogin.addEventFilter(KeyEvent.KEY_TYPED, letter_ValidationForUserName(10));
 
-        txtRegisterPass.addEventFilter(KeyEvent.KEY_TYPED , numeric_Validation(10));
-        txtRegisterPassRepeat.addEventFilter(KeyEvent.KEY_TYPED , numeric_Validation(10));
-        txtRegisterPass2.addEventFilter(KeyEvent.KEY_TYPED , numeric_Validation(10));
+        txtRegisterPass.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(10));
+        txtRegisterPassRepeat.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(10));
+        txtRegisterPass2.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(10));
         //
-        txtPassLogin.addEventFilter(KeyEvent.KEY_TYPED , numeric_Validation(10));
-        txtPassLogin2.addEventFilter(KeyEvent.KEY_TYPED , numeric_Validation(10));
-
+        txtPassLogin.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(10));
+        txtPassLogin2.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(10));
 
 
     }

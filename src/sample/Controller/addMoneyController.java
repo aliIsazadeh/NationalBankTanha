@@ -3,6 +3,7 @@ package sample.Controller;
 import DataStructure.Account;
 import DataStructure.Transaction;
 import Extras.DBHelper;
+import Extras.SecondPassProducer;
 import Extras.TransactionSerialProducer;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.EventHandler;
@@ -28,36 +29,31 @@ public class addMoneyController implements Initializable {
     public Button sendUniquePass;
 
 
-
     private void alert(String message, Label lbl, String color) {
         lbl.setText(message);
         lbl.setStyle("-fx-text-fill: " + color + ";");
     }
 
 
-    public void confirmAddingMoney(){
+    public void confirmAddingMoney() {
 
-        if(txtAddMoney.getText().equals("")){
-            alert("لطفا مبلغ را وارد کنید" , lblAlertAddMoney , "red") ;
-
-        }
-
-        if(addMoney()){
-            alert("عملیات با موفقیت انجام شد",lblAlertAddMoney,"green");
-        }
-        else if(!addMoney()){
-            alert("تراکنش شما ناموفق بود!! ",lblAlertAddMoney,"red");
+        if (txtAddMoney.getText().equals("")) {
+            alert("لطفا مبلغ را وارد کنید", lblAlertAddMoney, "red");
 
         }
 
+        if (addMoney()) {
+            alert("عملیات با موفقیت انجام شد", lblAlertAddMoney, "green");
+        } else if (!addMoney()) {
+            alert("تراکنش شما ناموفق بود!! ", lblAlertAddMoney, "red");
 
-
+        }
 
 
     }
 
 
-    public void sendingUniqueCode(){
+    public void sendingUniqueCode() {
 
         txtAddMoneyUniquePass.setVisible(true);
 
@@ -72,56 +68,52 @@ public class addMoneyController implements Initializable {
                 if (txt_TextField.getText().length() >= max_Lengh) {
                     e.consume();
                 }
-                if(e.getCharacter().matches("[0-9.]")){
-                    if(txt_TextField.getText().contains(".") && e.getCharacter().matches("[.]")){
+                if (e.getCharacter().matches("[0-9.]")) {
+                    if (txt_TextField.getText().contains(".") && e.getCharacter().matches("[.]")) {
                         e.consume();
-                    }else if(txt_TextField.getText().length() == 0 && e.getCharacter().matches("[.]")){
+                    } else if (txt_TextField.getText().length() == 0 && e.getCharacter().matches("[.]")) {
                         e.consume();
                     }
-                }else{
+                } else {
                     e.consume();
                 }
             }
         };
     }
+
     loginPageController loginPage = new loginPageController();
     TransactionSerialProducer transactionSerialProducer = new TransactionSerialProducer();
     Account account = new Account();
     DBHelper dbHelper = new DBHelper();
     Transaction transaction = new Transaction();
     Date today = new Date();
-    boolean addMoney(){
+    SecondPassProducer secondPassProducer = new SecondPassProducer();
+    String pass = secondPassProducer.secondPass();
+    public boolean addMoney() {
 
-       transaction.setCostOfTransaction(txtAddMoney.getText());
-        if (account.getSecondPassword().equals(txtAddMoneySecendPass)){
+        transaction.setCostOfTransaction(txtAddMoney.getText());
+        if (pass.equals(txtAddMoneySecendPass)) {
             transaction.setFinished(true);
             transaction.setDateOfTransaction((java.sql.Date) today);
             transaction.setSerialOfTransaction(transactionSerialProducer.serialProducer());
             dbHelper.insertTransaction(transaction);
             dbHelper.readAccount(loginPage.txtUserLogin.getText());
-            account.setInventory(String.valueOf(Integer.valueOf(account.getInventory())+Integer.valueOf(txtAddMoney.getText())));
+            account.setInventory(String.valueOf(Integer.parseInt(account.getInventory()) + Integer.parseInt(txtAddMoney.getText())));
 
-        }else {
+        } else {
             transaction.setFinished(false);
         }
 
 
-
-
-
-
-      return transaction.isFinished();
+        return transaction.isFinished();
     }
 
 
     public void initialize(URL location, ResourceBundle resources) {
 
-    txtAddMoneySecendPass.addEventFilter(KeyEvent.KEY_TYPED , numeric_Validation(4));
-    txtAddMoneyUniquePass.addEventFilter(KeyEvent.KEY_TYPED , numeric_Validation(4));
-    txtAddMoney.addEventFilter(KeyEvent.KEY_TYPED , numeric_Validation(20));
-
-
-
+        txtAddMoneySecendPass.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(4));
+        txtAddMoneyUniquePass.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(4));
+        txtAddMoney.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(20));
 
 
     }

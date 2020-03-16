@@ -15,9 +15,7 @@ public class remainMoneyController implements Initializable {
     public JFXButton btnDeclareRemainMoney;
 
 
-    public void DeclareRemainMoney(){
-
-
+    public void DeclareRemainMoney() {
 
 
     }

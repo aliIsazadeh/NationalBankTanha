@@ -28,23 +28,22 @@ public class cardToCardController implements Initializable {
     }
 
 
-    public  void searchDestinationCard(){
+    public void searchDestinationCard() {
 
-    if(DestinationCardNumber.getText().equals("")){
-        alert("لطفا کارت مورد نظر را وارد کنید" , lblAlertCardToCard , "red");
+        if (DestinationCardNumber.getText().equals("")) {
+            alert("لطفا کارت مورد نظر را وارد کنید", lblAlertCardToCard, "red");
+        }
+
+
     }
 
 
-
-}
-
-
-    public void testSearchDestination(){
+    public void testSearchDestination() {
         DestinationCardNumber.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 
-                if(!DestinationCardNumber.getText().equals("") ){
+                if (!DestinationCardNumber.getText().equals("")) {
 
                     btnSearchDestinationCard.setDisable(false);
 

@@ -19,28 +19,21 @@ public class personalInfoController implements Initializable {
     public JFXTextField txtShowPhoneNumber;
 
 
+    public void test() {
 
-        public void test(){
+        Person person = new Person();
+        Account account = new Account();
 
-            Person person =new Person();
-            Account account = new Account();
+        txtShowNationalCode.setText(String.valueOf(person.getNationalNumber()));
+        //  txtShowName.setText(person.getName());
+        //  txtShowName.setText(person.getLastName());
+        txtShowFatherName.setText(person.getFatherName());
+        txtShowAccountType.setText(account.getAccountType());
+        txtShowGender.setText(person.getGender());
+        txtShowAddress.setText(person.getAddress());
+        txtShowPhoneNumber.setText(String.valueOf(person.getPhoneNumber()));
 
-            txtShowNationalCode.setText(String.valueOf(person.getNationalNumber()));
-          //  txtShowName.setText(person.getName());
-          //  txtShowName.setText(person.getLastName());
-            txtShowFatherName.setText(person.getFatherName());
-            txtShowAccountType.setText(account.getAccountType());
-            txtShowGender.setText(person.getGender());
-            txtShowAddress.setText(person.getAddress());
-            txtShowPhoneNumber.setText(String.valueOf(person.getPhoneNumber()));
-
-        }
-
-
-
-
-
-
+    }
 
 
     public void initialize(URL location, ResourceBundle resources) {
@@ -49,10 +42,8 @@ public class personalInfoController implements Initializable {
     }
 
 
-
-
-       // txtShowName.setText("ffff");
-        //txtShowFamily.setText(person.getLastName());
+    // txtShowName.setText("ffff");
+    //txtShowFamily.setText(person.getLastName());
 //        txtShowNationalCode.setText(person.getNationalNumber());
 //        txtShowFatherName.setText(person.getFatherName());
 //        txtShowAccountType.setText(account.getAccountType());
