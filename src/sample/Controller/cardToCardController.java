@@ -36,26 +36,21 @@ public class cardToCardController implements Initializable {
 
 
     public  void searchDestinationCard(){
-        DBHelper dbHelper = new DBHelper();
-        String  destinationCardNumber=DestinationCardNumber.getText();
 
-    if(destinationCardNumber.equals("")){
+    if(DestinationCardNumber.getText().equals("")){
         alert("لطفا کارت مورد نظر را وارد کنید" , lblAlertCardToCard , "red");
-    }else if (dbHelper.readAccount(Long.parseLong(destinationCardNumber))== null){
-        alert("کارتی با این مشخصات وجود ندارد" , lblAlertCardToCard , "red");
     }
 
 
+    }
 
-}
 
-
-    public void testSearchDestination(){
+    public void testSearchDestination() {
         DestinationCardNumber.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 
-                if(!DestinationCardNumber.getText().equals("") ){
+                if (!DestinationCardNumber.getText().equals("")) {
 
                     btnSearchDestinationCard.setDisable(false);
 

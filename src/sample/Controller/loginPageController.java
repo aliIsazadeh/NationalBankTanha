@@ -57,6 +57,9 @@ public class loginPageController implements Initializable {
     public Label lblFailAlertRegister;
     public Label lblFailLogin;
     public JFXTextField txtRegisterUserName;
+    Person person = new Person();
+    Account account = new Account();
+    private DBHelper dbHelper = new DBHelper();
 
     private FadeTransition fadeTransition(Node node, Duration duration, double fromValue, double toValue) {
         FadeTransition fadeTransition = new FadeTransition();
@@ -81,7 +84,7 @@ public class loginPageController implements Initializable {
 
 
         signInTrans.setVisible(false);
-        alert("", lblSuccessAlert, "green");
+        alert("",lblSuccessAlert , "green");
 
 
         FadeTransition fadeRegisterAnchorPane = fadeTransition(registerAnchorPane, Duration.seconds(1), 1, 0);
@@ -141,19 +144,28 @@ public class loginPageController implements Initializable {
 
     public void loadMainPage() {
 
-        if (txtUserLogin.getText().equals("") && txtPassLogin.getText().equals("")) {
+            if (txtUserLogin.getText().equals("") && txtPassLogin.getText().equals("")) {
 
-            alert("لطفا نام کاربری و رمز عبور را وارد کنید.", lblFailLogin, "red");
+                alert("لطفا نام کاربری و رمز عبور را وارد کنید.", lblFailLogin, "red");
 
 
         } else if (!txtUserLogin.getText().equals("") && txtPassLogin.getText().equals("")) {
             alert("لطفا رمز عبور را وارد کنید", lblFailLogin, "red");
 
-        } else if (txtUserLogin.getText().equals("") && !txtPassLogin.getText().equals("")) {
-            alert("لطفا نام کاربری را وارد کنید", lblFailLogin, "red");
-        } else if (!txtUserLogin.getText().equals(txtRegisterUserName.getText()) || !txtPassLogin.getText().equals(txtRegisterPass.getText())) {
-            alert("رمز عبور یا نام کاربری اشتباه است", lblFailLogin, "red");
-        } else if (txtUserLogin.getText().equals(txtRegisterUserName.getText()) && (txtPassLogin.getText().equals(txtRegisterPass.getText()) || txtPassLogin.getText().equals(txtRegisterPass2.getText()))) {
+            }
+            else if(txtUserLogin.getText().equals("") && !txtPassLogin.getText().equals("")){
+                alert("لطفا نام کاربری را وارد کنید" , lblFailLogin , "red");
+            }
+
+            else if(!txtUserLogin.getText().equals(txtRegisterUserName.getText()) || !txtPassLogin.getText().equals(txtRegisterPass.getText())  ){
+                alert("رمز عبور یا نام کاربری اشتباه است" , lblFailLogin , "red");
+            }
+
+
+
+
+
+            else if(txtUserLogin.getText().equals(txtRegisterUserName.getText())&&(    txtPassLogin.getText().equals(txtRegisterPass.getText()) ||txtPassLogin.getText().equals(txtRegisterPass2.getText())   )){
 
             Parent root;
             try {
@@ -171,7 +183,7 @@ public class loginPageController implements Initializable {
                 e.printStackTrace();
             }
 
-        }
+            }
     }
 
 
@@ -249,44 +261,59 @@ public class loginPageController implements Initializable {
 
         if (txtRegisterFirstName.getText().equals("") || txtRegisterLastName.getText().equals("") || txtRegisterPass.getText().equals("") || txtRegisterPassRepeat.getText().equals("")) {
             alert("لطفا فیلد هارا پر کنید", lblFailAlertRegister, "red");
-        } else if (!txtRegisterPass.getText().equals(txtRegisterPassRepeat.getText()) && !txtRegisterFirstName.getText().equals("") && !txtRegisterLastName.getText().equals("")) {
-
-            alert("تکرار رمز باید با خود رمز عبور مطابقت داشته باشد...", lblFailAlertRegister, "red");
-
-        } else {
-            alert("ثبت نام شما با موفقیت انجام شد.اکنون میتوانید وارد سیستم شوید", lblSuccessAlert, "green");
-            Person person = new Person();
-            Account account = new Account();
-            DBHelper dbHelper = new DBHelper();
-
-            addVariable();
+        }
 
 
-            /// hi ali
+        else if(!txtRegisterPass.getText().equals(txtRegisterPassRepeat.getText()) && !txtRegisterFirstName.getText().equals("") && !txtRegisterLastName.getText().equals("") ){
+
+            alert("تکرار رمز باید با خود رمز عبور مطابقت داشته باشد...",lblFailAlertRegister,"red");
 
         }
+
+       else {
+           alert("ثبت نام شما با موفقیت انجام شد.اکنون میتوانید وارد سیستم شوید" , lblSuccessAlert,"green");
+             Person person = new Person();
+             Account account = new Account();
+             DBHelper dbHelper = new DBHelper();
+
+             addVariable();
+
+
+
+
+           /// hi ali
+
+        }
+
+
+
 
 
     }
 
 
-    public void considerLogin() {
 
-        if (txtUserLogin.getText().equals("") && txtPassLogin.getText().equals("")) {
-            alert("لطفا نام کاربری و رمز عبور را وارد کنید.", lblFailLogin, "red");
+
+
+
+    public void considerLogin(){
+
+        if(txtUserLogin.getText().equals("")&& txtPassLogin.getText().equals("")){
+            alert( "لطفا نام کاربری و رمز عبور را وارد کنید." , lblFailLogin , "red");
         }
 
     }
 
-    public void testFirstName() {
+    public void testFirstName(){
         txtRegisterFirstName.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 
-                if (txtRegisterFirstName.getText().contains("s"))
+             if(txtRegisterFirstName.getText().contains("s"))
 
 
-                    if (!txtRegisterLastName.getText().equals("") && !txtRegisterPass.getText().equals("") && !txtRegisterPassRepeat.getText().equals("") && !txtRegisterUserName.getText().equals("")) {
+
+             if(!txtRegisterLastName.getText().equals("") &&!txtRegisterPass.getText().equals("")&&!txtRegisterPassRepeat.getText().equals("")&&!txtRegisterUserName.getText().equals("") ){
 
                         btnRegister.setDisable(false);
                     }
@@ -484,28 +511,15 @@ public class loginPageController implements Initializable {
     }
 
 
-    private Person person = new Person();
-    private Account account = new Account();
-    private DBHelper dbHelper = new DBHelper();
+
 
     private void addVariable() {
         person.setName(txtRegisterFirstName.getText());
         person.setLastName(txtRegisterLastName.getText());
-        account.setPerson(person);
         account.setUserName(txtRegisterUserName.getText());
         account.setAccountPassword(txtRegisterPass.getText());
-        dbHelper.insertAccount(account);
 
 
-    }
-
-    public void addAccount() {
-        person.setName(txtRegisterFirstName.getText());
-        person.setLastName(txtRegisterLastName.getText());
-        account.setPerson(person);
-        account.setUserName(txtRegisterUserName.getText());
-        account.setAccountPassword(txtRegisterPass.getText());
-        dbHelper.insertAccount(account);
     }
 
 

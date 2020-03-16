@@ -8,8 +8,6 @@ import java.util.ResourceBundle;
 public class notificationAddMoneyController implements Initializable {
 
 
-
-
     public void initialize(URL location, ResourceBundle resources) {
 
 
