@@ -8,6 +8,7 @@ import Extras.TransactionSerialProducer;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
@@ -18,12 +19,22 @@ import java.util.ResourceBundle;
 public class billController implements Initializable {
 
 
+
+
+
+    public Button considerBill;
     public JFXTextField txtBillNumber;
     public JFXTextField txtPayNumber;
+
+    public Label billAlertLabel;
+    public Button sendUniquePass;
+    public Button PayBill;
     public JFXTextField txtBillCost;
     public JFXTextField txtSecendPassForBill;
     public JFXTextField txtUniquePassForBill;
-    public Label billAlertLabel;
+
+    public Label lblBillCost;
+
     private TransactionSerialProducer transactionSerialProducer = new TransactionSerialProducer();
     private Transaction transaction = new Transaction();
     private DBHelper dbHelper = new DBHelper();
@@ -71,6 +82,32 @@ public class billController implements Initializable {
 
 
     }
+
+    public void considerBill(){
+
+        if(txtBillNumber.getText().equals("")||txtPayNumber.getText().equals(""))
+        {
+            alert("لطفا فیلد هارا پرکنید", billAlertLabel, "red");
+        }
+
+        // hi hossein read my message :D
+
+        // if bill in DB exist
+        // textFields and buttons will be appear
+
+//        sendUniquePass.setVisible(true);
+//        PayBill.setVisible(true);
+//        txtBillCost.setVisible(true);
+//        txtSecendPassForBill.setVisible(true);
+//        txtUniquePassForBill.setVisible(true);
+//        lblBillCost.setVisible(true);
+
+
+
+
+
+    }
+
 
 
     public void initialize(URL location, ResourceBundle resources) {
