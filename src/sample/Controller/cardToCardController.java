@@ -1,5 +1,6 @@
 package sample.Controller;
 
+import Extras.DBHelper;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.beans.value.ChangeListener;
@@ -35,9 +36,13 @@ public class cardToCardController implements Initializable {
 
 
     public  void searchDestinationCard(){
+        DBHelper dbHelper = new DBHelper();
+        String  destinationCardNumber=DestinationCardNumber.getText();
 
-    if(DestinationCardNumber.getText().equals("")){
+    if(destinationCardNumber.equals("")){
         alert("لطفا کارت مورد نظر را وارد کنید" , lblAlertCardToCard , "red");
+    }else if (dbHelper.readAccount(Long.parseLong(destinationCardNumber))== null){
+        alert("کارتی با این مشخصات وجود ندارد" , lblAlertCardToCard , "red");
     }
 
 
