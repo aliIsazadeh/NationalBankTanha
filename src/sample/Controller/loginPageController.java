@@ -57,6 +57,9 @@ public class loginPageController implements Initializable {
     public Label lblFailAlertRegister;
     public Label lblFailLogin;
     public JFXTextField txtRegisterUserName;
+    Person person = new Person();
+    Account account = new Account();
+    private DBHelper dbHelper = new DBHelper();
 
     private FadeTransition fadeTransition(Node node, Duration duration, double fromValue, double toValue) {
         FadeTransition fadeTransition = new FadeTransition();
@@ -484,9 +487,7 @@ public class loginPageController implements Initializable {
     }
 
 
-    Person person = new Person();
-    Account account = new Account();
-    private DBHelper dbHelper = new DBHelper();
+
 
     private void addVariable() {
         person.setName(txtRegisterFirstName.getText());

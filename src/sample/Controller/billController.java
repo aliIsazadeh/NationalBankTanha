@@ -19,7 +19,11 @@ public class billController implements Initializable {
     public JFXTextField txtSecendPassForBill;
     public JFXTextField txtUniquePassForBill;
     public Label billAlertLabel;
-
+    private TransactionSerialProducer transactionSerialProducer = new TransactionSerialProducer();
+    private Transaction transaction = new Transaction();
+    DBHelper dbHelper = new DBHelper();
+    Account account = new Account();
+    Bill bill = dbHelper.readBill(Long.parseLong(txtBillNumber.getText()), Long.parseLong(txtBillCost.getText()));
 
 
 
