@@ -96,12 +96,20 @@ public class addMoneyController implements Initializable {
             transaction.setFinished(true);
             transaction.setDateOfTransaction((java.sql.Date) today);
             transaction.setSerialOfTransaction(transactionSerialProducer.serialProducer());
+            transaction.setTypeOfTransaction("افزودن موجودی");
             dbHelper.insertTransaction(transaction);
             dbHelper.readAccount(loginPage.txtUserLogin.getText());
             account.setInventory(String.valueOf(Integer.parseInt(account.getInventory()) + Integer.parseInt(txtAddMoney.getText())));
 
         } else {
             transaction.setFinished(false);
+            transaction.setDateOfTransaction((java.sql.Date) today);
+            transaction.setSerialOfTransaction(transactionSerialProducer.serialProducer());
+            transaction.setTypeOfTransaction("افزودن موجودی");
+            dbHelper.insertTransaction(transaction);
+            dbHelper.readAccount(loginPage.txtUserLogin.getText());
+
+
         }
 
 
