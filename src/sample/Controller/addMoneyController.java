@@ -29,8 +29,8 @@ public class addMoneyController implements Initializable {
     public Button sendUniquePass;
     loginPageController loginPage = new loginPageController();
     TransactionSerialProducer transactionSerialProducer = new TransactionSerialProducer();
-    Account account = new Account();
     DBHelper dbHelper = new DBHelper();
+    Account account = dbHelper.readAccount(loginPage.txtUserLogin.getText());
     Transaction transaction = new Transaction();
     Date today = new Date();
     SecondPassProducer secondPassProducer = new SecondPassProducer();
@@ -98,16 +98,15 @@ public class addMoneyController implements Initializable {
             transaction.setSerialOfTransaction(transactionSerialProducer.serialProducer());
             transaction.setTypeOfTransaction("افزودن موجودی");
             dbHelper.insertTransaction(transaction);
-            dbHelper.readAccount(loginPage.txtUserLogin.getText());
             account.setInventory(String.valueOf(Integer.parseInt(account.getInventory()) + Integer.parseInt(txtAddMoney.getText())));
-
+            dbHelper.updateAccount(account);
         } else {
             transaction.setFinished(false);
             transaction.setDateOfTransaction((java.sql.Date) today);
             transaction.setSerialOfTransaction(transactionSerialProducer.serialProducer());
             transaction.setTypeOfTransaction("افزودن موجودی");
             dbHelper.insertTransaction(transaction);
-            dbHelper.readAccount(loginPage.txtUserLogin.getText());
+
 
 
         }
