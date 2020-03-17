@@ -8,7 +8,6 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.EventHandler;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -334,7 +333,7 @@ public class mainPageController implements Initializable {
     public void anotherOptions(){
 
         try {
-            AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("../FXML/anotherOptions.fxml"));
+            AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("../FXML/bill.fxml"));
             mainAnchorPane.getChildren().addAll(anchorPane);
         }
         catch (IOException ex){

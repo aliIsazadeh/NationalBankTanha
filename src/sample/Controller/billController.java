@@ -3,6 +3,7 @@ package sample.Controller;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
@@ -13,14 +14,21 @@ import java.util.ResourceBundle;
 public class billController implements Initializable {
 
 
+
+
+
+    public Button considerBill;
     public JFXTextField txtBillNumber;
     public JFXTextField txtPayNumber;
+
+    public Label billAlertLabel;
+    public Button sendUniquePass;
+    public Button PayBill;
     public JFXTextField txtBillCost;
     public JFXTextField txtSecendPassForBill;
     public JFXTextField txtUniquePassForBill;
-    public Label billAlertLabel;
 
-
+    public Label lblBillCost;
 
 
     public EventHandler<KeyEvent> numeric_Validation(final Integer max_Lengh) {
@@ -52,10 +60,7 @@ public class billController implements Initializable {
 
 
     public void payBill(){
-        if(txtBillNumber.getText().equals("")||txtPayNumber.getText().equals("")||txtBillCost.getText().equals("")||txtSecendPassForBill.getText().equals("")||txtUniquePassForBill.getText().equals(""))
-        {
-            alert("لطفا فیلد هارا پرکنید", billAlertLabel, "red");
-        }
+
 
 
 
@@ -69,13 +74,38 @@ public class billController implements Initializable {
 }
 
 
+    public void considerBill(){
+
+        if(txtBillNumber.getText().equals("")||txtPayNumber.getText().equals(""))
+        {
+            alert("لطفا فیلد هارا پرکنید", billAlertLabel, "red");
+        }
+
+        // hi hossein read my message :D
+
+        // if bill in DB exist
+        // textFields and buttons will be appear
+
+//        sendUniquePass.setVisible(true);
+//        PayBill.setVisible(true);
+//        txtBillCost.setVisible(true);
+//        txtSecendPassForBill.setVisible(true);
+//        txtUniquePassForBill.setVisible(true);
+//        lblBillCost.setVisible(true);
+
+
+
+
+
+    }
+
+
 
     public void initialize(URL location, ResourceBundle resources) {
 
 
         txtBillNumber.addEventFilter(KeyEvent.KEY_TYPED , numeric_Validation(15));
         txtPayNumber.addEventFilter(KeyEvent.KEY_TYPED , numeric_Validation(15));
-        txtBillCost.addEventFilter(KeyEvent.KEY_TYPED , numeric_Validation(15));
         txtSecendPassForBill.addEventFilter(KeyEvent.KEY_TYPED , numeric_Validation(4));
         txtUniquePassForBill.addEventFilter(KeyEvent.KEY_TYPED , numeric_Validation(4));
 
