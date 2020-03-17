@@ -8,7 +8,7 @@ import javafx.scene.control.TextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class minMoneyController implements Initializable{
+public class minMoneyController implements Initializable {
 
 
     public Label lblAlertMinMoney;
@@ -21,45 +21,27 @@ public class minMoneyController implements Initializable{
     }
 
 
-
-    public  void confirmMinMoney(){
-
+    public void confirmMinMoney() {
 
 
-        if(txtMinMoney.getText().equals("")){
+        if (txtMinMoney.getText().equals("")) {
 
-            alert("لطفا مبلغ برداشتی را وارد کنید" , lblAlertMinMoney , "red");
+            alert("لطفا مبلغ برداشتی را وارد کنید", lblAlertMinMoney, "red");
 
-        }
+        } else if (Long.parseLong(txtMinMoney.getText()) > 200000) {
 
-        else if(Long.parseLong(txtMinMoney.getText()) > 200000){
-
-            alert( "توجه : سقف وجه برداشتی تا 200هزار تومان در یک روز می باشد." , lblAlertMinMoney , "red");
+            alert("توجه : سقف وجه برداشتی تا 200هزار تومان در یک روز می باشد.", lblAlertMinMoney, "red");
 
         }
-
-
-
-
 
 
     }
-
-
-
 
 
     public void initialize(URL location, ResourceBundle resources) {
 
 
-
-
-
-
-
-
     }
-
 
 
 }

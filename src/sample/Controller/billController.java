@@ -1,5 +1,10 @@
 package sample.Controller;
 
+import DataStructure.Account;
+import DataStructure.Bill;
+import DataStructure.Transaction;
+import Extras.DBHelper;
+import Extras.TransactionSerialProducer;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
@@ -29,6 +34,13 @@ public class billController implements Initializable {
     public JFXTextField txtUniquePassForBill;
 
     public Label lblBillCost;
+
+    private TransactionSerialProducer transactionSerialProducer = new TransactionSerialProducer();
+    private Transaction transaction = new Transaction();
+    DBHelper dbHelper = new DBHelper();
+    Account account = new Account();
+    Bill bill = dbHelper.readBill(Long.parseLong(txtBillNumber.getText()), Long.parseLong(txtBillCost.getText()));
+
 
 
     public EventHandler<KeyEvent> numeric_Validation(final Integer max_Lengh) {
@@ -106,6 +118,7 @@ public class billController implements Initializable {
 
         txtBillNumber.addEventFilter(KeyEvent.KEY_TYPED , numeric_Validation(15));
         txtPayNumber.addEventFilter(KeyEvent.KEY_TYPED , numeric_Validation(15));
+        txtBillCost.addEventFilter(KeyEvent.KEY_TYPED , numeric_Validation(15));
         txtSecendPassForBill.addEventFilter(KeyEvent.KEY_TYPED , numeric_Validation(4));
         txtUniquePassForBill.addEventFilter(KeyEvent.KEY_TYPED , numeric_Validation(4));
 

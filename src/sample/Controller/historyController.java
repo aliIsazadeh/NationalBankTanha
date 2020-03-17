@@ -7,7 +7,7 @@ import javafx.scene.control.TableView;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class historyController   implements Initializable {
+public class historyController implements Initializable {
 
     public TableView historyTableView;
     public TableColumn historyRow;
@@ -16,17 +16,10 @@ public class historyController   implements Initializable {
     public TableColumn historyDate;
     public TableColumn historyTime;
 
-    public void setHistoryTable(){
-
-
-
-
-
+    public void setHistoryTable() {
 
 
     }
-
-
 
 
     public void initialize(URL location, ResourceBundle resources) {
