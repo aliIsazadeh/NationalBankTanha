@@ -532,12 +532,12 @@ public class loginPageController implements Initializable {
         //
         txtUserLogin.addEventFilter(KeyEvent.KEY_TYPED, letter_ValidationForUserName(10));
 
-        txtRegisterPass.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(10));
-        txtRegisterPassRepeat.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(10));
-        txtRegisterPass2.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(10));
+        txtRegisterPass.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(12));
+        txtRegisterPassRepeat.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(12));
+        txtRegisterPass2.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(12));
         //
-        txtPassLogin.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(10));
-        txtPassLogin2.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(10));
+        txtPassLogin.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(12));
+        txtPassLogin2.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(12));
 
 
     }

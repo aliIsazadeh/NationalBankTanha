@@ -6,11 +6,17 @@ import Extras.DBHelper;
 import Extras.SecondPassProducer;
 import Extras.TransactionSerialProducer;
 import com.jfoenix.controls.JFXButton;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
 import java.util.ResourceBundle;
@@ -50,6 +56,24 @@ public class minMoneyController implements Initializable {
             alert("توجه : سقف وجه برداشتی تا 200هزار تومان در یک روز می باشد.", lblAlertMinMoney, "red");
 
         }
+
+        //TODO setting information in notification page that I wrote it as  comment
+
+//        Parent root;
+//        try {
+//            Stage stage = (Stage) confirmMinMoney.getScene().getWindow();
+//
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/sample/FXML/notificationMinMoney.fxml"));
+//            root = loader.load();
+//            stage = new Stage();
+//            Stage finalStage = stage;
+//            finalStage.setResizable(false);
+//            finalStage.initStyle(StageStyle.TRANSPARENT);
+//            stage.setScene(new Scene(root, 361, 329));
+//            stage.show();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
 
     }

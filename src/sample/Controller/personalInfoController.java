@@ -25,8 +25,8 @@ public class personalInfoController implements Initializable {
         Account account = new Account();
 
         txtShowNationalCode.setText(String.valueOf(person.getNationalNumber()));
-        //  txtShowName.setText(person.getName());
-        //  txtShowName.setText(person.getLastName());
+        txtShowName.setText(person.getName());
+        txtShowName.setText(person.getLastName());
         txtShowFatherName.setText(person.getFatherName());
         txtShowAccountType.setText(account.getAccountType());
         txtShowGender.setText(person.getGender());
@@ -42,14 +42,6 @@ public class personalInfoController implements Initializable {
     }
 
 
-    // txtShowName.setText("ffff");
-    //txtShowFamily.setText(person.getLastName());
-//        txtShowNationalCode.setText(person.getNationalNumber());
-//        txtShowFatherName.setText(person.getFatherName());
-//        txtShowAccountType.setText(account.getAccountType());
-//        txtShowGender.setText(person.getGender());
-//        txtShowAddress.setText(person.getAddress());
-//        txtShowPhoneNumber.setText(person.getPhoneNumber());
 
 
 }

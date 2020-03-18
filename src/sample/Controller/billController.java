@@ -103,10 +103,6 @@ public class billController implements Initializable {
 
         }
 
-        // hi hossein read my message :D
-
-        // if bill in DB exist
-        // textFields and buttons will be appear
 
 
 
@@ -151,12 +147,7 @@ public class billController implements Initializable {
     }
 
     public void doTransaction(MouseEvent mouseEvent) {
-        //        sendUniquePass.setVisible(true);
-//        PayBill.setVisible(true);
-//        txtBillCost.setVisible(true);
-//        txtSecendPassForBill.setVisible(true);
-//        txtUniquePassForBill.setVisible(true);
-//        lblBillCost.setVisible(true);
+
 
         Account account = new loginPageController().account;
         Bill bill = dbHelper.readBill(Long.parseLong(txtBillNumber.getText()), Long.parseLong(txtPayNumber.getText()));
@@ -169,6 +160,9 @@ public class billController implements Initializable {
 
         }else{
             doTransaction(bill,account);
+            // TODO show notification
+
+
         }
 
     }

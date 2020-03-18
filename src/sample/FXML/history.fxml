@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="723.0" style="-fx-background-color: #AAB6FE; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/8.0.221" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.historyController">
+<AnchorPane prefHeight="400.0" prefWidth="723.0" style="-fx-background-color: #AAB6FE; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.historyController">
    <children>
-      <TableView fx:id="historyTableView" layoutX="45.0" layoutY="29.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="310.0" prefWidth="648.0">
-        <columns>
-          <TableColumn fx:id="historyRow" prefWidth="75.0" text="ردیف" />
-          <TableColumn fx:id="historyTransactionType" prefWidth="101.0" text="نوع تراکنش" />
-            <TableColumn fx:id="historyTransferMoney" prefWidth="145.0" text="مبلغ منتقل شده" />
-            <TableColumn fx:id="historyDate" prefWidth="163.0" text="تاریخ" />
-            <TableColumn fx:id="historyTime" prefWidth="163.0" text="ساعت" />
-        </columns>
-      </TableView>
+      <TextArea fx:id="historyTextField" editable="false" layoutX="64.0" layoutY="101.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="244.0" prefWidth="595.0" style="-fx-background-radius: 10;" />
+      <Label alignment="CENTER" layoutX="162.0" layoutY="30.0" prefHeight="42.0" prefWidth="400.0" text="تاریخچه تراکنش های اخیر شما:">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
