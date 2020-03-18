@@ -33,10 +33,10 @@ public class minMoneyController implements Initializable {
     private DBHelper dbHelper = new DBHelper();
     private Transaction transaction = new Transaction();
     private loginPageController loginPage = new loginPageController();
-    private Account account =dbHelper.readAccount(loginPage.txtUserLogin.getText());
+    private Account account = dbHelper.readAccount(loginPage.txtUserLogin.getText());
     private SecondPassProducer secondPassProducer = new SecondPassProducer();
     private TransactionSerialProducer transactionSerialProducer = new TransactionSerialProducer();
-     Date date = new Date();
+    Date date = new Date();
 
     private void alert(String message, Label lbl, String color) {
         lbl.setText(message);
@@ -55,32 +55,48 @@ public class minMoneyController implements Initializable {
 
             alert("توجه : سقف وجه برداشتی تا 200هزار تومان در یک روز می باشد.", lblAlertMinMoney, "red");
 
+        } else {
+            boolean flag = minMoney();
+            if (flag) {
+                Parent root;
+                try {
+                    Stage stage = (Stage) confirmMinMoney.getScene().getWindow();
+
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/sample/FXML/notificationMinMoney.fxml"));
+                    root = loader.load();
+                    stage = new Stage();
+                    Stage finalStage = stage;
+                    finalStage.setResizable(false);
+                    finalStage.initStyle(StageStyle.TRANSPARENT);
+                    stage.setScene(new Scene(root, 361, 329));
+                    stage.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                alert(" تراکنش با موفقیت انجام شد", lblAlertMinMoney, "green");
+            }
+
+
+
+            if (!flag) {
+
+                alert(" تراکنش ناموفق بود", lblAlertMinMoney, "red");
+
+            }
+
+
         }
 
-        //TODO setting information in notification page that I wrote it as  comment
 
-//        Parent root;
-//        try {
-//            Stage stage = (Stage) confirmMinMoney.getScene().getWindow();
-//
-//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/sample/FXML/notificationMinMoney.fxml"));
-//            root = loader.load();
-//            stage = new Stage();
-//            Stage finalStage = stage;
-//            finalStage.setResizable(false);
-//            finalStage.initStyle(StageStyle.TRANSPARENT);
-//            stage.setScene(new Scene(root, 361, 329));
-//            stage.show();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+
 
 
     }
 
-    boolean minMoney(){
-        if ((Long.parseLong(txtMinMoney.getText()) < Long.parseLong(account.getInventory()))&&txtSecendPassWordMinMoney.getText().equals(secondPassProducer.secondPass())) {
-            account.setInventory(String.valueOf(Long.parseLong(account.getInventory())-Long.parseLong(txtMinMoney.getText())));
+    boolean minMoney() {
+        if ((Long.parseLong(txtMinMoney.getText()) < Long.parseLong(account.getInventory())) && txtSecendPassWordMinMoney.getText().equals(secondPassProducer.secondPass())) {
+            account.setInventory(String.valueOf(Long.parseLong(account.getInventory()) - Long.parseLong(txtMinMoney.getText())));
             dbHelper.updateAccount(account);
             transaction.setFinished(true);
             transaction.setTypeOfTransaction("برداشت وجه");
@@ -88,14 +104,14 @@ public class minMoneyController implements Initializable {
             transaction.setDateOfTransaction(date);
             transaction.setCostOfTransaction(txtMinMoney.getText());
             transaction.setIDnumber(account.getAccountNumber());
-        }else if (!(txtSecendPassWordMinMoney.getText().equals(secondPassProducer.secondPass()))){
+        } else if (!(txtSecendPassWordMinMoney.getText().equals(secondPassProducer.secondPass()))) {
             transaction.setFinished(false);
             transaction.setTypeOfTransaction("برداشت وجه");
             transaction.setSerialOfTransaction(transactionSerialProducer.serialProducer());
             transaction.setDateOfTransaction(date);
             transaction.setCostOfTransaction(txtMinMoney.getText());
             transaction.setIDnumber(account.getAccountNumber());
-        }else if ((txtSecendPassWordMinMoney.getText().equals(secondPassProducer.secondPass()))&&!(Long.parseLong(txtMinMoney.getText()) < Long.parseLong(account.getInventory()))) {
+        } else if ((txtSecendPassWordMinMoney.getText().equals(secondPassProducer.secondPass())) && !(Long.parseLong(txtMinMoney.getText()) < Long.parseLong(account.getInventory()))) {
             transaction.setFinished(false);
             transaction.setTypeOfTransaction("برداشت وجه");
             transaction.setSerialOfTransaction(transactionSerialProducer.serialProducer());

@@ -50,42 +50,44 @@ public class addMoneyController implements Initializable {
 
     public void confirmAddingMoney() {
 
-        if (txtAddMoney.getText().equals("")) {
-            alert("لطفا مبلغ را وارد کنید", lblAlertAddMoney, "red");
+        if (txtAddMoney.getText().equals("") || txtAddMoneySecendPass.getText().equals("")) {
+            alert("لطفا فیلد هارا پر کنید", lblAlertAddMoney, "red");
 
         }
 
-        if (pass.equals(txtAddMoneySecendPass)) {
-            addMoney();
-            alert("عملیات با موفقیت انجام شد", lblAlertAddMoney, "green");
+       else {
+
+            boolean flag = addMoney();
+
+            if (flag) {
+
+                alert("عملیات با موفقیت انجام شد", lblAlertAddMoney, "green");
 
 
-            //TODO setting information in notification page that I wrote it as  comment
-//            Parent root;
-//            try {
-//                Stage stage = (Stage) confirmAddMoney.getScene().getWindow();
-//
-//                FXMLLoader loader = new FXMLLoader(getClass().getResource("/sample/FXML/notificationPageAddMoney.fxml"));
-//                root = loader.load();
-//                stage = new Stage();
-//                Stage finalStage = stage;
-//                finalStage.setResizable(false);
-//                finalStage.initStyle(StageStyle.TRANSPARENT);
-//                stage.setScene(new Scene(root, 361, 329));
-//                stage.show();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
+                Parent root;
+                try {
+                    Stage stage = (Stage) confirmAddMoney.getScene().getWindow();
+
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/sample/FXML/notificationPageAddMoney.fxml"));
+                    root = loader.load();
+                    stage = new Stage();
+                    Stage finalStage = stage;
+                    finalStage.setResizable(false);
+                    finalStage.initStyle(StageStyle.TRANSPARENT);
+                    stage.setScene(new Scene(root, 361, 329));
+                    stage.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
 
+            } else {
 
-        } else {
-            addMoney();
-            alert("تراکنش شما ناموفق بود!! ", lblAlertAddMoney, "red");
+                alert("تراکنش شما ناموفق بود!! ", lblAlertAddMoney, "red");
+
+            }
 
         }
-
-
     }
 
 

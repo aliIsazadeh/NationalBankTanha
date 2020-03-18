@@ -71,29 +71,27 @@ public class cardToCardController implements Initializable {
         if (from.getSecondPassword().equals(txtSecondPass.getText())) {
             doTransaction(to, from);
 
-            //TODO setting information in notification page that I wrote it as  comment
-//            Parent root;
-//            try {
-//                Stage stage = (Stage) btnConfirmCardToCard.getScene().getWindow();
-//
-//                FXMLLoader loader = new FXMLLoader(getClass().getResource("/sample/FXML/notificationCardToCard.fxml"));
-//                root = loader.load();
-//                stage = new Stage();
-//                Stage finalStage = stage;
-//                finalStage.setResizable(false);
-//                finalStage.initStyle(StageStyle.TRANSPARENT);
-//                stage.setScene(new Scene(root, 361, 329));
-//                stage.show();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
+            Parent root;
+            try {
+                Stage stage = (Stage) btnConfirmCardToCard.getScene().getWindow();
 
-        }
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/sample/FXML/notificationCardToCard.fxml"));
+                root = loader.load();
+                stage = new Stage();
+                Stage finalStage = stage;
+                finalStage.setResizable(false);
+                finalStage.initStyle(StageStyle.TRANSPARENT);
+                stage.setScene(new Scene(root, 361, 329));
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
-        else if (txtSecondPass.getText().equals("")){
-            alert("رمز دوم خود را وارد کنید" ,lblAlertCardToCard,"red");
-        } else if (!txtSecondPass.getText().equals(from.getSecondPassword())){
-            alert("رمز دوم اشتباه است" ,lblAlertCardToCard,"red");
+
+        } else if (txtSecondPass.getText().equals("")) {
+            alert("رمز دوم خود را وارد کنید", lblAlertCardToCard, "red");
+        } else if (!txtSecondPass.getText().equals(from.getSecondPassword())) {
+            alert("رمز دوم اشتباه است", lblAlertCardToCard, "red");
         }
 
     }
