@@ -35,9 +35,7 @@ public class mainPageController implements Initializable {
     public Label lblNotice;
     public Label lblFailNotice;
     public JFXButton btnBack;
-    private Person person = new Person();
-    private Account account = new Account();
-    DBHelper dbHelper = new DBHelper();
+    private DBHelper dbHelper = new DBHelper();
 
 
     public AnchorPane mainAnchorPane;
@@ -69,7 +67,7 @@ public class mainPageController implements Initializable {
     public Label lblSuccess;
     public JFXButton btnConfirmInfos;
     boolean flagPH = true;
-
+    private loginPageController loginPageController = new loginPageController();
 
     private int findComboIndex(JFXComboBox Box) {
         return Box.getSelectionModel().getSelectedIndex();
@@ -78,43 +76,43 @@ public class mainPageController implements Initializable {
 
     private void addVariable() {
 
-        loginPageController loginPageController = new loginPageController();
+        Account account = loginPageController.getAccount();
+        Person person = loginPageController.getPerson();
 
-        System.out.println(txtFatherName.getText());
-        loginPageController.person.setNationalNumber(Long.parseLong(txtNationalCode.getText()));
-        loginPageController.person.setFatherName(txtFatherName.getText());
+        person.setNationalNumber(Long.parseLong(txtNationalCode.getText()));
+        person.setFatherName(txtFatherName.getText());
         LocalDate localData = timePickerBornTime.getValue();
-        loginPageController.person.setBornTime(localData.getYear() + "," + localData.getMonth() + "," + localData.getDayOfMonth());
-        loginPageController.person.setBornPlace(txtBornPlace.getText());
-        loginPageController.person.setJob(txtJob.getText());
-        loginPageController.person.setAddress(txtAddress.getText());
+        person.setBornTime(localData.getYear() + "," + localData.getMonth() + "," + localData.getDayOfMonth());
+        person.setBornPlace(txtBornPlace.getText());
+        person.setJob(txtJob.getText());
+        person.setAddress(txtAddress.getText());
 
         if (findComboIndex(comboMarriage) == 0) {
-            loginPageController.person.setMarriage(false);
+            person.setMarriage(false);
         }
         if (findComboIndex(comboMarriage) == 1) {
-            loginPageController.person.setMarriage(true);
+            person.setMarriage(true);
         }
 
         if (findComboIndex(comboAccount) == 0) {
-            loginPageController.account.setAccountType("جاری");
+            account.setAccountType("جاری");
         }
         if (findComboIndex(comboAccount) == 1) {
-            loginPageController.account.setAccountType("قرض الحسنه");
+            account.setAccountType("قرض الحسنه");
         }
         if (findComboIndex(comboAccount) == 2) {
-            loginPageController.account.setAccountType("پسنداز");
+            account.setAccountType("پسنداز");
         }
 
         if (findComboIndex(comboMarriage) == 0) {
-            loginPageController.person.setGender("مرد");
+            person.setGender("مرد");
         }
         if (findComboIndex(comboMarriage) == 1) {
-            loginPageController.person.setGender("زن");
+            person.setGender("زن");
         }
 
 
-        loginPageController.account.setPerson(loginPageController.person);
+        account.setPerson(person);
         dbHelper.insertAccount(account);
 
     }
