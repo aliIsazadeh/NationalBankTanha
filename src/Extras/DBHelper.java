@@ -105,7 +105,7 @@ public class DBHelper {
 
     private void createTableForTransaction() {
 
-        String tableSQL = "CREATE TABLE IF NOT EXISTS transactions (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,typeOfTransaction TEXT , fromAccount TEXT , ToAccount TEXT , finished TEXT , serial TEXT , dat TEXT , cost TEXT);";
+        String tableSQL = "CREATE TABLE IF NOT EXISTS transactions (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,typeOfTransaction TEXT , fromAccount TEXT , ToAccount TEXT , finished TEXT , serial TEXT , dat TEXT , cost TEXT , billingID TEXT , paymentCode TEXT);";
         try {
             statementForBank.executeUpdate(tableSQL);
         } catch (SQLException e) {
@@ -195,7 +195,12 @@ public class DBHelper {
         String cost = transaction.getCostOfTransaction();
         String serial = transaction.getSerialOfTransaction();
         String finished = transaction.isFinished() + "";
-        String insertSQL = "INSERT INTO transactions (typeOfTransaction  , fromAccount  , ToAccount  , finished  , serial  , dat  , cost)VALUES ('" + type + "','" + from + "','" + To + "','" + finished + "','" + serial + "','" + date + "','" + cost + "');";
+        String billingId = transaction.getBillingId() + "";
+        String paymentCode = transaction.getPaymentCode() + "";
+
+
+        String insertSQL = "INSERT INTO transactions (typeOfTransaction  , fromAccount  , ToAccount  , finished  , serial  , dat  , cost ,billingID,paymentCode)VALUES ('" + type + "','" + from + "','" + To + "','" + finished + "','" + serial + "','" + date + "','" + cost + "','" + billingId + "','" + paymentCode + "');";
+        // billingID TEXT , billingID TEXT
         try {
             statementForBank.executeUpdate(insertSQL);
         } catch (SQLException e) {
@@ -208,18 +213,11 @@ public class DBHelper {
     private ArrayList<Transaction> readAllTransactionForPerson(long id) {
 
 
-        String getTransactionSQL = "SELECT typeOfTransaction  , fromAccount  , ToAccount  , finished  , serial  , dat  , cost FROM transactions where fromAccount = '" + id + "' or toAccount = '" + id + "';";
-
-        return getTransactionsFromDB(getTransactionSQL);
-    }
-
-    //bonan ishiz olmasin
-    private ArrayList<Transaction> getTransactionsFromDB(String read) {
-        connectionForBank();
+        String getTransactionSQL = "SELECT typeOfTransaction  , fromAccount  , ToAccount  , finished  , serial  , dat  , cost,billingID,paymentCode FROM transactions where fromAccount = '" + id + "' or toAccount = '" + id + "';";
         ArrayList<Transaction> list = new ArrayList<>();
 
         try {
-            ResultSet resultSet = statementForBank.executeQuery(read);
+            ResultSet resultSet = statementForBank.executeQuery(getTransactionSQL);
             while (resultSet.next()) {
                 Transaction transaction = new Transaction();
                 Account accountFrom = new Account();
@@ -233,6 +231,8 @@ public class DBHelper {
                 transaction.setSerialOfTransaction(resultSet.getString("serial"));
                 transaction.setDateOfTransaction(resultSet.getDate("dat"));
                 transaction.setCostOfTransaction(resultSet.getString("cost"));
+                transaction.setBillingId(resultSet.getLong("billingID"));
+                transaction.setPaymentCode(resultSet.getLong("paymentCode"));
                 list.add(transaction);
             }
         } catch (SQLException e) {
@@ -240,15 +240,46 @@ public class DBHelper {
         }
         closeBank();
         return list;
+
+        //return getTransactionsFromDB(getTransactionSQL);
     }
+
+    //bonan ishiz olmasin
+//    private ArrayList<Transaction> getTransactionsFromDB(String read) {
+//        connectionForBank();
+//        ArrayList<Transaction> list = new ArrayList<>();
+//
+//        try {
+//            ResultSet resultSet = statementForBank.executeQuery(read);
+//            while (resultSet.next()) {
+//                Transaction transaction = new Transaction();
+//                Account accountFrom = new Account();
+//                accountFrom.setAccountNumber((resultSet.getLong("fromAccount")));
+//                Account To = new Account();
+//                To.setAccountNumber(resultSet.getLong("ToAccount"));
+//                transaction.setTypeOfTransaction(resultSet.getString("typeOfTransaction"));
+//                transaction.setFrom(accountFrom);
+//                transaction.setTo(To);
+//                transaction.setFinished(resultSet.getBoolean("finished"));
+//                transaction.setSerialOfTransaction(resultSet.getString("serial"));
+//                transaction.setDateOfTransaction(resultSet.getDate("dat"));
+//                transaction.setCostOfTransaction(resultSet.getString("cost"));
+//                list.add(transaction);
+//            }
+//        } catch (SQLException e) {
+//            System.out.println(e.getMessage());
+//        }
+//        closeBank();
+//        return list;
+//    }
 
     ///xandan tamam tarakonesh haye anjam shode bank
-    public ArrayList<Transaction> readAllTransactionForPeople() {
-
-        String getTransactionSQL = "SELECT typeOfTransaction  , fromAccount  , ToAccount  , finished  , serial  , dat  , cost FROM transactions ;";
-
-        return getTransactionsFromDB(getTransactionSQL);
-    }
+//    public ArrayList<Transaction> readAllTransactionForPeople() {
+//
+//        String getTransactionSQL = "SELECT typeOfTransaction  , fromAccount  , ToAccount  , finished  , serial  , dat  , cost FROM transactions ;";
+//
+//        return getTransactionsFromDB(getTransactionSQL);
+//    }
 
     //xandane gabz
     public Bill readBill(long billingID, long paymentCode) {
