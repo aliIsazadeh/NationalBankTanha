@@ -14,7 +14,7 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Button fx:id="btnShowHistory" layoutX="281.0" layoutY="91.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="164.0" style="-fx-background-radius: 5;" text="مشاهده تاریخچه تراکنش ها" textFill="#2200ff">
+      <Button fx:id="btnShowHistory" layoutX="281.0" layoutY="91.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="164.0" style="-fx-background-radius: 5;" text="مشاهده تاریخچه تراکنش ها" textFill="#2200ff" onMouseClicked="#showHistoryTable">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>

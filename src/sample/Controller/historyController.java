@@ -1,23 +1,26 @@
 package sample.Controller;
 
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class historyController implements Initializable {
 
-    public TableView historyTableView;
-    public TableColumn historyRow;
-    public TableColumn historyTransactionType;
-    public TableColumn historyTransferMoney;
-    public TableColumn historyDate;
-    public TableColumn historyTime;
 
-    public void setHistoryTable() {
+    public TextArea historyTextField;
+    public Button btnShowHistory;
 
+    public void showHistoryTable() {
+
+        historyTextField.setVisible(true);
+
+        // hey hossein :D
+        //write your code here
 
     }
 
