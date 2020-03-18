@@ -518,7 +518,7 @@ public class loginPageController implements Initializable {
         person.setLastName(txtRegisterLastName.getText());
         account.setUserName(txtRegisterUserName.getText());
         account.setAccountPassword(txtRegisterPass.getText());
-
+        account.setPerson(person);
 
     }
 

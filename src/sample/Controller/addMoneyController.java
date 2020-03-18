@@ -7,12 +7,18 @@ import Extras.SecondPassProducer;
 import Extras.TransactionSerialProducer;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.Date;
@@ -27,14 +33,14 @@ public class addMoneyController implements Initializable {
     public TextField txtAddMoneySecendPass;
     public TextField txtAddMoneyUniquePass;
     public Button sendUniquePass;
-    loginPageController loginPage = new loginPageController();
-    TransactionSerialProducer transactionSerialProducer = new TransactionSerialProducer();
-    DBHelper dbHelper = new DBHelper();
-    Account account = dbHelper.readAccount(loginPage.txtUserLogin.getText());
-    Transaction transaction = new Transaction();
-    Date today = new Date();
-    SecondPassProducer secondPassProducer = new SecondPassProducer();
-    String pass = secondPassProducer.secondPass();
+    private loginPageController loginPage = new loginPageController();
+    private TransactionSerialProducer transactionSerialProducer = new TransactionSerialProducer();
+    private DBHelper dbHelper = new DBHelper();
+    private Account account = dbHelper.readAccount(loginPage.txtUserLogin.getText());
+    private Transaction transaction = new Transaction();
+    private Date today = new Date();
+    private SecondPassProducer secondPassProducer = new SecondPassProducer();
+    private String pass = secondPassProducer.secondPass();
 
     private void alert(String message, Label lbl, String color) {
         lbl.setText(message);
@@ -53,7 +59,23 @@ public class addMoneyController implements Initializable {
             addMoney();
             alert("عملیات با موفقیت انجام شد", lblAlertAddMoney, "green");
 
-            //TODO show notification
+
+            //TODO setting information in notification page that I wrote it as  comment
+//            Parent root;
+//            try {
+//                Stage stage = (Stage) confirmAddMoney.getScene().getWindow();
+//
+//                FXMLLoader loader = new FXMLLoader(getClass().getResource("/sample/FXML/notificationPageAddMoney.fxml"));
+//                root = loader.load();
+//                stage = new Stage();
+//                Stage finalStage = stage;
+//                finalStage.setResizable(false);
+//                finalStage.initStyle(StageStyle.TRANSPARENT);
+//                stage.setScene(new Scene(root, 361, 329));
+//                stage.show();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
 
 
 
