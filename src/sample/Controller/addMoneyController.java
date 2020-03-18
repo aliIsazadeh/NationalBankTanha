@@ -49,9 +49,16 @@ public class addMoneyController implements Initializable {
 
         }
 
-        if (addMoney()) {
+        if (pass.equals(txtAddMoneySecendPass)) {
+            addMoney();
             alert("عملیات با موفقیت انجام شد", lblAlertAddMoney, "green");
-        } else if (!addMoney()) {
+
+            //TODO show notification
+
+
+
+        } else {
+            addMoney();
             alert("تراکنش شما ناموفق بود!! ", lblAlertAddMoney, "red");
 
         }

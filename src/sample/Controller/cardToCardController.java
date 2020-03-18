@@ -64,6 +64,8 @@ public class cardToCardController implements Initializable {
         //TODO بررسی رمز یکبار مصرف
         if (from.getSecondPassword().equals(txtSecondPass.getText()))
         doTransaction(to, from);
+        
+        //  TODO show notification
         else if (txtSecondPass.getText().equals("")){
             alert("رمز دوم خود را وارد کنید" ,lblAlertCardToCard,"red");
         } else if (!txtSecondPass.getText().equals(from.getSecondPassword())){
