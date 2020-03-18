@@ -104,35 +104,35 @@ public class billController implements Initializable {
         }
 
 
-
-
-
     }
 
     public void doTransaction(Bill bill, Account account) {
         dbHelper = new DBHelper();
-        if (bill.getCostOfBill()>Long.parseLong(account.getInventory())){
+        if (bill.getCostOfBill() > Long.parseLong(account.getInventory())) {
             alert("موجودی کافی نیست!", billAlertLabel, "red");
-            creatTransaction(bill.getCostOfBill() , false);
+            creatTransaction(bill, false);
 
-        }else {
+        } else {
             bill.setCondition("پردخت شده");
             long money = Long.parseLong(account.getInventory());
             money -= bill.getCostOfBill();
             account.setInventory(String.valueOf(money));
             dbHelper.updateAccount(account);
-            creatTransaction(bill.getCostOfBill() , true);
+            creatTransaction(bill, true);
         }
     }
-    public void creatTransaction(long money, boolean b){
-         transaction = new Transaction();
-         transaction.setDateOfTransaction(new Date());
-         transaction.setCostOfTransaction(String.valueOf(money));
-         transaction.setSerialOfTransaction(new TransactionSerialProducer().serialProducer());
-         transaction.setFinished(b);
-         transaction.setTypeOfTransaction("پرداخت قبض");
-         dbHelper = new DBHelper();
-         dbHelper.insertTransaction(transaction);
+
+    public void creatTransaction(Bill bill, boolean b) {
+        transaction = new Transaction();
+        transaction.setDateOfTransaction(new Date());
+        transaction.setCostOfTransaction(String.valueOf(bill.getCostOfBill()));
+        transaction.setSerialOfTransaction(new TransactionSerialProducer().serialProducer());
+        transaction.setFinished(b);
+        transaction.setTypeOfTransaction("پرداخت قبض");
+        transaction.setBillingId(bill.getBillingId());
+        transaction.setPaymentCode(bill.getPaymentCode());
+        dbHelper = new DBHelper();
+        dbHelper.insertTransaction(transaction);
     }
 
     public void initialize(URL location, ResourceBundle resources) {
@@ -152,14 +152,14 @@ public class billController implements Initializable {
         Account account = new loginPageController().account;
         Bill bill = dbHelper.readBill(Long.parseLong(txtBillNumber.getText()), Long.parseLong(txtPayNumber.getText()));
 
-        if (txtSecendPassForBill.getText().equals("") || txtUniquePassForBill.getText().equals("")){
+        if (txtSecendPassForBill.getText().equals("") || txtUniquePassForBill.getText().equals("")) {
             alert("رمز دوم با پویای خود را وارد کنید", billAlertLabel, "red");
 
-        }else if (!txtSecendPassForBill.getText().equals(account.getSecondPassword())){
+        } else if (!txtSecendPassForBill.getText().equals(account.getSecondPassword())) {
             alert("رمز دوم اشتباه است", billAlertLabel, "red");
 
-        }else{
-            doTransaction(bill,account);
+        } else {
+            doTransaction(bill, account);
             // TODO show notification
 
 
