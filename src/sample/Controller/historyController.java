@@ -15,14 +15,6 @@ public class historyController implements Initializable {
     public TextArea historyTextField;
     public Button btnShowHistory;
 
-    public void showHistoryTable() {
-
-        historyTextField.setVisible(true);
-
-        // hey hossein :D
-        //write your code here
-
-    }
 
 
     public void initialize(URL location, ResourceBundle resources) {
