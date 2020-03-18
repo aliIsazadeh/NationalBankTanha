@@ -27,14 +27,14 @@ public class addMoneyController implements Initializable {
     public TextField txtAddMoneySecendPass;
     public TextField txtAddMoneyUniquePass;
     public Button sendUniquePass;
-    loginPageController loginPage = new loginPageController();
-    TransactionSerialProducer transactionSerialProducer = new TransactionSerialProducer();
-    DBHelper dbHelper = new DBHelper();
-    Account account = dbHelper.readAccount(loginPage.txtUserLogin.getText());
-    Transaction transaction = new Transaction();
-    Date today = new Date();
-    SecondPassProducer secondPassProducer = new SecondPassProducer();
-    String pass = secondPassProducer.secondPass();
+    private loginPageController loginPage = new loginPageController();
+    private TransactionSerialProducer transactionSerialProducer = new TransactionSerialProducer();
+    private DBHelper dbHelper = new DBHelper();
+    private Account account = dbHelper.readAccount(loginPage.txtUserLogin.getText());
+    private Transaction transaction = new Transaction();
+    private Date today = new Date();
+    private SecondPassProducer secondPassProducer = new SecondPassProducer();
+    private String pass = secondPassProducer.secondPass();
 
     private void alert(String message, Label lbl, String color) {
         lbl.setText(message);
