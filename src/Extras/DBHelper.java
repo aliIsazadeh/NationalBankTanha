@@ -169,7 +169,7 @@ public class DBHelper {
         connectionForBank();
         String accountID = account.getAccountNumber() + "";
         String accountType = account.getAccountType();
-        String passForATM = account.getPasswordForATM();
+        String passForATM = account.getAccountPassword();
         String secondPass = account.getSecondPassword();
         String inventory = account.getInventory();
         String userName = account.getUserName();
@@ -321,7 +321,7 @@ public class DBHelper {
         try {
             ResultSet resultSet = statementForBank.executeQuery(sql);
             account.setAccountNumber(resultSet.getString("accountNumber"));
-            account.setPasswordForATM(resultSet.getString("passForATM"));
+            account.setAccountPassword(resultSet.getString("passForATM"));
             account.setAccountType(resultSet.getString("typeOfAccount"));
             account.setSecondPassword(resultSet.getString("secondPass"));
             account.setInventory(resultSet.getString("inventory"));
@@ -345,7 +345,7 @@ public class DBHelper {
             while (resultSet.next()) {
                 Account account = new Account();
                 account.setAccountNumber(resultSet.getString("accountNumber"));
-                account.setPasswordForATM(resultSet.getString("passForATM"));
+                account.setAccountPassword(resultSet.getString("passForATM"));
                 account.setAccountType(resultSet.getString("typeOfAccount"));
                 account.setSecondPassword(resultSet.getString("secondPass"));
                 account.setInventory(resultSet.getString("inventory"));
@@ -397,7 +397,7 @@ public class DBHelper {
         updatePerson(account.getPerson());
         String update = " UPDATE account set accountNumber ='" + account.getAccountNumber() + "' where accountNumber ='" + account.getAccountNumber() + "';";
         String update1 = "UPDATE account set typeOfAccount = '" + account.getAccountType() + "' where accountNumber ='" + account.getAccountNumber() + "';";
-        String update2 = "UPDATE account set passForATM = '" + account.getPasswordForATM() + "' where accountNumber ='" + account.getAccountNumber() + "';";
+        String update2 = "UPDATE account set passForATM = '" + account.getAccountPassword() + "' where accountNumber ='" + account.getAccountNumber() + "';";
         String update3 = "UPDATE account set secondPass = '" + account.getSecondPassword() + "' where accountNumber ='" + account.getAccountNumber() + "';";
         String update4 = "UPDATE account set inventory = '" + account.getInventory() + "' where accountNumber ='" + account.getAccountNumber() + "';";
         String update5 = "UPDATE account set userName = '" + account.getUserName() + "' where accountNumber ='" + account.getAccountNumber() + "';";
