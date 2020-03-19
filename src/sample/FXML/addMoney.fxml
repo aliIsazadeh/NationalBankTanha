@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="360.0" prefWidth="723.0" style="-fx-background-color: #AAB6FE; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/8.0.221" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.addMoneyController">
+<AnchorPane prefHeight="360.0" prefWidth="723.0" style="-fx-background-color: #AAB6FE; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/8.0.221" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.addMoneyController" >
    <children>
       <Label alignment="CENTER_RIGHT" layoutX="405.0" layoutY="90.0" prefHeight="44.0" prefWidth="149.0" text="مبلغ مورد نظر(به تومان) : ">
          <font>

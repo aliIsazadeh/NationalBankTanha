@@ -139,7 +139,7 @@ public class billController implements Initializable {
         txtPayNumber.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(15));
         txtBillCost.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(15));
         txtSecendPassForBill.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(4));
-        txtUniquePassForBill.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(4));
+        txtUniquePassForBill.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(6));
 
     }
 
