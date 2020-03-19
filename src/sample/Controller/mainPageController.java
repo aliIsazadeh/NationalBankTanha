@@ -79,6 +79,7 @@ public class mainPageController implements Initializable {
         Account account = loginPageController.getAccount();
         Person person = account.getPerson();
 
+
         person.setNationalNumber(Long.parseLong(txtNationalCode.getText()));
         person.setFatherName(txtFatherName.getText());
         LocalDate localData = timePickerBornTime.getValue();
@@ -86,7 +87,7 @@ public class mainPageController implements Initializable {
         person.setBornPlace(txtBornPlace.getText());
         person.setJob(txtJob.getText());
         person.setAddress(txtAddress.getText());
-
+        person.setPhoneNumber(txtPhoneNumber.getText());
         if (findComboIndex(comboMarriage) == 0) {
             person.setMarriage(false);
         }
