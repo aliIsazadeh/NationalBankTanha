@@ -59,7 +59,7 @@ public class loginPageController implements Initializable {
     public JFXTextField txtRegisterUserName;
 
     Account account = new Account();
-    Person person = new Person();
+    private Person person = new Person();
 
     public Person getPerson() {
         return person;
