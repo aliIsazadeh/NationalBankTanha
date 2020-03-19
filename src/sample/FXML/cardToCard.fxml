@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="723.0" style="-fx-background-color: #AAB6FE; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/8.0.221" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.cardToCardController">
+<AnchorPane prefHeight="400.0" prefWidth="723.0" style="-fx-background-color: #AAB6FE; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.cardToCardController">
    <children>
-      <AnchorPane fx:id="cardTocardAncorPane" layoutX="38.0" layoutY="43.0" prefHeight="309.0" prefWidth="324.0" visible="false">
+      <AnchorPane fx:id="cardTocardAncorPane" layoutX="38.0" layoutY="43.0" prefHeight="309.0" prefWidth="324.0">
          <children>
             <TextArea fx:id="txtCardToCardSubject" layoutX="68.0" layoutY="183.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="37.0" prefWidth="188.0" promptText="عنوان یا موضوع واریز وجه" />
             <JFXTextField fx:id="txtSecondPass" alignment="CENTER_RIGHT" labelFloat="true" layoutX="68.0" layoutY="84.0" prefHeight="25.0" prefWidth="188.0" promptText="رمز دوم خود را وارد کنید">
@@ -23,13 +23,13 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </JFXTextField>
-            <Button fx:id="btnSendUniqueCodeCardToCard" layoutX="68.0" layoutY="136.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="96.0" text="ارسال رمز پویا" />
-            <JFXButton fx:id="btnConfirmCardToCard" layoutX="109.0" layoutY="239.0" onMouseClicked="#doTransaction" prefHeight="53.0" prefWidth="106.0" style="-fx-background-color: #000000;" text="تایید واریز" textFill="WHITE">
+            <Button fx:id="btnSendUniqueCodeCardToCard" disable="true" layoutX="68.0" layoutY="136.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="96.0" text="ارسال رمز پویا" />
+            <JFXButton fx:id="btnConfirmCardToCard" disable="true" layoutX="109.0" layoutY="239.0" onMouseClicked="#doTransaction" prefHeight="53.0" prefWidth="106.0" style="-fx-background-color: #000000;" text="تایید واریز" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </JFXButton>
-            <JFXTextField fx:id="txtMoneyCardToCard" alignment="CENTER_RIGHT" layoutX="70.0" layoutY="29.0" prefHeight="25.0" prefWidth="188.0" promptText="مبلغ مورد نظر را به تومان وارد کنید">
+            <JFXTextField fx:id="txtMoneyCardToCard" alignment="CENTER_RIGHT" layoutX="70.0" layoutY="29.0" prefHeight="25.0" prefWidth="188.0" promptText="مبلغ مورد نظر را به تومان وارد کنید" onKeyTyped="#testCost">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -48,7 +48,7 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </JFXButton>
-            <Label fx:id="lblAlertCardToCard" alignment="CENTER" layoutX="90.0" layoutY="200.0" prefHeight="26.0" prefWidth="128.0" text="AlertLabel" textFill="#f50000">
+            <Label fx:id="lblAlertCardToCard" alignment="CENTER" layoutX="90.0" layoutY="200.0" prefHeight="26.0" prefWidth="128.0" textFill="#f50000">
                <font>
                   <Font name="System Bold" size="17.0" />
                </font>

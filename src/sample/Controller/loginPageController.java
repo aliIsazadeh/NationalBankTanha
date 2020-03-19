@@ -17,6 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -502,7 +503,7 @@ public class loginPageController implements Initializable {
                 if (txt_TextField.getText().length() >= max_Lengh) {
                     e.consume();
                 }
-                if (e.getCharacter().matches("[ا-ی-ن]")) {
+                if (e.getCharacter().matches("[ا-ی-ن]") || e.getCharacter().matches(" ")) {
                 } else {
                     e.consume();
                 }

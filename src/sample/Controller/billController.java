@@ -37,8 +37,8 @@ public class billController implements Initializable {
     private TransactionSerialProducer transactionSerialProducer = new TransactionSerialProducer();
     private Transaction transaction;
     private DBHelper dbHelper;
-    private Account account = new Account();
-    private Bill bill = dbHelper.readBill(Long.parseLong(txtBillNumber.getText()), Long.parseLong(txtBillCost.getText()));
+//    private Account account = new Account();
+//    private Bill bill = dbHelper.readBill(Long.parseLong(txtBillNumber.getText()), Long.parseLong(txtBillCost.getText()));
 
 
     public EventHandler<KeyEvent> numeric_Validation(final Integer max_Lengh) {
@@ -139,7 +139,7 @@ public class billController implements Initializable {
         txtPayNumber.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(15));
         txtBillCost.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(15));
         txtSecendPassForBill.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(4));
-        txtUniquePassForBill.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(4));
+        txtUniquePassForBill.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(6));
 
     }
 
