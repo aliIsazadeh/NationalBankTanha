@@ -69,18 +69,15 @@ public class billController implements Initializable {
     }
 
 
-    public void payBill() {
-        if (txtBillNumber.getText().equals("") || txtPayNumber.getText().equals("") || txtSecendPassForBill.getText().equals("") || txtUniquePassForBill.getText().equals("")) {
-            alert("لطفا فیلد هارا پرکنید", billAlertLabel, "red");
-        }
+//    public void payBill() {
+//        if (txtBillNumber.getText().equals("") || txtPayNumber.getText().equals("") || txtSecendPassForBill.getText().equals("") || txtUniquePassForBill.getText().equals("")) {
+//            alert("لطفا فیلد هارا پرکنید", billAlertLabel, "red");
+//        }
+//
+//
+//    }
 
 
-    }
-
-    private void payBillValue() {
-
-
-    }
 
     public void considerBill() {
         dbHelper = new DBHelper();
@@ -148,6 +145,11 @@ public class billController implements Initializable {
 
     public void doTransaction(MouseEvent mouseEvent) {
 
+        if (txtBillNumber.getText().equals("") || txtPayNumber.getText().equals("") || txtSecendPassForBill.getText().equals("") || txtUniquePassForBill.getText().equals("")) {
+            alert("لطفا فیلد هارا پرکنید", billAlertLabel, "red");
+        }
+
+
 
         Account account = new loginPageController().account;
         Bill bill = dbHelper.readBill(Long.parseLong(txtBillNumber.getText()), Long.parseLong(txtPayNumber.getText()));
@@ -160,8 +162,8 @@ public class billController implements Initializable {
 
         } else {
             doTransaction(bill, account);
-            // TODO show notification
 
+            alert("قبض شما با موفقیت پرداخت شد", billAlertLabel, "red");
 
         }
 

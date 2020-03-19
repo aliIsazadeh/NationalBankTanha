@@ -16,7 +16,7 @@ public class historyController implements Initializable {
 
 
     public TextArea historyTextField;
-    public Button btnShowHistory;
+
 
 
     public void setHistoryTextField() {
