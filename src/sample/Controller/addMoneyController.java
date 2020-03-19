@@ -33,14 +33,17 @@ public class addMoneyController implements Initializable {
     public TextField txtAddMoneySecendPass;
     public TextField txtAddMoneyUniquePass;
     public Button sendUniquePass;
-    private loginPageController loginPage = new loginPageController();
-    private TransactionSerialProducer transactionSerialProducer = new TransactionSerialProducer();
-    private DBHelper dbHelper = new DBHelper();
-    private Account account = dbHelper.readAccount(loginPage.txtUserLogin.getText());
-    private Transaction transaction = new Transaction();
-    private Date today = new Date();
-    private SecondPassProducer secondPassProducer = new SecondPassProducer();
-    private String pass = secondPassProducer.secondPass();
+
+
+
+    private loginPageController loginPage ;
+    private TransactionSerialProducer transactionSerialProducer ;
+    private DBHelper dbHelper;
+    private Account account;
+    private Transaction transaction ;
+    private Date today ;
+    private SecondPassProducer secondPassProducer ;
+    private String pass="";
 
     private void alert(String message, Label lbl, String color) {
         lbl.setText(message);
@@ -121,6 +124,14 @@ public class addMoneyController implements Initializable {
 
 
     public boolean addMoney() {
+        loginPage = new loginPageController();
+        transactionSerialProducer = new TransactionSerialProducer();
+        dbHelper = new DBHelper();
+        account = dbHelper.readAccount(loginPage.getAccount().getUserName());
+        transaction = new Transaction();
+        today = new Date();
+        secondPassProducer = new SecondPassProducer();
+        pass = secondPassProducer.secondPass();
 
         transaction.setCostOfTransaction(txtAddMoney.getText());
         if (pass.equals(txtAddMoneySecendPass)) {
