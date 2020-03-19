@@ -60,7 +60,7 @@ public class loginPageController implements Initializable {
     public JFXTextField txtRegisterUserName;
 
     static Account account;
-    static Person person ;
+    static Person person;
 
     public Person getPerson() {
         return person;
@@ -528,6 +528,15 @@ public class loginPageController implements Initializable {
 //        System.out.println(loginPageController1.getAccount().getPerson().getName());
     }
 
+    public boolean isExistAccount(String userName) {
+        DBHelper dbHelper = new DBHelper();
+        Account account = dbHelper.readAccount(userName);
+        if (account == null)
+            return false;
+        else
+            return true;
+
+    }
 
     public void initialize(URL location, ResourceBundle resources) {
 
