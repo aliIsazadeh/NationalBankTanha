@@ -110,9 +110,9 @@ public class mainPageController implements Initializable {
         if (findComboIndex(comboMarriage) == 1) {
             person.setGender("زن");
         }
-
-        loginPageController.setAccount(account);
         account.setPerson(person);
+        loginPageController.setAccount(account);
+
         dbHelper.insertAccount(account);
 
     }
