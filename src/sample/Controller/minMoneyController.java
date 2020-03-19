@@ -35,7 +35,8 @@ public class minMoneyController implements Initializable {
     private DBHelper dbHelper = new DBHelper();
     private Transaction transaction = new Transaction();
     private loginPageController loginPage = new loginPageController();
-    private Account account = dbHelper.readAccount(loginPage.txtUserLogin.getText());
+    //dbHelper.readAccount(loginPage.txtUserLogin.getText());
+    private Account account = loginPage.getAccount();
     private SecondPassProducer secondPassProducer = new SecondPassProducer();
     private TransactionSerialProducer transactionSerialProducer = new TransactionSerialProducer();
     Date date = new Date();
