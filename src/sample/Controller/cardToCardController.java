@@ -63,7 +63,7 @@ public class cardToCardController implements Initializable {
     }
 
     public void doTransaction(MouseEvent mouseEvent) {
-        Account from = new loginPageController().account;
+        Account from = new loginPageController().getAccount();
         long accountNumber = Long.parseLong(DestinationCardNumber.getText());
         dbHelper = new DBHelper();
         Account to = dbHelper.readAccount(accountNumber);

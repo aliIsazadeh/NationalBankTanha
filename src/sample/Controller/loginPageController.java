@@ -58,8 +58,8 @@ public class loginPageController implements Initializable {
     public Label lblFailLogin;
     public JFXTextField txtRegisterUserName;
 
-    private Account account ;
-    private Person person ;
+    static Account account;
+    static Person person ;
 
     public Person getPerson() {
         return person;
@@ -507,15 +507,24 @@ public class loginPageController implements Initializable {
     }
 
 
-
-
     private void addVariable() {
+        Person person = new Person();
+        Account account = new Account();
         person.setName(txtRegisterFirstName.getText());
+        System.out.println(txtRegisterFirstName.getText());
         person.setLastName(txtRegisterLastName.getText());
         account.setUserName(txtRegisterUserName.getText());
         account.setAccountPassword(txtRegisterPass.getText());
         account.setPerson(person);
 
+        loginPageController loginPageController = new loginPageController();
+        account.setPerson(person);
+        setPerson(person);
+        setAccount(account);
+//        loginPageController.setAccount(account);
+//        loginPageController.setPerson(person);
+        loginPageController loginPageController1 = new loginPageController();
+        System.out.println(loginPageController1.getAccount().getPerson().getName());
     }
 
 

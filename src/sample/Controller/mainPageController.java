@@ -67,7 +67,7 @@ public class mainPageController implements Initializable {
     public Label lblSuccess;
     public JFXButton btnConfirmInfos;
     boolean flagPH = true;
-    private loginPageController loginPageController = new loginPageController();
+    private loginPageController loginPageController ;
 
     private int findComboIndex(JFXComboBox Box) {
         return Box.getSelectionModel().getSelectedIndex();
@@ -75,9 +75,14 @@ public class mainPageController implements Initializable {
 
 
     private void addVariable() {
-
+       loginPageController loginPageController = new loginPageController();
         Account account = loginPageController.getAccount();
-        Person person = account.getPerson();
+
+        System.out.println(account.getUserName());
+        Person person = loginPageController.getPerson();
+        System.out.println( "name :"+person.getName());
+
+        System.out.println(txtNationalCode.getText());
 
         person.setNationalNumber(Long.parseLong(txtNationalCode.getText()));
         person.setFatherName(txtFatherName.getText());
