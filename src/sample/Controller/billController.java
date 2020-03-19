@@ -6,6 +6,8 @@ import DataStructure.Transaction;
 import Extras.DBHelper;
 import Extras.TransactionSerialProducer;
 import com.jfoenix.controls.JFXTextField;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -131,6 +133,35 @@ public class billController implements Initializable {
         dbHelper = new DBHelper();
         dbHelper.insertTransaction(transaction);
     }
+
+    public void test() {
+        txtBillNumber.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+
+                if(!txtPayNumber.equals(""))
+                considerBill.setDisable(false);
+
+
+            }
+        });
+
+    }
+
+    public void test2() {
+        txtPayNumber.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+
+                if(!txtBillNumber.equals(""))
+                considerBill.setDisable(false);
+
+
+            }
+        });
+
+    }
+
 
     public void initialize(URL location, ResourceBundle resources) {
 

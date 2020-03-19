@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
-
-<AnchorPane prefHeight="400.0" prefWidth="723.0" style="-fx-background-color: #AAB6FE; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.cardToCardController">
+<?import javafx.scene.text.*?>
+<AnchorPane prefHeight="400.0" prefWidth="723.0" style="-fx-background-color: #AAB6FE; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/8.0.221" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.cardToCardController">
    <children>
       <AnchorPane fx:id="cardTocardAncorPane" layoutX="38.0" layoutY="43.0" prefHeight="309.0" prefWidth="324.0">
          <children>
@@ -29,7 +27,7 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </JFXButton>
-            <JFXTextField fx:id="txtMoneyCardToCard" alignment="CENTER_RIGHT" layoutX="70.0" layoutY="29.0" prefHeight="25.0" prefWidth="188.0" promptText="مبلغ مورد نظر را به تومان وارد کنید" onKeyTyped="#testCost">
+            <JFXTextField fx:id="txtMoneyCardToCard" alignment="CENTER_RIGHT" layoutX="70.0" layoutY="29.0" onKeyTyped="#testCost" prefHeight="25.0" prefWidth="188.0" promptText="مبلغ مورد نظر را به تومان وارد کنید">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -48,13 +46,13 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </JFXButton>
-            <Label fx:id="lblAlertCardToCard" alignment="CENTER" layoutX="90.0" layoutY="200.0" prefHeight="26.0" prefWidth="128.0" textFill="#f50000">
-               <font>
-                  <Font name="System Bold" size="17.0" />
-               </font>
-            </Label>
-            <TextArea fx:id="txtDescribeDestinationCard" editable="false" layoutX="20.0" layoutY="257.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="67.0" prefWidth="268.0" promptText="مشخصات کارت مقصد" />
+            <TextArea fx:id="txtDescribeDestinationCard" editable="false" layoutX="20.0" layoutY="215.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="109.0" prefWidth="268.0" promptText="مشخصات کارت مقصد" />
          </children>
       </AnchorPane>
+      <Label fx:id="lblAlertCardToCard" alignment="CENTER_RIGHT" layoutX="71.0" layoutY="352.0" prefHeight="26.0" prefWidth="258.0" textFill="#f50000">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

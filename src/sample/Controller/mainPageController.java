@@ -89,6 +89,8 @@ public class mainPageController implements Initializable {
         person.setJob(txtJob.getText());
         person.setAddress(txtAddress.getText());
         person.setPhoneNumber(txtPhoneNumber.getText());
+        account.setSecondPassword(txtSecendPassWord.getText());
+        account.setInventory("0");
         if (findComboIndex(comboMarriage) == 0) {
             person.setMarriage(false);
         }
