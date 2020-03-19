@@ -2,7 +2,6 @@ package sample.Controller;
 
 import DataStructure.Account;
 import DataStructure.Person;
-import Extras.DBHelper;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.Initializable;
 
@@ -18,15 +17,15 @@ public class personalInfoController implements Initializable {
     public JFXTextField txtShowGender;
     public JFXTextField txtShowAddress;
     public JFXTextField txtShowPhoneNumber;
-    private loginPageController loginPage = new loginPageController();
-    private DBHelper dbHelper = new DBHelper();
-    private Account account = dbHelper.readAccount(loginPage.getAccount().getUserName());
-    private Person person = account.getPerson();
+    private loginPageController loginPage ;
+    private Account account ;
+    private Person person ;
 
     public void setInfo() {
 
-
-
+        loginPage = new loginPageController();
+        account = loginPage.getAccount();
+        person = account.getPerson();
 
         txtShowNationalCode.setText(String.valueOf(person.getNationalNumber()));
         txtShowName.setText(person.getName());
@@ -42,7 +41,6 @@ public class personalInfoController implements Initializable {
 
 
     public void initialize(URL location, ResourceBundle resources) {
-
         setInfo();
     }
 

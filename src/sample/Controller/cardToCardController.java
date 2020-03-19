@@ -9,6 +9,7 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -16,6 +17,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -31,13 +34,17 @@ public class cardToCardController implements Initializable {
 
     public JFXTextField DestinationCardNumber;
     public TextArea txtCardToCardSubject;
+    //
     public JFXButton btnConfirmCardToCard;
     public JFXButton btnSearchDestinationCard;
+    //
     public TextArea txtDescribeDestinationCard;
     public Label lblAlertCardToCard;
     public AnchorPane cardTocardAncorPane;
     public JFXTextField txtCardToCardUniquePass;
+    ///
     public Button btnSendUniqueCodeCardToCard;
+    ///
     public JFXTextField txtMoneyCardToCard;
     public JFXTextField txtSecondPass;
     private DBHelper dbHelper;
@@ -63,7 +70,7 @@ public class cardToCardController implements Initializable {
     }
 
     public void doTransaction(MouseEvent mouseEvent) {
-        Account from = new loginPageController().account;
+        Account from = new loginPageController().getAccount();
         long accountNumber = Long.parseLong(DestinationCardNumber.getText());
         dbHelper = new DBHelper();
         Account to = dbHelper.readAccount(accountNumber);
@@ -135,12 +142,20 @@ public class cardToCardController implements Initializable {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 
-                if (!DestinationCardNumber.getText().equals("")) {
-
                     btnSearchDestinationCard.setDisable(false);
 
-                }
+            }
+        });
 
+    }
+
+    public void testCost() {
+        txtMoneyCardToCard.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+
+                    btnSendUniqueCodeCardToCard.setDisable(false);
+                    btnSearchDestinationCard.setDisable(false);
 
             }
         });
@@ -148,8 +163,39 @@ public class cardToCardController implements Initializable {
     }
 
 
+
+
+
+
+
+
+    public EventHandler<KeyEvent> numeric_Validation(final Integer max_Lengh) {
+        return new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent e) {
+                TextField txt_TextField = (TextField) e.getSource();
+                if (txt_TextField.getText().length() >= max_Lengh) {
+                    e.consume();
+                }
+                if (e.getCharacter().matches("[0-9.]")) {
+                    if (txt_TextField.getText().contains(".") && e.getCharacter().matches("[.]")) {
+                        e.consume();
+                    } else if (txt_TextField.getText().length() == 0 && e.getCharacter().matches("[.]")) {
+                        e.consume();
+                    }
+                } else {
+                    e.consume();
+                }
+            }
+        };
+    }
+
     public void initialize(URL location, ResourceBundle resources) {
 
+        DestinationCardNumber.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(16));
+        txtMoneyCardToCard.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(20));
+        txtSecondPass.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(4));
+        txtCardToCardUniquePass.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(6));
 
     }
 

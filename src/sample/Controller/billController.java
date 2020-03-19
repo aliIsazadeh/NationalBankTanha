@@ -37,8 +37,8 @@ public class billController implements Initializable {
     private TransactionSerialProducer transactionSerialProducer = new TransactionSerialProducer();
     private Transaction transaction;
     private DBHelper dbHelper;
-    private Account account = new Account();
-    private Bill bill = dbHelper.readBill(Long.parseLong(txtBillNumber.getText()), Long.parseLong(txtBillCost.getText()));
+//    private Account account = new Account();
+//    private Bill bill = dbHelper.readBill(Long.parseLong(txtBillNumber.getText()), Long.parseLong(txtBillCost.getText()));
 
 
     public EventHandler<KeyEvent> numeric_Validation(final Integer max_Lengh) {
@@ -88,7 +88,7 @@ public class billController implements Initializable {
 
         } else {
             Bill bill = dbHelper.readBill(Long.parseLong(txtBillNumber.getText()), Long.parseLong(txtPayNumber.getText()));
-            Account account = new loginPageController().account;
+            Account account = new loginPageController().getAccount();
             txtBillCost.setText(bill.getCostOfBill() + "");
 
             sendUniquePass.setVisible(true);
@@ -139,7 +139,7 @@ public class billController implements Initializable {
         txtPayNumber.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(15));
         txtBillCost.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(15));
         txtSecendPassForBill.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(4));
-        txtUniquePassForBill.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(4));
+        txtUniquePassForBill.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(6));
 
     }
 
@@ -151,7 +151,7 @@ public class billController implements Initializable {
 
 
 
-        Account account = new loginPageController().account;
+        Account account = new loginPageController().getAccount();
         Bill bill = dbHelper.readBill(Long.parseLong(txtBillNumber.getText()), Long.parseLong(txtPayNumber.getText()));
 
         if (txtSecendPassForBill.getText().equals("") || txtUniquePassForBill.getText().equals("")) {

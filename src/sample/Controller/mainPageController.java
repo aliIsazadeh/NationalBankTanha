@@ -67,7 +67,7 @@ public class mainPageController implements Initializable {
     public Label lblSuccess;
     public JFXButton btnConfirmInfos;
     boolean flagPH = true;
-    private loginPageController loginPageController;
+    private loginPageController loginPageController ;
 
     private int findComboIndex(JFXComboBox Box) {
         return Box.getSelectionModel().getSelectedIndex();
@@ -75,9 +75,14 @@ public class mainPageController implements Initializable {
 
 
     private void addVariable() {
-        loginPageController = new loginPageController();
+       loginPageController loginPageController = new loginPageController();
         Account account = loginPageController.getAccount();
-        Person person = account.getPerson();
+
+        System.out.println(account.getUserName());
+        Person person = loginPageController.getPerson();
+        System.out.println( "name :"+person.getName());
+
+        System.out.println(txtNationalCode.getText());
 
 
         person.setNationalNumber(Long.parseLong(txtNationalCode.getText()));
@@ -228,7 +233,8 @@ public class mainPageController implements Initializable {
             Parent root = FXMLLoader.load(getClass().getResource("../FXML/personalInfos.fxml"));
             mainAnchorPane.getChildren().addAll(root);
         } catch (IOException ex) {
-            System.out.println("Problem in loading");
+           // System.out.println("Problem in loading");
+            ex.printStackTrace();
         }
 
     }
@@ -241,7 +247,8 @@ public class mainPageController implements Initializable {
             AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("../FXML/addMoney.fxml"));
             mainAnchorPane.getChildren().addAll(anchorPane);
         } catch (IOException ex) {
-            System.out.println("Problem in loading");
+//            System.out.println("Problem in loading");
+            ex.printStackTrace();
         }
 
 
@@ -254,7 +261,8 @@ public class mainPageController implements Initializable {
             AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("../FXML/minMoney.fxml"));
             mainAnchorPane.getChildren().addAll(anchorPane);
         } catch (IOException ex) {
-            System.out.println("Problem in loading");
+//            System.out.println("Problem in loading");
+            ex.printStackTrace();
         }
 
 
@@ -266,7 +274,8 @@ public class mainPageController implements Initializable {
             AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("../FXML/reamainMoney.fxml"));
             mainAnchorPane.getChildren().addAll(anchorPane);
         } catch (IOException ex) {
-            System.out.println("Problem in loading");
+//            System.out.println("Problem in loading");
+            ex.printStackTrace();
         }
 
 
@@ -278,7 +287,8 @@ public class mainPageController implements Initializable {
             AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("../FXML/cardToCard.fxml"));
             mainAnchorPane.getChildren().addAll(anchorPane);
         } catch (IOException ex) {
-            System.out.println("Problem in loading");
+//            System.out.println("Problem in loading");
+            ex.printStackTrace();
         }
 
 
@@ -289,7 +299,8 @@ public class mainPageController implements Initializable {
             AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("../FXML/history.fxml"));
             mainAnchorPane.getChildren().addAll(anchorPane);
         } catch (IOException ex) {
-            System.out.println("Problem in loading");
+//            System.out.println("Problem in loading");
+            ex.printStackTrace();
         }
 
 

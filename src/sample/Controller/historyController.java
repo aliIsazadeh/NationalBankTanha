@@ -22,7 +22,7 @@ public class historyController implements Initializable {
     public void setHistoryTextField() {
 
         loginPageController loginPageController = new loginPageController();
-        Account account = loginPageController.account;
+        Account account = loginPageController.getAccount();
         ArrayList<Transaction> list = new ArrayList<>();
         list.addAll(account.getTransactions());
         for (int i = 0; i < list.size(); i++) {
