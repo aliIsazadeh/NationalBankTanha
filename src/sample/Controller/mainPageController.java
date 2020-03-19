@@ -74,7 +74,7 @@ public class mainPageController implements Initializable {
     }
 
 
-    private void addVariable() {
+    private void addVariable(String accountNumber) {
        loginPageController loginPageController = new loginPageController();
         Account account = loginPageController.getAccount();
 
@@ -117,6 +117,7 @@ public class mainPageController implements Initializable {
             person.setGender("زن");
         }
         account.setPerson(person);
+        account.setAccountNumber(accountNumber);
         loginPageController.setAccount(account);
 
         dbHelper.insertAccount(account);
@@ -169,9 +170,11 @@ public class mainPageController implements Initializable {
 
 
         } else {
+            CreateCardNumber createCardNumber = new CreateCardNumber();
 
+            String accountNumber = createCardNumber.createCardNumber();
 
-            addVariable();
+            addVariable(accountNumber);
 
             //    Account account = new Account();
             btnPersonalInfo.setDisable(false);
@@ -196,8 +199,7 @@ public class mainPageController implements Initializable {
             }
 
 
-            CreateCardNumber createCardNumber = new CreateCardNumber();
-            txtCardNumber.setText(createCardNumber.createCardNumber());
+            txtCardNumber.setText(accountNumber);
 
 
             lblNotice.setVisible(false);

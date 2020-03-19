@@ -24,7 +24,7 @@ public class historyController implements Initializable {
         loginPageController loginPageController = new loginPageController();
         Account account = loginPageController.getAccount();
         ArrayList<Transaction> list = new ArrayList<>();
-        if (account.getTransactions().size()!=0) {
+        if (!account.getTransactions().equals(null)) {
             list.addAll(account.getTransactions());
             for (int i = 0; i < list.size(); i++) {
                 Transaction transaction = list.get(i);

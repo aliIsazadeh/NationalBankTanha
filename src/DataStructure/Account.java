@@ -3,7 +3,7 @@ package DataStructure;
 import java.util.ArrayList;
 
 public class Account {
-    private long accountNumber;//شماره حساب
+    private String accountNumber;//شماره حساب
     private String accountType;//نوع حساب
     private String accountBank;//بانکی که در ان حساب را باز کردیم
     private String passwordForATM;
@@ -68,11 +68,11 @@ public class Account {
         this.secondPassword = secondPassword;
     }
 
-    public long getAccountNumber() {
+    public String getAccountNumber() {
         return accountNumber;
     }
 
-    public void setAccountNumber(long accountNumber) {
+    public void setAccountNumber(String accountNumber) {
         this.accountNumber = accountNumber;
     }
 
