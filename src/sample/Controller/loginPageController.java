@@ -57,8 +57,29 @@ public class loginPageController implements Initializable {
     public Label lblFailAlertRegister;
     public Label lblFailLogin;
     public JFXTextField txtRegisterUserName;
-    Person person = new Person();
+
     Account account = new Account();
+    Person person = new Person();
+
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
+    }
+
+
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
+
+
     private DBHelper dbHelper = new DBHelper();
 
     private FadeTransition fadeTransition(Node node, Duration duration, double fromValue, double toValue) {
