@@ -518,14 +518,14 @@ public class loginPageController implements Initializable {
         account.setAccountPassword(txtRegisterPass.getText());
         account.setPerson(person);
 
-        loginPageController loginPageController = new loginPageController();
-        account.setPerson(person);
+//        loginPageController loginPageController = new loginPageController();
+//        account.setPerson(person);
         setPerson(person);
         setAccount(account);
 //        loginPageController.setAccount(account);
 //        loginPageController.setPerson(person);
-        loginPageController loginPageController1 = new loginPageController();
-        System.out.println(loginPageController1.getAccount().getPerson().getName());
+//        loginPageController loginPageController1 = new loginPageController();
+//        System.out.println(loginPageController1.getAccount().getPerson().getName());
     }
 
 

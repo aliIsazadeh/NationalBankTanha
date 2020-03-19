@@ -24,33 +24,35 @@ public class historyController implements Initializable {
         loginPageController loginPageController = new loginPageController();
         Account account = loginPageController.getAccount();
         ArrayList<Transaction> list = new ArrayList<>();
-        list.addAll(account.getTransactions());
-        for (int i = 0; i < list.size(); i++) {
-            Transaction transaction = list.get(i);
-            String transactionInfo = "بانک ملی تنها"
-                    + "\n" + transaction.getTypeOfTransaction() + "نوع تراکنش : "
-                    + "\n" + transaction.getCostOfTransaction() + "مبلغ : "
-                    + "\n";
-            if (transaction.getTypeOfTransaction().equals("انتقال وجه")) {
-                transactionInfo += transaction.getFrom().getAccountNumber() + "انتقال از کارت : "
-                        + "\n" + transaction.getTo().getAccountNumber() + "انتقال به کارت : "
+        if (account.getTransactions()!=(null)) {
+            list.addAll(account.getTransactions());
+            for (int i = 0; i < list.size(); i++) {
+                Transaction transaction = list.get(i);
+                String transactionInfo = "بانک ملی تنها"
+                        + "\n" + transaction.getTypeOfTransaction() + "نوع تراکنش : "
+                        + "\n" + transaction.getCostOfTransaction() + "مبلغ : "
                         + "\n";
-            } else if (transaction.getTypeOfTransaction().equals("پرداخت قبض")) {
-                transactionInfo += transaction.getBillingId() + "شناسه قبض : "
-                        + "\n" + transaction.getPaymentCode() + "شناسه پرداخت : "
+                if (transaction.getTypeOfTransaction().equals("انتقال وجه")) {
+                    transactionInfo += transaction.getFrom().getAccountNumber() + "انتقال از کارت : "
+                            + "\n" + transaction.getTo().getAccountNumber() + "انتقال به کارت : "
+                            + "\n";
+                } else if (transaction.getTypeOfTransaction().equals("پرداخت قبض")) {
+                    transactionInfo += transaction.getBillingId() + "شناسه قبض : "
+                            + "\n" + transaction.getPaymentCode() + "شناسه پرداخت : "
+                            + "\n";
+                }
+
+                transactionInfo += transaction.getSerialOfTransaction() + "شماره سزیال :"
+                        + "\n" + transaction.getDateOfTransaction() + " تاریخ :"
                         + "\n";
-            }
+                if (transaction.isFinished() == true) {
+                    transactionInfo += "عملیات موفق ";
+                } else if (transaction.isFinished() == false) {
+                    transactionInfo += "عملیات نا موفق ";
 
-            transactionInfo += transaction.getSerialOfTransaction() + "شماره سزیال :"
-                    + "\n" + transaction.getDateOfTransaction() + " تاریخ :"
-                    + "\n";
-            if (transaction.isFinished() == true) {
-                transactionInfo += "عملیات موفق ";
-            } else if (transaction.isFinished() == false) {
-                transactionInfo += "عملیات نا موفق ";
-
+                }
+                historyTextField.setText(historyTextField.getText() + transactionInfo);
             }
-            historyTextField.setText(historyTextField.getText() + transactionInfo);
         }
     }
 

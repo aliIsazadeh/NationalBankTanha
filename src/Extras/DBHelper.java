@@ -115,7 +115,7 @@ public class DBHelper {
     }
 
     ////// zaxire objecti az person dar dataBase
-    private void insertPerson(Person person, long number) {
+    private void insertPerson(Person person, String number) {
         connectionForBank();
 
         String name = person.getName();
@@ -169,7 +169,7 @@ public class DBHelper {
         connectionForBank();
         String accountID = account.getAccountNumber() + "";
         String accountType = account.getAccountType();
-        String passForATM = account.getPasswordForATM();
+        String passForATM = account.getAccountPassword();
         String secondPass = account.getSecondPassword();
         String inventory = account.getInventory();
         String userName = account.getUserName();
@@ -210,7 +210,7 @@ public class DBHelper {
     }
 
     ////xandane tamam tarakonesh haye 1 hesab
-    private ArrayList<Transaction> readAllTransactionForPerson(long id) {
+    private ArrayList<Transaction> readAllTransactionForPerson(String id) {
 
 
         String getTransactionSQL = "SELECT typeOfTransaction  , fromAccount  , ToAccount  , finished  , serial  , dat  , cost,billingID,paymentCode FROM transactions where fromAccount = '" + id + "' or toAccount = '" + id + "';";
@@ -221,9 +221,9 @@ public class DBHelper {
             while (resultSet.next()) {
                 Transaction transaction = new Transaction();
                 Account accountFrom = new Account();
-                accountFrom.setAccountNumber((resultSet.getLong("fromAccount")));
+                accountFrom.setAccountNumber((resultSet.getString("fromAccount")));
                 Account To = new Account();
-                To.setAccountNumber(resultSet.getLong("ToAccount"));
+                To.setAccountNumber(resultSet.getString("ToAccount"));
                 transaction.setTypeOfTransaction(resultSet.getString("typeOfTransaction"));
                 transaction.setFrom(accountFrom);
                 transaction.setTo(To);
@@ -320,8 +320,8 @@ public class DBHelper {
         Account account = new Account();
         try {
             ResultSet resultSet = statementForBank.executeQuery(sql);
-            account.setAccountNumber(resultSet.getLong("accountNumber"));
-            account.setPasswordForATM(resultSet.getString("passForATM"));
+            account.setAccountNumber(resultSet.getString("accountNumber"));
+            account.setAccountPassword(resultSet.getString("passForATM"));
             account.setAccountType(resultSet.getString("typeOfAccount"));
             account.setSecondPassword(resultSet.getString("secondPass"));
             account.setInventory(resultSet.getString("inventory"));
@@ -344,8 +344,8 @@ public class DBHelper {
             ResultSet resultSet = statementForBank.executeQuery(getSQl);
             while (resultSet.next()) {
                 Account account = new Account();
-                account.setAccountNumber(resultSet.getLong("accountNumber"));
-                account.setPasswordForATM(resultSet.getString("passForATM"));
+                account.setAccountNumber(resultSet.getString("accountNumber"));
+                account.setAccountPassword(resultSet.getString("passForATM"));
                 account.setAccountType(resultSet.getString("typeOfAccount"));
                 account.setSecondPassword(resultSet.getString("secondPass"));
                 account.setInventory(resultSet.getString("inventory"));
@@ -360,7 +360,7 @@ public class DBHelper {
     }
 
     //bonan da ishiz olmasin
-    private Person readPerson(long accountNumber) {
+    private Person readPerson(String accountNumber) {
         connectionForBank();
         Person person = new Person();
         Account account = new Account();
@@ -369,7 +369,7 @@ public class DBHelper {
 
         try {
             ResultSet resultSet = statementForBank.executeQuery(readSQL);
-            account.setAccountNumber(resultSet.getLong("accountNumber"));
+            account.setAccountNumber(resultSet.getString("accountNumber"));
             person.setAccount(account);
 
             person.setName(resultSet.getString("firstName"));
@@ -397,7 +397,7 @@ public class DBHelper {
         updatePerson(account.getPerson());
         String update = " UPDATE account set accountNumber ='" + account.getAccountNumber() + "' where accountNumber ='" + account.getAccountNumber() + "';";
         String update1 = "UPDATE account set typeOfAccount = '" + account.getAccountType() + "' where accountNumber ='" + account.getAccountNumber() + "';";
-        String update2 = "UPDATE account set passForATM = '" + account.getPasswordForATM() + "' where accountNumber ='" + account.getAccountNumber() + "';";
+        String update2 = "UPDATE account set passForATM = '" + account.getAccountPassword() + "' where accountNumber ='" + account.getAccountNumber() + "';";
         String update3 = "UPDATE account set secondPass = '" + account.getSecondPassword() + "' where accountNumber ='" + account.getAccountNumber() + "';";
         String update4 = "UPDATE account set inventory = '" + account.getInventory() + "' where accountNumber ='" + account.getAccountNumber() + "';";
         String update5 = "UPDATE account set userName = '" + account.getUserName() + "' where accountNumber ='" + account.getAccountNumber() + "';";
