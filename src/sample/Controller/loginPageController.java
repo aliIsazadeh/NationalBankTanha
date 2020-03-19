@@ -507,6 +507,8 @@ public class loginPageController implements Initializable {
     }
 
 
+
+
     private void addVariable() {
         person.setName(txtRegisterFirstName.getText());
         person.setLastName(txtRegisterLastName.getText());

@@ -77,7 +77,7 @@ public class mainPageController implements Initializable {
     private void addVariable() {
 
         Account account = loginPageController.getAccount();
-        Person person = loginPageController.getPerson();
+        Person person = account.getPerson();
 
         person.setNationalNumber(Long.parseLong(txtNationalCode.getText()));
         person.setFatherName(txtFatherName.getText());
@@ -110,9 +110,9 @@ public class mainPageController implements Initializable {
         if (findComboIndex(comboMarriage) == 1) {
             person.setGender("زن");
         }
-
-
         account.setPerson(person);
+        loginPageController.setAccount(account);
+
         dbHelper.insertAccount(account);
 
     }
