@@ -78,11 +78,7 @@ public class mainPageController implements Initializable {
        loginPageController loginPageController = new loginPageController();
         Account account = loginPageController.getAccount();
 
-        System.out.println(account.getUserName());
         Person person = loginPageController.getPerson();
-        System.out.println( "name :"+person.getName());
-
-        System.out.println(txtNationalCode.getText());
 
 
         person.setNationalNumber(Long.parseLong(txtNationalCode.getText()));
@@ -117,6 +113,7 @@ public class mainPageController implements Initializable {
             person.setGender("زن");
         }
         account.setPerson(person);
+        account.setSecondPassword(txtSecendPassWord.getText());
         account.setAccountNumber(accountNumber);
         loginPageController.setAccount(account);
 

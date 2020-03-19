@@ -144,7 +144,7 @@ public class addMoneyController implements Initializable {
             dbHelper.updateAccount(account);
         } else {
             transaction.setFinished(false);
-            transaction.setDateOfTransaction((java.sql.Date) today);
+            transaction.setDateOfTransaction(today);
             transaction.setSerialOfTransaction(transactionSerialProducer.serialProducer());
             transaction.setTypeOfTransaction("افزودن موجودی");
             dbHelper.insertTransaction(transaction);
