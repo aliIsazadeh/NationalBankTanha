@@ -21,7 +21,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </JFXTextField>
-            <Button fx:id="btnSendUniqueCodeCardToCard" disable="true" layoutX="68.0" layoutY="136.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="96.0" text="ارسال رمز پویا" />
+            <Button fx:id="btnSendUniqueCodeCardToCard" disable="true" layoutX="68.0" layoutY="136.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="96.0" text="ارسال رمز پویا"  onMouseClicked="#sendingUniqueCode"/>
             <JFXButton fx:id="btnConfirmCardToCard" disable="true" layoutX="109.0" layoutY="239.0" onMouseClicked="#doTransaction" prefHeight="53.0" prefWidth="106.0" style="-fx-background-color: #000000;" text="تایید واریز" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="16.0" />

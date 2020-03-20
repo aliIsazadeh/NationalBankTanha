@@ -47,6 +47,16 @@ public class cardToCardController implements Initializable {
         lbl.setStyle("-fx-text-fill: " + color + ";");
     }
 
+    public void sendingUniqueCode() {
+
+
+
+        alert(" رمز پویا به شماره شما ارسال شد",lblAlertCardToCard,"green");
+
+
+    }
+
+
 
     public void searchDestinationCard() {
 

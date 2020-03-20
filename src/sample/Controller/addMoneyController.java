@@ -93,6 +93,8 @@ public class addMoneyController implements Initializable {
 
         txtAddMoneyUniquePass.setVisible(true);
 
+        alert(" رمز پویا به شماره شما ارسال شد",lblAlertAddMoney,"green");
+
 
     }
 

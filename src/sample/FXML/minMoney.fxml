@@ -29,6 +29,6 @@
       <TextField fx:id="txtMinMoney" alignment="CENTER_RIGHT" layoutX="264.0" layoutY="146.0" onKeyTyped="#testCost" prefHeight="25.0" prefWidth="241.0" promptText="مبلغ مورد نظر خود را وارد کنید" />
       <TextField fx:id="txtSecendPassWordMinMoney" alignment="CENTER_RIGHT" layoutX="398.0" layoutY="188.0" prefHeight="25.0" prefWidth="110.0" promptText="رمز دوم" />
       <TextField fx:id="txtUniquePassMinMoney" alignment="CENTER_RIGHT" layoutX="265.0" layoutY="188.0" prefHeight="25.0" prefWidth="110.0" promptText="رمز پویا" />
-      <Button fx:id="btnSendUniquePass" layoutX="344.0" layoutY="235.0" mnemonicParsing="false" text="ارسال رمز پویا" />
+      <Button fx:id="btnSendUniquePass" layoutX="344.0" layoutY="235.0" mnemonicParsing="false" text="ارسال رمز پویا" onMouseClicked="#sendingUniqueCode" />
    </children>
 </AnchorPane>
