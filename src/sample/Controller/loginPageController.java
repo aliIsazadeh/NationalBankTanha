@@ -65,10 +65,6 @@ public class loginPageController implements Initializable {
     }
 
 
-
-
-
-
     static Account account;
     static Person person;
 
@@ -90,7 +86,7 @@ public class loginPageController implements Initializable {
     }
 
 
-    private DBHelper dbHelper = new DBHelper();
+    // private DBHelper dbHelper = new DBHelper();
 
     private FadeTransition fadeTransition(Node node, Duration duration, double fromValue, double toValue) {
         FadeTransition fadeTransition = new FadeTransition();
@@ -175,10 +171,11 @@ public class loginPageController implements Initializable {
 
     public void loadMainPage() {
         flag = isExistAccount(txtUserLogin.getText());
-        DBHelper dbHelper = new DBHelper();
-        Account account = dbHelper.readAccount(txtUserLogin.getText());
-
-        if(flag){
+        System.out.println(txtUserLogin.getText());
+        System.out.println(flag);
+        if (flag) {
+            DBHelper dbHelper = new DBHelper();
+            Account account = dbHelper.readAccount(txtUserLogin.getText());
             if (txtUserLogin.getText().equals("") && txtPassLogin.getText().equals("")) {
 
                 alert("لطفا نام کاربری و رمز عبور را وارد کنید.", lblFailLogin, "red");
@@ -189,37 +186,31 @@ public class loginPageController implements Initializable {
 
             } else if (txtUserLogin.getText().equals("") && !txtPassLogin.getText().equals("")) {
                 alert("لطفا نام کاربری را وارد کنید", lblFailLogin, "red");
-            }
-            else if (account.getAccountPassword().equals(txtPassLogin.getText())){
+            } else if (account != null) {
+                if (account.getAccountPassword().equals(txtPassLogin.getText())) {
 
-                Parent root;
-                try {
-                    Stage stage = (Stage) btnLogin.getScene().getWindow();
-                    stage.close();
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/sample/FXML/mainPage.fxml"));
-                    root = loader.load();
-                    stage = new Stage();
-                    Stage finalStage = stage;
-                    finalStage.setResizable(false);
-                    finalStage.initStyle(StageStyle.TRANSPARENT);
-                    stage.setScene(new Scene(root));
-                    stage.show();
-                } catch (IOException e) {
-                    e.printStackTrace();
+                    Parent root;
+                    try {
+                        Stage stage = (Stage) btnLogin.getScene().getWindow();
+                        stage.close();
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/sample/FXML/mainPage.fxml"));
+                        root = loader.load();
+                        stage = new Stage();
+                        Stage finalStage = stage;
+                        finalStage.setResizable(false);
+                        finalStage.initStyle(StageStyle.TRANSPARENT);
+                        stage.setScene(new Scene(root));
+                        stage.show();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+
                 }
-
-
-
             }
 
 
-
-        }
-
-
-
-
-        if(!flag) {
+        } else {
 
             if (txtUserLogin.getText().equals("") && txtPassLogin.getText().equals("")) {
 
@@ -337,13 +328,8 @@ public class loginPageController implements Initializable {
 
         } else {
             alert("ثبت نام شما با موفقیت انجام شد.اکنون میتوانید وارد سیستم شوید", lblSuccessAlert, "green");
-            Person person = new Person();
-            Account account = new Account();
-            DBHelper dbHelper = new DBHelper();
 
             addVariable();
-
-
 
 
         }

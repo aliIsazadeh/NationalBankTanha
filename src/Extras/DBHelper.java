@@ -332,6 +332,7 @@ public class DBHelper {
         closeBank();
         account.setPerson(readPerson(account.getAccountNumber()));
         account.setTransactions(readAllTransactionForPerson(account.getAccountNumber()));
+        System.out.println("user"+account.getAccountNumber());
         return account;
     }
 
