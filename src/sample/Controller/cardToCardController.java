@@ -51,6 +51,7 @@ public class cardToCardController implements Initializable {
     public void searchDestinationCard() {
 
         long accountNumber = Long.parseLong(DestinationCardNumber.getText());
+
         dbHelper = new DBHelper();
         Account account = dbHelper.readAccount(accountNumber);
         if (DestinationCardNumber.getText().equals("")) {

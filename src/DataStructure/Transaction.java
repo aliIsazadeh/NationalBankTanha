@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class Transaction {
     private String typeOfTransaction;
-    private String IDnumber;//شماره حساب
+//    private String IDnumber;//شماره حساب
     private Account from;//میدا
     private Account to;//مقصد
 
@@ -32,13 +32,13 @@ public class Transaction {
         this.paymentCode = paymentCode;
     }
 
-    public String getIDnumber() {
-        return IDnumber;
-    }
-
-    public void setIDnumber(String IDnumber) {
-        this.IDnumber = IDnumber;
-    }
+//    public String getIDnumber() {
+//        return IDnumber;
+//    }
+//
+//    public void setIDnumber(String IDnumber) {
+//        this.IDnumber = IDnumber;
+//    }
 
     public Account getFrom() {
         return from;

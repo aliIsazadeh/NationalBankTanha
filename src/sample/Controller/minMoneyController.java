@@ -46,7 +46,7 @@ public class minMoneyController implements Initializable {
     public void confirmMinMoney() {
 
 
-        if (txtMinMoney.getText().equals("") ) {
+        if (txtMinMoney.getText().equals("")) {
 
             alert("لطفا مبلغ برداشتی را وارد کنید", lblAlertMinMoney, "red");
 
@@ -54,15 +54,13 @@ public class minMoneyController implements Initializable {
 
             alert("توجه : سقف وجه برداشتی تا 200هزار تومان در یک روز می باشد.", lblAlertMinMoney, "red");
 
-        }
-        else if(txtSecendPassWordMinMoney.equals("")){
+        } else if (txtSecendPassWordMinMoney.equals("")) {
 
             alert("لطفا رمز دوم را وارد کنید", lblAlertMinMoney, "red");
-        }
-
-        else {
+        } else {
             boolean flag = minMoney();
-            if (flag) {
+        }
+//            if (flag) {
 //                Parent root;
 //                try {
 //                    Stage stage = (Stage) confirmMinMoney.getScene().getWindow();
@@ -79,22 +77,15 @@ public class minMoneyController implements Initializable {
 //                    e.printStackTrace();
 //                }
 
-                alert(" تراکنش با موفقیت انجام شد", lblAlertMinMoney, "green");
-            }
+//                alert(" تراکنش با موفقیت انجام شد", lblAlertMinMoney, "green");
+//            }
 
 
+//            if (!flag) {
 
-            if (!flag) {
-
-                alert(" تراکنش ناموفق بود", lblAlertMinMoney, "red");
-
-            }
-
-
-        }
-
-
-
+//                alert(" تراکنش ناموفق بود", lblAlertMinMoney, "red");
+//
+//            }
 
 
     }
@@ -108,27 +99,35 @@ public class minMoneyController implements Initializable {
             transaction.setSerialOfTransaction(transactionSerialProducer.serialProducer());
             transaction.setDateOfTransaction(date);
             transaction.setCostOfTransaction(txtMinMoney.getText());
-            transaction.setIDnumber(account.getAccountNumber());
+            transaction.setFrom(account);
+            dbHelper.insertTransaction(transaction);
+
+            alert(" تراکنش با موفقیت انجام شد", lblAlertMinMoney, "green");
+
         } else if (!(txtSecendPassWordMinMoney.getText().equals(secondPassProducer.secondPass()))) {
-            transaction.setFinished(false);
-            transaction.setTypeOfTransaction("برداشت وجه");
-            transaction.setSerialOfTransaction(transactionSerialProducer.serialProducer());
-            transaction.setDateOfTransaction(date);
-            transaction.setCostOfTransaction(txtMinMoney.getText());
-            transaction.setIDnumber(account.getAccountNumber());
+            alert("رمز دوم اشتباه است", lblAlertMinMoney, "red");
+
+//            transaction.setFinished(false);
+//            transaction.setTypeOfTransaction("برداشت وجه");
+//            transaction.setSerialOfTransaction(transactionSerialProducer.serialProducer());
+//            transaction.setDateOfTransaction(date);
+//            transaction.setCostOfTransaction(txtMinMoney.getText());
+//            transaction.setFrom(account);
         } else if ((txtSecendPassWordMinMoney.getText().equals(secondPassProducer.secondPass())) && !(Long.parseLong(txtMinMoney.getText()) < Long.parseLong(account.getInventory()))) {
+            alert("موجودی کافی نیست", lblAlertMinMoney, "red");
+
             transaction.setFinished(false);
             transaction.setTypeOfTransaction("برداشت وجه");
             transaction.setSerialOfTransaction(transactionSerialProducer.serialProducer());
             transaction.setDateOfTransaction(date);
             transaction.setCostOfTransaction(txtMinMoney.getText());
-            transaction.setIDnumber(account.getAccountNumber());
+            transaction.setFrom(account);
+            dbHelper.insertTransaction(transaction);
+
         }
 
-        dbHelper.insertTransaction(transaction);
         return transaction.isFinished();
     }
-
 
 
     public EventHandler<KeyEvent> numeric_Validation(final Integer max_Lengh) {
@@ -165,8 +164,6 @@ public class minMoneyController implements Initializable {
         });
 
     }
-
-
 
 
     public void initialize(URL location, ResourceBundle resources) {

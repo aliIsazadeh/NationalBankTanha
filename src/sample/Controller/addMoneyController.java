@@ -3,7 +3,6 @@ package sample.Controller;
 import DataStructure.Account;
 import DataStructure.Transaction;
 import Extras.DBHelper;
-import Extras.SecondPassProducer;
 import Extras.TransactionSerialProducer;
 import com.jfoenix.controls.JFXButton;
 import javafx.beans.value.ChangeListener;
@@ -46,10 +45,10 @@ public class addMoneyController implements Initializable {
        else {
 
             boolean flag = addMoney();
-
-            if (flag) {
-
-                alert("عملیات با موفقیت انجام شد", lblAlertAddMoney, "green");
+        }
+//            if (flag) {
+//
+//                alert("عملیات با موفقیت انجام شد", lblAlertAddMoney, "green");
 
 
 //                Parent root;
@@ -69,13 +68,13 @@ public class addMoneyController implements Initializable {
 //                }
 
 
-            } else {
+//            } else {
+//
+//                alert("تراکنش شما ناموفق بود!! ", lblAlertAddMoney, "red");
+//
+//            }
 
-                alert("تراکنش شما ناموفق بود!! ", lblAlertAddMoney, "red");
-
-            }
-
-        }
+//        }
     }
 
 
@@ -109,35 +108,45 @@ public class addMoneyController implements Initializable {
 
 
     private boolean addMoney() {
+        System.out.println("start");
         loginPageController loginPage = new loginPageController();
-        TransactionSerialProducer transactionSerialProducer = new TransactionSerialProducer();
         DBHelper dbHelper = new DBHelper();
         Account account = loginPage.getAccount();
         Transaction transaction = new Transaction();
         Date today = new Date();
-        SecondPassProducer secondPassProducer = new SecondPassProducer();
-        String pass = secondPassProducer.secondPass();
 
-        transaction.setCostOfTransaction(txtAddMoney.getText());
-        if (pass.equals(txtAddMoneySecendPass)) {
+
+        System.out.println("start2");
+        if (account.getSecondPassword().equals(txtAddMoneySecendPass.getText())) {
+            System.out.println(true);
+            transaction.setCostOfTransaction(txtAddMoney.getText());
             transaction.setFinished(true);
             transaction.setDateOfTransaction( today);
-            transaction.setSerialOfTransaction(transactionSerialProducer.serialProducer());
+            transaction.setSerialOfTransaction(new TransactionSerialProducer().serialProducer());
             transaction.setTypeOfTransaction("افزودن موجودی");
+            transaction.setFrom(account);
             dbHelper.insertTransaction(transaction);
             account.setInventory(String.valueOf(Integer.parseInt(account.getInventory()) + Integer.parseInt(txtAddMoney.getText())));
+
             dbHelper.updateAccount(account);
+            alert("عملیات با موفقیت انجام شد", lblAlertAddMoney, "green");
+
         } else {
-            transaction.setFinished(false);
-            transaction.setDateOfTransaction(today);
-            transaction.setSerialOfTransaction(transactionSerialProducer.serialProducer());
-            transaction.setTypeOfTransaction("افزودن موجودی");
-            dbHelper.insertTransaction(transaction);
-
-
-
+            alert("رمز دوم اشتباه است",lblAlertAddMoney,"red");
+//            transaction.setFinished(false);
+//            System.out.println("finished"+false);
+//            transaction.setDateOfTransaction(today);
+//            System.out.println(today);
+//            transaction.setSerialOfTransaction(new TransactionSerialProducer().serialProducer());
+//            System.out.println(transaction.getSerialOfTransaction());
+//            transaction.setTypeOfTransaction("افزودن موجودی");
+//            System.out.println(transaction.getTypeOfTransaction());
+//            dbHelper.insertTransaction(transaction);
+//            System.out.println("inserted");
         }
 
+        System.out.println("finish");
+        System.out.println(transaction.isFinished());
 
         return transaction.isFinished();
     }

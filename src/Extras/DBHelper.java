@@ -187,23 +187,32 @@ public class DBHelper {
 
     public void insertTransaction(Transaction transaction) {
         connectionForBank();
-
+        String from = "";
+        String To = "";
+        String billingId = "";
+        String paymentCode = "";
         String type = transaction.getTypeOfTransaction();
-        String from = transaction.getFrom().getAccountNumber() + "";
-        String To = transaction.getTo().getAccountNumber() + "";
+        if (transaction.getFrom() != null)
+            from = transaction.getFrom().getAccountNumber() + "";
+        if (transaction.getTo() != null)
+            To = transaction.getTo().getAccountNumber() + "";
         Date date = transaction.getDateOfTransaction();
         String cost = transaction.getCostOfTransaction();
         String serial = transaction.getSerialOfTransaction();
         String finished = transaction.isFinished() + "";
-        String billingId = transaction.getBillingId() + "";
-        String paymentCode = transaction.getPaymentCode() + "";
+        if (!String.valueOf(transaction.getBillingId()).equals(null))
+            billingId = transaction.getBillingId() + "";
+        if (String.valueOf(transaction.getPaymentCode()).equals(null))
+            paymentCode = transaction.getPaymentCode() + "";
 
 
         String insertSQL = "INSERT INTO transactions (typeOfTransaction  , fromAccount  , ToAccount  , finished  , serial  , dat  , cost ,billingID,paymentCode)VALUES ('" + type + "','" + from + "','" + To + "','" + finished + "','" + serial + "','" + date + "','" + cost + "','" + billingId + "','" + paymentCode + "');";
         // billingID TEXT , billingID TEXT
         try {
+            System.out.println("transaction is inserted");
             statementForBank.executeUpdate(insertSQL);
         } catch (SQLException e) {
+            System.out.println("transaction us not inserted");
             System.out.println(e.getMessage());
         }
         closeBank();
@@ -399,7 +408,6 @@ public class DBHelper {
     /// beroz kardan hesab masalan afzayesh mojodi v taghyir ramz v ..
     public void updateAccount(Account account) {
         connectionForBank();
-        updatePerson(account.getPerson());
         String update = " UPDATE account set accountNumber ='" + account.getAccountNumber() + "' where accountNumber ='" + account.getAccountNumber() + "';";
         String update1 = "UPDATE account set typeOfAccount = '" + account.getAccountType() + "' where accountNumber ='" + account.getAccountNumber() + "';";
         String update2 = "UPDATE account set passForATM = '" + account.getAccountPassword() + "' where accountNumber ='" + account.getAccountNumber() + "';";
@@ -420,6 +428,8 @@ public class DBHelper {
             System.out.println(e.getMessage() + "A");
         }
         closeBank();
+        updatePerson(account.getPerson());
+
     }//accountNumber  , typeOfAccount,passForATM  , secondPass  , inventory
 
     // /// beroz kardan etelaat fard  masalan tagiir telephone v ..

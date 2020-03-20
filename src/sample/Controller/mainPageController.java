@@ -114,7 +114,12 @@ public class mainPageController implements Initializable {
         }
         account.setPerson(person);
         account.setSecondPassword(txtSecendPassWord.getText());
-        account.setAccountNumber(accountNumber);
+        String [ ] number = accountNumber.split("-");
+        String finalAccountNumber="";
+        for (int i = 0; i <number.length ; i++) {
+            finalAccountNumber += number[i];
+        }
+        account.setAccountNumber(finalAccountNumber);
         loginPageController.setAccount(account);
 
         dbHelper.insertAccount(account);
