@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-
-<AnchorPane prefHeight="400.0" prefWidth="723.0" style="-fx-background-color: #AAB6FE; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.minMoneyController">
+<AnchorPane prefHeight="400.0" prefWidth="723.0" style="-fx-background-color: #AAB6FE; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/8.0.221" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.minMoneyController">
    <children>
       <Label alignment="CENTER" layoutX="308.0" layoutY="14.0" prefHeight="47.0" prefWidth="154.0" text="برداشت وجه">
          <font>
@@ -19,17 +16,17 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="lblAlertMinMoney" alignment="CENTER" layoutX="152.0" layoutY="317.0" prefHeight="47.0" prefWidth="463.0" text=" " textFill="RED">
+      <Label fx:id="lblAlertMinMoney" alignment="CENTER" layoutX="155.0" layoutY="339.0" prefHeight="47.0" prefWidth="463.0" text=" " textFill="RED">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <JFXButton fx:id="confirmMinMoney" layoutX="339.0" layoutY="283.0" onMouseClicked="#confirmMinMoney" prefHeight="47.0" prefWidth="94.0" style="-fx-background-color: #000000;" text="برداشت" textFill="WHITE">
+      <JFXButton fx:id="confirmMinMoney" disable="true" layoutX="339.0" layoutY="283.0" onMouseClicked="#confirmMinMoney" prefHeight="47.0" prefWidth="94.0" style="-fx-background-color: #000000;" text="برداشت" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </JFXButton>
-      <TextField fx:id="txtMinMoney" alignment="CENTER_RIGHT" layoutX="264.0" layoutY="146.0" prefHeight="25.0" prefWidth="241.0" promptText="مبلغ مورد نظر خود را وارد کنید" />
+      <TextField fx:id="txtMinMoney" alignment="CENTER_RIGHT" layoutX="264.0" layoutY="146.0" onKeyTyped="#testCost" prefHeight="25.0" prefWidth="241.0" promptText="مبلغ مورد نظر خود را وارد کنید" />
       <TextField fx:id="txtSecendPassWordMinMoney" alignment="CENTER_RIGHT" layoutX="398.0" layoutY="188.0" prefHeight="25.0" prefWidth="110.0" promptText="رمز دوم" />
       <TextField fx:id="txtUniquePassMinMoney" alignment="CENTER_RIGHT" layoutX="265.0" layoutY="188.0" prefHeight="25.0" prefWidth="110.0" promptText="رمز پویا" />
       <Button fx:id="btnSendUniquePass" layoutX="344.0" layoutY="235.0" mnemonicParsing="false" text="ارسال رمز پویا" />
