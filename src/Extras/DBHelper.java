@@ -83,7 +83,7 @@ public class DBHelper {
     }
 
     private void createTableForBill() {
-        String tableSQL = "CREATE TABLE IF NOT EXISTS bill (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,billingID TEXT , paymentCode TEXT , condition TEXT, cost TEXT );";
+        String tableSQL = "CREATE TABLE IF NOT EXISTS bill (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,billingID TEXT , paymentCode TEXT , condition TEXT, cost TEXT , typeOfBill TEXT);";
         try {
             statementForBank.executeUpdate(tableSQL);
         } catch (SQLException e) {
@@ -150,8 +150,9 @@ public class DBHelper {
         String condition = bill.getCondition();
         String paymentCode = bill.getPaymentCode() + "";
         String costOfBill = bill.getCostOfBill() + "";
+        String typeOfBill=bill.getTypeOfBill();
 
-        String insertSQL = "INSERT INTO bill (billingID  , paymentCode  , condition,cost ) VALUES ('" + billingID + "','" + paymentCode + "','" + condition + "','" + costOfBill + "');";
+        String insertSQL = "INSERT INTO bill (billingID  , paymentCode  , condition,cost ,typeOfBill) VALUES ('" + billingID + "','" + paymentCode + "','" + condition + "','" + costOfBill + "','"+typeOfBill+"');";
         try {
             statementForBank.executeUpdate(insertSQL);
 
@@ -285,13 +286,14 @@ public class DBHelper {
     public Bill readBill(long billingID, long paymentCode) {
         connectionForBank();
         Bill bill = new Bill();
-        String readSQL = "SELECT billingID  , paymentCode  , condition,cost from bill Where billingID = '" + billingID + "' and paymentCode = '" + paymentCode + "' ;";
+        String readSQL = "SELECT billingID  , paymentCode  , condition,cost , typeOfBill from bill Where billingID = '" + billingID + "' and paymentCode = '" + paymentCode + "' ;";
         try {
             ResultSet resultSet = statementForBank.executeQuery(readSQL);
             bill.setBillingId(resultSet.getLong("billingID"));
             bill.setPaymentCode(resultSet.getLong("paymentCode"));
             bill.setCondition(resultSet.getString("condition"));
             bill.setCostOfBill(resultSet.getLong("cost"));
+            bill.setTypeOfBill(resultSet.getString("typeOfBill"));
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -489,9 +491,19 @@ public class DBHelper {
         }
     }
 
-    public static void main(String[] args) {
-        new DBHelper();
-    }
+//    public static void main(String[] args) {
+//         DBHelper dbHelper=new DBHelper();
+//         Bill bill = new Bill();
+//         bill.setCondition("پرداخت نشده");
+//         bill.setCostOfBill(21000);
+//         bill.setPaymentCode(557852);
+//         bill.setBillingId(173456);
+//         bill.setTypeOfBill("برق");
+//         dbHelper.insertBill(bill);
+//         bill = new Bill();
+//         bill = dbHelper.readBill(173456,557852);
+//        System.out.println(bill.getTypeOfBill());
+//    }
 
 
 }
