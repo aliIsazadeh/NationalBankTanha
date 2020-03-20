@@ -4,6 +4,8 @@ import DataStructure.Account;
 import DataStructure.Bill;
 import DataStructure.Transaction;
 import Extras.DBHelper;
+import Extras.SecondPassProducer;
+import Extras.SendSMS;
 import Extras.TransactionSerialProducer;
 import com.jfoenix.controls.JFXTextField;
 import javafx.beans.value.ChangeListener;
@@ -35,6 +37,7 @@ public class billController implements Initializable {
     public JFXTextField txtUniquePassForBill;
 
     public Label lblBillCost;
+    private String password;
 
     private DBHelper dbHelper;
 //    private Account account = new Account();
@@ -78,8 +81,11 @@ public class billController implements Initializable {
 //    }
 
     public void sendingUniqueCode() {
-
-
+        SecondPassProducer secondPassProducer = new SecondPassProducer();
+        password=secondPassProducer.secondPass();
+        SendSMS sendSMS =new SendSMS(new loginPageController().getAccount().getPerson().getPhoneNumber());
+        sendSMS.setMessage(password);
+        sendSMS.send();
         alert(" رمز پویا به شماره شما ارسال شد", lblBillCost, "green");
 
 
@@ -96,7 +102,7 @@ public class billController implements Initializable {
         } else {
             Bill bill = dbHelper.readBill(Long.parseLong(txtBillNumber.getText()), Long.parseLong(txtPayNumber.getText()));
             // Account account = new loginPageController().getAccount();
-            if (!bill.getCondition().equals("پردخت شده")) {
+            if (!bill.getCondition().equals("پردخت نشده")) {
                 txtBillCost.setText(bill.getCostOfBill() + "");
 
                 sendUniquePass.setVisible(true);
@@ -116,18 +122,23 @@ public class billController implements Initializable {
 
     private void doTransaction(Bill bill, Account account) {
         dbHelper = new DBHelper();
-        if (bill.getCostOfBill() > Long.parseLong(account.getInventory())) {
-            alert("موجودی کافی نیست!", billAlertLabel, "red");
-            creatTransaction(bill, false);
+        if (txtSecendPassForBill.getText().equals(account.getSecondPassword())&&txtUniquePassForBill.getText().equals(password)) {
+            if (bill.getCostOfBill() > Long.parseLong(account.getInventory())) {
+                alert("موجودی کافی نیست!", billAlertLabel, "red");
+                creatTransaction(bill, false);
 
-        } else {
-            bill.setCondition("پردخت شده");
-            long money = Long.parseLong(account.getInventory());
-            money -= bill.getCostOfBill();
-            account.setInventory(String.valueOf(money));
-            dbHelper.updateAccount(account);
-            creatTransaction(bill, true);
-        }
+            } else {
+                bill.setCondition("پردخت شده");
+                long money = Long.parseLong(account.getInventory());
+                money -= bill.getCostOfBill();
+                account.setInventory(String.valueOf(money));
+                dbHelper.updateAccount(account);
+                creatTransaction(bill, true);
+                dbHelper.updateBill(bill);
+
+            }
+        }else
+            alert("رمز یکبارمصرف یا رمز دوم اشتباه است",billAlertLabel,"red");
     }
 
     private void creatTransaction(Bill bill, boolean b) {
@@ -142,7 +153,6 @@ public class billController implements Initializable {
         transaction.setPaymentCode(bill.getPaymentCode());
         dbHelper = new DBHelper();
         dbHelper.insertTransaction(transaction);
-        dbHelper.updateBill(bill);
     }
 
     public void test() {

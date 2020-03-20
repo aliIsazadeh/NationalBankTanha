@@ -37,11 +37,18 @@ public class historyController implements Initializable {
                     transactionInfo += "شناسه قبض : "+transaction.getBillingId()
                             + "\n" + "شناسه پرداخت : "+ transaction.getPaymentCode()
                             + "\n";
+                }else if (transaction.getTypeOfTransaction().equals("افزودن موجودی")){
+                  transactionInfo += "واریز پول" +"\n" ;
+
                 }
+
+                transactionInfo += "موجودی : "+account.getInventory()+"\n";
 
                 transactionInfo += "شماره سریال :"+transaction.getSerialOfTransaction()
                         + "\n" + " تاریخ :"+ transaction.getDateOfTransaction()
                         + "\n";
+
+
                 if (transaction.isFinished()) {
                     transactionInfo += "عملیات موفق "+"\n\n";
                 } else if (!transaction.isFinished()) {

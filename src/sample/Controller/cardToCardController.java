@@ -3,6 +3,8 @@ package sample.Controller;
 import DataStructure.Account;
 import DataStructure.Transaction;
 import Extras.DBHelper;
+import Extras.SecondPassProducer;
+import Extras.SendSMS;
 import Extras.TransactionSerialProducer;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
@@ -49,7 +51,7 @@ public class cardToCardController implements Initializable {
     public JFXTextField txtMoneyCardToCard;
     public JFXTextField txtSecondPass;
     private DBHelper dbHelper;
-
+    private String password;
     private void alert(String message, Label lbl, String color) {
         lbl.setText(message);
         lbl.setStyle("-fx-text-fill: " + color + ";");
@@ -58,7 +60,11 @@ public class cardToCardController implements Initializable {
     public void sendingUniqueCode() {
 
 
-
+        SecondPassProducer secondPassProducer = new SecondPassProducer();
+        password=secondPassProducer.secondPass();
+        SendSMS sendSMS =new SendSMS(new loginPageController().getAccount().getPerson().getPhoneNumber());
+        sendSMS.setMessage(password);
+        sendSMS.send();
         alert(" رمز پویا به شماره شما ارسال شد",lblAlertCardToCard,"green");
 
 
@@ -73,10 +79,11 @@ public class cardToCardController implements Initializable {
         Account account = dbHelper.readAccount(accountNumber);
         if (DestinationCardNumber.getText().equals("")) {
             alert("لطفا کارت مورد نظر را وارد کنید", lblAlertCardToCard, "red");
-        } else if (account == null) {
+        } else if (account.getAccountNumber() == null) {
             alert("حسابی با این مشحصات وجود ندارد", lblAlertCardToCard, "red");
         } else {
-            txtDescribeDestinationCard.setText(account.getPerson().getName());
+            txtDescribeDestinationCard.setText("دارنده حساب : "+account.getPerson().getName() +account.getPerson().getLastName());
+            cardTocardAncorPane.setVisible(true);
         }
     }
 
@@ -85,8 +92,7 @@ public class cardToCardController implements Initializable {
         long accountNumber = Long.parseLong(DestinationCardNumber.getText());
         dbHelper = new DBHelper();
         Account to = dbHelper.readAccount(accountNumber);
-        //TODO بررسی رمز یکبار مصرف
-        if (from.getSecondPassword().equals(txtSecondPass.getText())) {
+        if (from.getSecondPassword().equals(txtSecondPass.getText())&&txtCardToCardUniquePass.getText().equals(password)) {
             doTransaction(to, from);
 
             Parent root;
@@ -108,8 +114,11 @@ public class cardToCardController implements Initializable {
 
         } else if (txtSecondPass.getText().equals("")) {
             alert("رمز دوم خود را وارد کنید", lblAlertCardToCard, "red");
-        } else if (!txtSecondPass.getText().equals(from.getSecondPassword())) {
-            alert("رمز دوم اشتباه است", lblAlertCardToCard, "red");
+        }else if (txtCardToCardUniquePass.getText().equals(""))
+            alert("رمز پویای خود را وارد کنید", lblAlertCardToCard, "red");
+
+        else if (!txtSecondPass.getText().equals(from.getSecondPassword())&&txtCardToCardUniquePass.getText().equals(password)) {
+            alert("رمز دوم یا رمز پویا اشتباه است", lblAlertCardToCard, "red");
         }
 
     }
