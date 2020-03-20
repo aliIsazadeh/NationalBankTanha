@@ -57,16 +57,13 @@ public class loginPageController implements Initializable {
     public Label lblFailLogin;
     public JFXTextField txtRegisterUserName;
 
-
+    static Account account;
+    static Person person;
     static boolean flag;
 
     public static boolean isFlag() {
         return flag;
     }
-
-
-    static Account account;
-    static Person person;
 
     public Person getPerson() {
         return person;
@@ -187,6 +184,7 @@ public class loginPageController implements Initializable {
             } else if (txtUserLogin.getText().equals("") && !txtPassLogin.getText().equals("")) {
                 alert("لطفا نام کاربری را وارد کنید", lblFailLogin, "red");
             } else if (account != null) {
+                if (account.getAccountPassword()!=null)
                 if (account.getAccountPassword().equals(txtPassLogin.getText())) {
 
                     Parent root;
@@ -575,10 +573,13 @@ public class loginPageController implements Initializable {
     public boolean isExistAccount(String userName) {
         DBHelper dbHelper = new DBHelper();
         Account account = dbHelper.readAccount(userName);
-        if (account == null)
+        if (account.getAccountPassword() == null)
             return false;
-        else
+        else {
+            setAccount(account);
             return true;
+
+        }
 
     }
 

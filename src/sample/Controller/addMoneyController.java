@@ -122,7 +122,7 @@ public class addMoneyController implements Initializable {
         loginPage = new loginPageController();
         transactionSerialProducer = new TransactionSerialProducer();
         dbHelper = new DBHelper();
-        account = dbHelper.readAccount(loginPage.getAccount().getUserName());
+        account = loginPage.getAccount();
         transaction = new Transaction();
         today = new Date();
         secondPassProducer = new SecondPassProducer();

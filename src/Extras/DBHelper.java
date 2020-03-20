@@ -236,7 +236,7 @@ public class DBHelper {
                 list.add(transaction);
             }
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+           System.out.println(e.getMessage());
         }
         closeBank();
         return list;
@@ -327,10 +327,13 @@ public class DBHelper {
             account.setInventory(resultSet.getString("inventory"));
             account.setUserName(resultSet.getString("userName"));
         } catch (SQLException e) {
+            System.out.println("readAccount");
             System.out.println(e.getMessage());
         }
         closeBank();
+        System.out.println("readPerson");
         account.setPerson(readPerson(account.getAccountNumber()));
+        System.out.println("readTran");
         account.setTransactions(readAllTransactionForPerson(account.getAccountNumber()));
         System.out.println("user"+account.getAccountNumber());
         return account;
