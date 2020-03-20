@@ -88,7 +88,7 @@ public class billController implements Initializable {
 
         } else {
             Bill bill = dbHelper.readBill(Long.parseLong(txtBillNumber.getText()), Long.parseLong(txtPayNumber.getText()));
-            Account account = new loginPageController().account;
+            Account account = new loginPageController().getAccount();
             txtBillCost.setText(bill.getCostOfBill() + "");
 
             sendUniquePass.setVisible(true);
@@ -151,7 +151,7 @@ public class billController implements Initializable {
 
 
 
-        Account account = new loginPageController().account;
+        Account account = new loginPageController().getAccount();
         Bill bill = dbHelper.readBill(Long.parseLong(txtBillNumber.getText()), Long.parseLong(txtPayNumber.getText()));
 
         if (txtSecendPassForBill.getText().equals("") || txtUniquePassForBill.getText().equals("")) {

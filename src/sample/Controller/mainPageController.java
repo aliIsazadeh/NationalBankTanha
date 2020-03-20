@@ -67,17 +67,23 @@ public class mainPageController implements Initializable {
     public Label lblSuccess;
     public JFXButton btnConfirmInfos;
     boolean flagPH = true;
-    private loginPageController loginPageController;
+    private loginPageController loginPageController ;
 
     private int findComboIndex(JFXComboBox Box) {
         return Box.getSelectionModel().getSelectedIndex();
     }
 
 
-    private void addVariable() {
-        loginPageController = new loginPageController();
+    private void addVariable(String accountNumber) {
+       loginPageController loginPageController = new loginPageController();
         Account account = loginPageController.getAccount();
-        Person person = account.getPerson();
+
+        System.out.println(account.getUserName());
+        Person person = loginPageController.getPerson();
+        System.out.println( "name :"+person.getName());
+
+        System.out.println(txtNationalCode.getText());
+
 
         person.setNationalNumber(Long.parseLong(txtNationalCode.getText()));
         person.setFatherName(txtFatherName.getText());
@@ -86,7 +92,7 @@ public class mainPageController implements Initializable {
         person.setBornPlace(txtBornPlace.getText());
         person.setJob(txtJob.getText());
         person.setAddress(txtAddress.getText());
-
+        person.setPhoneNumber(txtPhoneNumber.getText());
         if (findComboIndex(comboMarriage) == 0) {
             person.setMarriage(false);
         }
@@ -111,6 +117,7 @@ public class mainPageController implements Initializable {
             person.setGender("زن");
         }
         account.setPerson(person);
+        account.setAccountNumber(accountNumber);
         loginPageController.setAccount(account);
 
         dbHelper.insertAccount(account);
@@ -163,9 +170,11 @@ public class mainPageController implements Initializable {
 
 
         } else {
+            CreateCardNumber createCardNumber = new CreateCardNumber();
 
+            String accountNumber = createCardNumber.createCardNumber();
 
-            addVariable();
+            addVariable(accountNumber);
 
             //    Account account = new Account();
             btnPersonalInfo.setDisable(false);
@@ -190,8 +199,7 @@ public class mainPageController implements Initializable {
             }
 
 
-            CreateCardNumber createCardNumber = new CreateCardNumber();
-            txtCardNumber.setText(createCardNumber.createCardNumber());
+            txtCardNumber.setText(accountNumber);
 
 
             lblNotice.setVisible(false);
@@ -306,8 +314,7 @@ public class mainPageController implements Initializable {
             AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("../FXML/changePassWord.fxml"));
             mainAnchorPane.getChildren().addAll(anchorPane);
         } catch (IOException ex) {
-//            System.out.println("Problem in loading");
-            ex.printStackTrace();
+            System.out.println("Problem in loading");
         }
 
 
@@ -319,8 +326,7 @@ public class mainPageController implements Initializable {
             AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("../FXML/bill.fxml"));
             mainAnchorPane.getChildren().addAll(anchorPane);
         } catch (IOException ex) {
-//            System.out.println("Problem in loading");
-            ex.printStackTrace();
+            System.out.println("Problem in loading");
         }
 
 
@@ -376,7 +382,7 @@ public class mainPageController implements Initializable {
                 if (txt_TextField.getText().length() >= max_Lengh) {
                     e.consume();
                 }
-                if (e.getCharacter().matches("[ا-ی-ن]") || e.getCharacter().matches(" ")) {
+                if (e.getCharacter().matches("[ا-ی-ن]") || e.getCharacter().matches("[ ]")) {
                 } else {
                     e.consume();
                 }
@@ -407,7 +413,15 @@ public class mainPageController implements Initializable {
     }
 
 
+    public void test(Account account) {
 
+        account.setAccountType("fffff");
+
+        System.out.println(account.getAccountType());
+        System.out.println(account.getPerson().getName());
+
+
+    }
 
 
     public void initialize(URL location, ResourceBundle resources) {
