@@ -80,8 +80,7 @@ public class billController implements Initializable {
     public void sendingUniqueCode() {
 
 
-
-        alert(" رمز پویا به شماره شما ارسال شد",lblBillCost,"green");
+        alert(" رمز پویا به شماره شما ارسال شد", lblBillCost, "green");
 
 
     }
@@ -96,15 +95,19 @@ public class billController implements Initializable {
 
         } else {
             Bill bill = dbHelper.readBill(Long.parseLong(txtBillNumber.getText()), Long.parseLong(txtPayNumber.getText()));
-           // Account account = new loginPageController().getAccount();
-            txtBillCost.setText(bill.getCostOfBill() + "");
+            // Account account = new loginPageController().getAccount();
+            if (!bill.getCondition().equals("پردخت شده")) {
+                txtBillCost.setText(bill.getCostOfBill() + "");
 
-            sendUniquePass.setVisible(true);
-            PayBill.setVisible(true);
-            txtBillCost.setVisible(true);
-            txtSecendPassForBill.setVisible(true);
-            txtUniquePassForBill.setVisible(true);
-            lblBillCost.setVisible(true);
+                sendUniquePass.setVisible(true);
+                PayBill.setVisible(true);
+                txtBillCost.setVisible(true);
+                txtSecendPassForBill.setVisible(true);
+                txtUniquePassForBill.setVisible(true);
+                lblBillCost.setVisible(true);
+            } else {
+                alert("قبض پرداخت شده است ", billAlertLabel, "red");
+            }
 
         }
 
@@ -139,6 +142,7 @@ public class billController implements Initializable {
         transaction.setPaymentCode(bill.getPaymentCode());
         dbHelper = new DBHelper();
         dbHelper.insertTransaction(transaction);
+        dbHelper.updateBill(bill);
     }
 
     public void test() {
@@ -146,8 +150,8 @@ public class billController implements Initializable {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 
-                if(!txtPayNumber.equals(""))
-                considerBill.setDisable(false);
+                if (!txtPayNumber.equals(""))
+                    considerBill.setDisable(false);
 
 
             }
@@ -160,8 +164,8 @@ public class billController implements Initializable {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 
-                if(!txtBillNumber.equals(""))
-                considerBill.setDisable(false);
+                if (!txtBillNumber.equals(""))
+                    considerBill.setDisable(false);
 
 
             }
@@ -188,11 +192,10 @@ public class billController implements Initializable {
         }
 
 
-
         Account account = new loginPageController().getAccount();
         Bill bill = dbHelper.readBill(Long.parseLong(txtBillNumber.getText()), Long.parseLong(txtPayNumber.getText()));
 
-        if (txtSecendPassForBill.getText().equals("") || txtUniquePassForBill.getText().equals("")) {
+        if (txtSecendPassForBill.getText().equals("")) {
             alert("رمز دوم با پویای خود را وارد کنید", billAlertLabel, "red");
 
         } else if (!txtSecendPassForBill.getText().equals(account.getSecondPassword())) {
@@ -201,7 +204,7 @@ public class billController implements Initializable {
         } else {
             doTransaction(bill, account);
 
-            alert("قبض شما با موفقیت پرداخت شد", billAlertLabel, "red");
+            alert("قبض شما با موفقیت پرداخت شد", billAlertLabel, "green");
 
         }
 

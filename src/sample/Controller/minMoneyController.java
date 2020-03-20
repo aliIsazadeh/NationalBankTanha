@@ -33,7 +33,7 @@ public class minMoneyController implements Initializable {
     private loginPageController loginPage = new loginPageController();
     //dbHelper.readAccount(loginPage.txtUserLogin.getText());
     private Account account = loginPage.getAccount();
-    private SecondPassProducer secondPassProducer = new SecondPassProducer();
+    // private SecondPassProducer secondPassProducer = new SecondPassProducer();
     private TransactionSerialProducer transactionSerialProducer = new TransactionSerialProducer();
     private Date date = new Date();
 
@@ -46,8 +46,7 @@ public class minMoneyController implements Initializable {
     public void sendingUniqueCode() {
 
 
-
-        alert(" رمز پویا به شماره شما ارسال شد",lblAlertMinMoney,"green");
+        alert(" رمز پویا به شماره شما ارسال شد", lblAlertMinMoney, "green");
 
 
     }
@@ -101,7 +100,7 @@ public class minMoneyController implements Initializable {
     }
 
     private boolean minMoney() {
-        if ((Long.parseLong(txtMinMoney.getText()) < Long.parseLong(account.getInventory())) && txtSecendPassWordMinMoney.getText().equals(secondPassProducer.secondPass())) {
+        if ((Long.parseLong(txtMinMoney.getText()) < Long.parseLong(account.getInventory())) && txtSecendPassWordMinMoney.getText().equals(account.getSecondPassword())) {
             account.setInventory(String.valueOf(Long.parseLong(account.getInventory()) - Long.parseLong(txtMinMoney.getText())));
             dbHelper.updateAccount(account);
             transaction.setFinished(true);
@@ -114,7 +113,7 @@ public class minMoneyController implements Initializable {
 
             alert(" تراکنش با موفقیت انجام شد", lblAlertMinMoney, "green");
 
-        } else if (!(txtSecendPassWordMinMoney.getText().equals(secondPassProducer.secondPass()))) {
+        } else if (!(txtSecendPassWordMinMoney.getText().equals(account.getSecondPassword()))) {
             alert("رمز دوم اشتباه است", lblAlertMinMoney, "red");
 
 //            transaction.setFinished(false);
@@ -123,7 +122,7 @@ public class minMoneyController implements Initializable {
 //            transaction.setDateOfTransaction(date);
 //            transaction.setCostOfTransaction(txtMinMoney.getText());
 //            transaction.setFrom(account);
-        } else if ((txtSecendPassWordMinMoney.getText().equals(secondPassProducer.secondPass())) && !(Long.parseLong(txtMinMoney.getText()) < Long.parseLong(account.getInventory()))) {
+        } else if ((txtSecendPassWordMinMoney.getText().equals(account.getSecondPassword())) && !(Long.parseLong(txtMinMoney.getText()) < Long.parseLong(account.getInventory()))) {
             alert("موجودی کافی نیست", lblAlertMinMoney, "red");
 
             transaction.setFinished(false);

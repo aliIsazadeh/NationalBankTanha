@@ -16,11 +16,6 @@ public class remainMoneyController implements Initializable {
     public TextField txtRemainMoneyInAlphabet;
 
 
-
-
-
-
-
     public void initialize(URL location, ResourceBundle resources) {
 
 
@@ -29,8 +24,8 @@ public class remainMoneyController implements Initializable {
         Account account = dbHelper.readAccount(loginPage.getAccount().getUserName());
 
         txtRemainMoneyInNumber.setText(account.getInventory());
-        NumToText numToText = new NumToText(Long.parseLong(txtRemainMoneyInNumber.getText()));
-        txtRemainMoneyInAlphabet.setText(numToText+"");
+        NumToText numToText = new NumToText(Long.parseLong(account.getInventory()));
+        txtRemainMoneyInAlphabet.setText(numToText.getText() + " " + "تومان");
 
 
     }

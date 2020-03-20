@@ -66,10 +66,10 @@ public class cardToCardController implements Initializable {
         Account account = dbHelper.readAccount(accountNumber);
         if (DestinationCardNumber.getText().equals("")) {
             alert("لطفا کارت مورد نظر را وارد کنید", lblAlertCardToCard, "red");
-        } else if (account == null) {
+        } else if (account.getAccountNumber() ==null) {
             alert("حسابی با این مشحصات وجود ندارد", lblAlertCardToCard, "red");
         } else {
-            txtDescribeDestinationCard.setText(account.getPerson().getName());
+            txtDescribeDestinationCard.setText("صاحب حساب : "+account.getPerson().getName()+" "+account.getPerson().getLastName());
         }
     }
 

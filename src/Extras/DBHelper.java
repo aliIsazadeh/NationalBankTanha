@@ -236,9 +236,12 @@ public class DBHelper {
                 transaction.setTypeOfTransaction(resultSet.getString("typeOfTransaction"));
                 transaction.setFrom(accountFrom);
                 transaction.setTo(To);
-                transaction.setFinished(resultSet.getBoolean("finished"));
+                String b = resultSet.getString("finished");
+//                System.out.println(b);
+                transaction.setFinished(Boolean.valueOf(b));
                 transaction.setSerialOfTransaction(resultSet.getString("serial"));
                 transaction.setDateOfTransaction(resultSet.getDate("dat"));
+                System.out.println(transaction.isFinished());
                 transaction.setCostOfTransaction(resultSet.getString("cost"));
                 transaction.setBillingId(resultSet.getLong("billingID"));
                 transaction.setPaymentCode(resultSet.getLong("paymentCode"));

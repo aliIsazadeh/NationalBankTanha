@@ -299,6 +299,7 @@ public class mainPageController implements Initializable {
     }
 
     public void HistoryLoad() {
+        new historyController();
         try {
             AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("../FXML/history.fxml"));
             mainAnchorPane.getChildren().addAll(anchorPane);

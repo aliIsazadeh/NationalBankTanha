@@ -26,26 +26,26 @@ public class historyController implements Initializable {
             for (int i = 0; i < list.size(); i++) {
                 Transaction transaction = list.get(i);
                 String transactionInfo = "بانک ملی تنها"
-                        + "\n" + transaction.getTypeOfTransaction() + "نوع تراکنش : "
-                        + "\n" + transaction.getCostOfTransaction() + "مبلغ : "
+                        + "\n"+ "نوع تراکنش : " + transaction.getTypeOfTransaction()
+                        + "\n" + "مبلغ : "+ transaction.getCostOfTransaction()
                         + "\n";
                 if (transaction.getTypeOfTransaction().equals("انتقال وجه")) {
-                    transactionInfo += transaction.getFrom().getAccountNumber() + "انتقال از کارت : "
-                            + "\n" + transaction.getTo().getAccountNumber() + "انتقال به کارت : "
+                    transactionInfo +=  "انتقال از کارت : "+transaction.getFrom().getAccountNumber()
+                            + "\n" + "انتقال به کارت : "+ transaction.getTo().getAccountNumber()
                             + "\n";
                 } else if (transaction.getTypeOfTransaction().equals("پرداخت قبض")) {
-                    transactionInfo += transaction.getBillingId() + "شناسه قبض : "
-                            + "\n" + transaction.getPaymentCode() + "شناسه پرداخت : "
+                    transactionInfo += "شناسه قبض : "+transaction.getBillingId()
+                            + "\n" + "شناسه پرداخت : "+ transaction.getPaymentCode()
                             + "\n";
                 }
 
-                transactionInfo += transaction.getSerialOfTransaction() + "شماره سزیال :"
-                        + "\n" + transaction.getDateOfTransaction() + " تاریخ :"
+                transactionInfo += "شماره سریال :"+transaction.getSerialOfTransaction()
+                        + "\n" + " تاریخ :"+ transaction.getDateOfTransaction()
                         + "\n";
                 if (transaction.isFinished()) {
-                    transactionInfo += "عملیات موفق ";
+                    transactionInfo += "عملیات موفق "+"\n\n";
                 } else if (!transaction.isFinished()) {
-                    transactionInfo += "عملیات نا موفق ";
+                    transactionInfo += "عملیات نا موفق "+"\n\n";
 
                 }
                 historyTextField.setText(historyTextField.getText() + transactionInfo);

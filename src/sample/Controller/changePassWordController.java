@@ -30,7 +30,7 @@ public class changePassWordController implements Initializable {
     public void change(){
         DBHelper dbHelper = new DBHelper();
         loginPageController loginPage = new loginPageController();
-        Account account = dbHelper.readAccount(loginPage.getAccount().getUserName());
+        Account account = loginPage.getAccount();
 
         if(txtRecentPass.getText().equals("")||txtNewPass.getText().equals("")){
 
@@ -51,8 +51,7 @@ public class changePassWordController implements Initializable {
 
 
         }
-
-
+            dbHelper.updateAccount(account);
 
     }
 
