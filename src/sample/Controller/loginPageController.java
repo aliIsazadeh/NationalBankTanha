@@ -65,6 +65,14 @@ public class loginPageController implements Initializable {
         return flag;
     }
 
+
+
+
+
+
+//    static Account account;
+//    static Person person;
+
     public Person getPerson() {
         return person;
     }
@@ -326,8 +334,13 @@ public class loginPageController implements Initializable {
 
         } else {
             alert("ثبت نام شما با موفقیت انجام شد.اکنون میتوانید وارد سیستم شوید", lblSuccessAlert, "green");
+            Person person = new Person();
+            Account account = new Account();
+            DBHelper dbHelper = new DBHelper();
 
             addVariable();
+
+
 
 
         }
@@ -504,7 +517,7 @@ public class loginPageController implements Initializable {
                 if (txt_TextField.getText().length() >= max_Lengh) {
                     e.consume();
                 }
-                if (e.getCharacter().matches("[ا-ی-ن]") || e.getCharacter().matches("[A-Za-z]")) {
+                if (e.getCharacter().matches("[0-9.]") || e.getCharacter().matches("[A-Za-z]")) {
                 } else {
                     e.consume();
                 }

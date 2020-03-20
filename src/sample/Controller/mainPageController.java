@@ -422,6 +422,10 @@ public class mainPageController implements Initializable {
         if(loginPage.isFlag()) {
             infoAnchorPane.setVisible(false);
 
+
+            txtAccountType.setText(loginPage.getAccount().getAccountType());
+            txtCardNumber.setText(loginPage.getAccount().getAccountNumber());
+
             if (loginPage.getAccount().getPerson().getGender().equals("مرد")) {
                 Image imageMale = new Image("./sample/bankPics/1.png");
                 faceImage.setImage(imageMale);
@@ -439,6 +443,9 @@ public class mainPageController implements Initializable {
             btnPassWord.setDisable(false);
             btnHistory.setDisable(false);
             btnOther.setDisable(false);
+
+            btnConfirmInfos.setVisible(false);
+            lblNotice.setVisible(false);
 
 
 
