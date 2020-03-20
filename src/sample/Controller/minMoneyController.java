@@ -9,12 +9,24 @@ import com.jfoenix.controls.JFXButton;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
+import java.io.IOException;
+import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
 import java.util.ResourceBundle;
@@ -68,33 +80,34 @@ public class minMoneyController implements Initializable {
             alert("لطفا رمز دوم را وارد کنید", lblAlertMinMoney, "red");
         } else {
             boolean flag = minMoney();
-        }
-//            if (flag) {
-//                Parent root;
-//                try {
-//                    Stage stage = (Stage) confirmMinMoney.getScene().getWindow();
-//
-//                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/sample/FXML/notificationMinMoney.fxml"));
-//                    root = loader.load();
-//                    stage = new Stage();
-//                    Stage finalStage = stage;
-//                    finalStage.setResizable(false);
-//                    finalStage.initStyle(StageStyle.TRANSPARENT);
-//                    stage.setScene(new Scene(root, 361, 329));
-//                    stage.show();
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
+            if (flag) {
+                Parent root;
+                try {
+                    Stage stage = (Stage) confirmMinMoney.getScene().getWindow();
+
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/sample/FXML/notificationMinMoney.fxml"));
+                    root = loader.load();
+                    stage = new Stage();
+                    Stage finalStage = stage;
+                    finalStage.setResizable(false);
+                    finalStage.initStyle(StageStyle.TRANSPARENT);
+                    stage.setScene(new Scene(root, 361, 329));
+                    stage.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
 //                alert(" تراکنش با موفقیت انجام شد", lblAlertMinMoney, "green");
 //            }
 
 
-//            if (!flag) {
+            }
 
-//                alert(" تراکنش ناموفق بود", lblAlertMinMoney, "red");
-//
-//            }
+
+        }
+
+
+
 
 
     }

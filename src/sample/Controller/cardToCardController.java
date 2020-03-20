@@ -9,7 +9,10 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -17,7 +20,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
 import java.util.ResourceBundle;
@@ -33,7 +39,9 @@ public class cardToCardController implements Initializable {
     //
     public TextArea txtDescribeDestinationCard;
     public Label lblAlertCardToCard;
+
     public AnchorPane cardTocardAncorPane;
+
     public JFXTextField txtCardToCardUniquePass;
     ///
     public Button btnSendUniqueCodeCardToCard;
@@ -61,15 +69,14 @@ public class cardToCardController implements Initializable {
     public void searchDestinationCard() {
 
         long accountNumber = Long.parseLong(DestinationCardNumber.getText());
-
         dbHelper = new DBHelper();
         Account account = dbHelper.readAccount(accountNumber);
         if (DestinationCardNumber.getText().equals("")) {
             alert("لطفا کارت مورد نظر را وارد کنید", lblAlertCardToCard, "red");
-        } else if (account.getAccountNumber() ==null) {
+        } else if (account == null) {
             alert("حسابی با این مشحصات وجود ندارد", lblAlertCardToCard, "red");
         } else {
-            txtDescribeDestinationCard.setText("صاحب حساب : "+account.getPerson().getName()+" "+account.getPerson().getLastName());
+            txtDescribeDestinationCard.setText(account.getPerson().getName());
         }
     }
 
@@ -82,21 +89,21 @@ public class cardToCardController implements Initializable {
         if (from.getSecondPassword().equals(txtSecondPass.getText())) {
             doTransaction(to, from);
 
-//            Parent root;
-//            try {
-//                Stage stage = (Stage) btnConfirmCardToCard.getScene().getWindow();
-//
-//                FXMLLoader loader = new FXMLLoader(getClass().getResource("/sample/FXML/notificationCardToCard.fxml"));
-//                root = loader.load();
-//                stage = new Stage();
-//                Stage finalStage = stage;
-//                finalStage.setResizable(false);
-//                finalStage.initStyle(StageStyle.TRANSPARENT);
-//                stage.setScene(new Scene(root, 361, 329));
-//                stage.show();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
+            Parent root;
+            try {
+                Stage stage = (Stage) btnConfirmCardToCard.getScene().getWindow();
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/sample/FXML/notificationCardToCard.fxml"));
+                root = loader.load();
+                stage = new Stage();
+                Stage finalStage = stage;
+                finalStage.setResizable(false);
+                finalStage.initStyle(StageStyle.TRANSPARENT);
+                stage.setScene(new Scene(root, 361, 329));
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
 
         } else if (txtSecondPass.getText().equals("")) {

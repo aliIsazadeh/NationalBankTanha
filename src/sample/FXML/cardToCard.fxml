@@ -6,9 +6,9 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.*?>
-<AnchorPane prefHeight="400.0" prefWidth="723.0" style="-fx-background-color: #AAB6FE; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/8.0.221" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.cardToCardController">
+<AnchorPane prefHeight="400.0" prefWidth="723.0" style="-fx-background-color: #AAB6FE; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.cardToCardController">
    <children>
-      <AnchorPane fx:id="cardTocardAncorPane" layoutX="38.0" layoutY="43.0" prefHeight="309.0" prefWidth="324.0">
+      <AnchorPane fx:id="cardTocardAncorPane" layoutX="24.0" layoutY="43.0" prefHeight="309.0" prefWidth="277.0" visible="false">
          <children>
             <TextArea fx:id="txtCardToCardSubject" layoutX="68.0" layoutY="183.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="37.0" prefWidth="188.0" promptText="عنوان یا موضوع واریز وجه" />
             <JFXTextField fx:id="txtSecondPass" alignment="CENTER_RIGHT" labelFloat="true" layoutX="68.0" layoutY="84.0" prefHeight="25.0" prefWidth="188.0" promptText="رمز دوم خود را وارد کنید">
@@ -21,7 +21,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </JFXTextField>
-            <Button fx:id="btnSendUniqueCodeCardToCard" disable="true" layoutX="68.0" layoutY="136.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="96.0" text="ارسال رمز پویا"  onMouseClicked="#sendingUniqueCode"/>
+            <Button fx:id="btnSendUniqueCodeCardToCard" disable="true" layoutX="68.0" layoutY="136.0" mnemonicParsing="false" onMouseClicked="#sendingUniqueCode" prefHeight="37.0" prefWidth="96.0" text="ارسال رمز پویا" />
             <JFXButton fx:id="btnConfirmCardToCard" disable="true" layoutX="109.0" layoutY="239.0" onMouseClicked="#doTransaction" prefHeight="53.0" prefWidth="106.0" style="-fx-background-color: #000000;" text="تایید واریز" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="16.0" />
@@ -34,25 +34,25 @@
             </JFXTextField>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="395.0" layoutY="19.0" prefHeight="356.0" prefWidth="306.0" style="-fx-border-color: #ffffff; -fx-background-radius: 5;">
+      <AnchorPane layoutX="358.0" layoutY="19.0" prefHeight="356.0" prefWidth="343.0" style="-fx-border-color: #ffffff; -fx-background-radius: 5;">
          <children>
-            <JFXTextField fx:id="DestinationCardNumber" alignment="CENTER_RIGHT" labelFloat="true" layoutX="47.0" layoutY="55.0" onKeyTyped="#testSearchDestination" prefHeight="31.0" prefWidth="213.0" promptText="کارت مقصد" text=" ">
+            <JFXTextField fx:id="DestinationCardNumber" alignment="CENTER_RIGHT" labelFloat="true" layoutX="62.0" layoutY="56.0" onKeyTyped="#testSearchDestination" prefHeight="31.0" prefWidth="213.0" promptText="کارت مقصد" text=" ">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </JFXTextField>
-            <JFXButton fx:id="btnSearchDestinationCard" disable="true" layoutX="75.0" layoutY="126.0" onMouseClicked="#searchDestinationCard" prefHeight="37.0" prefWidth="158.0" style="-fx-background-color: #000000;" text="بررسی کارت مقصد" textFill="WHITE">
+            <JFXButton fx:id="btnSearchDestinationCard" disable="true" layoutX="90.0" layoutY="127.0" onMouseClicked="#searchDestinationCard" prefHeight="37.0" prefWidth="158.0" style="-fx-background-color: #000000;" text="بررسی کارت مقصد" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </JFXButton>
-            <TextArea fx:id="txtDescribeDestinationCard" editable="false" layoutX="20.0" layoutY="215.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="109.0" prefWidth="268.0" promptText="مشخصات کارت مقصد" />
+            <TextArea fx:id="txtDescribeDestinationCard" editable="false" layoutX="38.0" layoutY="187.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="110.0" prefWidth="268.0" promptText="مشخصات کارت مقصد" />
+            <Label fx:id="lblAlertCardToCard" alignment="CENTER" layoutX="17.0" layoutY="316.0" prefHeight="26.0" prefWidth="310.0" textFill="#f50000">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
-      <Label fx:id="lblAlertCardToCard" alignment="CENTER_RIGHT" layoutX="71.0" layoutY="352.0" prefHeight="26.0" prefWidth="258.0" textFill="#f50000">
-         <font>
-            <Font name="System Bold" size="17.0" />
-         </font>
-      </Label>
    </children>
 </AnchorPane>

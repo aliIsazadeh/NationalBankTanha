@@ -145,6 +145,7 @@ public class loginPageController implements Initializable {
         translateTransition.setToX(0);
 
 
+
         FadeTransition fadeRigisterAnchorPane = fadeTransition(registerAnchorPane, Duration.seconds(1), 0, 1);
         FadeTransition fadeSignInTransAnchorPane = fadeTransition(signInTrans, Duration.seconds(1), 0, 1);
 
@@ -314,6 +315,8 @@ public class loginPageController implements Initializable {
 
     public void considerTextsRegister() {
 
+        boolean DC = isExistAccount(txtRegisterUserName.getText());
+
 
         if (txtRegisterFirstName.getText().equals("") || txtRegisterLastName.getText().equals("") || txtRegisterPass.getText().equals("") || txtRegisterPassRepeat.getText().equals("")) {
             alert("لطفا فیلد هارا پر کنید", lblFailAlertRegister, "red");
@@ -324,7 +327,13 @@ public class loginPageController implements Initializable {
         } else {
             alert("ثبت نام شما با موفقیت انجام شد.اکنون میتوانید وارد سیستم شوید", lblSuccessAlert, "green");
 
-            addVariable();
+            if(DC){
+                alert(" کاربری با این نام نام کاربری موجود است!! لطفا نام کاربری دیگری انتخاب کنید",lblFailAlertRegister,"red");
+            }
+
+            else {
+                addVariable();
+            }
 
 
         }
