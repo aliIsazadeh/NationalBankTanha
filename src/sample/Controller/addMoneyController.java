@@ -31,8 +31,6 @@ public class addMoneyController implements Initializable {
     public JFXButton confirmAddMoney;
     public Label lblAlertAddMoney;
     public TextField txtAddMoneySecendPass;
-    public TextField txtAddMoneyUniquePass;
-    public Button sendUniquePass;
 
     private notificationAddMoneyController not;
 
@@ -44,22 +42,18 @@ public class addMoneyController implements Initializable {
 
 
     public void confirmAddingMoney() {
-
         if (txtAddMoney.getText().equals("") || txtAddMoneySecendPass.getText().equals("")) {
             alert("لطفا فیلد هارا پر کنید", lblAlertAddMoney, "red");
 
-        }
-
-       else {
+        } else {
 
             boolean flag = addMoney();
 
             if (flag) {
 
                 alert("عملیات با موفقیت انجام شد", lblAlertAddMoney, "green");
-
+                not = new notificationAddMoneyController();
                 not.ReceivingAmountAddMoney(txtAddMoney.getText());
-
 
                 Parent root;
                 try {
@@ -84,18 +78,18 @@ public class addMoneyController implements Initializable {
 
             }
 
-       }
+        }
     }
 
 
-    public void sendingUniqueCode() {
-
-        txtAddMoneyUniquePass.setVisible(true);
-
-        alert(" رمز پویا به شماره شما ارسال شد",lblAlertAddMoney,"green");
-
-
-    }
+//    public void sendingUniqueCode() {
+//
+//        txtAddMoneyUniquePass.setVisible(true);
+//
+//        alert(" رمز پویا به شماره شما ارسال شد", lblAlertAddMoney, "green");
+//
+//
+//    }
 
     public EventHandler<KeyEvent> numeric_Validation(final Integer max_Lengh) {
         return new EventHandler<KeyEvent>() {
@@ -133,18 +127,18 @@ public class addMoneyController implements Initializable {
             System.out.println(true);
             transaction.setCostOfTransaction(txtAddMoney.getText());
             transaction.setFinished(true);
-            transaction.setDateOfTransaction( today);
+            transaction.setDateOfTransaction(today);
             transaction.setSerialOfTransaction(new TransactionSerialProducer().serialProducer());
             transaction.setTypeOfTransaction("افزودن موجودی");
             transaction.setFrom(account);
             dbHelper.insertTransaction(transaction);
             account.setInventory(String.valueOf(Integer.parseInt(account.getInventory()) + Integer.parseInt(txtAddMoney.getText())));
-
+            System.out.println(account.getPerson().getAccount().getAccountNumber());
             dbHelper.updateAccount(account);
             alert("عملیات با موفقیت انجام شد", lblAlertAddMoney, "green");
 
         } else {
-            alert("رمز دوم اشتباه است",lblAlertAddMoney,"red");
+            alert("رمز دوم اشتباه است", lblAlertAddMoney, "red");
 //            transaction.setFinished(false);
 //            System.out.println("finished"+false);
 //            transaction.setDateOfTransaction(today);
@@ -180,7 +174,7 @@ public class addMoneyController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         txtAddMoneySecendPass.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(4));
-        txtAddMoneyUniquePass.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(4));
+//        txtAddMoneyUniquePass.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(4));
         txtAddMoney.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(20));
 
 

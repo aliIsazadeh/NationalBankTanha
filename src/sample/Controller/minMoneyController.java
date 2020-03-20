@@ -60,7 +60,7 @@ public class minMoneyController implements Initializable {
 
     public void confirmMinMoney() {
 
-
+        not = new notificationMinMoneyController();
         if (txtMinMoney.getText().equals("")) {
 
             alert("لطفا مبلغ برداشتی را وارد کنید", lblAlertMinMoney, "red");
@@ -97,18 +97,11 @@ public class minMoneyController implements Initializable {
                 alert(" تراکنش با موفقیت انجام شد", lblAlertMinMoney, "green");
 
 
-
-            }
-
-
-            else {
+            } else {
                 alert(" تراکنش ناموفق بود", lblAlertMinMoney, "green");
             }
 
         }
-
-
-
 
 
     }
@@ -193,7 +186,7 @@ public class minMoneyController implements Initializable {
 
         txtMinMoney.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(6));
         txtSecendPassWordMinMoney.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(4));
-        txtUniquePassMinMoney.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(6));
+//        txtUniquePassMinMoney.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(6));
 
     }
 

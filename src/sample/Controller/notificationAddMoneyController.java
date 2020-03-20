@@ -20,7 +20,7 @@ public class notificationAddMoneyController implements Initializable {
     public TextField txtAlphabetAddMoney;
     public TextField txtAlphabetInventory;
 
-    private String transferMoney;
+    static String transferMoney;
 
     public void close(){
         Stage stage = (Stage) btnClose.getScene().getWindow();
@@ -30,28 +30,26 @@ public class notificationAddMoneyController implements Initializable {
 
     public  void   ReceivingAmountAddMoney(String st){
 
-        transferMoney = st;
+       this.transferMoney = st;
 
     }
 
 
 
     public void initialize(URL location, ResourceBundle resources) {
-
-        DBHelper dbHelper = new DBHelper();
         loginPageController loginPage = new loginPageController();
-        Account account = dbHelper.readAccount(loginPage.getAccount().getUserName());
+        Account account = loginPage.getAccount();
 
         NumToText numToText = new NumToText(Long.parseLong(account.getInventory()));
-        NumToText numToText1 = new NumToText(Long.parseLong(transferMoney));
 
 
         txtAddMoneyInventoryNum.setText(account.getInventory());
         txtAlphabetInventory.setText(numToText.getText() + " " + "تومان");
 
+        numToText = new NumToText(Long.parseLong(transferMoney));
         txtAddMoneyNum.setText(transferMoney);
-        txtAlphabetAddMoney.setText(numToText1.getText() + " " +"تومان" );
-
+        txtAlphabetAddMoney.setText(numToText.getText() + " " +"تومان" );
+        System.out.println("initialize");
 
 
 

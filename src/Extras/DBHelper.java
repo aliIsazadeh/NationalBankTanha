@@ -439,7 +439,7 @@ public class DBHelper {
     private void updatePerson(Person person) {
         connectionForBank();
 
-
+        System.out.println(person.getAccount().getAccountNumber());
         String update = "UPDATE person  set accountNumber = '" + person.getAccount().getAccountNumber() + "' WHERE accountNumber = '" + person.getAccount().getAccountNumber() + "' ;";
         String update1 = "UPDATE person  set firstName = '" + person.getName() + "'WHERE accountNumber = '" + person.getAccount().getAccountNumber() + "';";
         String update2 = "UPDATE person  set lastName ='" + person.getLastName() + "';";

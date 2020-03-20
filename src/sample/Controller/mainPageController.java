@@ -73,7 +73,7 @@ public class mainPageController implements Initializable {
 
 
     private void addVariable(String accountNumber) {
-       loginPageController loginPageController = new loginPageController();
+        loginPageController loginPageController = new loginPageController();
         Account account = loginPageController.getAccount();
 
         Person person = loginPageController.getPerson();
@@ -112,16 +112,18 @@ public class mainPageController implements Initializable {
         if (findComboIndex(comboMarriage) == 1) {
             person.setGender("زن");
         }
-        account.setPerson(person);
         account.setSecondPassword(txtSecendPassWord.getText());
-        String [ ] number = accountNumber.split("-");
-        String finalAccountNumber="";
-        for (int i = 0; i <number.length ; i++) {
+        String[] number = accountNumber.split("-");
+        String finalAccountNumber = "";
+        for (int i = 0; i < number.length; i++) {
             finalAccountNumber += number[i];
         }
         account.setAccountNumber(finalAccountNumber);
-        loginPageController.setAccount(account);
+        person.setAccount(account);
+        account.setPerson(person);
 
+        loginPageController.setAccount(account);
+        loginPageController.setPerson(person);
         dbHelper.insertAccount(account);
 
     }
@@ -237,7 +239,7 @@ public class mainPageController implements Initializable {
             Parent root = FXMLLoader.load(getClass().getResource("../FXML/personalInfos.fxml"));
             mainAnchorPane.getChildren().addAll(root);
         } catch (IOException ex) {
-           // System.out.println("Problem in loading");
+            // System.out.println("Problem in loading");
             ex.printStackTrace();
         }
 
@@ -416,15 +418,12 @@ public class mainPageController implements Initializable {
     }
 
 
-
-
-
     public void initialize(URL location, ResourceBundle resources) {
 
         // boolean flagPH = true;
         loginPageController loginPage = new loginPageController();
 
-        if(loginPage.isFlag()) {
+        if (loginPage.isFlag()) {
             infoAnchorPane.setVisible(false);
 
 
@@ -453,9 +452,7 @@ public class mainPageController implements Initializable {
             lblNotice.setVisible(false);
 
 
-
         }
-
 
 
         txtNationalCode.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(10));

@@ -67,6 +67,7 @@ public class cardToCardController implements Initializable {
         SendSMS sendSMS =new SendSMS(new loginPageController().getAccount().getPerson().getPhoneNumber());
         sendSMS.setMessage(password);
         sendSMS.send();
+        System.out.println(password);
         alert(" رمز پویا به شماره شما ارسال شد",lblAlertCardToCard,"green");
 
 

@@ -20,7 +20,7 @@ public class notificationMinMoneyController implements Initializable {
     public TextField txtAlphabetMinMoney;
     public TextField txtAlphabetInventoryMinMoney;
 
-    private String transferMoney;
+    static String transferMoney;
 
     public void close(){
 
@@ -41,9 +41,9 @@ public class notificationMinMoneyController implements Initializable {
 
     public void initialize(URL location, ResourceBundle resources) {
 
-        DBHelper dbHelper = new DBHelper();
+//        DBHelper dbHelper = new DBHelper();
         loginPageController loginPage = new loginPageController();
-        Account account = dbHelper.readAccount(loginPage.getAccount().getUserName());
+        Account account = loginPage.getAccount();
 
         NumToText numToText = new NumToText(Long.parseLong(account.getInventory()));
         NumToText numToText1 = new NumToText(Long.parseLong(transferMoney));

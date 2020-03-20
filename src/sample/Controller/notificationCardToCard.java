@@ -20,7 +20,7 @@ public class notificationCardToCard  implements Initializable {
     public TextField txtAlphabetMoneyCardToCard;
     public TextField txtAlphabetInventoryCardToCard;
 
-    private String transferMoney;
+    static String transferMoney;
 
 
     public void close(){
