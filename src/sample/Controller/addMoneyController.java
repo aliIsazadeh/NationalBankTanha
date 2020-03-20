@@ -30,16 +30,6 @@ public class addMoneyController implements Initializable {
     public Button sendUniquePass;
 
 
-
-    private loginPageController loginPage ;
-    private TransactionSerialProducer transactionSerialProducer ;
-    private DBHelper dbHelper;
-    private Account account;
-    private Transaction transaction ;
-    private Date today ;
-    private SecondPassProducer secondPassProducer ;
-    private String pass="";
-
     private void alert(String message, Label lbl, String color) {
         lbl.setText(message);
         lbl.setStyle("-fx-text-fill: " + color + ";");
@@ -118,20 +108,20 @@ public class addMoneyController implements Initializable {
     }
 
 
-    public boolean addMoney() {
-        loginPage = new loginPageController();
-        transactionSerialProducer = new TransactionSerialProducer();
-        dbHelper = new DBHelper();
-        account = loginPage.getAccount();
-        transaction = new Transaction();
-        today = new Date();
-        secondPassProducer = new SecondPassProducer();
-        pass = secondPassProducer.secondPass();
+    private boolean addMoney() {
+        loginPageController loginPage = new loginPageController();
+        TransactionSerialProducer transactionSerialProducer = new TransactionSerialProducer();
+        DBHelper dbHelper = new DBHelper();
+        Account account = loginPage.getAccount();
+        Transaction transaction = new Transaction();
+        Date today = new Date();
+        SecondPassProducer secondPassProducer = new SecondPassProducer();
+        String pass = secondPassProducer.secondPass();
 
         transaction.setCostOfTransaction(txtAddMoney.getText());
         if (pass.equals(txtAddMoneySecendPass)) {
             transaction.setFinished(true);
-            transaction.setDateOfTransaction((java.sql.Date) today);
+            transaction.setDateOfTransaction( today);
             transaction.setSerialOfTransaction(transactionSerialProducer.serialProducer());
             transaction.setTypeOfTransaction("افزودن موجودی");
             dbHelper.insertTransaction(transaction);

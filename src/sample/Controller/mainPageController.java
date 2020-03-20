@@ -66,8 +66,6 @@ public class mainPageController implements Initializable {
 
     public Label lblSuccess;
     public JFXButton btnConfirmInfos;
-   // boolean flagPH = true;
-    private loginPageController loginPage ;
 
     private int findComboIndex(JFXComboBox Box) {
         return Box.getSelectionModel().getSelectedIndex();
@@ -417,7 +415,8 @@ public class mainPageController implements Initializable {
 
     public void initialize(URL location, ResourceBundle resources) {
 
-        loginPage = new loginPageController();
+        // boolean flagPH = true;
+        loginPageController loginPage = new loginPageController();
 
         if(loginPage.isFlag()) {
             infoAnchorPane.setVisible(false);

@@ -20,10 +20,6 @@ public class changePassWordController implements Initializable {
     public JFXTextField txtNewPass;
     public JFXButton btnChangePass;
     public Label lblAlert;
-    private loginPageController loginPage ;
-    private DBHelper dbHelper;
-    private Account account ;
-
 
 
     private void alert(String message, Label lbl, String color) {
@@ -32,9 +28,9 @@ public class changePassWordController implements Initializable {
     }
 
     public void change(){
-        dbHelper = new DBHelper();
-        loginPage = new loginPageController();
-        account = dbHelper.readAccount(loginPage.getAccount().getUserName());
+        DBHelper dbHelper = new DBHelper();
+        loginPageController loginPage = new loginPageController();
+        Account account = dbHelper.readAccount(loginPage.getAccount().getUserName());
 
         if(txtRecentPass.getText().equals("")||txtNewPass.getText().equals("")){
 

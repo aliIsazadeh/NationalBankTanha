@@ -3,9 +3,6 @@ package sample.Controller;
 import DataStructure.Account;
 import DataStructure.Transaction;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 
 import java.net.URL;
@@ -19,7 +16,7 @@ public class historyController implements Initializable {
 
 
 
-    public void setHistoryTextField() {
+    private void setHistoryTextField() {
 
         loginPageController loginPageController = new loginPageController();
         Account account = loginPageController.getAccount();
@@ -45,9 +42,9 @@ public class historyController implements Initializable {
                 transactionInfo += transaction.getSerialOfTransaction() + "شماره سزیال :"
                         + "\n" + transaction.getDateOfTransaction() + " تاریخ :"
                         + "\n";
-                if (transaction.isFinished() == true) {
+                if (transaction.isFinished()) {
                     transactionInfo += "عملیات موفق ";
-                } else if (transaction.isFinished() == false) {
+                } else if (!transaction.isFinished()) {
                     transactionInfo += "عملیات نا موفق ";
 
                 }

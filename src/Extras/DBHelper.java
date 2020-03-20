@@ -5,7 +5,6 @@ import DataStructure.Bill;
 import DataStructure.Person;
 import DataStructure.Transaction;
 
-import java.security.PublicKey;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -150,9 +149,9 @@ public class DBHelper {
         String condition = bill.getCondition();
         String paymentCode = bill.getPaymentCode() + "";
         String costOfBill = bill.getCostOfBill() + "";
-        String typeOfBill=bill.getTypeOfBill();
+        String typeOfBill = bill.getTypeOfBill();
 
-        String insertSQL = "INSERT INTO bill (billingID  , paymentCode  , condition,cost ,typeOfBill) VALUES ('" + billingID + "','" + paymentCode + "','" + condition + "','" + costOfBill + "','"+typeOfBill+"');";
+        String insertSQL = "INSERT INTO bill (billingID  , paymentCode  , condition,cost ,typeOfBill) VALUES ('" + billingID + "','" + paymentCode + "','" + condition + "','" + costOfBill + "','" + typeOfBill + "');";
         try {
             statementForBank.executeUpdate(insertSQL);
 
@@ -213,7 +212,7 @@ public class DBHelper {
     ////xandane tamam tarakonesh haye 1 hesab
     private ArrayList<Transaction> readAllTransactionForPerson(String id) {
 
-
+        connectionForBank();
         String getTransactionSQL = "SELECT typeOfTransaction  , fromAccount  , ToAccount  , finished  , serial  , dat  , cost,billingID,paymentCode FROM transactions where fromAccount = '" + id + "' or toAccount = '" + id + "';";
         ArrayList<Transaction> list = new ArrayList<>();
 
@@ -237,7 +236,7 @@ public class DBHelper {
                 list.add(transaction);
             }
         } catch (SQLException e) {
-           System.out.println(e.getMessage());
+            System.out.println(e.getMessage());
         }
         closeBank();
         return list;
@@ -337,7 +336,7 @@ public class DBHelper {
         account.setPerson(readPerson(account.getAccountNumber()));
         System.out.println("readTran");
         account.setTransactions(readAllTransactionForPerson(account.getAccountNumber()));
-        System.out.println("user"+account.getAccountNumber());
+        System.out.println("user" + account.getAccountNumber());
         return account;
     }
 

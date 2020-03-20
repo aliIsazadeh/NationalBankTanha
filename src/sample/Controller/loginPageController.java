@@ -66,13 +66,6 @@ public class loginPageController implements Initializable {
     }
 
 
-
-
-
-
-//    static Account account;
-//    static Person person;
-
     public Person getPerson() {
         return person;
     }
@@ -192,27 +185,27 @@ public class loginPageController implements Initializable {
             } else if (txtUserLogin.getText().equals("") && !txtPassLogin.getText().equals("")) {
                 alert("لطفا نام کاربری را وارد کنید", lblFailLogin, "red");
             } else if (account != null) {
-                if (account.getAccountPassword()!=null)
-                if (account.getAccountPassword().equals(txtPassLogin.getText())) {
+                if (account.getAccountPassword() != null)
+                    if (account.getAccountPassword().equals(txtPassLogin.getText())) {
 
-                    Parent root;
-                    try {
-                        Stage stage = (Stage) btnLogin.getScene().getWindow();
-                        stage.close();
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/sample/FXML/mainPage.fxml"));
-                        root = loader.load();
-                        stage = new Stage();
-                        Stage finalStage = stage;
-                        finalStage.setResizable(false);
-                        finalStage.initStyle(StageStyle.TRANSPARENT);
-                        stage.setScene(new Scene(root));
-                        stage.show();
-                    } catch (IOException e) {
-                        e.printStackTrace();
+                        Parent root;
+                        try {
+                            Stage stage = (Stage) btnLogin.getScene().getWindow();
+                            stage.close();
+                            FXMLLoader loader = new FXMLLoader(getClass().getResource("/sample/FXML/mainPage.fxml"));
+                            root = loader.load();
+                            stage = new Stage();
+                            Stage finalStage = stage;
+                            finalStage.setResizable(false);
+                            finalStage.initStyle(StageStyle.TRANSPARENT);
+                            stage.setScene(new Scene(root));
+                            stage.show();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+
+
                     }
-
-
-                }
             }
 
 
@@ -278,9 +271,7 @@ public class loginPageController implements Initializable {
             txtRegisterPass2.setVisible(true);
 
 
-        }
-
-        if (flag == false) {
+        } else if (!flag) {
 
 
             txtRegisterPass.setText(txtRegisterPass2.getText());
@@ -303,9 +294,7 @@ public class loginPageController implements Initializable {
             txtPassLogin2.setVisible(true);
 
 
-        }
-
-        if (flag1 == false) {
+        } else if (!flag1) {
 
 
             txtPassLogin.setText(txtPassLogin2.getText());
@@ -334,13 +323,8 @@ public class loginPageController implements Initializable {
 
         } else {
             alert("ثبت نام شما با موفقیت انجام شد.اکنون میتوانید وارد سیستم شوید", lblSuccessAlert, "green");
-            Person person = new Person();
-            Account account = new Account();
-            DBHelper dbHelper = new DBHelper();
 
             addVariable();
-
-
 
 
         }
@@ -573,14 +557,10 @@ public class loginPageController implements Initializable {
         account.setAccountPassword(txtRegisterPass.getText());
         account.setPerson(person);
 
-//        loginPageController loginPageController = new loginPageController();
-//        account.setPerson(person);
+
         setPerson(person);
         setAccount(account);
-//        loginPageController.setAccount(account);
-//        loginPageController.setPerson(person);
-//        loginPageController loginPageController1 = new loginPageController();
-//        System.out.println(loginPageController1.getAccount().getPerson().getName());
+
     }
 
     public boolean isExistAccount(String userName) {
