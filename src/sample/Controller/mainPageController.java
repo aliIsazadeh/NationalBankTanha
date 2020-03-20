@@ -66,8 +66,8 @@ public class mainPageController implements Initializable {
 
     public Label lblSuccess;
     public JFXButton btnConfirmInfos;
-    boolean flagPH = true;
-    private loginPageController loginPageController ;
+   // boolean flagPH = true;
+    private loginPageController loginPage ;
 
     private int findComboIndex(JFXComboBox Box) {
         return Box.getSelectionModel().getSelectedIndex();
@@ -412,18 +412,38 @@ public class mainPageController implements Initializable {
     }
 
 
-    public void test(Account account) {
 
-        account.setAccountType("fffff");
-
-        System.out.println(account.getAccountType());
-        System.out.println(account.getPerson().getName());
-
-
-    }
 
 
     public void initialize(URL location, ResourceBundle resources) {
+
+        loginPage = new loginPageController();
+
+        if(loginPage.isFlag()) {
+            infoAnchorPane.setVisible(false);
+
+            if (loginPage.getAccount().getPerson().getGender().equals("مرد")) {
+                Image imageMale = new Image("./sample/bankPics/1.png");
+                faceImage.setImage(imageMale);
+            } else if (loginPage.getAccount().getPerson().getGender().equals("زن")) {
+                Image imageFemale = new Image("./sample/bankPics/MasterFM.png");
+                faceImage.setImage(imageFemale);
+
+            }
+
+            btnPersonalInfo.setDisable(false);
+            btnAddMoney.setDisable(false);
+            btnMinMoney.setDisable(false);
+            btnCardToCard.setDisable(false);
+            btnCash.setDisable(false);
+            btnPassWord.setDisable(false);
+            btnHistory.setDisable(false);
+            btnOther.setDisable(false);
+
+
+
+        }
+
 
 
         txtNationalCode.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(10));

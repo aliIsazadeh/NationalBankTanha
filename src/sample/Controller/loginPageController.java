@@ -5,22 +5,20 @@ import DataStructure.Person;
 import Extras.DBHelper;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
-import javafx.animation.FadeTransition;
 import com.jfoenix.controls.JFXTextField;
+import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
-import javafx.scene.Node;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -58,6 +56,18 @@ public class loginPageController implements Initializable {
     public Label lblFailAlertRegister;
     public Label lblFailLogin;
     public JFXTextField txtRegisterUserName;
+
+
+    static boolean flag;
+
+    public static boolean isFlag() {
+        return flag;
+    }
+
+
+
+
+
 
     static Account account;
     static Person person;
@@ -164,35 +174,83 @@ public class loginPageController implements Initializable {
     }
 
     public void loadMainPage() {
+        flag = isExistAccount(txtUserLogin.getText());
+        DBHelper dbHelper = new DBHelper();
+        Account account = dbHelper.readAccount(txtUserLogin.getText());
 
-        if (txtUserLogin.getText().equals("") && txtPassLogin.getText().equals("")) {
+        if(flag){
+            if (txtUserLogin.getText().equals("") && txtPassLogin.getText().equals("")) {
 
-            alert("لطفا نام کاربری و رمز عبور را وارد کنید.", lblFailLogin, "red");
+                alert("لطفا نام کاربری و رمز عبور را وارد کنید.", lblFailLogin, "red");
 
 
-        } else if (!txtUserLogin.getText().equals("") && txtPassLogin.getText().equals("")) {
-            alert("لطفا رمز عبور را وارد کنید", lblFailLogin, "red");
+            } else if (!txtUserLogin.getText().equals("") && txtPassLogin.getText().equals("")) {
+                alert("لطفا رمز عبور را وارد کنید", lblFailLogin, "red");
 
-        } else if (txtUserLogin.getText().equals("") && !txtPassLogin.getText().equals("")) {
-            alert("لطفا نام کاربری را وارد کنید", lblFailLogin, "red");
-        } else if (!txtUserLogin.getText().equals(txtRegisterUserName.getText()) || !txtPassLogin.getText().equals(txtRegisterPass.getText())) {
-            alert("رمز عبور یا نام کاربری اشتباه است", lblFailLogin, "red");
-        } else if (txtUserLogin.getText().equals(txtRegisterUserName.getText()) && (txtPassLogin.getText().equals(txtRegisterPass.getText()) || txtPassLogin.getText().equals(txtRegisterPass2.getText()))) {
+            } else if (txtUserLogin.getText().equals("") && !txtPassLogin.getText().equals("")) {
+                alert("لطفا نام کاربری را وارد کنید", lblFailLogin, "red");
+            }
+            else if (account.getAccountPassword().equals(txtPassLogin.getText())){
 
-            Parent root;
-            try {
-                Stage stage = (Stage) btnLogin.getScene().getWindow();
-                stage.close();
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/sample/FXML/mainPage.fxml"));
-                root = loader.load();
-                stage = new Stage();
-                Stage finalStage = stage;
-                finalStage.setResizable(false);
-                finalStage.initStyle(StageStyle.TRANSPARENT);
-                stage.setScene(new Scene(root));
-                stage.show();
-            } catch (IOException e) {
-                e.printStackTrace();
+                Parent root;
+                try {
+                    Stage stage = (Stage) btnLogin.getScene().getWindow();
+                    stage.close();
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/sample/FXML/mainPage.fxml"));
+                    root = loader.load();
+                    stage = new Stage();
+                    Stage finalStage = stage;
+                    finalStage.setResizable(false);
+                    finalStage.initStyle(StageStyle.TRANSPARENT);
+                    stage.setScene(new Scene(root));
+                    stage.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+
+
+            }
+
+
+
+        }
+
+
+
+
+        if(!flag) {
+
+            if (txtUserLogin.getText().equals("") && txtPassLogin.getText().equals("")) {
+
+                alert("لطفا نام کاربری و رمز عبور را وارد کنید.", lblFailLogin, "red");
+
+
+            } else if (!txtUserLogin.getText().equals("") && txtPassLogin.getText().equals("")) {
+                alert("لطفا رمز عبور را وارد کنید", lblFailLogin, "red");
+
+            } else if (txtUserLogin.getText().equals("") && !txtPassLogin.getText().equals("")) {
+                alert("لطفا نام کاربری را وارد کنید", lblFailLogin, "red");
+            } else if (!txtUserLogin.getText().equals(txtRegisterUserName.getText()) || !txtPassLogin.getText().equals(txtRegisterPass.getText())) {
+                alert("رمز عبور یا نام کاربری اشتباه است", lblFailLogin, "red");
+            } else if (txtUserLogin.getText().equals(txtRegisterUserName.getText()) && (txtPassLogin.getText().equals(txtRegisterPass.getText()) || txtPassLogin.getText().equals(txtRegisterPass2.getText()))) {
+
+                Parent root;
+                try {
+                    Stage stage = (Stage) btnLogin.getScene().getWindow();
+                    stage.close();
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/sample/FXML/mainPage.fxml"));
+                    root = loader.load();
+                    stage = new Stage();
+                    Stage finalStage = stage;
+                    finalStage.setResizable(false);
+                    finalStage.initStyle(StageStyle.TRANSPARENT);
+                    stage.setScene(new Scene(root));
+                    stage.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
             }
 
         }
@@ -286,7 +344,7 @@ public class loginPageController implements Initializable {
             addVariable();
 
 
-            /// hi ali
+
 
         }
 

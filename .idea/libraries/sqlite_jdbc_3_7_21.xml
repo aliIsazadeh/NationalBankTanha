@@ -2,10 +2,12 @@
   <library name="sqlite-jdbc-3.7.21">
     <CLASSES>
       <root url="jar://$USER_HOME$/.IntelliJIdea2019.2/sqlite-jdbc-3.7.2.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/jars/sqlite-jdbc-3.7.2.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
       <root url="jar://$USER_HOME$/.IntelliJIdea2019.2/sqlite-jdbc-3.7.2.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/jars/sqlite-jdbc-3.7.2.jar!/" />
     </SOURCES>
   </library>
 </component>
