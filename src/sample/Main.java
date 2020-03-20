@@ -1,6 +1,5 @@
 package sample;
 
-import Extras.DBHelper;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,7 +11,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("FXML/loginPage.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("FXML/test.fxml"));
         primaryStage.setTitle("Hello World");
         primaryStage.setScene(new Scene(root, 890, 620));
         primaryStage.initStyle(StageStyle.TRANSPARENT);
