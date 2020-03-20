@@ -1,6 +1,8 @@
 package sample.Controller;
 
-import com.jfoenix.controls.JFXButton;
+import DataStructure.Account;
+import Extras.DBHelper;
+import Extras.NumToText;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 
@@ -12,16 +14,23 @@ public class remainMoneyController implements Initializable {
 
     public TextField txtRemainMoneyInNumber;
     public TextField txtRemainMoneyInAlphabet;
-    public JFXButton btnDeclareRemainMoney;
 
 
-    public void DeclareRemainMoney() {
 
 
-    }
+
 
 
     public void initialize(URL location, ResourceBundle resources) {
+
+
+        DBHelper dbHelper = new DBHelper();
+        loginPageController loginPage = new loginPageController();
+        Account account = dbHelper.readAccount(loginPage.getAccount().getUserName());
+
+        txtRemainMoneyInNumber.setText(account.getInventory());
+        NumToText numToText = new NumToText(Long.parseLong(txtRemainMoneyInNumber.getText()));
+        txtRemainMoneyInAlphabet.setText(numToText+"");
 
 
     }

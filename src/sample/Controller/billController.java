@@ -77,6 +77,14 @@ public class billController implements Initializable {
 //
 //    }
 
+    public void sendingUniqueCode() {
+
+
+
+        alert(" رمز پویا به شماره شما ارسال شد",lblBillCost,"green");
+
+
+    }
 
 
     public void considerBill() {

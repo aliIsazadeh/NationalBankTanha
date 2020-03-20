@@ -43,6 +43,16 @@ public class minMoneyController implements Initializable {
     }
 
 
+    public void sendingUniqueCode() {
+
+
+
+        alert(" رمز پویا به شماره شما ارسال شد",lblAlertMinMoney,"green");
+
+
+    }
+
+
     public void confirmMinMoney() {
 
 
