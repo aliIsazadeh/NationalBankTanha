@@ -3,17 +3,13 @@ package sample.Controller;
 import DataStructure.Account;
 import DataStructure.Transaction;
 import Extras.DBHelper;
-import Extras.SecondPassProducer;
 import Extras.TransactionSerialProducer;
 import com.jfoenix.controls.JFXButton;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -22,10 +18,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
-import java.io.IOException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
@@ -48,6 +41,7 @@ public class minMoneyController implements Initializable {
     // private SecondPassProducer secondPassProducer = new SecondPassProducer();
     private TransactionSerialProducer transactionSerialProducer = new TransactionSerialProducer();
     private Date date = new Date();
+    private notificationMinMoneyController not;
 
     private void alert(String message, Label lbl, String color) {
         lbl.setText(message);
@@ -81,6 +75,9 @@ public class minMoneyController implements Initializable {
         } else {
             boolean flag = minMoney();
             if (flag) {
+                not.ReceivingAmountMinMoney(txtMinMoney.getText());
+
+
                 Parent root;
                 try {
                     Stage stage = (Stage) confirmMinMoney.getScene().getWindow();
@@ -97,12 +94,16 @@ public class minMoneyController implements Initializable {
                     e.printStackTrace();
                 }
 
-//                alert(" تراکنش با موفقیت انجام شد", lblAlertMinMoney, "green");
-//            }
+                alert(" تراکنش با موفقیت انجام شد", lblAlertMinMoney, "green");
+
 
 
             }
 
+
+            else {
+                alert(" تراکنش ناموفق بود", lblAlertMinMoney, "green");
+            }
 
         }
 

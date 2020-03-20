@@ -51,6 +51,8 @@ public class cardToCardController implements Initializable {
     public JFXTextField txtMoneyCardToCard;
     public JFXTextField txtSecondPass;
     private DBHelper dbHelper;
+    private notificationCardToCard not;
+
     private String password;
     private void alert(String message, Label lbl, String color) {
         lbl.setText(message);
@@ -94,6 +96,12 @@ public class cardToCardController implements Initializable {
         Account to = dbHelper.readAccount(accountNumber);
         if (from.getSecondPassword().equals(txtSecondPass.getText())&&txtCardToCardUniquePass.getText().equals(password)) {
             doTransaction(to, from);
+
+            not = new notificationCardToCard();
+            not.ReceivingAmountCardToCard(txtMoneyCardToCard.getText());
+
+
+
 
             Parent root;
             try {
