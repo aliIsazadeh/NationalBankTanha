@@ -5,6 +5,16 @@ public class Bill {
     private long paymentCode;// شناسه پرداخت
     private String condition;//وضعیت
     private long costOfBill;
+    private String typeOfBill;
+
+
+    public String getTypeOfBill() {
+        return typeOfBill;
+    }
+
+    public void setTypeOfBill(String typeOfBill) {
+        this.typeOfBill = typeOfBill;
+    }
 
     public long getCostOfBill() {
         return costOfBill;
