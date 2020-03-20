@@ -106,7 +106,7 @@ public class cardToCardController implements Initializable {
 
     }
 
-    public void doTransaction(Account to, Account from) {
+    private void doTransaction(Account to, Account from) {
         Transaction transaction = new Transaction();
         long money = Long.parseLong(txtMoneyCardToCard.getText());
         long toMoney = Long.parseLong(to.getInventory());

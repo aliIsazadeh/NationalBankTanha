@@ -36,8 +36,6 @@ public class billController implements Initializable {
 
     public Label lblBillCost;
 
-    private TransactionSerialProducer transactionSerialProducer = new TransactionSerialProducer();
-    private Transaction transaction;
     private DBHelper dbHelper;
 //    private Account account = new Account();
 //    private Bill bill = dbHelper.readBill(Long.parseLong(txtBillNumber.getText()), Long.parseLong(txtBillCost.getText()));
@@ -98,7 +96,7 @@ public class billController implements Initializable {
 
         } else {
             Bill bill = dbHelper.readBill(Long.parseLong(txtBillNumber.getText()), Long.parseLong(txtPayNumber.getText()));
-            Account account = new loginPageController().getAccount();
+           // Account account = new loginPageController().getAccount();
             txtBillCost.setText(bill.getCostOfBill() + "");
 
             sendUniquePass.setVisible(true);
@@ -113,7 +111,7 @@ public class billController implements Initializable {
 
     }
 
-    public void doTransaction(Bill bill, Account account) {
+    private void doTransaction(Bill bill, Account account) {
         dbHelper = new DBHelper();
         if (bill.getCostOfBill() > Long.parseLong(account.getInventory())) {
             alert("موجودی کافی نیست!", billAlertLabel, "red");
@@ -129,8 +127,9 @@ public class billController implements Initializable {
         }
     }
 
-    public void creatTransaction(Bill bill, boolean b) {
-        transaction = new Transaction();
+    private void creatTransaction(Bill bill, boolean b) {
+        // private TransactionSerialProducer transactionSerialProducer = new TransactionSerialProducer();
+        Transaction transaction = new Transaction();
         transaction.setDateOfTransaction(new Date());
         transaction.setCostOfTransaction(String.valueOf(bill.getCostOfBill()));
         transaction.setSerialOfTransaction(new TransactionSerialProducer().serialProducer());

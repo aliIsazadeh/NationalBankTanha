@@ -17,15 +17,12 @@ public class personalInfoController implements Initializable {
     public JFXTextField txtShowGender;
     public JFXTextField txtShowAddress;
     public JFXTextField txtShowPhoneNumber;
-    private loginPageController loginPage ;
-    private Account account ;
-    private Person person ;
 
-    public void setInfo() {
+    private void setInfo() {
 
-        loginPage = new loginPageController();
-        account = loginPage.getAccount();
-        person = account.getPerson();
+        loginPageController loginPage = new loginPageController();
+        Account account = loginPage.getAccount();
+        Person person = account.getPerson();
 
         txtShowNationalCode.setText(String.valueOf(person.getNationalNumber()));
         txtShowName.setText(person.getName());

@@ -35,7 +35,7 @@ public class minMoneyController implements Initializable {
     private Account account = loginPage.getAccount();
     private SecondPassProducer secondPassProducer = new SecondPassProducer();
     private TransactionSerialProducer transactionSerialProducer = new TransactionSerialProducer();
-    Date date = new Date();
+    private Date date = new Date();
 
     private void alert(String message, Label lbl, String color) {
         lbl.setText(message);
@@ -109,7 +109,7 @@ public class minMoneyController implements Initializable {
 
     }
 
-    boolean minMoney() {
+    private boolean minMoney() {
         if ((Long.parseLong(txtMinMoney.getText()) < Long.parseLong(account.getInventory())) && txtSecendPassWordMinMoney.getText().equals(secondPassProducer.secondPass())) {
             account.setInventory(String.valueOf(Long.parseLong(account.getInventory()) - Long.parseLong(txtMinMoney.getText())));
             dbHelper.updateAccount(account);
