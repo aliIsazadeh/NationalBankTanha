@@ -143,14 +143,7 @@ public class mainPageController implements Initializable {
     }
 
 
-    private boolean emptyFinder(TextField txtField) {
-        boolean empty = true;
-        if (txtField.getText().equals("")) {
-            empty = false;
 
-        }
-        return empty;
-    }
 
     private void alert(String message, Label lbl, String color) {
         lbl.setText(message);
@@ -160,12 +153,8 @@ public class mainPageController implements Initializable {
 
     public void recordInfos() {
 
-        LocalDate localData = timePickerBornTime.getValue();
-        if (checkSendMessage.isSelected()) {
-            //      if(txtPhoneNumber.getText().equals(""))
-            //  flagPH = false;
 
-        }
+
 
 
         if (txtNationalCode.getText().equals("") || txtFatherName.getText().equals("") || txtJob.getText().equals("") || findComboIndex(comboAccount) == -1 || findComboIndex(comboMarriage) == -1 || findComboIndex(comboGender) == -1 || txtAddress.getText().equals("") || txtBornPlace.getText().equals("") || txtSecendPassWord.getText().equals("") || txtSecendPassWordRepeat.getText().equals("") ||txtPhoneNumber.getText().equals("") || timePickerBornTime.getValue()==null) {
@@ -244,7 +233,7 @@ public class mainPageController implements Initializable {
             Parent root = FXMLLoader.load(getClass().getResource("../FXML/personalInfos.fxml"));
             mainAnchorPane.getChildren().addAll(root);
         } catch (IOException ex) {
-            // System.out.println("Problem in loading");
+             System.out.println("Problem in loading");
             ex.printStackTrace();
         }
 
@@ -258,7 +247,7 @@ public class mainPageController implements Initializable {
             AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("../FXML/addMoney.fxml"));
             mainAnchorPane.getChildren().addAll(anchorPane);
         } catch (IOException ex) {
-//            System.out.println("Problem in loading");
+            System.out.println("Problem in loading");
             ex.printStackTrace();
         }
 
@@ -272,7 +261,7 @@ public class mainPageController implements Initializable {
             AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("../FXML/minMoney.fxml"));
             mainAnchorPane.getChildren().addAll(anchorPane);
         } catch (IOException ex) {
-//            System.out.println("Problem in loading");
+            System.out.println("Problem in loading");
             ex.printStackTrace();
         }
 
@@ -285,7 +274,7 @@ public class mainPageController implements Initializable {
             AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("../FXML/reamainMoney.fxml"));
             mainAnchorPane.getChildren().addAll(anchorPane);
         } catch (IOException ex) {
-//            System.out.println("Problem in loading");
+            System.out.println("Problem in loading");
             ex.printStackTrace();
         }
 
@@ -298,7 +287,7 @@ public class mainPageController implements Initializable {
             AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("../FXML/cardToCard.fxml"));
             mainAnchorPane.getChildren().addAll(anchorPane);
         } catch (IOException ex) {
-//            System.out.println("Problem in loading");
+            System.out.println("Problem in loading");
             ex.printStackTrace();
         }
 
@@ -311,7 +300,7 @@ public class mainPageController implements Initializable {
             AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("../FXML/history.fxml"));
             mainAnchorPane.getChildren().addAll(anchorPane);
         } catch (IOException ex) {
-//            System.out.println("Problem in loading");
+            System.out.println("Problem in loading");
             ex.printStackTrace();
         }
 
@@ -425,7 +414,7 @@ public class mainPageController implements Initializable {
 
     public void initialize(URL location, ResourceBundle resources) {
 
-        // boolean flagPH = true;
+
         loginPageController loginPage = new loginPageController();
 
         if (loginPage.isFlag()) {
@@ -464,7 +453,6 @@ public class mainPageController implements Initializable {
         txtFatherName.addEventFilter(KeyEvent.KEY_TYPED, letter_Validation(15));
         txtJob.addEventFilter(KeyEvent.KEY_TYPED, letter_Validation(20));
         txtPhoneNumber.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(11));
-        //    txtAddress.addEventFilter(KeyEvent.KEY_TYPED , letter_Validation(50));
         txtBornPlace.addEventFilter(KeyEvent.KEY_TYPED, letter_Validation(10));
         txtSecendPassWord.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(4));
         txtSecendPassWordRepeat.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(4));
@@ -473,15 +461,14 @@ public class mainPageController implements Initializable {
         String[] items1 = {"مجرد", "متاهل"};
         comboMarriage.getItems().addAll(items1);
 
-        String[] items2 = {"جاری", "قرض احسنه", "پسنداز"};
+        String[] items2 = {"جاری", "قرض الحسنه", "پسنداز"};
         comboAccount.getItems().addAll(items2);
 
         String[] items3 = {"مرد", "زن"};
         comboGender.getItems().addAll(items3);
 
 
-//        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("../FXML/infoCompletion.fxml"));
-//        mainAnchorPane.getChildren().addAll(anchorPane);
+
 
 
     }

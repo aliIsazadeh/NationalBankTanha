@@ -88,7 +88,7 @@ public class billController implements Initializable {
         if (txtBillNumber.getText().equals("") || txtPayNumber.getText().equals("")) {
             alert("لطفا فیلد هارا پرکنید", billAlertLabel, "red");
         } else if (dbHelper.readBill(Long.parseLong(txtBillNumber.getText()), Long.parseLong(txtPayNumber.getText())) == null) {
-            alert("قبضی با این مشخصات وجود ند", billAlertLabel, "red");
+            alert("قبضی با این مشخصات وجود ندارد", billAlertLabel, "red");
 
         } else {
             Bill bill = dbHelper.readBill(Long.parseLong(txtBillNumber.getText()), Long.parseLong(txtPayNumber.getText()));

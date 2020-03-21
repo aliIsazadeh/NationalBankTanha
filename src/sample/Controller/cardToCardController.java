@@ -119,7 +119,7 @@ public class cardToCardController implements Initializable {
                 Stage finalStage = stage;
                 finalStage.setResizable(false);
                 finalStage.initStyle(StageStyle.TRANSPARENT);
-                stage.setScene(new Scene(root, 451, 329));
+                stage.setScene(new Scene(root, 451, 360));
                 stage.show();
             } catch (IOException e) {
                 e.printStackTrace();

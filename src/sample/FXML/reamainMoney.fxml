@@ -3,30 +3,30 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.*?>
-<AnchorPane prefHeight="400.0" prefWidth="723.0" style="-fx-background-color: #AAB6FE; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/8.0.221" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.remainMoneyController">
+<AnchorPane prefHeight="400.0" prefWidth="723.0" style="-fx-background-color: #AAB6FE; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.remainMoneyController">
    <children>
-      <Label alignment="CENTER" layoutX="219.0" layoutY="26.0" prefHeight="62.0" prefWidth="209.0" text="موجودی باقی مانده شما:">
+      <Label alignment="CENTER" layoutX="481.0" layoutY="28.0" prefHeight="62.0" prefWidth="209.0" text="موجودی باقی مانده شما:">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <Label alignment="CENTER_RIGHT" layoutX="465.0" layoutY="121.0" prefHeight="55.0" prefWidth="70.0" text="به عدد:">
+      <Label alignment="CENTER_RIGHT" layoutX="495.0" layoutY="122.0" prefHeight="55.0" prefWidth="70.0" text="به عدد:">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <Label alignment="CENTER_RIGHT" layoutX="465.0" layoutY="201.0" prefHeight="55.0" prefWidth="70.0" text="به حروف:">
+      <Label alignment="CENTER_RIGHT" layoutX="495.0" layoutY="202.0" prefHeight="55.0" prefWidth="70.0" text="به حروف:">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="txtRemainMoneyInNumber" editable="false" layoutX="184.0" layoutY="128.0" prefHeight="40.0" prefWidth="252.0">
+      <TextField fx:id="txtRemainMoneyInNumber" editable="false" layoutX="198.0" layoutY="129.0" prefHeight="40.0" prefWidth="252.0">
          <font>
             <Font size="16.0" />
          </font></TextField>
-      <TextField fx:id="txtRemainMoneyInAlphabet" alignment="TOP_RIGHT" editable="false" layoutX="184.0" layoutY="208.0" prefHeight="40.0" prefWidth="252.0">
+      <TextField fx:id="txtRemainMoneyInAlphabet" alignment="TOP_RIGHT" editable="false" layoutX="198.0" layoutY="209.0" prefHeight="40.0" prefWidth="252.0">
          <font>
-            <Font size="18.0" />
+            <Font size="13.0" />
          </font></TextField>
    </children>
 </AnchorPane>

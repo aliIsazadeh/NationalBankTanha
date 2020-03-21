@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-<AnchorPane prefHeight="329.0" prefWidth="451.0" style="-fx-background-color: #03A9F4; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.notificationMinMoneyController">
+<AnchorPane prefHeight="360.0" prefWidth="434.0" style="-fx-background-color: #9CCC65; -fx-background-radius: 0;" xmlns="http://javafx.com/javafx/8.0.221" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.notificationMinMoneyController">
     <children>
         <Label alignment="CENTER_RIGHT" layoutX="346.0" layoutY="26.0" prefHeight="34.0" prefWidth="78.0" text="مبلغ برداشتی:">
             <font>
@@ -11,7 +11,10 @@
             </font>
         </Label>
         <TextField fx:id="txtMinMoneyNum" alignment="CENTER_RIGHT" editable="false" layoutX="53.0" layoutY="68.0" prefHeight="25.0" prefWidth="198.0" AnchorPane.leftAnchor="53.0" AnchorPane.rightAnchor="110.0" />
-        <Label alignment="CENTER_RIGHT" layoutX="341.0" layoutY="152.0" prefHeight="34.0" prefWidth="66.0" text="موجودی:" />
+        <Label alignment="CENTER_RIGHT" layoutX="341.0" layoutY="152.0" prefHeight="34.0" prefWidth="66.0" text="موجودی:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
         <TextField fx:id="txtInventoryMinMoneyNum" alignment="CENTER_RIGHT" editable="false" layoutX="53.0" layoutY="191.0" prefHeight="25.0" prefWidth="198.0" AnchorPane.leftAnchor="53.0" AnchorPane.rightAnchor="110.0" />
         <TextField fx:id="txtAlphabetMinMoney" alignment="CENTER_RIGHT" editable="false" layoutX="53.0" layoutY="102.0" prefHeight="25.0" prefWidth="198.0" AnchorPane.leftAnchor="53.0" AnchorPane.rightAnchor="110.0" />
         <Label alignment="CENTER_RIGHT" layoutX="363.0" layoutY="68.0" prefHeight="34.0" prefWidth="44.0" text="به عدد" />
@@ -19,6 +22,6 @@
         <TextField fx:id="txtAlphabetInventoryMinMoney" alignment="CENTER_RIGHT" editable="false" layoutX="53.0" layoutY="233.0" prefHeight="25.0" prefWidth="198.0" AnchorPane.leftAnchor="53.0" AnchorPane.rightAnchor="110.0" />
         <Label alignment="CENTER_RIGHT" layoutX="363.0" layoutY="196.0" prefHeight="25.0" prefWidth="44.0" text="به عدد" />
         <Label alignment="CENTER_RIGHT" layoutX="363.0" layoutY="228.0" prefHeight="34.0" prefWidth="44.0" text="به حروف" />
-      <Button fx:id="btnClose" layoutX="200.0" layoutY="270.0" mnemonicParsing="false" onMouseClicked="#close" prefHeight="45.0" prefWidth="52.0" text="OK" />
+      <Button fx:id="btnClose" layoutX="191.0" layoutY="301.0" mnemonicParsing="false" onMouseClicked="#close" prefHeight="45.0" prefWidth="52.0" text="OK" />
     </children>
 </AnchorPane>

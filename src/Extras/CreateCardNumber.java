@@ -16,7 +16,7 @@ public class CreateCardNumber {
 
 
 
-     //   System.out.println(CardID);
+        System.out.println(CardID);
         String s = "";
         for (int i = 0; i <16 ; i++) {
             s += CardID.charAt(i)+"";

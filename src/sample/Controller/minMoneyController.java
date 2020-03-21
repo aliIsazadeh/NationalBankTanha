@@ -66,10 +66,7 @@ public class minMoneyController implements Initializable {
 
             alert("توجه : سقف وجه برداشتی تا 200هزار تومان در یک روز می باشد.", lblAlertMinMoney, "red");
 
-        } else if (txtSecendPassWordMinMoney.equals("")) {
-
-            alert("لطفا رمز دوم را وارد کنید", lblAlertMinMoney, "red");
-        } else {
+        }  else {
             boolean flag = minMoney();
             if (flag) {
                 not = new notificationMinMoneyController();
@@ -89,7 +86,7 @@ public class minMoneyController implements Initializable {
                     Stage finalStage = stage;
                     finalStage.setResizable(false);
                     finalStage.initStyle(StageStyle.TRANSPARENT);
-                    stage.setScene(new Scene(root, 451, 329));
+                    stage.setScene(new Scene(root, 451, 360));
                     stage.show();
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -98,9 +95,12 @@ public class minMoneyController implements Initializable {
                 alert(" تراکنش با موفقیت انجام شد", lblAlertMinMoney, "green");
 
 
-            } else {
-                alert(" تراکنش ناموفق بود", lblAlertMinMoney, "green");
+            }else if (txtSecendPassWordMinMoney.equals("")) {
+
+                alert("لطفا رمز دوم را وارد کنید", lblAlertMinMoney, "red");
             }
+
+
 
         }
 

@@ -47,7 +47,10 @@ public class addMoneyController implements Initializable {
         if (txtAddMoney.getText().equals("") || txtAddMoneySecendPass.getText().equals("")) {
             alert("لطفا فیلد هارا پر کنید", lblAlertAddMoney, "red");
 
-        } else {
+        }
+
+
+        else {
 
             boolean flag = addMoney();
 
@@ -71,7 +74,7 @@ public class addMoneyController implements Initializable {
                     Stage finalStage = stage;
                     finalStage.setResizable(false);
                     finalStage.initStyle(StageStyle.TRANSPARENT);
-                    stage.setScene(new Scene(root, 451, 329));
+                    stage.setScene(new Scene(root, 451, 360));
                     stage.show();
                 } catch (IOException e) {
                     e.printStackTrace();

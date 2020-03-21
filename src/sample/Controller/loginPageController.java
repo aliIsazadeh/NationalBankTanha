@@ -141,7 +141,6 @@ public class loginPageController implements Initializable {
         translateTransition.setToX(0);
 
 
-
         FadeTransition fadeRigisterAnchorPane = fadeTransition(registerAnchorPane, Duration.seconds(1), 0, 1);
         FadeTransition fadeSignInTransAnchorPane = fadeTransition(signInTrans, Duration.seconds(1), 0, 1);
 
@@ -322,12 +321,12 @@ public class loginPageController implements Initializable {
 
         } else {
             alert("ثبت نام شما با موفقیت انجام شد.اکنون میتوانید وارد سیستم شوید", lblSuccessAlert, "green");
+            lblFailAlertRegister.setText("");
 
-            if(DC){
-                alert(" کاربری با این نام نام کاربری موجود است!! لطفا نام کاربری دیگری انتخاب کنید",lblFailAlertRegister,"red");
-            }
-
-            else {
+            if (DC) {
+                alert(" کاربری با این نام نام کاربری موجود است!!", lblFailAlertRegister, "red");
+                lblSuccessAlert.setText("");
+            } else {
                 addVariable();
             }
 
@@ -587,13 +586,13 @@ public class loginPageController implements Initializable {
         txtRegisterLastName.addEventFilter(KeyEvent.KEY_TYPED, letter_Validation(15));
 
         txtRegisterUserName.addEventFilter(KeyEvent.KEY_TYPED, letter_ValidationForUserName(10));
-        //
+
         txtUserLogin.addEventFilter(KeyEvent.KEY_TYPED, letter_ValidationForUserName(10));
 
         txtRegisterPass.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(12));
         txtRegisterPassRepeat.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(12));
         txtRegisterPass2.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(12));
-        //
+
         txtPassLogin.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(12));
         txtPassLogin2.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(12));
 
