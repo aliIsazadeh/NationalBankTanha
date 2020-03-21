@@ -21,6 +21,7 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
 
@@ -117,7 +118,10 @@ public class minMoneyController implements Initializable {
             transaction.setCostOfTransaction(txtMinMoney.getText());
             transaction.setFrom(account);
             dbHelper.insertTransaction(transaction);
-
+            ArrayList<Transaction> list = new ArrayList<>();
+            list.addAll(account.getTransactions());
+            list.add(transaction);
+            account.setTransactions(list);
             alert(" تراکنش با موفقیت انجام شد", lblAlertMinMoney, "green");
 
         } else if (!(txtSecendPassWordMinMoney.getText().equals(account.getSecondPassword()))) {
@@ -139,7 +143,10 @@ public class minMoneyController implements Initializable {
             transaction.setCostOfTransaction(txtMinMoney.getText());
             transaction.setFrom(account);
             dbHelper.insertTransaction(transaction);
-
+            ArrayList<Transaction> list = new ArrayList<>();
+            list.addAll(account.getTransactions());
+            list.add(transaction);
+            account.setTransactions(list);
         }
 
         return transaction.isFinished();

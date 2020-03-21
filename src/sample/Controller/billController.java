@@ -19,6 +19,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
 
@@ -82,8 +83,8 @@ public class billController implements Initializable {
 
     public void sendingUniqueCode() {
         SecondPassProducer secondPassProducer = new SecondPassProducer();
-        password=secondPassProducer.secondPass();
-        SendSMS sendSMS =new SendSMS(new loginPageController().getAccount().getPerson().getPhoneNumber());
+        password = secondPassProducer.secondPass();
+        SendSMS sendSMS = new SendSMS(new loginPageController().getAccount().getPerson().getPhoneNumber());
         sendSMS.setMessage(password);
         sendSMS.send();
         alert(" رمز پویا به شماره شما ارسال شد", lblBillCost, "green");
@@ -122,26 +123,33 @@ public class billController implements Initializable {
 
     private void doTransaction(Bill bill, Account account) {
         dbHelper = new DBHelper();
-        if (txtSecendPassForBill.getText().equals(account.getSecondPassword())&&txtUniquePassForBill.getText().equals(password)) {
+        if (txtSecendPassForBill.getText().equals(account.getSecondPassword()) && txtUniquePassForBill.getText().equals(password)) {
             if (bill.getCostOfBill() > Long.parseLong(account.getInventory())) {
                 alert("موجودی کافی نیست!", billAlertLabel, "red");
-                creatTransaction(bill, false);
-
+                Transaction transaction = creatTransaction(bill, false);
+                ArrayList <Transaction> list = new ArrayList<>();
+                list.addAll(account.getTransactions());
+                list.add(transaction);
+                account.setTransactions(list);
             } else {
                 bill.setCondition("پردخت شده");
                 long money = Long.parseLong(account.getInventory());
                 money -= bill.getCostOfBill();
                 account.setInventory(String.valueOf(money));
                 dbHelper.updateAccount(account);
-                creatTransaction(bill, true);
+                Transaction transaction = creatTransaction(bill, true);
+                ArrayList <Transaction> list = new ArrayList<>();
+                list.addAll(account.getTransactions());
+                list.add(transaction);
+                account.setTransactions(list);
                 dbHelper.updateBill(bill);
 
             }
-        }else
-            alert("رمز یکبارمصرف یا رمز دوم اشتباه است",billAlertLabel,"red");
+        } else
+            alert("رمز یکبارمصرف یا رمز دوم اشتباه است", billAlertLabel, "red");
     }
 
-    private void creatTransaction(Bill bill, boolean b) {
+    private Transaction creatTransaction(Bill bill, boolean b) {
         // private TransactionSerialProducer transactionSerialProducer = new TransactionSerialProducer();
         Transaction transaction = new Transaction();
         transaction.setDateOfTransaction(new Date());
@@ -153,6 +161,7 @@ public class billController implements Initializable {
         transaction.setPaymentCode(bill.getPaymentCode());
         dbHelper = new DBHelper();
         dbHelper.insertTransaction(transaction);
+        return transaction;
     }
 
     public void test() {

@@ -27,6 +27,7 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
 
@@ -138,7 +139,11 @@ public class cardToCardController implements Initializable {
         long toMoney = Long.parseLong(to.getInventory());
         long fromMoney = Long.parseLong(from.getInventory());
         if (fromMoney >= money) {
-            creatTransaction(to, from, transaction, money, true);
+           Transaction transaction1= creatTransaction(to, from, transaction, money, true);
+            ArrayList<Transaction> list = new ArrayList<>();
+            list.addAll(from.getTransactions());
+            list.add(transaction1);
+            from.setTransactions(list);
             toMoney += money;
             fromMoney -= money;
             to.setInventory(String.valueOf(toMoney));
@@ -147,13 +152,17 @@ public class cardToCardController implements Initializable {
             dbHelper.updateAccount(to);
             dbHelper.updateAccount(from);
         } else {
-            creatTransaction(to, from, transaction, money, false);
+           Transaction transaction1= creatTransaction(to, from, transaction, money, false);
+            ArrayList<Transaction> list = new ArrayList<>();
+            list.addAll(from.getTransactions());
+            list.add(transaction1);
+            from.setTransactions(list);
             alert("موجودی کافی نمیباشد", lblAlertCardToCard, "WHITE");
 
         }
     }
 
-    private void creatTransaction(Account to, Account from, Transaction transaction, long money, boolean b) {
+    private Transaction creatTransaction(Account to, Account from, Transaction transaction, long money, boolean b) {
         transaction.setTypeOfTransaction("انتقال وجه");
         transaction.setFrom(from);
         transaction.setTo(to);
@@ -161,8 +170,10 @@ public class cardToCardController implements Initializable {
         transaction.setSerialOfTransaction(new TransactionSerialProducer().serialProducer());
         transaction.setCostOfTransaction(String.valueOf(money));
         transaction.setDateOfTransaction(new Date());
+
         dbHelper = new DBHelper();
         dbHelper.insertTransaction(transaction);
+        return transaction;
     }
 
 

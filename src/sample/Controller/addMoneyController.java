@@ -21,6 +21,7 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
 
@@ -134,6 +135,7 @@ public class addMoneyController implements Initializable {
             dbHelper.insertTransaction(transaction);
             account.setInventory(String.valueOf(Integer.parseInt(account.getInventory()) + Integer.parseInt(txtAddMoney.getText())));
             System.out.println(account.getPerson().getAccount().getAccountNumber());
+
             dbHelper.updateAccount(account);
             alert("عملیات با موفقیت انجام شد", lblAlertAddMoney, "green");
 
@@ -153,7 +155,10 @@ public class addMoneyController implements Initializable {
 
         System.out.println("finish");
         System.out.println(transaction.isFinished());
-
+        ArrayList<Transaction >list = new ArrayList<>();
+       // list.addAll(account.getTransactions());
+        list.add(transaction);
+        account.setTransactions(list);
         return transaction.isFinished();
     }
 
