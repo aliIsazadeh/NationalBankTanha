@@ -85,28 +85,32 @@ public class billController implements Initializable {
 
     public void considerBill() {
         dbHelper = new DBHelper();
+        Bill bill = dbHelper.readBill(Long.parseLong(txtBillNumber.getText()), Long.parseLong(txtPayNumber.getText()));
+
         if (txtBillNumber.getText().equals("") || txtPayNumber.getText().equals("")) {
             alert("لطفا فیلد هارا پرکنید", billAlertLabel, "red");
-        } else if (dbHelper.readBill(Long.parseLong(txtBillNumber.getText()), Long.parseLong(txtPayNumber.getText())) == null) {
+        } else  if (bill.getPaymentCode() == 0 || bill.getBillingId() == 0) {
             alert("قبضی با این مشخصات وجود ندارد", billAlertLabel, "red");
 
-        } else {
-            Bill bill = dbHelper.readBill(Long.parseLong(txtBillNumber.getText()), Long.parseLong(txtPayNumber.getText()));
+        } else if (bill.getPaymentCode() != 0 && bill.getBillingId() != 0){
+            System.out.println(bill.getPaymentCode()+"nnnn");
             // Account account = new loginPageController().getAccount();
-            if (!bill.getCondition().equals("پردخت نشده")) {
-                txtBillCost.setText(bill.getCostOfBill() + "");
+//            if (String.valueOf(bill.getPaymentCode()) != null || String.valueOf(bill.getBillingId()) != null) {
+                if (bill.getCondition().equals("پردخت نشده")) {
+                    txtBillCost.setText(bill.getCostOfBill() + "");
 
-                sendUniquePass.setVisible(true);
-                PayBill.setVisible(true);
-                txtBillCost.setVisible(true);
-                txtSecendPassForBill.setVisible(true);
-                txtUniquePassForBill.setVisible(true);
-                lblBillCost.setVisible(true);
-            } else {
-                alert("قبض پرداخت شده است ", billAlertLabel, "red");
+                    sendUniquePass.setVisible(true);
+                    PayBill.setVisible(true);
+                    txtBillCost.setVisible(true);
+                    txtSecendPassForBill.setVisible(true);
+                    txtUniquePassForBill.setVisible(true);
+                    lblBillCost.setVisible(true);
+                } else {
+                    alert("قبض پرداخت شده است ", billAlertLabel, "red");
+                }
+
             }
 
-        }
 
 
     }

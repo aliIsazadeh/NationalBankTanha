@@ -201,7 +201,10 @@ public class loginPageController implements Initializable {
                         }
 
 
+                    }else{
+                        alert("رمز وارد شده صحیح نمی باشد",lblFailLogin,"red");
                     }
+
             }
 
 
@@ -246,11 +249,15 @@ public class loginPageController implements Initializable {
     public void exit() {
 
         Alert alert = new Alert(Alert.AlertType.WARNING, "آیا میخواهید خارج شوید؟ ", ButtonType.YES, ButtonType.NO);
-
+        alert.setTitle("اخطار");
+        alert.setHeaderText(null);
+        ButtonType yes = new ButtonType("بله");
+        ButtonType no = new ButtonType("خیر");
+        alert.getButtonTypes().setAll(yes,no);
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent())
-            if (result.get() == ButtonType.YES)
+            if (result.get() == yes)
                 System.exit(0);
     }
 

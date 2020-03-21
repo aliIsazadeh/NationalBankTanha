@@ -143,8 +143,6 @@ public class mainPageController implements Initializable {
     }
 
 
-
-
     private void alert(String message, Label lbl, String color) {
         lbl.setText(message);
         lbl.setStyle("-fx-text-fill: " + color + ";");
@@ -154,23 +152,16 @@ public class mainPageController implements Initializable {
     public void recordInfos() {
 
 
-
-
-
-        if (txtNationalCode.getText().equals("") || txtFatherName.getText().equals("") || txtJob.getText().equals("") || findComboIndex(comboAccount) == -1 || findComboIndex(comboMarriage) == -1 || findComboIndex(comboGender) == -1 || txtAddress.getText().equals("") || txtBornPlace.getText().equals("") || txtSecendPassWord.getText().equals("") || txtSecendPassWordRepeat.getText().equals("") ||txtPhoneNumber.getText().equals("") || timePickerBornTime.getValue()==null) {
+        if (txtNationalCode.getText().equals("") || txtFatherName.getText().equals("") || txtJob.getText().equals("") || findComboIndex(comboAccount) == -1 || findComboIndex(comboMarriage) == -1 || findComboIndex(comboGender) == -1 || txtAddress.getText().equals("") || txtBornPlace.getText().equals("") || txtSecendPassWord.getText().equals("") || txtSecendPassWordRepeat.getText().equals("") || txtPhoneNumber.getText().equals("") || timePickerBornTime.getValue() == null) {
 
             alert("لطفا تمام فیلد هارا پر کنید", lblFailNotice, "red");
 
 
-        }
-        else if(!txtSecendPassWord.getText().equals(txtSecendPassWordRepeat.getText())){
+        } else if (!txtSecendPassWord.getText().equals(txtSecendPassWordRepeat.getText())) {
 
             alert("رمز عبور با تکرارش تطلابق ندارد", lblFailNotice, "red");
 
-        }
-
-
-        else {
+        } else {
             CreateCardNumber createCardNumber = new CreateCardNumber();
 
             String accountNumber = createCardNumber.createCardNumber();
@@ -233,7 +224,7 @@ public class mainPageController implements Initializable {
             Parent root = FXMLLoader.load(getClass().getResource("../FXML/personalInfos.fxml"));
             mainAnchorPane.getChildren().addAll(root);
         } catch (IOException ex) {
-             System.out.println("Problem in loading");
+            System.out.println("Problem in loading");
             ex.printStackTrace();
         }
 
@@ -335,20 +326,29 @@ public class mainPageController implements Initializable {
     public void exit() {
 
         Alert alert = new Alert(Alert.AlertType.WARNING, "آیا میخواهید خارج شوید؟ ", ButtonType.YES, ButtonType.NO);
-
-
+        alert.setTitle("اخطار");
+        alert.setHeaderText(null);
+        ButtonType yes = new ButtonType("بله");
+        ButtonType no = new ButtonType("خیر");
+        alert.getButtonTypes().setAll(yes,no);
         Optional<ButtonType> result = alert.showAndWait();
+
         if (result.isPresent())
-            if (result.get() == ButtonType.YES)
+            if (result.get() == yes)
                 System.exit(0);
     }
 
     public void back() {
         Alert alert = new Alert(Alert.AlertType.WARNING, "آیا می خواهید به صفحه اصلی برگردید؟ ", ButtonType.YES, ButtonType.NO);
-
+        alert.setTitle("اخطار");
+        alert.setHeaderText(null);
+        ButtonType yes = new ButtonType("بله");
+        ButtonType no = new ButtonType("خیر");
+        alert.getButtonTypes().setAll(yes,no);
         Optional<ButtonType> result = alert.showAndWait();
+
         if (result.isPresent()) {
-            if (result.get() == ButtonType.YES) {
+            if (result.get() == yes) {
 
                 Parent root;
                 try {
@@ -466,9 +466,6 @@ public class mainPageController implements Initializable {
 
         String[] items3 = {"مرد", "زن"};
         comboGender.getItems().addAll(items3);
-
-
-
 
 
     }
