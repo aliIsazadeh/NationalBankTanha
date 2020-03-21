@@ -84,7 +84,7 @@ public class billController implements Initializable {
         SendSMS sendSMS = new SendSMS(new loginPageController().getAccount().getPerson().getPhoneNumber());
         sendSMS.setMessage(password);
         sendSMS.send();
-        alert(" رمز پویا به شماره شما ارسال شد", lblBillCost, "green");
+        alert(" رمز پویا به شماره شما ارسال شد", billAlertLabel, "green");
 
 
     }
