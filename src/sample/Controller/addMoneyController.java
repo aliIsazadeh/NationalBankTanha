@@ -9,12 +9,18 @@ import com.jfoenix.controls.JFXButton;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
 import java.util.ResourceBundle;
@@ -52,21 +58,21 @@ public class addMoneyController implements Initializable {
                 alert("عملیات با موفقیت انجام شد", lblAlertAddMoney, "green");
 
 
-//                Parent root;
-//                try {
-//                    Stage stage = (Stage) confirmAddMoney.getScene().getWindow();
-//
-//                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/sample/FXML/notificationPageAddMoney.fxml"));
-//                    root = loader.load();
-//                    stage = new Stage();
-//                    Stage finalStage = stage;
-//                    finalStage.setResizable(false);
-//                    finalStage.initStyle(StageStyle.TRANSPARENT);
-//                    stage.setScene(new Scene(root, 361, 329));
-//                    stage.show();
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
+                Parent root;
+                try {
+                    Stage stage = (Stage) confirmAddMoney.getScene().getWindow();
+
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/sample/FXML/notificationPageAddMoney.fxml"));
+                    root = loader.load();
+                    stage = new Stage();
+                    Stage finalStage = stage;
+                    finalStage.setResizable(false);
+                    finalStage.initStyle(StageStyle.TRANSPARENT);
+                    stage.setScene(new Scene(root, 361, 329));
+                    stage.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
 
             } else {
