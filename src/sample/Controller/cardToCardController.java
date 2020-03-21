@@ -49,6 +49,7 @@ public class cardToCardController implements Initializable {
     public JFXTextField txtMoneyCardToCard;
     public JFXTextField txtSecondPass;
     private DBHelper dbHelper;
+    private notificationCardToCard not;
 
     private void alert(String message, Label lbl, String color) {
         lbl.setText(message);
@@ -88,6 +89,12 @@ public class cardToCardController implements Initializable {
         //TODO بررسی رمز یکبار مصرف
         if (from.getSecondPassword().equals(txtSecondPass.getText())) {
             doTransaction(to, from);
+
+            not = new notificationCardToCard();
+            not.ReceivingAmountCardToCard(txtMoneyCardToCard.getText());
+
+
+
 
             Parent root;
             try {

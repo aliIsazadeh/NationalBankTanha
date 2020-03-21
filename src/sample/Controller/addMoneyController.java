@@ -34,6 +34,8 @@ public class addMoneyController implements Initializable {
     public TextField txtAddMoneyUniquePass;
     public Button sendUniquePass;
 
+    private notificationAddMoneyController not;
+
 
     private void alert(String message, Label lbl, String color) {
         lbl.setText(message);
@@ -51,10 +53,12 @@ public class addMoneyController implements Initializable {
        else {
 
             boolean flag = addMoney();
-        }
-//            if (flag) {
-//
-//                alert("عملیات با موفقیت انجام شد", lblAlertAddMoney, "green");
+
+            if (flag) {
+
+                alert("عملیات با موفقیت انجام شد", lblAlertAddMoney, "green");
+
+                not.ReceivingAmountAddMoney(txtAddMoney.getText());
 
 
                 Parent root;
@@ -74,13 +78,13 @@ public class addMoneyController implements Initializable {
                 }
 
 
-//            } else {
-//
-//                alert("تراکنش شما ناموفق بود!! ", lblAlertAddMoney, "red");
-//
-//            }
+            } else {
 
-//        }
+                alert("تراکنش شما ناموفق بود!! ", lblAlertAddMoney, "red");
+
+            }
+
+       }
     }
 
 

@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<AnchorPane prefHeight="400.0" prefWidth="723.0" style="-fx-background-color: #AAB6FE; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/8.0.221" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.minMoneyController">
+<AnchorPane prefHeight="400.0" prefWidth="723.0" style="-fx-background-color: #AAB6FE; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.minMoneyController">
    <children>
       <Label alignment="CENTER" layoutX="308.0" layoutY="14.0" prefHeight="47.0" prefWidth="154.0" text="برداشت وجه">
          <font>
@@ -27,8 +27,6 @@
          </font>
       </JFXButton>
       <TextField fx:id="txtMinMoney" alignment="CENTER_RIGHT" layoutX="264.0" layoutY="146.0" onKeyTyped="#testCost" prefHeight="25.0" prefWidth="241.0" promptText="مبلغ مورد نظر خود را وارد کنید" />
-      <TextField fx:id="txtSecendPassWordMinMoney" alignment="CENTER_RIGHT" layoutX="398.0" layoutY="188.0" prefHeight="25.0" prefWidth="110.0" promptText="رمز دوم" />
-      <TextField fx:id="txtUniquePassMinMoney" alignment="CENTER_RIGHT" layoutX="265.0" layoutY="188.0" prefHeight="25.0" prefWidth="110.0" promptText="رمز پویا" />
-      <Button fx:id="btnSendUniquePass" layoutX="344.0" layoutY="235.0" mnemonicParsing="false" text="ارسال رمز پویا" onMouseClicked="#sendingUniqueCode" />
+      <TextField fx:id="txtSecendPassWordMinMoney" alignment="CENTER_RIGHT" layoutX="266.0" layoutY="213.0" prefHeight="25.0" prefWidth="241.0" promptText="رمز دوم" />
    </children>
 </AnchorPane>
