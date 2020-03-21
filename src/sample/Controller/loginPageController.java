@@ -74,7 +74,6 @@ public class loginPageController implements Initializable {
         this.person = person;
     }
 
-
     public Account getAccount() {
         return account;
     }
@@ -82,9 +81,6 @@ public class loginPageController implements Initializable {
     public void setAccount(Account account) {
         this.account = account;
     }
-
-
-    // private DBHelper dbHelper = new DBHelper();
 
     private FadeTransition fadeTransition(Node node, Duration duration, double fromValue, double toValue) {
         FadeTransition fadeTransition = new FadeTransition();

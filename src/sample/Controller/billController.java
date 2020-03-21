@@ -41,8 +41,6 @@ public class billController implements Initializable {
     private String password;
 
     private DBHelper dbHelper;
-//    private Account account = new Account();
-//    private Bill bill = dbHelper.readBill(Long.parseLong(txtBillNumber.getText()), Long.parseLong(txtBillCost.getText()));
 
 
     public EventHandler<KeyEvent> numeric_Validation(final Integer max_Lengh) {
@@ -72,14 +70,6 @@ public class billController implements Initializable {
         lbl.setStyle("-fx-text-fill: " + color + ";");
     }
 
-
-//    public void payBill() {
-//        if (txtBillNumber.getText().equals("") || txtPayNumber.getText().equals("") || txtSecendPassForBill.getText().equals("") || txtUniquePassForBill.getText().equals("")) {
-//            alert("لطفا فیلد هارا پرکنید", billAlertLabel, "red");
-//        }
-//
-//
-//    }
 
     public void sendingUniqueCode() {
         SecondPassProducer secondPassProducer = new SecondPassProducer();

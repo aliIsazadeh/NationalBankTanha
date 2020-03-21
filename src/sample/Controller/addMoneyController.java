@@ -12,7 +12,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
@@ -83,14 +82,6 @@ public class addMoneyController implements Initializable {
     }
 
 
-//    public void sendingUniqueCode() {
-//
-//        txtAddMoneyUniquePass.setVisible(true);
-//
-//        alert(" رمز پویا به شماره شما ارسال شد", lblAlertAddMoney, "green");
-//
-//
-//    }
 
     public EventHandler<KeyEvent> numeric_Validation(final Integer max_Lengh) {
         return new EventHandler<KeyEvent>() {
@@ -141,16 +132,6 @@ public class addMoneyController implements Initializable {
 
         } else {
             alert("رمز دوم اشتباه است", lblAlertAddMoney, "red");
-//            transaction.setFinished(false);
-//            System.out.println("finished"+false);
-//            transaction.setDateOfTransaction(today);
-//            System.out.println(today);
-//            transaction.setSerialOfTransaction(new TransactionSerialProducer().serialProducer());
-//            System.out.println(transaction.getSerialOfTransaction());
-//            transaction.setTypeOfTransaction("افزودن موجودی");
-//            System.out.println(transaction.getTypeOfTransaction());
-//            dbHelper.insertTransaction(transaction);
-//            System.out.println("inserted");
         }
 
         System.out.println("finish");
@@ -179,7 +160,6 @@ public class addMoneyController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         txtAddMoneySecendPass.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(4));
-//        txtAddMoneyUniquePass.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(4));
         txtAddMoney.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(20));
 
 

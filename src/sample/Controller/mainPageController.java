@@ -212,13 +212,10 @@ public class mainPageController implements Initializable {
 
             if (findComboIndex(comboAccount) == 0) {
                 txtAccountType.setText("جاری");
-                //   account.setAccountType("جاری");
             } else if (findComboIndex(comboAccount) == 1) {
                 txtAccountType.setText("قرضا لحسنه");
-                //  account.setAccountType("قرضا لحسنه");
             } else if (findComboIndex(comboAccount) == 2) {
                 txtAccountType.setText("پسنداز");
-                //  account.setAccountType("پسنداز");
             }
 
             infoAnchorPane.setVisible(false);

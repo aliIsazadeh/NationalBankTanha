@@ -1,7 +1,6 @@
 package sample.Controller;
 
 import DataStructure.Account;
-import Extras.DBHelper;
 import Extras.NumToText;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;

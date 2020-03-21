@@ -31,15 +31,12 @@ public class minMoneyController implements Initializable {
     public Label lblAlertMinMoney;
     public JFXButton confirmMinMoney;
     public TextField txtMinMoney;
-    public Button btnSendUniquePass;
-    public TextField txtUniquePassMinMoney;
+
     public TextField txtSecendPassWordMinMoney;
     private DBHelper dbHelper = new DBHelper();
     private Transaction transaction = new Transaction();
     private loginPageController loginPage = new loginPageController();
-    //dbHelper.readAccount(loginPage.txtUserLogin.getText());
     private Account account = loginPage.getAccount();
-    // private SecondPassProducer secondPassProducer = new SecondPassProducer();
     private TransactionSerialProducer transactionSerialProducer = new TransactionSerialProducer();
     private Date date = new Date();
     private notificationMinMoneyController not;
@@ -127,12 +124,7 @@ public class minMoneyController implements Initializable {
         } else if (!(txtSecendPassWordMinMoney.getText().equals(account.getSecondPassword()))) {
             alert("رمز دوم اشتباه است", lblAlertMinMoney, "red");
 
-//            transaction.setFinished(false);
-//            transaction.setTypeOfTransaction("برداشت وجه");
-//            transaction.setSerialOfTransaction(transactionSerialProducer.serialProducer());
-//            transaction.setDateOfTransaction(date);
-//            transaction.setCostOfTransaction(txtMinMoney.getText());
-//            transaction.setFrom(account);
+
         } else if ((txtSecendPassWordMinMoney.getText().equals(account.getSecondPassword())) && !(Long.parseLong(txtMinMoney.getText()) < Long.parseLong(account.getInventory()))) {
             alert("موجودی کافی نیست", lblAlertMinMoney, "red");
 
@@ -193,7 +185,6 @@ public class minMoneyController implements Initializable {
 
         txtMinMoney.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(6));
         txtSecendPassWordMinMoney.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(4));
-//        txtUniquePassMinMoney.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(6));
 
     }
 
