@@ -10,16 +10,15 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class notificationAddMoneyController implements Initializable {
+public class NotificationPageBill  implements Initializable {
 
-
+    public TextField txtBillCost;
+    public TextField txtInventory;
+    public TextField txtBillCostAlphabet;
+    public TextField txtInventoryAlphabet;
     public Button btnClose;
-    public TextField txtAddMoneyNum;
-    public TextField txtAddMoneyInventoryNum;
-    public TextField txtAlphabetAddMoney;
-    public TextField txtAlphabetInventory;
-
     static String transferMoney;
+
 
     public void close(){
         Stage stage = (Stage) btnClose.getScene().getWindow();
@@ -27,33 +26,30 @@ public class notificationAddMoneyController implements Initializable {
 
     }
 
-    public  void   ReceivingAmountAddMoney(String st){
+    public  void   ReceivingAmountBill(String st){
 
-       this.transferMoney = st;
+        this.transferMoney = st;
 
     }
+
 
 
 
     public void initialize(URL location, ResourceBundle resources) {
-        loginPageController  loginPage = new loginPageController();
+
+        loginPageController loginPage = new loginPageController();
         Account account = loginPage.getAccount();
 
         NumToText numToText = new NumToText(Long.parseLong(account.getInventory()));
 
-
-        txtAddMoneyInventoryNum.setText(account.getInventory());
-        txtAlphabetInventory.setText(numToText.getText() + " " + "تومان");
+        txtInventory.setText(account.getInventory());
+        txtInventoryAlphabet.setText(numToText.getText()+ " " + "تومان");
 
         numToText = new NumToText(Long.parseLong(transferMoney));
-        txtAddMoneyNum.setText(transferMoney);
-        txtAlphabetAddMoney.setText(numToText.getText() + " " +"تومان" );
-        System.out.println("initialize");
-
-
-
+        txtBillCost.setText(transferMoney);
+        txtBillCostAlphabet.setText(numToText.getText()+ " " + "تومان");
 
 
     }
 
-}
+    }

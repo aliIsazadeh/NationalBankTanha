@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<AnchorPane prefHeight="360.0" prefWidth="418.0" style="-fx-background-color: #9CCC65;" xmlns="http://javafx.com/javafx/8.0.221" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.NotificationPageBill">
+   <children>
+      <Label alignment="CENTER_RIGHT" layoutX="252.0" layoutY="23.0" prefHeight="34.0" prefWidth="153.0" text="مبلغ پرداخت شده برای قبض:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER_RIGHT" layoutX="328.0" layoutY="163.0" prefHeight="34.0" prefWidth="66.0" text="موجودی:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER_RIGHT" layoutX="317.0" layoutY="68.0" prefHeight="34.0" prefWidth="66.0" text="به عدد" />
+      <Label alignment="CENTER_RIGHT" layoutX="317.0" layoutY="111.0" prefHeight="34.0" prefWidth="66.0" text="به حروف" />
+      <Label alignment="CENTER_RIGHT" layoutX="313.0" layoutY="201.0" prefHeight="25.0" prefWidth="66.0" text="به عدد" />
+      <Label alignment="CENTER_RIGHT" layoutX="313.0" layoutY="237.0" prefHeight="34.0" prefWidth="66.0" text="به حروف" />
+      <TextField fx:id="txtBillCost" alignment="CENTER_RIGHT" editable="false" layoutX="63.0" layoutY="78.0" prefHeight="25.0" prefWidth="231.0" />
+      <TextField fx:id="txtInventory" alignment="CENTER_RIGHT" editable="false" layoutX="59.0" layoutY="201.0" prefHeight="25.0" prefWidth="231.0" />
+      <TextField fx:id="txtBillCostAlphabet" alignment="CENTER_RIGHT" editable="false" layoutX="63.0" layoutY="116.0" prefHeight="25.0" prefWidth="231.0" />
+      <TextField fx:id="txtInventoryAlphabet" alignment="CENTER_RIGHT" editable="false" layoutX="59.0" layoutY="240.0" prefHeight="25.0" prefWidth="231.0" />
+      <Button fx:id="btnClose" layoutX="183.0" layoutY="292.0" mnemonicParsing="false" onMouseClicked="#close" prefHeight="41.0" prefWidth="52.0" text="OK" />
+   </children>
+</AnchorPane>

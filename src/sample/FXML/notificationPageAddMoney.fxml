@@ -17,11 +17,11 @@
          </font></Label>
       <TextField fx:id="txtAddMoneyInventoryNum" alignment="CENTER_RIGHT" editable="false" layoutX="54.0" layoutY="185.0" prefHeight="25.0" prefWidth="241.0" AnchorPane.leftAnchor="54.0" AnchorPane.rightAnchor="123.0" />
       <TextField fx:id="txtAlphabetAddMoney" alignment="CENTER_RIGHT" editable="false" layoutX="54.0" layoutY="96.0" prefHeight="25.0" prefWidth="241.0" AnchorPane.leftAnchor="54.0" AnchorPane.rightAnchor="123.0" />
-      <Label alignment="CENTER_RIGHT" layoutX="330.0" layoutY="58.0" prefHeight="34.0" prefWidth="44.0" text="به عدد" />
-      <Label alignment="CENTER_RIGHT" layoutX="330.0" layoutY="90.0" prefHeight="34.0" prefWidth="44.0" text="به حروف" />
+      <Label alignment="CENTER_RIGHT" layoutX="308.0" layoutY="58.0" prefHeight="34.0" prefWidth="66.0" text="به عدد" />
+      <Label alignment="CENTER_RIGHT" layoutX="308.0" layoutY="90.0" prefHeight="34.0" prefWidth="66.0" text="به حروف" />
       <TextField fx:id="txtAlphabetInventory" alignment="CENTER_RIGHT" editable="false" layoutX="54.0" layoutY="227.0" prefHeight="25.0" prefWidth="241.0" AnchorPane.leftAnchor="54.0" AnchorPane.rightAnchor="123.0" />
-      <Label alignment="CENTER_RIGHT" layoutX="330.0" layoutY="184.0" prefHeight="25.0" prefWidth="44.0" text="به عدد" />
-      <Label alignment="CENTER_RIGHT" layoutX="330.0" layoutY="216.0" prefHeight="34.0" prefWidth="44.0" text="به حروف" />
+      <Label alignment="CENTER_RIGHT" layoutX="308.0" layoutY="184.0" prefHeight="25.0" prefWidth="66.0" text="به عدد" />
+      <Label alignment="CENTER_RIGHT" layoutX="308.0" layoutY="216.0" prefHeight="34.0" prefWidth="66.0" text="به حروف" />
       <Button fx:id="btnClose" layoutX="183.0" layoutY="297.0" mnemonicParsing="false" onMouseClicked="#close" prefHeight="41.0" prefWidth="52.0" text="OK" />
    </children>
 </AnchorPane>
