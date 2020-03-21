@@ -23,7 +23,7 @@ public class personalInfoController implements Initializable {
         loginPageController loginPage = new loginPageController();
         Account account = loginPage.getAccount();
         Person person = account.getPerson();
-
+        System.out.println(person.getPhoneNumber());
         txtShowNationalCode.setText(String.valueOf(person.getNationalNumber()));
         txtShowName.setText(person.getName());
         txtShowFamily.setText(person.getLastName());

@@ -69,9 +69,5 @@ public class SendSMS {
 
     }
 
-    public static void main(String[] args) {
-        SendSMS sendSMS = new SendSMS("09917549154");
-        sendSMS.setMessage("با عرض سلام خدمت اقای نیرومند موبایل شما دزدی اعلام شده است برای تحویل موبایل خود به صاحب اصلی لطفا به کلانتری محل خود مراجعه فرمایید ستاد مبارزه با حقوق مادی");
-        sendSMS.send();
-    }
+
 }

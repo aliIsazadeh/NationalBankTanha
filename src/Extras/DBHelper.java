@@ -393,7 +393,7 @@ public class DBHelper {
             person.setLastName(resultSet.getString("lastName"));
             person.setAddress(resultSet.getString("address"));
             person.setNationalNumber(resultSet.getLong("nationalCode"));
-            person.setPhoneNumber(("phoneNumber"));
+            person.setPhoneNumber(resultSet.getString("phoneNumber"));
             person.setFatherName(resultSet.getString("fatherName"));
             person.setBornTime(resultSet.getString("dataOFBorn"));
             person.setBornPlace(resultSet.getString("placeOfBorn"));
