@@ -89,7 +89,7 @@ public class minMoneyController implements Initializable {
                     Stage finalStage = stage;
                     finalStage.setResizable(false);
                     finalStage.initStyle(StageStyle.TRANSPARENT);
-                    stage.setScene(new Scene(root, 361, 329));
+                    stage.setScene(new Scene(root, 451, 329));
                     stage.show();
                 } catch (IOException e) {
                     e.printStackTrace();
