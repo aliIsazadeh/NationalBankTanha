@@ -173,7 +173,15 @@ public class mainPageController implements Initializable {
             alert("لطفا تمام فیلد هارا پر کنید", lblFailNotice, "red");
 
 
-        } else {
+        }
+        else if(!txtSecendPassWord.getText().equals(txtSecendPassWordRepeat.getText())){
+
+            alert("رمز عبور با تکرارش تطلابق ندارد", lblFailNotice, "red");
+
+        }
+
+
+        else {
             CreateCardNumber createCardNumber = new CreateCardNumber();
 
             String accountNumber = createCardNumber.createCardNumber();

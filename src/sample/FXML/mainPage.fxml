@@ -1,22 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXComboBox?>
-<?import com.jfoenix.controls.JFXTextField?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.paint.LinearGradient?>
-<?import javafx.scene.paint.Stop?>
-<?import javafx.scene.text.Font?>
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="626.0" prefWidth="913.0" style="-fx-background-color: #EEFFFF;" xmlns="http://javafx.com/javafx/8.0.221" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.mainPageController">
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="626.0" prefWidth="913.0" style="-fx-background-color: #EEFFFF;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.mainPageController">
 
 
     <children>
@@ -229,8 +220,8 @@
                            </stops>
                         </LinearGradient>
                      </unFocusColor></JFXTextField>
-                        <DatePicker fx:id="timePickerBornTime" layoutX="583.0" layoutY="218.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="25.0" prefWidth="128.0" promptText="تاریخ تولد" />
-                        <JFXTextField fx:id="txtBornPlace" alignment="CENTER_RIGHT" labelFloat="true" layoutX="256.0" layoutY="136.0" promptText="محل تولد">
+                        <DatePicker fx:id="timePickerBornTime" layoutX="524.0" layoutY="244.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="25.0" prefWidth="184.0" promptText="تاریخ تولد" />
+                        <JFXTextField fx:id="txtBornPlace" alignment="CENTER_RIGHT" labelFloat="true" layoutX="563.0" layoutY="161.0" promptText="محل تولد">
                             <font>
                                 <Font name="System Bold" size="12.0" />
                             </font>
@@ -256,7 +247,7 @@
                            </stops>
                         </LinearGradient>
                      </unFocusColor></JFXTextField>
-                        <JFXComboBox fx:id="comboMarriage" labelFloat="true" layoutX="49.0" layoutY="136.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="25.0" prefWidth="135.0" promptText="وضعیت تاهل">
+                        <JFXComboBox fx:id="comboMarriage" labelFloat="true" layoutX="49.0" layoutY="161.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="25.0" prefWidth="135.0" promptText="وضعیت تاهل">
                      <unFocusColor>
                         <LinearGradient endX="0.02857142857142847" endY="0.9476190476190476" startX="0.07619047619047614" startY="0.9428571428571428">
                            <stops>
@@ -265,7 +256,7 @@
                            </stops>
                         </LinearGradient>
                      </unFocusColor></JFXComboBox>
-                        <JFXTextField fx:id="txtAddress" alignment="CENTER_RIGHT" labelFloat="true" layoutX="413.0" layoutY="136.0" prefHeight="25.0" prefWidth="300.0" promptText="آدرس">
+                        <JFXTextField fx:id="txtAddress" alignment="CENTER_RIGHT" labelFloat="true" layoutX="251.0" layoutY="89.0" prefHeight="25.0" prefWidth="300.0" promptText="آدرس">
                             <font>
                                 <Font name="System Bold" size="12.0" />
                             </font>
@@ -297,11 +288,7 @@
                            </stops>
                         </LinearGradient>
                      </unFocusColor></JFXComboBox>
-                        <CheckBox fx:id="checkSendMessage" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="453.0" layoutY="86.0" mnemonicParsing="false" onMouseClicked="#activePhoneText" prefHeight="19.0" prefWidth="260.0" text="درخواست دریافت پیامک به ازای هر تراکنش">
-                            <font>
-                                <Font name="System Bold" size="13.0" />
-                            </font></CheckBox>
-                        <JFXTextField fx:id="txtPhoneNumber" alignment="CENTER_RIGHT" focusColor="BLACK" layoutX="256.0" layoutY="83.0" prefHeight="25.0" prefWidth="145.0" promptText="شماره تلفن" visible="false">
+                        <JFXTextField fx:id="txtPhoneNumber" alignment="CENTER_RIGHT" focusColor="BLACK" layoutX="563.0" layoutY="89.0" prefHeight="25.0" prefWidth="145.0" promptText="شماره تلفن">
                      <unFocusColor>
                         <LinearGradient endX="0.02857142857142847" endY="0.9476190476190476" startX="0.5380952380952381" startY="0.9428571428571428">
                            <stops>
@@ -310,7 +297,7 @@
                            </stops>
                         </LinearGradient>
                      </unFocusColor></JFXTextField>
-                  <JFXTextField fx:id="txtSecendPassWord" alignment="CENTER_RIGHT" labelFloat="true" layoutX="354.0" layoutY="218.0" promptText="انتخاب رمز دوم">
+                  <JFXTextField fx:id="txtSecendPassWord" alignment="CENTER_RIGHT" labelFloat="true" layoutX="409.0" layoutY="161.0" promptText="انتخاب رمز دوم">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
@@ -324,7 +311,7 @@
                         </LinearGradient>
                      </unFocusColor>
                   </JFXTextField>
-                  <JFXTextField fx:id="txtSecendPassWordRepeat" alignment="CENTER_RIGHT" labelFloat="true" layoutX="101.0" layoutY="218.0" prefHeight="25.0" prefWidth="166.0" promptText="تکرار رمز ">
+                  <JFXTextField fx:id="txtSecendPassWordRepeat" alignment="CENTER_RIGHT" labelFloat="true" layoutX="226.0" layoutY="161.0" prefHeight="25.0" prefWidth="166.0" promptText="تکرار رمز ">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>

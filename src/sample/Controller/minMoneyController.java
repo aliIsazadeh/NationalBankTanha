@@ -12,7 +12,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
@@ -73,7 +72,11 @@ public class minMoneyController implements Initializable {
         } else {
             boolean flag = minMoney();
             if (flag) {
+                not = new notificationMinMoneyController();
                 not.ReceivingAmountMinMoney(txtMinMoney.getText());
+
+                txtMinMoney.setText("");
+                txtSecendPassWordMinMoney.setText("");
 
 
                 Parent root;
@@ -100,6 +103,9 @@ public class minMoneyController implements Initializable {
             }
 
         }
+
+
+
 
 
     }

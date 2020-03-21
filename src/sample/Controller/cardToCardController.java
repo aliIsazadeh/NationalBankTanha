@@ -103,8 +103,12 @@ public class cardToCardController implements Initializable {
             not.ReceivingAmountCardToCard(txtMoneyCardToCard.getText());
 
 
-
-
+            txtCardToCardUniquePass.setText("");
+            txtSecondPass.setText("");
+            txtMoneyCardToCard.setText("");
+            txtDescribeDestinationCard.setText("");
+            txtCardToCardSubject.setText("");
+            txtDescribeDestinationCard.setText("");
             Parent root;
             try {
                 Stage stage = (Stage) btnConfirmCardToCard.getScene().getWindow();

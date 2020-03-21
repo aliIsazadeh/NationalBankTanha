@@ -215,6 +215,11 @@ public class billController implements Initializable {
 
             alert("قبض شما با موفقیت پرداخت شد", billAlertLabel, "green");
 
+            txtPayNumber.setText("");
+            txtBillNumber.setText("");
+            txtUniquePassForBill.setText("");
+            txtSecendPassForBill.setText("");
+            txtBillCost.setText("");
         }
 
     }

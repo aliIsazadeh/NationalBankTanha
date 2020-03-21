@@ -32,6 +32,7 @@ public class addMoneyController implements Initializable {
     public Label lblAlertAddMoney;
     public TextField txtAddMoneySecendPass;
 
+
     private notificationAddMoneyController not;
 
 
@@ -42,6 +43,7 @@ public class addMoneyController implements Initializable {
 
 
     public void confirmAddingMoney() {
+
         if (txtAddMoney.getText().equals("") || txtAddMoneySecendPass.getText().equals("")) {
             alert("لطفا فیلد هارا پر کنید", lblAlertAddMoney, "red");
 
@@ -54,6 +56,10 @@ public class addMoneyController implements Initializable {
                 alert("عملیات با موفقیت انجام شد", lblAlertAddMoney, "green");
                 not = new notificationAddMoneyController();
                 not.ReceivingAmountAddMoney(txtAddMoney.getText());
+
+
+                txtAddMoney.setText("");
+                txtAddMoneySecendPass.setText("");
 
                 Parent root;
                 try {
@@ -80,6 +86,7 @@ public class addMoneyController implements Initializable {
 
         }
     }
+
 
 
 
