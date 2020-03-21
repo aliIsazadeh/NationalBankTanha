@@ -29,7 +29,7 @@ public class remainMoneyController implements Initializable {
         Account account = dbHelper.readAccount(loginPage.getAccount().getUserName());
 
         txtRemainMoneyInNumber.setText(account.getInventory());
-        NumToText numToText = new NumToText(Long.parseLong(txtRemainMoneyInNumber.getText()));
+        NumToText numToText = new NumToText(Long.parseLong(account.getInventory()));
         txtRemainMoneyInAlphabet.setText(numToText+"");
 
 

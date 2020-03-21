@@ -33,7 +33,9 @@ public class cardToCardController implements Initializable {
     //
     public TextArea txtDescribeDestinationCard;
     public Label lblAlertCardToCard;
+
     public AnchorPane cardTocardAncorPane;
+
     public JFXTextField txtCardToCardUniquePass;
     ///
     public Button btnSendUniqueCodeCardToCard;
@@ -69,6 +71,7 @@ public class cardToCardController implements Initializable {
             alert("حسابی با این مشحصات وجود ندارد", lblAlertCardToCard, "red");
         } else {
             txtDescribeDestinationCard.setText(account.getPerson().getName());
+            cardTocardAncorPane.setVisible(true);
         }
     }
 

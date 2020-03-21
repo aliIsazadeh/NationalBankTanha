@@ -20,6 +20,7 @@ public class changePassWordController implements Initializable {
     public JFXTextField txtNewPass;
     public JFXButton btnChangePass;
     public Label lblAlert;
+    public JFXTextField txtNewPassRepeat;
 
 
     private void alert(String message, Label lbl, String color) {
@@ -32,7 +33,7 @@ public class changePassWordController implements Initializable {
         loginPageController loginPage = new loginPageController();
         Account account = dbHelper.readAccount(loginPage.getAccount().getUserName());
 
-        if(txtRecentPass.getText().equals("")||txtNewPass.getText().equals("")){
+        if(txtRecentPass.getText().equals("")||txtNewPass.getText().equals("") ||txtNewPassRepeat.getText().equals("")){
 
             alert("لطفا فیلد هارا پر کنید",lblAlert,"red");
         }
@@ -83,7 +84,7 @@ public class changePassWordController implements Initializable {
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 
 
-                if (!txtNewPass.getText().equals("")) {
+                if (!txtNewPass.getText().equals("") && !txtNewPassRepeat.getText().equals("")) {
 
                     btnChangePass.setDisable(false);
 
@@ -103,7 +104,28 @@ public class changePassWordController implements Initializable {
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 
 
-                if (!txtRecentPass.getText().equals("")) {
+                if (!txtRecentPass.getText().equals("") && !txtNewPassRepeat.getText().equals("")) {
+
+
+                    btnChangePass.setDisable(false);
+
+
+                }
+
+
+            }
+        });
+
+    }
+
+
+    public void testPassRepeat() {
+        txtNewPassRepeat.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+
+
+                if (!txtRecentPass.getText().equals("") && !txtNewPass.getText().equals("")) {
 
                     btnChangePass.setDisable(false);
 
