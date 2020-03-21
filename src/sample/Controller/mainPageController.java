@@ -168,7 +168,7 @@ public class mainPageController implements Initializable {
         }
 
 
-        if (txtNationalCode.getText().equals("") || txtFatherName.getText().equals("") || txtJob.getText().equals("") || findComboIndex(comboAccount) == -1 || findComboIndex(comboMarriage) == -1 || findComboIndex(comboGender) == -1 || txtAddress.getText().equals("") || txtBornPlace.getText().equals("") || txtSecendPassWord.getText().equals("") || txtSecendPassWordRepeat.getText().equals("")) {
+        if (txtNationalCode.getText().equals("") || txtFatherName.getText().equals("") || txtJob.getText().equals("") || findComboIndex(comboAccount) == -1 || findComboIndex(comboMarriage) == -1 || findComboIndex(comboGender) == -1 || txtAddress.getText().equals("") || txtBornPlace.getText().equals("") || txtSecendPassWord.getText().equals("") || txtSecendPassWordRepeat.getText().equals("") ||txtPhoneNumber.getText().equals("") || timePickerBornTime.getValue()==null) {
 
             alert("لطفا تمام فیلد هارا پر کنید", lblFailNotice, "red");
 
