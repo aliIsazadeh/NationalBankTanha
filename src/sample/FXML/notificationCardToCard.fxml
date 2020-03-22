@@ -17,11 +17,11 @@
          </font></Label>
         <TextField fx:id="txtInventoryCardToCardNum" alignment="CENTER_RIGHT" editable="false" layoutX="53.0" layoutY="191.0" prefHeight="25.0" prefWidth="198.0" AnchorPane.leftAnchor="53.0" AnchorPane.rightAnchor="110.0" />
         <TextField fx:id="txtAlphabetMoneyCardToCard" alignment="CENTER_RIGHT" editable="false" layoutX="53.0" layoutY="102.0" prefHeight="25.0" prefWidth="198.0" AnchorPane.leftAnchor="53.0" AnchorPane.rightAnchor="110.0" />
-        <Label alignment="CENTER_RIGHT" layoutX="344.0" layoutY="68.0" prefHeight="34.0" prefWidth="44.0" text="به عدد" />
-        <Label alignment="CENTER_RIGHT" layoutX="344.0" layoutY="102.0" prefHeight="34.0" prefWidth="44.0" text="به حروف" />
+        <Label alignment="CENTER_RIGHT" layoutX="322.0" layoutY="68.0" prefHeight="34.0" prefWidth="66.0" text="به عدد" />
+        <Label alignment="CENTER_RIGHT" layoutX="322.0" layoutY="102.0" prefHeight="34.0" prefWidth="66.0" text="به حروف" />
         <TextField fx:id="txtAlphabetInventoryCardToCard" alignment="CENTER_RIGHT" editable="false" layoutX="53.0" layoutY="233.0" prefHeight="25.0" prefWidth="198.0" AnchorPane.leftAnchor="53.0" AnchorPane.rightAnchor="110.0" />
-        <Label alignment="CENTER_RIGHT" layoutX="344.0" layoutY="196.0" prefHeight="25.0" prefWidth="44.0" text="به عدد" />
-        <Label alignment="CENTER_RIGHT" layoutX="344.0" layoutY="228.0" prefHeight="34.0" prefWidth="44.0" text="به حروف" />
+        <Label alignment="CENTER_RIGHT" layoutX="329.0" layoutY="196.0" prefHeight="25.0" prefWidth="59.0" text="به عدد" />
+        <Label alignment="CENTER_RIGHT" layoutX="322.0" layoutY="228.0" prefHeight="34.0" prefWidth="66.0" text="به حروف" />
       <Button fx:id="btnClose" layoutX="184.0" layoutY="296.0" mnemonicParsing="false" onMouseClicked="#close" prefHeight="42.0" prefWidth="52.0" text="OK" />
     </children>
 </AnchorPane>

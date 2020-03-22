@@ -11,13 +11,19 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
@@ -41,6 +47,7 @@ public class billController implements Initializable {
     private String password;
 
     private DBHelper dbHelper;
+    private NotificationPageBill not;
 
 
     public EventHandler<KeyEvent> numeric_Validation(final Integer max_Lengh) {
@@ -212,6 +219,25 @@ public class billController implements Initializable {
 
         } else {
             doTransaction(bill, account);
+
+            not = new NotificationPageBill();
+            not.ReceivingAmountBill(txtBillCost.getText());
+
+            Parent root;
+            try {
+                Stage stage = (Stage) PayBill.getScene().getWindow();
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/sample/FXML/notificationPageBill.fxml"));
+                root = loader.load();
+                stage = new Stage();
+                Stage finalStage = stage;
+                finalStage.setResizable(false);
+                finalStage.initStyle(StageStyle.TRANSPARENT);
+                stage.setScene(new Scene(root, 451, 360));
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
             alert("قبض شما با موفقیت پرداخت شد", billAlertLabel, "green");
 
